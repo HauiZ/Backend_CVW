@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
         const userRoles = user.Roles ? user.Roles.map(role => role.name) : [];
 
         const token = jwt.sign(
-            { id: user.id, email: user.email},
+            { id: user.id, email: user.email },
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
@@ -55,7 +55,7 @@ exports.login = async (req, res) => {
 
 
 const registerUser = async (req, res, roleName) => {
-    const transaction = await sequelize.transaction(); 
+    const transaction = await sequelize.transaction();
     try {
         const { username, email, password, confirmpassword, BusinessName, phone } = req.body;
 
@@ -69,13 +69,13 @@ const registerUser = async (req, res, roleName) => {
 
         const role = await Role.findOne({ where: { name: roleName } });
         if (!role) {
-            await transaction.rollback(); 
+            await transaction.rollback();
             return res.status(500).json({ message: "Role không tồn tại" });
         }
 
         await user.addRole(role, { transaction });
 
-        const token = jwt.sign({ id: user.id, email: user.email}, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
         if (roleName === "candidate") {
             const personalUser = await PersonalUser.create({
@@ -84,7 +84,7 @@ const registerUser = async (req, res, roleName) => {
                 email
             }, { transaction });
 
-            await transaction.commit(); 
+            await transaction.commit();
 
             res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, personalUser, token });
         }
@@ -106,7 +106,7 @@ const registerUser = async (req, res, roleName) => {
                 areaId: area.id
             }, { transaction });
 
-            await transaction.commit(); 
+            await transaction.commit();
 
             res.status(201).json({
                 message: `Đăng ký thành công với quyền ${roleName}`,
@@ -115,12 +115,16 @@ const registerUser = async (req, res, roleName) => {
             });
         }
 
-        await transaction.commit();
+
         if (roleName == 'admin') {
-        res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, token });}
+            await transaction.commit();
+            res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, token });
+        }
 
     } catch (error) {
-        await transaction.rollback(); 
+        if (!transaction.finished) {
+            await transaction.rollback();
+        }
         res.status(500).json({ message: "Lỗi server", error: error.message });
     }
 };
@@ -144,7 +148,7 @@ exports.profile = async (req, res) => {
             attributes: { exclude: ['password'] },
             include: [
                 { model: Role, as: 'Roles', attributes: ["name"] },
-                { model: PersonalUser, as: 'PersonalUser' }, 
+                { model: PersonalUser, as: 'PersonalUser' },
                 { model: CompanyUser, as: 'CompanyUser', include: [{ model: Area, as: 'Area' }] }
             ]
         });
@@ -196,8 +200,8 @@ exports.profile = async (req, res) => {
 exports.getUsers = async (req, res) => {
     try {
         const users = await User.findAll({
-            attributes: { exclude: ["password"] }, 
-            include: [{ model: Role, as: 'Roles', attributes: ["name"] }] 
+            attributes: { exclude: ["password"] },
+            include: [{ model: Role, as: 'Roles', attributes: ["name"] }]
         });
 
         if (!users.length) {
