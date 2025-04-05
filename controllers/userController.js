@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
         const userRoles = user.Roles ? user.Roles.map(role => role.name) : [];
 
         const token = jwt.sign(
-            { id: user.id },
+            { id: user.id, email: user.email},
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
@@ -75,7 +75,7 @@ const registerUser = async (req, res, roleName) => {
 
         await user.addRole(role, { transaction });
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user.id, email: user.email}, process.env.JWT_SECRET, { expiresIn: "1h" });
 
         if (roleName === "candidate") {
             const personalUser = await PersonalUser.create({
