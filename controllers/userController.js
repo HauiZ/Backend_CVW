@@ -11,26 +11,26 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Kiểm tra username có tồn tại không
         const user = await User.findOne({
             where: { email },
-            include: [{ model: Role, attributes: ["name"] }] // Lấy role của user
+            include: [{ model: Role, attributes: ["name"] }]
         });
 
         if (!user) {
             return res.status(401).json({ message: "Sai tài khoản hoặc mật khẩu!" });
         }
 
-        // Kiểm tra mật khẩu có đúng không
-        const isMatch = bcrypt.compareSync(password, user.password);
-        if (!isMatch) {
+        // const isMatch = bcrypt.compareSync(password, user.password);
+        // if (!isMatch) {
+        //     return res.status(401).json({ message: "Sai tài khoản hoặc mật khẩu!" });
+        // }
+
+        if (password !== user.password) {
             return res.status(401).json({ message: "Sai tài khoản hoặc mật khẩu!" });
         }
 
-        // Lấy danh sách role của user
         const userRoles = user.Roles ? user.Roles.map(role => role.name) : [];
 
-        // Tạo JWT Token
         const token = jwt.sign(
             { id: user.id },
             process.env.JWT_SECRET,
@@ -55,7 +55,7 @@ exports.login = async (req, res) => {
 
 
 const registerUser = async (req, res, roleName) => {
-    const transaction = await sequelize.transaction(); // Bắt đầu transaction
+    const transaction = await sequelize.transaction(); 
     try {
         const { username, email, password, confirmpassword, BusinessName, phone } = req.body;
 
@@ -63,20 +63,16 @@ const registerUser = async (req, res, roleName) => {
             return res.status(401).json({ message: "Mật khẩu xác nhận sai!" });
         }
 
-        // Hash mật khẩu
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Tạo user mới trong transaction
-        const user = await User.create({ email, password: hashedPassword }, { transaction });
+        const user = await User.create({ email, password }, { transaction });
 
-        // Lấy role từ database
         const role = await Role.findOne({ where: { name: roleName } });
         if (!role) {
-            await transaction.rollback(); // Rollback nếu không tìm thấy role
+            await transaction.rollback(); 
             return res.status(500).json({ message: "Role không tồn tại" });
         }
 
-        // Gán role cho user (thêm vào bảng trung gian UserRole)
         await user.addRole(role, { transaction });
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
@@ -88,7 +84,7 @@ const registerUser = async (req, res, roleName) => {
                 email
             }, { transaction });
 
-            await transaction.commit(); // Hoàn tất transaction
+            await transaction.commit(); 
 
             res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, personalUser, token });
         }
@@ -110,7 +106,7 @@ const registerUser = async (req, res, roleName) => {
                 areaId: area.id
             }, { transaction });
 
-            await transaction.commit(); // Hoàn tất transaction
+            await transaction.commit(); 
 
             res.status(201).json({
                 message: `Đăng ký thành công với quyền ${roleName}`,
@@ -124,7 +120,7 @@ const registerUser = async (req, res, roleName) => {
         res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, token });}
 
     } catch (error) {
-        await transaction.rollback(); // Hủy bỏ mọi thay đổi nếu có lỗi
+        await transaction.rollback(); 
         res.status(500).json({ message: "Lỗi server", error: error.message });
     }
 };
@@ -144,13 +140,12 @@ exports.registerAdmin = async (req, res) => {
 
 exports.profile = async (req, res) => {
     try {
-        // Lấy user từ database với các role đi kèm
         const user = await User.findByPk(req.user.id, {
             attributes: { exclude: ['password'] },
             include: [
                 { model: Role, as: 'Roles', attributes: ["name"] },
-                { model: PersonalUser, as: 'PersonalUser' }, // Lấy thông tin cá nhân nếu có
-                { model: CompanyUser, as: 'CompanyUser', include: [{ model: Area, as: 'Area' }] } // Lấy thông tin công ty nếu có
+                { model: PersonalUser, as: 'PersonalUser' }, 
+                { model: CompanyUser, as: 'CompanyUser', include: [{ model: Area, as: 'Area' }] }
             ]
         });
 
@@ -158,20 +153,17 @@ exports.profile = async (req, res) => {
             return res.status(404).json({ message: 'Người dùng không tồn tại!' });
         }
 
-        // Lấy danh sách role của user
         const userRoles = user.Roles.map(role => role.name);
 
-        // Xác định user thuộc loại nào
         let userInfo = { id: user.id, email: user.email, roles: userRoles };
 
         if (userRoles.includes('candidate') && user.PersonalUser) {
             userInfo.personalUser = {
-                username: user.PersonalUser.username,
+                username: user.PersonalUser.name,
                 email: user.PersonalUser.email
             };
         }
 
-        // Nếu user là recruiter, lấy thông tin từ CompanyUser
         if (userRoles.includes('recruiter') && user.CompanyUser) {
             userInfo.companyUser = {
                 businessName: user.CompanyUser.name,
@@ -188,7 +180,6 @@ exports.profile = async (req, res) => {
             };
         }
 
-        // Chỉ gọi res.json() một lần
         res.json({
             message: 'Lấy thông tin thành công!',
             user: userInfo
@@ -204,17 +195,15 @@ exports.profile = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
     try {
-        // Lấy danh sách tất cả User và các Role của họ
         const users = await User.findAll({
-            attributes: { exclude: ["password"] }, // Không trả về password
-            include: [{ model: Role, as: 'Roles', attributes: ["name"] }] // Lấy role của mỗi user
+            attributes: { exclude: ["password"] }, 
+            include: [{ model: Role, as: 'Roles', attributes: ["name"] }] 
         });
 
         if (!users.length) {
             return res.status(404).json({ message: "Không có người dùng nào!" });
         }
 
-        // Chuyển đổi dữ liệu về dạng mong muốn
         const userList = users.map(user => ({
             id: user.id,
             email: user.email,
