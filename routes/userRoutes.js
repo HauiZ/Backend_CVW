@@ -141,7 +141,7 @@ router.get('/getUsers', authMiddleware(['admin']), userController.getUsers);
  * @swagger
  * /api/users/registerAdmin:
  *   post:
- *     summary: Đăng ký tài khoản candidate
+ *     summary: Đăng ký tài khoản administrator
  *     tags: [Users]
  *     description: API để đăng ký tài khoản người dùng mới
  *     requestBody:
