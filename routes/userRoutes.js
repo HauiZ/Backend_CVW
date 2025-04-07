@@ -109,7 +109,7 @@ router.post('/registerRecruiter', registerRecruiter);
 
 /**
  * @swagger
- * /api/users/profile:
+ * /api/users/getProfile:
  *   get:
  *     summary: Lấy thông tin cá nhân
  *     tags: [Users]
@@ -120,7 +120,7 @@ router.post('/registerRecruiter', registerRecruiter);
  *       200:
  *         description: Success
  */
-router.get('/profile', authMiddleware(['candidate', 'recruiter']), getProfile);
+router.get('/getProfile', authMiddleware(['candidate', 'recruiter']), getProfile);
 
 /**
  * @swagger

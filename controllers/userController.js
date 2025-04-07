@@ -58,22 +58,29 @@ const registerUser = async (req, res, roleName) => {
     const transaction = await sequelize.transaction();
     try {
         const { username, email, password, confirmpassword, BusinessName, phone } = req.body;
+        const uniqueEmail = await User.findOne({
+            where: { email: email },
+            include: [Role]
+        });
+        let user;
 
-        if (confirmpassword !== password) {
-            return res.status(401).json({ message: "Mật khẩu xác nhận sai!" });
+        if (uniqueEmail) {
+            const hasRole = uniqueEmail.Roles.some(role => role.name === roleName);
+            if (hasRole) {
+                return res.status(400).json({ message: `Email đã tồn tại với quyền ${roleName}` });
+            }
+            user = uniqueEmail;
+        } else {
+            user = await User.create({ 
+                email, 
+                password 
+            }, { transaction });
         }
-
-        // const hashedPassword = await bcrypt.hash(password, 10);
-
-        const user = await User.create({ email, password }, { transaction });
 
         const role = await Role.findOne({ where: { name: roleName } });
-        if (!role) {
-            await transaction.rollback();
-            return res.status(500).json({ message: "Role không tồn tại" });
+        if (role) {
+            await user.addRole(role, { transaction });
         }
-
-        await user.addRole(role, { transaction });
 
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
@@ -164,7 +171,8 @@ export const getProfile = async (req, res) => {
         if (userRoles.includes('candidate') && user.PersonalUser) {
             userInfo.personalUser = {
                 username: user.PersonalUser.name,
-                email: user.PersonalUser.email
+                email: user.PersonalUser.email,
+                phone: user.PersonalUser.phone,
             };
         }
 

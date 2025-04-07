@@ -3,6 +3,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from '../models/User.js';
 import dotenv from 'dotenv';
 import PersonalUser from '../models/PersonalUser.js';
+import Role from '../models/Role.js';
 dotenv.config();
 
 passport.use(new GoogleStrategy({
@@ -14,14 +15,23 @@ passport.use(new GoogleStrategy({
     const googleId = profile.id;
   
     try {
-      let user = await User.findOne({ where: { email: userEmail } });
+      let user = await User.findOne({ 
+        where: { email: userEmail },
+        include: [Role]
+      });
   
       if (!user) {
         user = await User.create({
           username: profile.displayName,
           email: userEmail,
         });
+
+        const candidateRole = await Role.findOne({ where: { name: 'candidate' } });
+        if (candidateRole) {
+          await user.addRole(candidateRole);
+        }
       }
+
       let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });
   
       if (!personalUser) {
@@ -40,6 +50,7 @@ passport.use(new GoogleStrategy({
   
       done(null, user);
     } catch (error) {
+      console.error('Lỗi trong quá trình xác thực:', error);
       done(error, null);
     }
   }));
