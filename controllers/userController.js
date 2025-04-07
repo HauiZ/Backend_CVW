@@ -58,6 +58,19 @@ const registerUser = async (req, res, roleName) => {
     const transaction = await sequelize.transaction();
     try {
         const { username, email, password, confirmpassword, BusinessName, phone } = req.body;
+
+        if (!password || !confirmpassword) {
+            return res.status(400).json({ message: "Vui lòng nhập đầy đủ mật khẩu và xác nhận mật khẩu" });
+        }
+
+        if (password !== confirmpassword) {
+            return res.status(400).json({ message: "Mật khẩu xác nhận không khớp" });
+        }
+
+        if (password.length < 6) {
+            return res.status(400).json({ message: "Mật khẩu phải có ít nhất 6 ký tự" });
+        }
+        
         const uniqueEmail = await User.findOne({
             where: { email: email },
             include: [Role]
