@@ -1,13 +1,13 @@
-const User = require('../models/User');
-const Role = require('../models/Role');
-const PersonalUser = require('../models/PersonalUser');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const CompanyUser = require('../models/CompanyUser');
-const Area = require('../models/Area');
-const sequelize = require('../config/database');
+import User from '../models/User.js';
+import Role from '../models/Role.js';
+import PersonalUser from '../models/PersonalUser.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import CompanyUser from '../models/CompanyUser.js';
+import Area from '../models/Area.js';
+import sequelize from '../config/database.js';
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -130,19 +130,19 @@ const registerUser = async (req, res, roleName) => {
 };
 
 
-exports.registerCandidate = async (req, res) => {
+export const registerCandidate = async (req, res) => {
     return registerUser(req, res, "candidate");
 };
 
-exports.registerRecruiter = async (req, res) => {
+export const registerRecruiter = async (req, res) => {
     return registerUser(req, res, "recruiter");
 };
 
-exports.registerAdmin = async (req, res) => {
+export const registerAdmin = async (req, res) => {
     return registerUser(req, res, "admin");
 };
 
-exports.profile = async (req, res) => {
+export const getProfile = async (req, res) => {
     try {
         const user = await User.findByPk(req.user.id, {
             attributes: { exclude: ['password'] },
@@ -197,7 +197,7 @@ exports.profile = async (req, res) => {
 };
 
 
-exports.getUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: { exclude: ["password"] },
@@ -224,3 +224,4 @@ exports.getUsers = async (req, res) => {
         res.status(500).json({ message: "Lỗi máy chủ!" });
     }
 };
+

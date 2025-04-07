@@ -1,13 +1,13 @@
-const sequelize = require('../config/database');
-const User = require('./User');
-const Role = require('./Role');
-const UserRole = require('./UserRole');
-const Area = require('./Area');
-const CompanyUser = require('./CompanyUser');
-const CV = require('./CV');
-const JobApplication = require('./JobApplication');
-const PersonalUser = require('./PersonalUser');
-const RecruitmentNews = require('./RecruitmentNews');
+import sequelize from '../config/database.js';
+import User from './User.js';
+import Role from './Role.js';
+import UserRole from './UserRole.js';
+import Area from './Area.js';
+import CompanyUser from './CompanyUser.js';
+import CV from './CV.js';
+import JobApplication from './JobApplication.js';
+import PersonalUser from './PersonalUser.js';
+import RecruitmentNews from './RecruitmentNews.js';
 
 
 User.belongsToMany(Role, { 
@@ -54,4 +54,4 @@ Area.hasMany(CompanyUser, { foreignKey: 'areaId' });
 
 const models = { sequelize, User, Role, UserRole, PersonalUser, CV, JobApplication, RecruitmentNews, Area, CompanyUser};
 
-module.exports = models;
+export default models;

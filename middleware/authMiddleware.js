@@ -1,7 +1,8 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
-const Role = require("../models/Role");
-require("dotenv").config();
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import Role from "../models/Role.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const authMiddleware = (roles = []) => {
   return async (req, res, next) => {
@@ -35,4 +36,4 @@ const authMiddleware = (roles = []) => {
   };
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;

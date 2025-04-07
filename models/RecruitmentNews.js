@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const CompanyUser = require('./CompanyUser');
-const Area = require('./Area');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import CompanyUser from './CompanyUser.js';
+import Area from './Area.js';
 class RecruitmentNews extends Model { }
 
 RecruitmentNews.init({
@@ -116,7 +116,11 @@ RecruitmentNews.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
-    
+    datePosted: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+    },
 
 }, {
     sequelize,
@@ -125,4 +129,4 @@ RecruitmentNews.init({
     tableName: 'Recruitment_News',
 })
 
-module.exports = RecruitmentNews;
+export default RecruitmentNews;

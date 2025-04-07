@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import User from './User.js';
 
 class PersonalUser extends Model { }
 
@@ -12,6 +12,10 @@ PersonalUser.init({
             key: 'id'
         },
         primaryKey: true,
+    },
+    googleId: {
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     name: {
         type: DataTypes.STRING,
@@ -37,4 +41,4 @@ PersonalUser.init({
 });
 
 
-module.exports = PersonalUser;
+export default PersonalUser;

@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
-const Area = require('./Area');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import User from './User.js';
+import Area from './Area.js';
 class CompanyUser extends Model { }
 
 CompanyUser.init({
@@ -56,4 +56,4 @@ CompanyUser.init({
 });
 
 
-module.exports = CompanyUser;
+export default CompanyUser;

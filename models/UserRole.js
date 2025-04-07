@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
-const Role = require('./Role');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import User from './User.js';
+import Role from './Role.js';
 
 class UserRole extends Model {}
 
@@ -40,4 +40,4 @@ UserRole.init({
 });
 
 
-module.exports = UserRole;
+export default UserRole;

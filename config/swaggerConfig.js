@@ -1,5 +1,5 @@
-const swaggerJSDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+import swaggerJSDoc from'swagger-jsdoc';
+import swaggerUi from'swagger-ui-express';
 
 // Cấu hình Swagger
 const swaggerOptions = {
@@ -32,4 +32,4 @@ const swaggerOptions = {
 // Khởi tạo swaggerSpec
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-module.exports = { swaggerUi, swaggerSpec };
+export { swaggerUi, swaggerSpec };

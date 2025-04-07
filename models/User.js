@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
 class User extends Model {}
 
@@ -18,7 +18,7 @@ User.init({
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 }, {
     sequelize,
@@ -27,4 +27,4 @@ User.init({
     timestamps: false, 
 });
 
-module.exports = User;
+export default User;

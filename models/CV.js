@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const PersonalUser = require('./PersonalUser');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import PersonalUser from './PersonalUser.js';
 
 class CV extends Model { }
 
@@ -105,4 +105,4 @@ CV.init({
 })
 
 
-module.exports = CV;
+export default CV;

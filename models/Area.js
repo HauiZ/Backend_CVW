@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
 
 class Area extends Model {}
 
@@ -28,4 +28,4 @@ Area.init({
     timestamps: false, 
 });
 
-module.exports = Area;
+export default Area;

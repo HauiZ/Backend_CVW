@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const userController = require('../controllers/userController');
-const authMiddleware = require('../middleware/authMiddleware');
+import { login, registerCandidate, registerRecruiter, getProfile, getUsers, registerAdmin } from '../controllers/userController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 
 
@@ -29,7 +29,7 @@ const authMiddleware = require('../middleware/authMiddleware');
  *       200:
  *         description: Đăng nhập thành công
  */
-router.post('/login', userController.login);
+router.post('/login', login);
 
 /**
  * @swagger
@@ -61,7 +61,7 @@ router.post('/login', userController.login);
  *       201:
  *         description: Đăng ký thành công
  */
-router.post('/registerCandidate', userController.registerCandidate);
+router.post('/registerCandidate', registerCandidate);
 
 /**
  * @swagger
@@ -105,7 +105,7 @@ router.post('/registerCandidate', userController.registerCandidate);
  *       201:
  *         description: Đăng ký thành công
  */
-router.post('/registerRecruiter', userController.registerRecruiter);
+router.post('/registerRecruiter', registerRecruiter);
 
 /**
  * @swagger
@@ -120,7 +120,7 @@ router.post('/registerRecruiter', userController.registerRecruiter);
  *       200:
  *         description: Success
  */
-router.get('/profile', authMiddleware(['candidate', 'recruiter']), userController.profile);
+router.get('/profile', authMiddleware(['candidate', 'recruiter']), getProfile);
 
 /**
  * @swagger
@@ -135,7 +135,7 @@ router.get('/profile', authMiddleware(['candidate', 'recruiter']), userControlle
  *       200:
  *         description: Success
  */
-router.get('/getUsers', authMiddleware(['admin']), userController.getUsers);
+router.get('/getUsers', authMiddleware(['admin']), getUsers);
 
 /**
  * @swagger
@@ -164,5 +164,5 @@ router.get('/getUsers', authMiddleware(['admin']), userController.getUsers);
  *       201:
  *         description: Đăng ký thành công
  */
-router.post('/registerAdmin', userController.registerAdmin);
-module.exports = router;
+router.post('/registerAdmin', registerAdmin);
+export default router;

@@ -1,8 +1,8 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const CV = require('./CV');
-const RecruitmentNews = require('./RecruitmentNews');
-const User = require('./User');
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';
+import CV from './CV.js';
+import RecruitmentNews from './RecruitmentNews.js';
+import User from './User.js';
 
 class JobApplication extends Model { }
 
@@ -57,4 +57,4 @@ JobApplication.init({
 })
 
 
-module.exports = JobApplication;
+export default JobApplication;
