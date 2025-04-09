@@ -29,7 +29,7 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: "Sai tài khoản hoặc mật khẩu!" });
         }
 
-        const userRoles = user.Roles ? user.Roles.map(role => role.name) : [];
+        const userRole = user.getRole();
 
         const token = jwt.sign(
             { id: user.id, email: user.email },
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
             user: {
                 id: user.id,
                 email: user.email,
-                roles: userRoles
+                roles: userRole
             },
             token
         });
@@ -57,7 +57,13 @@ export const login = async (req, res) => {
 const registerUser = async (req, res, roleName) => {
     const transaction = await sequelize.transaction();
     try {
-        const { username, email, password, confirmpassword, BusinessName, phone } = req.body;
+        const { username, email, password, confirmpassword, BusinessName, phone, province, district, domain } = req.body; // Lấy tất cả các trường cần thiết
+
+        // Kiểm tra roleName có tồn tại không
+        const role = await Role.findOne({ where: { name: roleName } }, { transaction });
+        if (!role) {
+            return res.status(400).json({ message: `Quyền ${roleName} không tồn tại trong hệ thống` });
+        }
 
         if (!password || !confirmpassword) {
             return res.status(400).json({ message: "Vui lòng nhập đầy đủ mật khẩu và xác nhận mật khẩu" });
@@ -70,32 +76,29 @@ const registerUser = async (req, res, roleName) => {
         if (password.length < 6) {
             return res.status(400).json({ message: "Mật khẩu phải có ít nhất 6 ký tự" });
         }
-        
+
         const uniqueEmail = await User.findOne({
             where: { email: email },
-            include: [Role]
-        });
-        let user;
+            include: [{
+                model: Role,
+                where: { name: roleName }
+            }]
+        }, { transaction });
 
-        if (uniqueEmail) {
-            const hasRole = uniqueEmail.Roles.some(role => role.name === roleName);
-            if (hasRole) {
-                return res.status(400).json({ message: `Email đã tồn tại với quyền ${roleName}` });
-            }
-            user = uniqueEmail;
-        } else {
-            user = await User.create({ 
-                email, 
-                password 
-            }, { transaction });
+        if (uniqueEmail && uniqueEmail.Role.name) {
+            return res.status(400).json({ message: `Email đã tồn tại với quyền ${roleName}` });
         }
 
-        const role = await Role.findOne({ where: { name: roleName } });
-        if (role) {
-            await user.addRole(role, { transaction });
-        }
+        const user = await User.create({
+            email,
+            password
+        }, { transaction });
 
-        const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        await user.setRole(role, { transaction });
+
+        const token = jwt.sign({ id: user.id, email: user.email, role: role.name }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+        let responseData = { message: `Đăng ký thành công với quyền ${roleName}`, token };
 
         if (roleName === "candidate") {
             const personalUser = await PersonalUser.create({
@@ -103,21 +106,12 @@ const registerUser = async (req, res, roleName) => {
                 name: username,
                 email
             }, { transaction });
-
-            await transaction.commit();
-
-            res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, personalUser, token });
-        }
-
-        if (roleName === "recruiter") {
-            const { province, district, domain } = req.body;
-
+            responseData.personalUser = personalUser;
+        } else if (roleName === "recruiter") {
             let area = await Area.findOne({ where: { province, district, domain } }, { transaction });
-
             if (!area) {
                 area = await Area.create({ province, district, domain }, { transaction });
             }
-
             const companyUser = await CompanyUser.create({
                 userId: user.id,
                 name: BusinessName,
@@ -125,27 +119,18 @@ const registerUser = async (req, res, roleName) => {
                 phone,
                 areaId: area.id
             }, { transaction });
-
-            await transaction.commit();
-
-            res.status(201).json({
-                message: `Đăng ký thành công với quyền ${roleName}`,
-                companyUser,
-                token
-            });
+            responseData.companyUser = companyUser;
         }
 
-
-        if (roleName == 'admin') {
-            await transaction.commit();
-            res.status(201).json({ message: `Đăng ký thành công với quyền ${roleName}`, token });
-        }
+        await transaction.commit();
+        return res.status(201).json(responseData);
 
     } catch (error) {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        res.status(500).json({ message: "Lỗi server", error: error.message });
+        console.error("Lỗi đăng ký:", error);
+        return res.status(500).json({ message: "Lỗi server", error: error.message });
     }
 };
 
@@ -158,16 +143,16 @@ export const registerRecruiter = async (req, res) => {
     return registerUser(req, res, "recruiter");
 };
 
-export const registerAdmin = async (req, res) => {
-    return registerUser(req, res, "admin");
-};
+// export const registerAdmin = async (req, res) => {
+//     return registerUser(req, res, "admin");
+// };
 
 export const getProfile = async (req, res) => {
     try {
         const user = await User.findByPk(req.user.id, {
             attributes: { exclude: ['password'] },
             include: [
-                { model: Role, as: 'Roles', attributes: ["name"] },
+                { model: Role, as: 'Role', attributes: ["name"] },
                 { model: PersonalUser, as: 'PersonalUser' },
                 { model: CompanyUser, as: 'CompanyUser', include: [{ model: Area, as: 'Area' }] }
             ]
@@ -177,11 +162,11 @@ export const getProfile = async (req, res) => {
             return res.status(404).json({ message: 'Người dùng không tồn tại!' });
         }
 
-        const userRoles = user.Roles.map(role => role.name);
+        const userRole = user.getRole();
 
-        let userInfo = { id: user.id, email: user.email, roles: userRoles };
+        let userInfo = { id: user.id, email: user.email, role: userRole };
 
-        if (userRoles.includes('candidate') && user.PersonalUser) {
+        if (userRole === 'candidate' && user.PersonalUser) {
             userInfo.personalUser = {
                 username: user.PersonalUser.name,
                 email: user.PersonalUser.email,
@@ -189,7 +174,7 @@ export const getProfile = async (req, res) => {
             };
         }
 
-        if (userRoles.includes('recruiter') && user.CompanyUser) {
+        if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo.companyUser = {
                 businessName: user.CompanyUser.name,
                 email: user.CompanyUser.email,
@@ -222,7 +207,7 @@ export const getUsers = async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: { exclude: ["password"] },
-            include: [{ model: Role, as: 'Roles', attributes: ["name"] }]
+            include: [{ model: Role, attributes: ["name"] }]
         });
 
         if (!users.length) {
@@ -232,7 +217,7 @@ export const getUsers = async (req, res) => {
         const userList = users.map(user => ({
             id: user.id,
             email: user.email,
-            roles: user.Roles ? user.Roles.map(role => role.name) : []
+            roles: user.getRole()
         }));
 
         res.json({

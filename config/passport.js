@@ -26,10 +26,7 @@ passport.use(new GoogleStrategy({
           email: userEmail,
         });
 
-        const candidateRole = await Role.findOne({ where: { name: 'candidate' } });
-        if (candidateRole) {
-          await user.addRole(candidateRole);
-        }
+        await user.setRole('candidate');
       }
 
       let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });

@@ -1,7 +1,6 @@
 import sequelize from '../config/database.js';
 import User from './User.js';
 import Role from './Role.js';
-import UserRole from './UserRole.js';
 import Area from './Area.js';
 import CompanyUser from './CompanyUser.js';
 import CV from './CV.js';
@@ -10,17 +9,8 @@ import PersonalUser from './PersonalUser.js';
 import RecruitmentNews from './RecruitmentNews.js';
 
 
-User.belongsToMany(Role, { 
-    through: UserRole,
-    foreignKey: 'userId',
-    otherKey: 'roleId'
-});
-
-Role.belongsToMany(User, { 
-    through: UserRole,
-    foreignKey: 'roleId',
-    otherKey: 'userId'
-});
+User.belongsTo(Role, {foreignKey: 'roleId'});
+Role.hasMany(User, {foreignKey: 'roleId'});
 
 CompanyUser.belongsTo(User, { foreignKey: 'userId' });
 User.hasOne(CompanyUser, { foreignKey: 'userId' });
@@ -52,6 +42,6 @@ CompanyUser.belongsTo(Area, { foreignKey: 'areaId' });
 Area.hasMany(CompanyUser, { foreignKey: 'areaId' });
 
 
-const models = { sequelize, User, Role, UserRole, PersonalUser, CV, JobApplication, RecruitmentNews, Area, CompanyUser};
+const models = { sequelize, User, Role, PersonalUser, CV, JobApplication, RecruitmentNews, Area, CompanyUser};
 
 export default models;

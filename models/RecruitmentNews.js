@@ -19,7 +19,11 @@ RecruitmentNews.init({
         },
         allowNull: false,
     },
-    jobTitle: {
+    jobTitle: {    // vi tri tuyen dung
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    profession: { // nganh nghe
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -27,11 +31,11 @@ RecruitmentNews.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    jobLevel: {
+    jobLevel: { // cap bac
         type: DataTypes.STRING,
         allowNull: false,
     },
-    workType: {
+    workType: { // hinh thuc lam viec
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -43,7 +47,7 @@ RecruitmentNews.init({
         },
         allowNull: false,
     },
-    jobAddress: {
+    jobAddress: { // dia chi cu the, so nha, duong
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -58,6 +62,10 @@ RecruitmentNews.init({
             const value = this.getDataValue('salaryNegotiable');
             return value === null || value === undefined ? true : value;
         }
+    },
+    experience: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     workDateIn: {
         type: DataTypes.DATE,

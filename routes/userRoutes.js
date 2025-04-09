@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { login, registerCandidate, registerRecruiter, getProfile, getUsers, registerAdmin } from '../controllers/userController.js';
+import { login, registerCandidate, registerRecruiter, getProfile, getUsers } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 
@@ -137,32 +137,32 @@ router.get('/getProfile', authMiddleware(['candidate', 'recruiter']), getProfile
  */
 router.get('/getUsers', authMiddleware(['admin']), getUsers);
 
-/**
- * @swagger
- * /api/users/registerAdmin:
- *   post:
- *     summary: Đăng ký tài khoản administrator
- *     tags: [Users]
- *     description: API để đăng ký tài khoản người dùng mới
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: "user@example.com"
- *               password:
- *                 type: string
- *                 example: "password123"
- *               confirmpassword:   
- *                 type: string
- *                 example: "password123" 
- *     responses:
- *       201:
- *         description: Đăng ký thành công
- */
-router.post('/registerAdmin', registerAdmin);
+// /**
+//  * @swagger
+//  * /api/users/registerAdmin:
+//  *   post:
+//  *     summary: Đăng ký tài khoản administrator
+//  *     tags: [Users]
+//  *     description: API để đăng ký tài khoản người dùng mới
+//  *     requestBody:
+//  *       required: true
+//  *       content:
+//  *         application/json:
+//  *           schema:
+//  *             type: object
+//  *             properties:
+//  *               email:
+//  *                 type: string
+//  *                 example: "user@example.com"
+//  *               password:
+//  *                 type: string
+//  *                 example: "password123"
+//  *               confirmpassword:   
+//  *                 type: string
+//  *                 example: "password123" 
+//  *     responses:
+//  *       201:
+//  *         description: Đăng ký thành công
+//  */
+// router.post('/registerAdmin', registerAdmin);
 export default router;
