@@ -14,18 +14,18 @@ const authMiddleware = (roles = []) => {
       const decoded = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
       req.user = decoded;
 
-      // Lấy danh sách role của user từ database
+      // Lấy thông tin user và role từ database
       const user = await User.findByPk(req.user.id, {
         include: [{ model: Role, attributes: ["name"] }],
       });
 
       if (!user) return res.status(404).json({ message: "Người dùng không tồn tại" });
 
-      // Lấy danh sách role của user
-      const userRoles = user.Roles.map(role => role.name);
+      // Kiểm tra role của user
+      const userRole = user.Role ? user.Role.name : null;
 
-      // Kiểm tra nếu user có ÍT NHẤT MỘT role hợp lệ
-      if (roles.length && !roles.some(role => userRoles.includes(role))) {
+      // Kiểm tra nếu user có role hợp lệ
+      if (roles.length && !roles.includes(userRole)) {
         return res.status(403).json({ message: "Không có quyền truy cập" });
       }
 
