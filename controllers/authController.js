@@ -1,12 +1,21 @@
-import express from 'express';
-import passport from 'passport';
+
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import User from '../models/User.js';
-import Role from '../models/Role.js';
+import authService from '../services/authService.js';
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await authService.loginUser(email, password);
+    res.status(result.status).json(result.data);
+} catch (error) {
+    console.error("Lỗi đăng nhập (controller):", error);
+    res.status(500).json({ message: "Lỗi máy chủ!" });
+}
+};
 
 export const googleCallback = async (req, res) => {
   try {

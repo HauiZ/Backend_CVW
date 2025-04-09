@@ -1,35 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import { login, registerCandidate, registerRecruiter, getProfile, getUsers } from '../controllers/userController.js';
+import {  registerCandidate, registerRecruiter, getProfile, getUsers, deleteUser } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
-
-
-/**
- * @swagger
- * /api/users/login:
- *   post:
- *     summary: Đăng nhập
- *     tags: [Users]
- *     description: API để đăng nhập người dùng
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: "test@example.com"
- *               password:
- *                 type: string
- *                 example: "123456"
- *     responses:
- *       200:
- *         description: Đăng nhập thành công
- */
-router.post('/login', login);
 
 /**
  * @swagger
@@ -165,4 +138,27 @@ router.get('/getUsers', authMiddleware(['admin']), getUsers);
 //  *         description: Đăng ký thành công
 //  */
 // router.post('/registerAdmin', registerAdmin);
+
+/**
+ * @swagger
+ * /api/users/deleteUser/{id}:
+ *  delete:
+ *    summary: Xóa người dùng theo ID (cần xác thực và quyền admin)
+ *    tags: [Users]
+ *    description: API để xóa một người dùng cụ thể dựa trên ID. Yêu cầu xác thực và quyền admin.
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của người dùng cần xóa.
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Người dùng đã được xóa thành công.
+ */
+router.delete('/deleteUser/:id', authMiddleware(['admin']), deleteUser);
 export default router;

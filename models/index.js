@@ -12,8 +12,8 @@ import RecruitmentNews from './RecruitmentNews.js';
 User.belongsTo(Role, {foreignKey: 'roleId'});
 Role.hasMany(User, {foreignKey: 'roleId'});
 
-CompanyUser.belongsTo(User, { foreignKey: 'userId' });
-User.hasOne(CompanyUser, { foreignKey: 'userId' });
+CompanyUser.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });
+User.hasOne(CompanyUser, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
 CV.belongsTo(PersonalUser, { foreignKey: 'PersonalId' });
 PersonalUser.hasMany(CV, { foreignKey: 'PersonalId' });
@@ -32,8 +32,8 @@ CV.belongsToMany(RecruitmentNews, {
     as: 'JobApplications'
 });
 
-PersonalUser.belongsTo(User, { foreignKey: 'userId' });
-User.hasOne(PersonalUser, { foreignKey: 'userId' });
+PersonalUser.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });
+User.hasOne(PersonalUser, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
 RecruitmentNews.belongsTo(Area, { foreignKey: 'areaId' });
 Area.hasMany(RecruitmentNews, { foreignKey: 'areaId' });
