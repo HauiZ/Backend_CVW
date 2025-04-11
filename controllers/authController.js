@@ -9,7 +9,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const result = await authService.loginUser(email, password);
+    const {roleName} = req.params;
+    const result = await authService.loginUser(email, password, roleName);
     res.status(result.status).json(result.data);
 } catch (error) {
     console.error("Lỗi đăng nhập (controller):", error);

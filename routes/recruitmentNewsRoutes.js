@@ -18,11 +18,13 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
 
 /**
  * @swagger
- * /api/recruitmentNews/filerRecruitmentNews:
+ * /api/recruitmentNews/filterRecruitmentNews:
  *   get:
  *     summary: Lọc danh sách tin tuyển dụng
  *     tags: [RecruitmentNews]
  *     description: API để lọc danh sách tin tuyển dụng dựa trên các tiêu chí khác nhau (tất cả đều là tùy chọn).
+ *     security:
+ *      - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: keyword

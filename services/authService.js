@@ -5,11 +5,35 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const loginUser = async (email, password) => {
+const loginUser = async (email, password, roleName) => {
     try {
+        const adminUser = await User.findOne({
+            where: { email },
+            include: [{ model: Role, attributes: ["name"], where: {name: 'admin'} }]
+        });
+        if (adminUser) {
+            const adminToken = jwt.sign(
+                { id: adminUser.id, email: adminUser.email },
+                process.env.JWT_SECRET,
+                { expiresIn: "1h" }
+            );
+    
+            return {
+                status: 200,
+                data: {
+                    message: "Đăng nhập thành công!",
+                    adminToken,
+                    user: {
+                        id: adminUser.id,
+                        email: adminUser.email,
+                        role: adminUser.Role.name,
+                    },
+                }
+            };
+        }
         const user = await User.findOne({
             where: { email },
-            include: [{ model: Role, attributes: ["name"] }]
+            include: [{ model: Role, attributes: ["name"], where: {name: roleName} }]
         });
 
         if (!user) {

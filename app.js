@@ -12,6 +12,7 @@ import authRoutes from './routes/authRoutes.js';
 import './config/passport.js';
 import corsOptions from './config/corsConfig.js';
 import securityHeaders from './middleware/securityHeaders.js';
+import resetPasswordRoutes from './routes/resetPasswordRoutes.js';
 
 const app = express();
 app.use(express.json());
@@ -23,6 +24,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/users', userRoutes);
 app.use('/api/recruitmentNews', recruitmentNewsRoutes);
 app.use('/api', authRoutes);
+app.use('/api', resetPasswordRoutes);
 
 sequelize.sync({ alter: true }).then(() => {
     console.log('✅ Database đã kết nối!');

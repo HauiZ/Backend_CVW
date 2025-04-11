@@ -29,6 +29,18 @@ User.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
+    typeAccount: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    otpCode: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    otpExpiresAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+    },
 }, {
     sequelize,
     modelName: 'User',

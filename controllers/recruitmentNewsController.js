@@ -13,7 +13,8 @@ export const getRecruitmentNews = async (req, res) => {
 
 export const filterRecruitmentNews = async (req, res) => {
     try {
-        const result = await recruitmentNewsService.filterAllRecruitmentNews(req.query);
+        const filterData = req.query;
+        const result = await recruitmentNewsService.filterAllRecruitmentNews(filterData);
         return res.status(result.status).json(result.data);
     } catch (err) {
         console.error("DB error:", err);

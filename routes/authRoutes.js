@@ -6,11 +6,19 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/auth/login:
+ * /api/auth/login/{roleName}:
  *   post:
  *     summary: Đăng nhập
  *     tags: [Users]
  *     description: API để đăng nhập người dùng
+ *     parameters:
+ *      - in: path
+ *        name: roleName
+ *        required: true
+ *        description: role cần đăng nhập.
+ *        schema:
+ *          type: string
+ *          enum: [candidate, recruiter]
  *     requestBody:
  *       required: true
  *       content:
@@ -28,7 +36,7 @@ const router = express.Router();
  *       200:
  *         description: Đăng nhập thành công
  */
-router.post('/auth/login', login);
+router.post('/auth/login/:roleName', login);
 
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'], session: false})

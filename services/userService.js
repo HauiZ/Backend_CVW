@@ -40,7 +40,7 @@ const registerUser = async (userData, roleName) => {
         // const saltRounds = 10;
         // const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const user = await User.create({ email, password }, { transaction });
+        const user = await User.create({ email, password, typeAccount: 'LOCAL' }, { transaction });
         await user.setRole(role, { transaction });
         const token = jwt.sign({ id: user.id, email: user.email, role: role.name }, process.env.JWT_SECRET, { expiresIn: "1h" });
         const responseData = { message: `Đăng ký thành công với quyền ${roleName}`, token };
@@ -128,7 +128,7 @@ const getAllUsers = async () => {
 const deleteAUser = async (userId) => {
     try {
         const userToDelete = await User.findByPk(userId, {
-            include: [{ model: Role, attributes: ["name"] }] 
+            include: [{ model: Role, attributes: ['name'] }], 
         });
         if (!userToDelete) {
             return {status: 404, data: {message: "Không tìm thấy người dùng!"}}
@@ -139,8 +139,9 @@ const deleteAUser = async (userId) => {
         await userToDelete.destroy();
         return {status: 200, data: {message: `Đã xóa người dùng có ID: ${userId} thành công!`}}
     } catch (error) {
+        console.log(error)
         return {status: 500, data: {message: 'Lỗi server khi xóa người dùng.', error}};
     }
-}
+};
 
 export default { registerUser, getUserProfile, getAllUsers, deleteAUser };

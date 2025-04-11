@@ -13,21 +13,21 @@ const getAllRecruitmentNews = async () => {
 
 const filterAllRecruitmentNews = async (FilterData) => {
     try {
-        const { keyword, jobTitle, area,  experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = FilterData;
+        const { keyword, jobTitle, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = FilterData;
         const whereCondition = {};
         const orderCondition = [];
         const includeOptions = [];
+
         if (keyword) {
             whereCondition[Op.or] = [
                 { jobTitle: { [Op.iLike]: `%${keyword}%` } },
                 { profession: { [Op.iLike]: `%${keyword}%` } },
-                { '$CompanyUser.name$': { [Op.iLike]: `%${keyword}%` } }, 
+                { '$CompanyUser.name$': { [Op.iLike]: `%${keyword}%` } },
             ];
-
             includeOptions.push({
                 model: CompanyUser,
-                as: 'CompanyUser', 
-                attributes: [], 
+                as: 'CompanyUser',
+                attributes: [],
                 where: { name: { [Op.like]: `%${keyword}%` } }
             });
         } else {
@@ -39,15 +39,12 @@ const filterAllRecruitmentNews = async (FilterData) => {
         }
 
         if (area) {
-            whereCondition[Op.and] = [
-                { '$Area.province$': { [Op.eq]: `%${area}%`}}
-            ];
-
+            whereCondition['$Area.province$'] = { [Op.iLike]: `%${area}%` };
             includeOptions.push({
                 model: Area,
                 as: 'Area',
                 attributes: [],
-                where: { province: { [Op.eq]: `%${area}%`} }
+                where: { province: { [Op.iLike]: `%${area}%` } }
             });
         } else {
             includeOptions.push({
@@ -65,18 +62,20 @@ const filterAllRecruitmentNews = async (FilterData) => {
             whereCondition.jobLevel = jobLevel;
         }
 
-        if (salaryMin || salaryMax) {
-            whereCondition[Op.and] = [];
-            const minSalary = salaryMin ? parseInt(salaryMin) : null;
-            const maxSalary = salaryMax ? parseInt(salaryMax) : null;
-
-            if (minSalary) {
-                whereCondition[Op.and].push(sequelize.literal(`CAST(SUBSTRING_INDEX(salaryRange, '-', 1) AS UNSIGNED) >= ${minSalary}`));
+        if (salaryMin !== undefined && salaryMin !== null) {
+            whereCondition.salaryMin = { [Op.gte]: parseInt(salaryMin) };
+        }
+        if (salaryMax !== undefined && salaryMax !== null) {
+            whereCondition.salaryMax = { [Op.lte]: parseInt(salaryMax) };
+        }
+        if ((salaryMin !== undefined && salaryMin !== null) && (salaryMax !== undefined && salaryMax !== null)) {
+            if (!whereCondition[Op.and]) {
+                whereCondition[Op.and] = [];
             }
-            if (maxSalary) {
-                whereCondition[Op.and].push(sequelize.literal(`CAST(SUBSTRING_INDEX(salaryRange, '-', -1) AS UNSIGNED) <= ${maxSalary}`));
-            }
-            if (whereCondition[Op.and].length === 0) delete whereCondition[Op.and];
+            whereCondition[Op.and].push({ salaryMin: { [Op.gte]: parseInt(salaryMin) } });
+            whereCondition[Op.and].push({ salaryMax: { [Op.lte]: parseInt(salaryMax) } });
+            delete whereCondition.salaryMin; 
+            delete whereCondition.salaryMax;
         }
 
         if (experience) {
@@ -87,15 +86,11 @@ const filterAllRecruitmentNews = async (FilterData) => {
             whereCondition.workType = workType;
         }
 
-        const validSortFields = ['experience', 'salary', 'datePosted'];
+        const validSortFields = ['experience', 'salaryMin', 'salaryMax', 'datePosted'];
         const orderBy = sortBy && validSortFields.includes(sortBy) ? sortBy : 'datePosted';
         const orderDirection = order === 'ASC' ? 'ASC' : 'DESC';
 
-        if (orderBy === 'salary') {
-            orderCondition.push([sequelize.literal(`CAST(SUBSTRING_INDEX(salaryRange, '-', -1) AS UNSIGNED)`), orderDirection]);
-        } else {
-            orderCondition.push([orderBy, orderDirection]);
-        }
+        orderCondition.push([orderBy, orderDirection]);
 
         const jobs = await RecruitmentNews.findAll({
             where: whereCondition,
@@ -103,10 +98,10 @@ const filterAllRecruitmentNews = async (FilterData) => {
             include: includeOptions
         });
 
-        return {status: 200, data: jobs};
+        return { status: 200, data: jobs };
     } catch (err) {
         return { status: 500, data: { message: "Lỗi lấy danh sách job (service):", err } };
     }
-}
+};
 
-export default {getAllRecruitmentNews, filterAllRecruitmentNews};
+export default { getAllRecruitmentNews, filterAllRecruitmentNews };

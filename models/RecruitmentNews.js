@@ -51,8 +51,12 @@ RecruitmentNews.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    salaryRange: {
-        type: DataTypes.STRING,
+    salaryMin: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    salaryMax: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     salaryNegotiable: {
