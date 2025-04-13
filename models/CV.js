@@ -1,23 +1,20 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import PersonalUser from './PersonalUser.js';
+import CvFiles from './CvFiles.js';
 
 class CV extends Model { }
 
 CV.init({
-    id:{
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    PersonalId: {
+    cvId:{
         type: DataTypes.INTEGER,
         references: {
-            model: PersonalUser,
-            key: 'userId',
+            model: CvFiles,
+            key: 'id',
         },
         allowNull: false,
     },
+    
     fullName: {
         type: DataTypes.STRING,
         allowNull: false,

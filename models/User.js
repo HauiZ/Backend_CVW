@@ -34,7 +34,7 @@ User.init({
         allowNull: false,
     },
     otpCode: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
     },
     otpExpiresAt: {

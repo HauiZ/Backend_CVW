@@ -55,7 +55,7 @@ const sendOTPCode = async (userEmail, roleName) => {
                     refreshToken: process.env.CVW_GOOGLE_REFRESH_TOKEN,
                 },
             });
-            const otpCode = Math.floor(100000 + Math.random() * 9000);
+            const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
             const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
             // send mail with defined transport object
             const info = await transporter.sendMail({

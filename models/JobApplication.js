@@ -3,6 +3,7 @@ import sequelize from '../config/database.js';
 import CV from './CV.js';
 import RecruitmentNews from './RecruitmentNews.js';
 import User from './User.js';
+import CvFiles from './CvFiles.js';
 
 class JobApplication extends Model { }
 
@@ -18,7 +19,7 @@ JobApplication.init({
     cvId: {
         type: DataTypes.INTEGER,
         references: {
-            model: CV,
+            model: CvFiles,
             key: 'id',
         },
         primaryKey: true,

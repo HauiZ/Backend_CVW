@@ -1,0 +1,23 @@
+USE JobPortal;
+GO
+
+-- Thêm role 'admin' nếu chưa có
+IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'admin')
+BEGIN
+    INSERT INTO Role (name, discription, displayName)
+    VALUES ('admin', 'System administrator', 'Administrator');
+END
+
+-- Thêm role 'candidate' nếu chưa có
+IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'candidate')
+BEGIN
+    INSERT INTO Role (name, discription, displayName)
+    VALUES ('candidate', 'Job-seeking candidate', 'Candidate');
+END
+
+-- Thêm role 'recruiter' nếu chưa có
+IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'recruiter')
+BEGIN
+    INSERT INTO Role (name, discription, displayName)
+    VALUES ('recruiter', 'Company recruiter', 'Recruiter');
+END

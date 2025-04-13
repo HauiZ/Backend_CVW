@@ -7,6 +7,7 @@ import CV from './CV.js';
 import JobApplication from './JobApplication.js';
 import PersonalUser from './PersonalUser.js';
 import RecruitmentNews from './RecruitmentNews.js';
+import CvFiles from './CvFiles.js';
 
 
 User.belongsTo(Role, {foreignKey: 'roleId'});
@@ -15,17 +16,20 @@ Role.hasMany(User, {foreignKey: 'roleId'});
 CompanyUser.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });
 User.hasOne(CompanyUser, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
-CV.belongsTo(PersonalUser, { foreignKey: 'PersonalId' });
-PersonalUser.hasMany(CV, { foreignKey: 'PersonalId' });
+CvFiles.belongsTo(PersonalUser, { foreignKey: 'personalId', onDelete: 'CASCADE' });
+PersonalUser.hasMany(CvFiles, { foreignKey: 'personalId', onDelete: 'CASCADE' });
 
-RecruitmentNews.belongsToMany(CV, {
+CV.belongsTo(CvFiles, { foreignKey: 'cvId', onDelete: 'CASCADE' });
+CvFiles.hasOne(CV, { foreignKey: 'cvId', onDelete: 'CASCADE' });
+
+RecruitmentNews.belongsToMany(CvFiles, {
     through: JobApplication,
     foreignKey: 'recruitmentNewsId',
     otherKey: 'cvId',
     as: 'AppliedCVs'
 });
 
-CV.belongsToMany(RecruitmentNews, {
+CvFiles.belongsToMany(RecruitmentNews, {
     through: JobApplication,
     foreignKey: 'cvId',
     otherKey: 'recruitmentNewsId',
@@ -42,6 +46,6 @@ CompanyUser.belongsTo(Area, { foreignKey: 'areaId' });
 Area.hasMany(CompanyUser, { foreignKey: 'areaId' });
 
 
-const models = { sequelize, User, Role, PersonalUser, CV, JobApplication, RecruitmentNews, Area, CompanyUser};
+const models = { sequelize, User, Role, CvFiles, PersonalUser, CV, JobApplication, RecruitmentNews, Area, CompanyUser};
 
 export default models;

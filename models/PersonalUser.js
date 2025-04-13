@@ -32,6 +32,10 @@ PersonalUser.init({
             isEmail: true,
         },
     },
+    avatarId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 
 }, {
     sequelize,

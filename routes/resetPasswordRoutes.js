@@ -5,7 +5,7 @@ import { forgotPassword, sendOTPCode } from '../controllers/resetPasswordControl
 /**
  * @swagger
  * /api/forgot-password/{roleName}:
- *   post:
+ *   patch:
  *     summary: Quên mật khẩu
  *     tags: [Users]
  *     description: API để đổi mật khẩu
@@ -40,7 +40,7 @@ import { forgotPassword, sendOTPCode } from '../controllers/resetPasswordControl
  *       200:
  *         description: Đăng nhập thành công
  */
-router.post('/forgot-password/:roleName', forgotPassword);
+router.patch('/forgot-password/:roleName', forgotPassword);
 
 /**
  * @swagger

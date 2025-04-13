@@ -21,13 +21,13 @@ import authMiddleware from '../middleware/authMiddleware.js';
  *               email:
  *                 type: string
  *                 example: "user@example.com"
- *               username:
+ *               userName:
  *                 type: string
- *                 example: "username"
+ *                 example: "userName"
  *               password:
  *                 type: string
  *                 example: "password123"
- *               confirmpassword:
+ *               confirmPassword:
  *                 type: string
  *                 example: "password123"
  *     responses:
@@ -56,7 +56,7 @@ router.post('/registerCandidate', registerCandidate);
  *               password:
  *                 type: string
  *                 example: "password123"
- *               confirmpassword:
+ *               confirmPassword:
  *                 type: string
  *                 example: "password123"
  *               BusinessName: 

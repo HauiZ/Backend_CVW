@@ -48,6 +48,10 @@ CompanyUser.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
+    logoId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 }, {
     sequelize,
     modelName: 'CompanyUser',
