@@ -4,6 +4,7 @@ import Role from '../models/Role.js';
 import dotenv from 'dotenv';
 import { textEmail, htmlEmail } from '../public/EmailTemplate.js';
 dotenv.config();
+import messages from '../config/message.js';
 
 const forgotPassword = async (dataUser, roleName) => {
     try {
@@ -14,27 +15,27 @@ const forgotPassword = async (dataUser, roleName) => {
         });
         if (user) {
             if (otpCode !== user.otpCode) {
-                return { status: 400, data: { message: `Sai otpCode` } };
+                return { status: 400, data: { message: messages.auth.ERR_WRONG_OTP } };
             }
             if (new Date() > user.otpExpiresAt) {
-                return { status: 400, data: { message: "Mã OTP đã hết hạn" } };
+                return { status: 400, data: { message: messages.auth.ERR_OTP_EXPIRED } };
               }
             if (!newPassword || !confirmPassword) {
-                return { status: 400, data: { message: "Vui lòng nhập đầy đủ mật khẩu và xác nhận mật khẩu" } };
+                return { status: 400, data: { message: messages.auth.ERR_ENTER_PASSWORD } };
             }
             if (newPassword !== confirmPassword) {
-                return { status: 400, data: { message: "Mật khẩu xác nhận không khớp" } };
+                return { status: 400, data: { message: messages.auth.ERR_MATCH_PASSWORD } };
             }
             if (newPassword.length < 6) {
-                return { status: 400, data: { message: "Mật khẩu phải có ít nhất 6 ký tự" } };
+                return { status: 400, data: { message: messages.auth.ERR_LEAST_PASSWORD } };
             }
             await user.update({ password: newPassword, otpCode: null, otpExpiresAt: null });
-            return { status: 200, data: { message: `Mật khẩu đã được cập nhật, vui lòng đăng nhập lại` } };
+            return { status: 200, data: { message: messages.auth.UPDATE_PASSWORD_SUCCESS } };
         }
-        return { status: 400, data: { message: `Email không tồn tại!` } };
+        return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
         console.error("Lỗi server(service):", error);
-        return { status: 500, data: { message: `Lỗi server(service): `, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 
@@ -68,9 +69,9 @@ const sendOTPCode = async (userEmail, roleName) => {
             await user.update({ otpCode: otpCode, otpExpiresAt: expiresAt });
             return { status: 200, data: { message: `Message sent: %s: ${info.messageId}` } };
         }
-        return { status: 400, data: { message: `Email không tồn tại!` } };
+        return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
-        return { status: 500, data: { message: `Lỗi server(service): `, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 
 };

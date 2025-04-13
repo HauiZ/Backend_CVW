@@ -1,6 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import messages from '../config/message.js';
 
 const storage = multer.memoryStorage();
 
@@ -10,7 +11,7 @@ const pdfUpload = multer({
     if (file.mimetype === 'application/pdf') {
       cb(null, true);
     } else {
-      cb(new Error('Chỉ chấp nhận file PDF!'), false);
+      cb(new Error(messages.file.ERR_ONLY_ACCEPT_PDF), false);
     }
   },
 });
@@ -21,7 +22,7 @@ const imageUpload = multer({
     if (file.mimetype.startsWith('image/')) {
       cb(null, true); // Chấp nhận file
     } else {
-      cb(new Error('Chỉ chấp nhận file hình ảnh!'), false); // Từ chối file và trả về lỗi
+      cb(new Error(messages.file.ERR_ONLY_ACCEPT_IMAGE), false); // Từ chối file và trả về lỗi
     }
   },
 });

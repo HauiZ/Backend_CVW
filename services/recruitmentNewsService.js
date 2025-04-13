@@ -1,19 +1,21 @@
 import RecruitmentNews from "../models/RecruitmentNews.js";
+import CompanyUser from "../models/CompanyUser.js";
 import sequelize from '../config/database.js';
 import Area from '../models/Area.js';
 import { Op } from 'sequelize';
+import messages from "../config/message.js";
 const getAllRecruitmentNews = async () => {
     try {
         const jobs = await RecruitmentNews.findAll();
         return { status: 200, data: jobs }
     } catch (err) {
-        return { status: 500, data: { message: "Lỗi lấy danh sách job (service):", err } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, err } };
     }
 }
 
-const filterAllRecruitmentNews = async (FilterData) => {
+const filterAllRecruitmentNews = async (filterData) => {
     try {
-        const { keyword, jobTitle, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = FilterData;
+        const { keyword, jobTitle, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
         const whereCondition = {};
         const orderCondition = [];
         const includeOptions = [];
@@ -74,7 +76,7 @@ const filterAllRecruitmentNews = async (FilterData) => {
             }
             whereCondition[Op.and].push({ salaryMin: { [Op.gte]: parseInt(salaryMin) } });
             whereCondition[Op.and].push({ salaryMax: { [Op.lte]: parseInt(salaryMax) } });
-            delete whereCondition.salaryMin; 
+            delete whereCondition.salaryMin;
             delete whereCondition.salaryMax;
         }
 
@@ -100,8 +102,23 @@ const filterAllRecruitmentNews = async (FilterData) => {
 
         return { status: 200, data: jobs };
     } catch (err) {
-        return { status: 500, data: { message: "Lỗi lấy danh sách job (service):", err } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, err } };
     }
 };
 
+const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
+    try {
+        const { jobTitle, profession, candidateNumber, jobLevel, workType, province, district, domain, jobAddress,
+            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
+            contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
+        let area = await Area.findOne({ where: { province, district, domain }, transaction });
+        if (!area) {
+            area = await Area.create({ province, district, domain }, { transaction });
+        }
+    } catch (error) {
+
+    }
+
+
+}
 export default { getAllRecruitmentNews, filterAllRecruitmentNews };

@@ -2,11 +2,12 @@ import drive from "../../config/googleDrive/driveconfig.js";
 import CvFiles from "../../models/CvFiles.js";
 import stream from 'stream';
 import sequelize from '../../config/database.js';
+import messages from "../../config/message.js";
 
 const uploadCV = async (file, userId) => {
     const transaction = await sequelize.transaction();
     try {
-        if (!file) return { status: 400, data: { message: 'Không có file!' } };
+        if (!file) return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
 
         const fileMetadata = {
             name: file.originalname,
@@ -44,7 +45,7 @@ const uploadCV = async (file, userId) => {
 
         return {
             status: 200, data: {
-                message: 'Upload thành công',
+                message: messages.file.FILE_UPLOAD_ACCESS,
                 file: fileData,
                 link: `https://drive.google.com/file/d/${response.data.id}/view`,
                 downloadLink: `https://drive.google.com/uc?export=download&id=${response.data.id}`
@@ -55,7 +56,7 @@ const uploadCV = async (file, userId) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: 'Lỗi server', error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 

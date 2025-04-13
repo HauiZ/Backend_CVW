@@ -7,7 +7,7 @@ export const registerCandidate = async (req, res) => {
         res.status(result.status).json(result.data);
     } catch (error) {
         console.error("Lỗi đăng ký ứng viên (controller):", error);
-        res.status(500).json({ message: "Lỗi máy chủ!" });
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
 
@@ -17,7 +17,7 @@ export const registerRecruiter = async (req, res) => {
         res.status(result.status).json(result.data);
     } catch (error) {
         console.error("Lỗi đăng ký nhà tuyển dụng (controller):", error);
-        res.status(500).json({ message: "Lỗi máy chủ!" });
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
 
@@ -37,7 +37,7 @@ export const getProfile = async (req, res) => {
         res.status(result.status).json(result.data);
     } catch (error) {
         console.error("Lỗi lấy thông tin người dùng (controller):", error);
-        res.status(500).json({ message: "Lỗi máy chủ!" });
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
 
@@ -47,7 +47,7 @@ export const getUsers = async (req, res) => {
         res.status(result.status).json(result.data);
     } catch (error) {
         console.error("Lỗi lấy danh sách người dùng (controller):", error);
-        res.status(500).json({ message: "Lỗi máy chủ!" });
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
 
@@ -56,7 +56,7 @@ export const deleteUser = async (req, res) => {
         const result = await userService.deleteAUser(req.params.id);
         res.status(result.status).json(result.data);
     } catch (err) {
-        res.status(500).json({ message: "Lỗi máy chủ!", err});
+        res.status(500).json({ message: messages.error.ERR_INTERNAL, err});
     }
 }
 

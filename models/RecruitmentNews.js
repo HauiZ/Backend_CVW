@@ -27,7 +27,7 @@ RecruitmentNews.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    candidate: {
+    candidateNumber: { // số lượng đăng tuyển
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -59,9 +59,9 @@ RecruitmentNews.init({
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    salaryNegotiable: {
+    salaryNegotiable: { // hoa hồng
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         get() {
             const value = this.getDataValue('salaryNegotiable');
             return value === null || value === undefined ? true : value;
@@ -113,11 +113,11 @@ RecruitmentNews.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    phone: {
+    contactPhone: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
+    contactEmail: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -133,7 +133,10 @@ RecruitmentNews.init({
         allowNull: false,
         defaultValue: DataTypes.NOW,
     },
-
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, {
     sequelize,
     modelName: 'RecruitmentNews',

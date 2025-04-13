@@ -2,12 +2,13 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import Role from "../models/Role.js";
 import dotenv from 'dotenv';
+import messages from "../config/message.js";
 dotenv.config();
 
 const authMiddleware = (roles = []) => {
   return async (req, res, next) => {
     const token = req.header("Authorization");
-    if (!token) return res.status(401).json({ message: "Không có token, từ chối truy cập" });
+    if (!token) return res.status(401).json({ message: messages.auth.ERR_TOKEN_MISSING });
 
     try {
       // Giải mã token
@@ -19,19 +20,19 @@ const authMiddleware = (roles = []) => {
         include: [{ model: Role, attributes: ["name"] }],
       });
 
-      if (!user) return res.status(404).json({ message: "Người dùng không tồn tại" });
+      if (!user) return res.status(404).json({ message: messages.user.ERR_USER_NOT_FOUND });
 
       // Kiểm tra role của user
       const userRole = user.Role ? user.Role.name : null;
 
       // Kiểm tra nếu user có role hợp lệ
       if (roles.length && !roles.includes(userRole)) {
-        return res.status(403).json({ message: "Không có quyền truy cập" });
+        return res.status(403).json({ message: messages.auth.ERR_TOKEN_INVALID });
       }
 
       next();
     } catch (error) {
-      res.status(401).json({ message: "Token không hợp lệ" });
+      res.status(401).json({ message: messages.auth.ERR_NO_PERMISSION });
     }
   };
 };

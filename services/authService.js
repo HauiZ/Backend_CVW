@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
+import messages from '../config/message.js';
 
 const loginUser = async (email, password, roleName) => {
     try {
@@ -21,7 +22,7 @@ const loginUser = async (email, password, roleName) => {
             return {
                 status: 200,
                 data: {
-                    message: "Đăng nhập thành công!",
+                    message: messages.auth.LOGIN_SUCCESS,
                     adminToken,
                     user: {
                         id: adminUser.id,
@@ -37,11 +38,11 @@ const loginUser = async (email, password, roleName) => {
         });
 
         if (!user) {
-            return { status: 401, data: { message: "Sai tài khoản hoặc mật khẩu!" } };
+            return { status: 401, data: { message: messages.auth.ERR_WRONG_ACCOUNT_OR_PASSWORD } };
         }
         // const isMatch = await bcrypt.compare(password, user.password);
         if (password !== user.password) {
-            return { status: 401, data: { message: "Sai tài khoản hoặc mật khẩu!" } };
+            return { status: 401, data: { message: messages.auth.ERR_WRONG_ACCOUNT_OR_PASSWORD } };
         }
 
         const token = jwt.sign(
@@ -53,7 +54,7 @@ const loginUser = async (email, password, roleName) => {
         return {
             status: 200,
             data: {
-                message: "Đăng nhập thành công!",
+                message: messages.auth.LOGIN_SUCCESS,
                 token,
                 user: {
                     id: user.id,
@@ -63,7 +64,7 @@ const loginUser = async (email, password, roleName) => {
             }
         };
     } catch (error) {
-        return { status: 500, data: { message: "Lỗi đăng nhập (service):", error} };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error} };
     }
 };
 

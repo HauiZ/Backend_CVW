@@ -8,6 +8,7 @@ import Area from '../models/Area.js';
 import sequelize from '../config/database.js';
 import CvFiles from '../models/CvFiles.js';
 import drive from "../config/googleDrive/driveconfig.js";
+import messages from '../config/message.js';
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -16,17 +17,17 @@ const registerUser = async (userData, roleName) => {
 
         const role = await Role.findOne({ where: { name: roleName }, transaction });
         if (!role) {
-            return { status: 400, data: { message: `Quyền ${roleName} không tồn tại trong hệ thống` } };
+            return { status: 400, data: { message: `PERMISSION ${roleName} NOT IN SYSTEM` } };
         }
 
         if (!password || !confirmPassword) {
-            return { status: 400, data: { message: "Vui lòng nhập đầy đủ mật khẩu và xác nhận mật khẩu" } };
+            return { status: 400, data: { message: messages.auth.ERR_ENTER_PASSWORD } };
         }
         if (password !== confirmPassword) {
-            return { status: 400, data: { message: "Mật khẩu xác nhận không khớp" } };
+            return { status: 400, data: { message: messages.auth.ERR_MATCH_PASSWORD } };
         }
         if (password.length < 6) {
-            return { status: 400, data: { message: "Mật khẩu phải có ít nhất 6 ký tự" } };
+            return { status: 400, data: { message: messages.auth.ERR_LEAST_PASSWORD } };
         }
 
         const uniqueEmail = await User.findOne({
@@ -36,7 +37,7 @@ const registerUser = async (userData, roleName) => {
         });
 
         if (uniqueEmail && uniqueEmail.Role) {
-            return { status: 400, data: { message: `Email đã tồn tại với quyền ${roleName}` } };
+            return { status: 400, data: { message: `EMAIL DOES EXISTS WITH PERMISSION ${roleName}` } };
         }
 
         // const saltRounds = 10;
@@ -45,7 +46,7 @@ const registerUser = async (userData, roleName) => {
         const user = await User.create({ email, password, typeAccount: 'LOCAL' }, { transaction });
         await user.setRole(role, { transaction });
         const token = jwt.sign({ id: user.id, email: user.email, role: role.name }, process.env.JWT_SECRET, { expiresIn: "1h" });
-        const responseData = { message: `Đăng ký thành công với quyền ${roleName}`, token };
+        const responseData = { message: messages.user.USER_CREATED_SUCCESSFULLY, token };
 
         if (roleName === "candidate") {
             const personalUser = await PersonalUser.create({ userId: user.id, name: userName, email }, { transaction });
@@ -66,7 +67,7 @@ const registerUser = async (userData, roleName) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: "Lỗi đăng ký (service):", error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 
@@ -82,7 +83,7 @@ const getUserProfile = async (userId) => {
         });
 
         if (!user) {
-            return { status: 404, data: { message: 'Người dùng không tồn tại!' } };
+            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } };
         }
 
         const userRole = user.Role.name;
@@ -101,10 +102,10 @@ const getUserProfile = async (userId) => {
             };
         }
 
-        return { status: 200, data: { message: 'Lấy thông tin thành công!', user: userInfo } };
+        return { status: 200, data: { message: messages.user.GET_INFO, user: userInfo } };
 
     } catch (error) {
-        return { status: 500, data: { message: "Lỗi lấy thông tin người dùng (service):", error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 
@@ -116,14 +117,14 @@ const getAllUsers = async () => {
         });
 
         if (!users.length) {
-            return { status: 404, data: { message: "Không có người dùng nào!" } };
+            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } };
         }
 
         const userList = users.map(user => ({ id: user.id, email: user.email, role: user.Role.name }));
-        return { status: 200, data: { message: "Lấy danh sách người dùng thành công!", users: userList } };
+        return { status: 200, data: { message: messages.user.GET_INFO, users: userList } };
 
     } catch (error) {
-        return { status: 500, data: { message: "Lỗi lấy danh sách user (service):", error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 
@@ -136,10 +137,10 @@ const deleteAUser = async (userId) => {
             ],
         });
         if (!userToDelete) {
-            return { status: 404, data: { message: "Không tìm thấy người dùng!" } }
+            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } }
         }
         if (userToDelete.Role.name === 'admin') {
-            return { status: 201, data: { message: 'Không thể xóa admin!!!' } }
+            return { status: 201, data: { message: messages.error.ERR_DELETE_ADMIN } }
         }
         const cvFilesToDelete = await CvFiles.findAll({
             where: {
@@ -163,10 +164,10 @@ const deleteAUser = async (userId) => {
             },);
         }
         await userToDelete.destroy();
-        return { status: 200, data: { message: `Đã xóa người dùng có ID: ${userId} thành công!` } }
+        return { status: 200, data: { message: `DELETED: ${userId} SUCCESSFULLY!` } }
     } catch (error) {
         console.log(error)
-        return { status: 500, data: { message: 'Lỗi server khi xóa người dùng.', error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
     }
 };
 
