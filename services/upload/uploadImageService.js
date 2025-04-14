@@ -44,7 +44,6 @@ const uploadAvatar = async (file, userId) => {
         return {
             status: 200, data: {
                 message: messages.file.FILE_UPLOAD_ACCESS,
-                avatarName: file.originalname,
                 link: `https://drive.google.com/file/d/${response.data.id}/view`,
                 downloadLink: `https://drive.google.com/uc?export=download&id=${response.data.id}`
             }
@@ -96,7 +95,6 @@ const uploadLogoBussiness = async (file, userId) => {
         return {
             status: 200, data: {
                 message: messages.file.FILE_UPLOAD_ACCESS,
-                logoName: file.originalname,
                 link: `https://drive.google.com/file/d/${response.data.id}/view`,
                 downloadLink: `https://drive.google.com/uc?export=download&id=${response.data.id}`
             }

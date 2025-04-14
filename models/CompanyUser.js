@@ -41,12 +41,23 @@ CompanyUser.init({
         allowNull: true,
     },
     companySize: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
     },
     website: {
         type: DataTypes.STRING,
         allowNull: true,
+    },
+    introduction: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        get() {
+            const value = this.getDataValue('introduction');
+            return value ? JSON.parse(value) : null;
+        },
+        set(value) {
+            this.setDataValue('introduction', JSON.stringify(value));
+        }
     },
     logoId: {
         type: DataTypes.STRING,

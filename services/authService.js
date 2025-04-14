@@ -56,11 +56,6 @@ const loginUser = async (email, password, roleName) => {
             data: {
                 message: messages.auth.LOGIN_SUCCESS,
                 token,
-                user: {
-                    id: user.id,
-                    email: user.email,
-                    role: user.Role.name,
-                },
             }
         };
     } catch (error) {

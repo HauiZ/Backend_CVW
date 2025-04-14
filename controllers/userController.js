@@ -41,22 +41,22 @@ export const getProfile = async (req, res) => {
     }
 };
 
-export const getUsers = async (req, res) => {
+
+export const changePassword = async (req, res) => {
     try {
-        const result = await userService.getAllUsers();
+        const result = await userService.changePassword(req.user.id, req.body);
         res.status(result.status).json(result.data);
     } catch (error) {
-        console.error("Lỗi lấy danh sách người dùng (controller):", error);
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
 
-export const deleteUser = async (req, res) => {
-    try {
-        const result = await userService.deleteAUser(req.params.id);
-        res.status(result.status).json(result.data);
-    } catch (err) {
-        res.status(500).json({ message: messages.error.ERR_INTERNAL, err});
-    }
-}
 
+export const changeProfile = async (req, res) => {
+    try {
+        const result = await userService.changeProfile(req.user.id, req.body);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};

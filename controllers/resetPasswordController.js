@@ -20,3 +20,4 @@ export const sendOTPCode = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+

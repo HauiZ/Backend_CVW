@@ -46,7 +46,6 @@ const uploadCV = async (file, userId) => {
         return {
             status: 200, data: {
                 message: messages.file.FILE_UPLOAD_ACCESS,
-                file: fileData,
                 link: `https://drive.google.com/file/d/${response.data.id}/view`,
                 downloadLink: `https://drive.google.com/uc?export=download&id=${response.data.id}`
             }

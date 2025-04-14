@@ -33,7 +33,7 @@ import { forgotPassword, sendOTPCode } from '../controllers/resetPasswordControl
  *               newPassword:
  *                 type: string
  *                 example: "password123"
- *               confirmPassword:
+ *               confirmNewPassword:
  *                 type: string
  *                 example: "password123"
  *     responses:

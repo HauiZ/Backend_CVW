@@ -85,4 +85,6 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
  *         description: Danh sách tin tuyển dụng đã được lọc thành công.
  */
 router.get('/filterRecruitmentNews', authMiddleware(['candidate']), filterRecruitmentNews);
+
+
 export default router;

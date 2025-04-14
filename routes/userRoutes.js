@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {  registerCandidate, registerRecruiter, getProfile, getUsers, deleteUser } from '../controllers/userController.js';
+import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 
@@ -10,7 +10,6 @@ import authMiddleware from '../middleware/authMiddleware.js';
  *   post:
  *     summary: Đăng ký tài khoản candidate
  *     tags: [Users]
- *     description: API để đăng ký tài khoản người dùng mới
  *     requestBody:
  *       required: true
  *       content:
@@ -42,7 +41,6 @@ router.post('/registerCandidate', registerCandidate);
  *   post:
  *     summary: Đăng ký tài khoản recruiter
  *     tags: [Users]
- *     description: API để đăng ký tài khoản người dùng mới
  *     requestBody:
  *       required: true
  *       content:
@@ -86,7 +84,6 @@ router.post('/registerRecruiter', registerRecruiter);
  *   get:
  *     summary: Lấy thông tin cá nhân
  *     tags: [Users]
- *     description: API lấy thông tin người dùng (cần xác thực)
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -95,20 +92,7 @@ router.post('/registerRecruiter', registerRecruiter);
  */
 router.get('/getProfile', authMiddleware(['candidate', 'recruiter']), getProfile);
 
-/**
- * @swagger
- * /api/users/getUsers:
- *   get:
- *     summary: Lấy thông tin Users
- *     tags: [Users]
- *     description: API lấy thông tin người dùng (cần xác thực)
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Success
- */
-router.get('/getUsers', authMiddleware(['admin']), getUsers);
+
 
 // /**
 //  * @swagger
@@ -116,7 +100,6 @@ router.get('/getUsers', authMiddleware(['admin']), getUsers);
 //  *   post:
 //  *     summary: Đăng ký tài khoản administrator
 //  *     tags: [Users]
-//  *     description: API để đăng ký tài khoản người dùng mới
 //  *     requestBody:
 //  *       required: true
 //  *       content:
@@ -139,26 +122,90 @@ router.get('/getUsers', authMiddleware(['admin']), getUsers);
 //  */
 // router.post('/registerAdmin', registerAdmin);
 
+
+
 /**
  * @swagger
- * /api/users/deleteUser/{id}:
- *  delete:
- *    summary: Xóa người dùng theo ID (cần xác thực và quyền admin)
- *    tags: [Users]
- *    description: API để xóa một người dùng cụ thể dựa trên ID. Yêu cầu xác thực và quyền admin.
- *    security:
+ * /api/users/changePassword:
+ *   patch:
+ *     summary: Đổi mật khẩu
+ *     tags: [Users]
+ *     security:
  *      - bearerAuth: []
- *    parameters:
- *      - in: path
- *        name: id
- *        required: true
- *        description: ID của người dùng cần xóa.
- *        schema:
- *          type: integer
- *          format: int64
- *    responses:
- *      200:
- *        description: Người dùng đã được xóa thành công.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               oldPassword:
+ *                 type: string
+ *                 example: "password123"
+ *               newPassword:
+ *                 type: string
+ *                 example: "password123"
+ *               confirmNewPassword:
+ *                 type: string
+ *                 example: "password123"
+ *     responses:
+ *       200:
+ *         description: Đổi mật khẩu thành công
  */
-router.delete('/deleteUser/:id', authMiddleware(['admin']), deleteUser);
+router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']) ,changePassword);
+
+/**
+ * @swagger
+ * /api/users/changeProfile:
+ *   patch:
+ *     summary: Đổi thông tin profile
+ *     tags: [Users]
+ *     security:
+ *      - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "name"
+ *               phone:
+ *                 type: string
+ *                 example: "0123456789"
+ *               province:
+ *                 type: string
+ *                 example: "Tp.HCM"
+ *               district: 
+ *                 type: string
+ *                 example: "Quận 9"
+ *               domain:
+ *                 type: string
+ *                 example: "Nam"
+ *               field: 
+ *                 type: string
+ *                 example: "Công nghệ thông tin"
+ *               companySize: 
+ *                 type: string
+ *                 example: "500-1000 người"
+ *               website:
+ *                 type: string
+ *                 example: "https://cvwebsite.com"
+ *               introduction:
+ *                 type: object
+ *                 example:
+ *                   description: "Chúng tôi là một công ty công nghệ hàng đầu chuyên phát triển các giải pháp phần mềm."
+ *                   techStack: ["Node.js", "React", "MongoDB"]
+ *                   mission: "Cung cấp các sản phẩm chất lượng cao và dịch vụ khách hàng tuyệt vời."
+ *                   values:
+ *                     - "Đổi mới sáng tạo"
+ *                     - "Tin cậy"
+ *                     - "Hợp tác"
+ *     responses:
+ *       201:
+ *         description: Đăng ký thành công
+ */
+router.patch('/changeProfile',authMiddleware(['candidate', 'recruiter']) , changeProfile);
 export default router;

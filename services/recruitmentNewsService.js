@@ -4,6 +4,7 @@ import sequelize from '../config/database.js';
 import Area from '../models/Area.js';
 import { Op } from 'sequelize';
 import messages from "../config/message.js";
+import Request from "../models/Request.js";
 const getAllRecruitmentNews = async () => {
     try {
         const jobs = await RecruitmentNews.findAll();
@@ -102,23 +103,9 @@ const filterAllRecruitmentNews = async (filterData) => {
 
         return { status: 200, data: jobs };
     } catch (err) {
+        console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL, err } };
     }
 };
 
-const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
-    try {
-        const { jobTitle, profession, candidateNumber, jobLevel, workType, province, district, domain, jobAddress,
-            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
-            contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
-        let area = await Area.findOne({ where: { province, district, domain }, transaction });
-        if (!area) {
-            area = await Area.create({ province, district, domain }, { transaction });
-        }
-    } catch (error) {
-
-    }
-
-
-}
 export default { getAllRecruitmentNews, filterAllRecruitmentNews };

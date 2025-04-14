@@ -14,6 +14,8 @@ import corsOptions from './config/corsConfig.js';
 import securityHeaders from './middleware/securityHeaders.js';
 import resetPasswordRoutes from './routes/resetPasswordRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import recruiterRoutes from './routes/recruiterRoutes.js';
 
 const app = express();
 app.use(express.json());
@@ -27,7 +29,8 @@ app.use('/api/recruitmentNews', recruitmentNewsRoutes);
 app.use('/api', authRoutes);
 app.use('/api', resetPasswordRoutes);
 app.use('/api/upload', uploadRoutes);
-
+app.use('/api/admin', adminRoutes);
+app.use('/api/recruiter', recruiterRoutes);
 sequelize.sync({ alter: true }).then(() => {
     console.log('✅ Database đã kết nối!');
     app.listen(3000, () => console.log('🚀 Server chạy tại http://localhost:3000/api-docs'));

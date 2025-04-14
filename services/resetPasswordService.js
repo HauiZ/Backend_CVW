@@ -5,10 +5,11 @@ import dotenv from 'dotenv';
 import { textEmail, htmlEmail } from '../public/EmailTemplate.js';
 dotenv.config();
 import messages from '../config/message.js';
+import checkFormatPassword from '../helper/fomatPassword.js';
 
 const forgotPassword = async (dataUser, roleName) => {
     try {
-        const { email, otpCode, newPassword, confirmPassword } = dataUser;
+        const { email, otpCode, newPassword, confirmNewPassword } = dataUser;
         const user = await User.findOne({
             where: { email: email, typeAccount: 'LOCAL' },
             include: [{ model: Role, attributes: ["name"], where: { name: roleName } }]
@@ -19,15 +20,10 @@ const forgotPassword = async (dataUser, roleName) => {
             }
             if (new Date() > user.otpExpiresAt) {
                 return { status: 400, data: { message: messages.auth.ERR_OTP_EXPIRED } };
-              }
-            if (!newPassword || !confirmPassword) {
-                return { status: 400, data: { message: messages.auth.ERR_ENTER_PASSWORD } };
             }
-            if (newPassword !== confirmPassword) {
-                return { status: 400, data: { message: messages.auth.ERR_MATCH_PASSWORD } };
-            }
-            if (newPassword.length < 6) {
-                return { status: 400, data: { message: messages.auth.ERR_LEAST_PASSWORD } };
+            const checkPass = checkFormatPassword(newPassword, confirmNewPassword);
+            if (checkPass !== true) {
+                return { status: checkPass.status, data: { message: checkPass.data } }
             }
             await user.update({ password: newPassword, otpCode: null, otpExpiresAt: null });
             return { status: 200, data: { message: messages.auth.UPDATE_PASSWORD_SUCCESS } };
@@ -67,7 +63,7 @@ const sendOTPCode = async (userEmail, roleName) => {
                 html: htmlEmail(userEmail, otpCode),
             });
             await user.update({ otpCode: otpCode, otpExpiresAt: expiresAt });
-            return { status: 200, data: { message: `Message sent: %s: ${info.messageId}` } };
+            return { status: 200, data: { message: messages.mail.SEND_OTP_SUCCESS } };
         }
         return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
