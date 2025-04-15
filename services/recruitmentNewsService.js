@@ -26,9 +26,9 @@ const filterAllRecruitmentNews = async (filterData) => {
 
         if (keyword) {
             whereCondition[Op.or] = [
-                { jobTitle: { [Op.iLike]: `%${keyword}%` } },
-                { profession: { [Op.iLike]: `%${keyword}%` } },
-                { '$CompanyUser.name$': { [Op.iLike]: `%${keyword}%` } },
+                { jobTitle: { [Op.like]: `%${keyword}%` } },
+                { profession: { [Op.like]: `%${keyword}%` } },
+                { '$CompanyUser.name$': { [Op.like]: `%${keyword}%` } },
             ];
             includeOptions.push({
                 model: CompanyUser,
@@ -45,12 +45,12 @@ const filterAllRecruitmentNews = async (filterData) => {
         }
 
         if (area) {
-            whereCondition['$Area.province$'] = { [Op.iLike]: `%${area}%` };
+            whereCondition['$Area.province$'] = { [Op.like]: `%${area}%` };
             includeOptions.push({
                 model: Area,
                 as: 'Area',
                 attributes: [],
-                where: { province: { [Op.iLike]: `%${area}%` } }
+                where: { province: { [Op.like]: `%${area}%` } }
             });
         } else {
             includeOptions.push({
