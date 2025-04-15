@@ -4,6 +4,7 @@ import Request from "../models/Request.js";
 import RecruitmentNews from "../models/RecruitmentNews.js";
 import Area from '../models/Area.js';
 import CompanyUser from "../models/CompanyUser.js";
+import JobApplication from '../models/JobApplication.js';
 
 const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
     const transaction = await sequelize.transaction();
@@ -43,7 +44,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 
 
@@ -54,7 +55,7 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
         'district', 'domain', 'jobAddress', 'salaryMin', 'salaryMax', 'salaryNegotiable',
         'experience', 'workDateIn', 'workDetail', 'jobRequirements', 'benefits',
         'applicationDealine', 'contactInfo', 'contactAddress', 'contactPhone',
-        'contactEmail', 'videoUrl'
+        'contactEmail'
     ];
 
     const missingFields = requiredFields.filter(field => {
@@ -64,4 +65,20 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
     return missingFields;
 };
 
-export default {postRecruitmentNews};
+const getApplicant = async (userId) => {
+    try {
+        const listApplicant = await JobApplication.findAll({
+            include: [{
+                model: RecruitmentNews,
+                where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
+                attributes: []
+            }],
+        });
+        return { status: 200, data: listApplicant };
+    } catch (error) {
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+
+}
+
+export default { postRecruitmentNews, getApplicant };

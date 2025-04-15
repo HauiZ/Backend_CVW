@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getRequest, getUsers, deleteUser, getRecruitmentNews, approveRecruitment  } from "../controllers/adminController.js";
+import { getRequest, getUsers, deleteUser, approveRecruitment  } from "../controllers/adminController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 
 /**
@@ -56,28 +56,6 @@ router.delete('/deleteUser/:id', authMiddleware(['admin']), deleteUser);
  */
 router.get('/getRequest', authMiddleware(['admin']), getRequest);
 
-/**
- * @swagger
- * /api/admin/getRecruitmentNews/{id}:
- *  get:
- *    summary: Lấy thông tin tin tuyển dụng cần xác thực
- *    tags: [Admin]
- *    description: Lấy thông tin tin tuyển dụng cần xác thực.
- *    security:
- *      - bearerAuth: []
- *    parameters:
- *      - in: path
- *        name: id
- *        required: true
- *        description: ID của tin tuyển dụng.
- *        schema:
- *          type: integer
- *          format: int64
- *    responses:
- *      200:
- *        description: Lấy tin tuyển dụng thành công.
- */
-router.get('/getRecruitmentNews/:id', authMiddleware(['admin']), getRecruitmentNews);
 
 /**
  * @swagger

@@ -5,12 +5,15 @@ import Area from '../models/Area.js';
 import { Op } from 'sequelize';
 import messages from "../config/message.js";
 import Request from "../models/Request.js";
+import moment from 'moment-timezone';
 const getAllRecruitmentNews = async () => {
     try {
-        const jobs = await RecruitmentNews.findAll();
+        const jobs = await RecruitmentNews.findAll({
+            where: {status: messages.recruitmentNews.status.APPROVED}
+        });
         return { status: 200, data: jobs }
     } catch (err) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, err } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 }
 
@@ -104,8 +107,20 @@ const filterAllRecruitmentNews = async (filterData) => {
         return { status: 200, data: jobs };
     } catch (err) {
         console.log(err);
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, err } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
-export default { getAllRecruitmentNews, filterAllRecruitmentNews };
+const getDetailRecruitmentNews = async (recruitmentNewId) => {
+    try {
+        const recruitmentNew = await RecruitmentNews.findOne({
+            where: { id: recruitmentNewId },
+        })
+        const data = recruitmentNew.toJSON();
+        data.datePosted = moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss');
+        return { status: 200, data: data };
+    } catch (error) {
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+}
+export default { getAllRecruitmentNews, filterAllRecruitmentNews, getDetailRecruitmentNews };

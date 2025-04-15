@@ -10,6 +10,9 @@ import CvFiles from '../models/CvFiles.js';
 import drive from "../config/googleDrive/driveconfig.js";
 import messages from '../config/message.js';
 import checkFormatPassword from '../helper/fomatPassword.js';
+import JobApplication from '../models/JobApplication.js';
+import uploadCvService from './upload/uploadCvService.js';
+import RecruitmentNews from '../models/RecruitmentNews.js';
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -64,7 +67,7 @@ const registerUser = async (userData, roleName) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
@@ -84,25 +87,33 @@ const getUserProfile = async (userId) => {
         }
 
         const userRole = user.Role.name;
-        const userInfo = { id: user.id, email: user.email, role: userRole };
+        let userInfo;
 
         if (userRole === 'candidate' && user.PersonalUser) {
-            userInfo.personalUser = { username: user.PersonalUser.name, email: user.PersonalUser.email, phone: user.PersonalUser.phone };
-        }
-
-        if (userRole === 'recruiter' && user.CompanyUser) {
-            userInfo.companyUser = {
+            userInfo = { 
+                username: user.PersonalUser.name, 
+                email: user.PersonalUser.email, 
+                phone: user.PersonalUser.phone,
+                LinkAvatar: user.PersonalUser.avatarId ? `https://drive.google.com/file/d/${user.PersonalUser.avatarId}/view` : null,
+            };
+        } else if (userRole === 'recruiter' && user.CompanyUser) {
+            userInfo = {
                 businessName: user.CompanyUser.name,
                 email: user.CompanyUser.email,
                 phone: user.CompanyUser.phone,
-                area: user.CompanyUser.Area ? { id: user.CompanyUser.Area.id, province: user.CompanyUser.Area.province, district: user.CompanyUser.Area.district, domain: user.CompanyUser.Area.domain } : null
+                companyAddress: user.CompanyUser.companyAddress,
+                field: user.CompanyUser.field,
+                companySize: user.CompanyUser.companySize,
+                website: user.CompanyUser.website,
+                introduction: user.CompanyUser.introduction,
+                linkLogo: user.CompanyUser.logoId ? `https://drive.google.com/file/d/${user.CompanyUser.logoId}/view` : null,
             };
         }
 
         return { status: 200, data: { message: messages.user.GET_INFO, user: userInfo } };
 
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
@@ -127,7 +138,7 @@ const changePassword = async (userId, newPasswordData) => {
 
 const changeProfile = async (userId, dataProfile) => {
     try {
-        const { name, phone, province, district, domain, field, companySize, website, introduction } = dataProfile;
+        const { name, phone, province, district, domain, companyAddress, field, companySize, website, introduction } = dataProfile;
         if (!name) {
             return { status: 201, data: { message: messages.user.BLANK_NAME } };
         }
@@ -139,7 +150,7 @@ const changeProfile = async (userId, dataProfile) => {
         });
         if (user.Role.name === 'candidate') {
             const personal = await PersonalUser.findByPk(userId);
-            const updates = {name, phone};
+            const updates = { name, phone };
             for (const field of Object.keys(updates)) {
                 if (updates[field] !== personal[field]) {
                     await personal.update({ [field]: updates[field] });
@@ -149,23 +160,49 @@ const changeProfile = async (userId, dataProfile) => {
             const company = await CompanyUser.findByPk(userId, {
                 include: [{ model: Area }],
             })
-            const area = {province, district, domain};
+            const area = { province, district, domain };
             for (const field of Object.keys(area)) {
                 if (area[field] !== company.Area[field]) {
                     await company.update({ [field]: area[field] });
                 }
             }
-            const updates = { name, phone, field, companySize, website, introduction };
+            const updates = { name, phone, companyAddress, field, companySize, website, introduction };
             for (const field of Object.keys(updates)) {
                 if (updates[field] !== company[field]) {
                     await company.update({ [field]: updates[field] });
                 }
             }
         }
-        return {status: 200, data: {message : messages.user.USER_UPDATED_SUCCESSFULLY}};
+        return { status: 200, data: { message: messages.user.USER_UPDATED_SUCCESSFULLY } };
     } catch (error) {
         console.log(error);
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
-export default { registerUser, getUserProfile, changePassword, changeProfile };
+
+const applyJob = async (userId, recruitmentNewsId, file) => {
+    try {
+        const dataCv = await uploadCvService.uploadCV(file, userId);
+        const cvId = dataCv.data.cvId;
+        const applicant = await PersonalUser.findByPk(userId, {
+            attributes: ['name', 'avatarId'],
+        });
+        const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
+            attributes: ['jobTitle'],
+        });
+        await JobApplication.create({
+            userId: userId, cvId: cvId,
+            recruitmentNewsId: recruitmentNewsId,
+            nameApplicant: applicant.name,
+            avatarApllicant: applicant.avatarId,
+            jobTitle: recruitmentNews.jobTitle,
+            status: messages.recruitmentNews.status.PENDING
+        });
+        return { status: 200, data: { message: messages.recruitmentNews.APPLY_SUCCESS } };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+
+};
+export default { registerUser, getUserProfile, changePassword, changeProfile, applyJob };

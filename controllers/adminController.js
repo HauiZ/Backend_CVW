@@ -16,7 +16,7 @@ export const deleteUser = async (req, res) => {
         const result = await adminService.deleteAUser(req.params.id);
         res.status(result.status).json(result.data);
     } catch (err) {
-        res.status(500).json({ message: messages.error.ERR_INTERNAL, err});
+        res.status(500).json({ message: messages.error.ERR_INTERNAL});
     }
 }
 
@@ -29,21 +29,12 @@ export const getRequest = async (req, res) => {
     }
 };
 
-export const getRecruitmentNews = async (req, res) => {
-    try {
-        const result = await adminService.getRecruitmentNews(req.params.id);
-        res.status(result.status).json(result.data);
-    } catch (err) {
-        res.status(500).json({ message: messages.error.ERR_INTERNAL, err});
-    }
-};
-
 export const approveRecruitment = async (req, res) => {
     try {
         const {status} = req.body;
         const result = await adminService.approveRecruitment(req.params.id, status);
         res.status(result.status).json(result.data);
     } catch (error) {
-        res.status(500).json({ message: messages.error.ERR_INTERNAL, err});
+        res.status(500).json({ message: messages.error.ERR_INTERNAL});
     }
 };

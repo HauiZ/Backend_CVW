@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import authMiddleware from '../middleware/authMiddleware.js';
-import { getRecruitmentNews, filterRecruitmentNews } from '../controllers/recruitmentNewsController.js';
+import { getRecruitmentNews, filterRecruitmentNews, getDetailRecruitmentNews } from '../controllers/recruitmentNewsController.js';
 
 /**
  * @swagger
@@ -86,5 +86,25 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
  */
 router.get('/filterRecruitmentNews', authMiddleware(['candidate']), filterRecruitmentNews);
 
-
+/**
+ * @swagger
+ * /api/recruitmentNews/getDetailRecruitmentNews/{id}:
+ *  get:
+ *    summary: Lấy thông tin chi tiết tin tuyển dụng 
+ *    tags: [RecruitmentNews]
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của tin tuyển dụng.
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Lấy tin tuyển dụng thành công.
+ */
+router.get('/getDetailRecruitmentNews/:id', authMiddleware(['admin', 'candidate', 'recruiter']), getDetailRecruitmentNews);
 export default router;

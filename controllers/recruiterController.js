@@ -9,3 +9,13 @@ export const postRecruitmentNews = async (req, res) => {
         res.status(500).send(messages.error.ERR_INTERNAL);
     }
 };
+
+export const getApplicant = async (req, res) => {
+    try {
+        const result = await recruiterService.getApplicant(req.user.id);
+        return res.status(result.status).json(result.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(messages.error.ERR_INTERNAL);
+    }
+};

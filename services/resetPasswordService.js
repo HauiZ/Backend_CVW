@@ -31,7 +31,7 @@ const forgotPassword = async (dataUser, roleName) => {
         return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
         console.error("Lỗi server(service):", error);
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
@@ -67,7 +67,7 @@ const sendOTPCode = async (userEmail, roleName) => {
         }
         return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 
 };

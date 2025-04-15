@@ -60,3 +60,12 @@ export const changeProfile = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+
+export const applyJob = async (req, res) => {
+    try {
+        const result = await userService.applyJob(req.user.id, req.params.id, req.file);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};

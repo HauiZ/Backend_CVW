@@ -39,6 +39,9 @@ const uploadCV = async (file, userId) => {
             personalId: userId,
             filename: file.originalname,
             fileId: response.data.id,
+            urlView: `https://drive.google.com/file/d/${response.data.id}/view`,
+            urlDowload: `https://drive.google.com/uc?export=download&id=${response.data.id}`,
+
         }, { transaction });
 
         await transaction.commit();
@@ -46,8 +49,9 @@ const uploadCV = async (file, userId) => {
         return {
             status: 200, data: {
                 message: messages.file.FILE_UPLOAD_ACCESS,
-                link: `https://drive.google.com/file/d/${response.data.id}/view`,
-                downloadLink: `https://drive.google.com/uc?export=download&id=${response.data.id}`
+                cvId: fileData.id,
+                link: fileData.urlView,
+                downloadLink: fileData.urlDowload,
             }
         };
     } catch (error) {
@@ -55,7 +59,7 @@ const uploadCV = async (file, userId) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 

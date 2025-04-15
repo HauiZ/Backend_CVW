@@ -27,6 +27,14 @@ CvFiles.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    urlView: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    urlDowload: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     uploadAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,

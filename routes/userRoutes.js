@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile } from '../controllers/userController.js';
+import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, applyJob } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
-
+import upload from '../middleware/uploadFile.js';
 
 /**
  * @swagger
@@ -184,6 +184,9 @@ router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']) ,chan
  *               domain:
  *                 type: string
  *                 example: "Nam"
+ *               companyAddress:
+ *                 type: string
+ *                 example: "số 219, Man Thiện, Quận 9, Hồ Chí Minh" 
  *               field: 
  *                 type: string
  *                 example: "Công nghệ thông tin"
@@ -208,4 +211,40 @@ router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']) ,chan
  *         description: Đăng ký thành công
  */
 router.patch('/changeProfile',authMiddleware(['candidate', 'recruiter']) , changeProfile);
+
+/**
+ * @swagger
+ * /api/users/applyJob/{id}:
+ *   post:
+ *     summary: Ứng tuyển
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của tin tuyển dụng.
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Upload thành công
+ *       400:
+ *         description: Không có file
+ *       500:
+ *         description: Lỗi server
+ */
+router.post('/applyJob/:id', authMiddleware(['candidate']), upload.pdfUpload.single('file'), applyJob);
 export default router;

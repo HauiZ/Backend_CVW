@@ -2,6 +2,10 @@ import Request from '../models/Request.js';
 import messages from '../config/message.js';
 import moment from 'moment-timezone';
 import RecruitmentNews from '../models/RecruitmentNews.js';
+import User from '../models/User.js';
+import Role from '../models/Role.js';
+import PersonalUser from '../models/PersonalUser.js';
+import CvFiles from '../models/CvFiles.js';
 
 const getAllUsers = async () => {
     try {
@@ -18,7 +22,7 @@ const getAllUsers = async () => {
         return { status: 200, data: { message: messages.user.GET_INFO, users: userList } };
 
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
@@ -61,7 +65,7 @@ const deleteAUser = async (userId) => {
         return { status: 200, data: { message: `DELETED: ${userId} SUCCESSFULLY!` } }
     } catch (error) {
         console.log(error)
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
@@ -77,20 +81,10 @@ const getRequest = async () => {
         })
         return { status: 200, data: requestList };
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 }
 
-const getRecruitmentNews = async (recruitmentNewId) => {
-    try {
-        const recruitmentNew = await RecruitmentNews.findOne({
-            where: { id: recruitmentNewId },
-        })
-        return { status: 200, data: recruitmentNew };
-    } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
-    }
-}
 
 const approveRecruitment = async (requestId, status) => {
     try {
@@ -102,8 +96,8 @@ const approveRecruitment = async (requestId, status) => {
         return {status: 200, data: {message: messages.recruitmentNews.UPDATE_SUCCESS}};
     } catch (error) {
         console.log(error)
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 }
 
-export default { getAllUsers, deleteAUser, getRequest, getRecruitmentNews, approveRecruitment };
+export default { getAllUsers, deleteAUser, getRequest, approveRecruitment };

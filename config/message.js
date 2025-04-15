@@ -37,6 +37,7 @@ const messages = {
         },
         POST_SUCCESS: 'WAITTING FOR ADMIN APPROVAL',
         UPDATE_SUCCESS: 'UPDATED',
+        APPLY_SUCCESS: 'APPLY SUCCESSFULLY',
     },
     file: {
         ERR_ONLY_ACCEPT_PDF: 'ONLY ACCEPT FILE PDF',

@@ -36,6 +36,10 @@ CompanyUser.init({
         },
         allowNull: false,
     },
+    companyAddress: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     field: {
         type: DataTypes.STRING,
         allowNull: true,

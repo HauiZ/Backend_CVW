@@ -23,4 +23,11 @@ export const filterRecruitmentNews = async (req, res) => {
     }
 };
 
-
+export const getDetailRecruitmentNews = async (req, res) => {
+    try {
+        const result = await recruitmentNewsService.getDetailRecruitmentNews(req.params.id);
+        res.status(result.status).json(result.data);
+    } catch (err) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL});
+    }
+};

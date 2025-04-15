@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import authMiddleware from '../middleware/authMiddleware.js';
-import { postRecruitmentNews } from '../controllers/recruiterController.js';
+import { postRecruitmentNews, getApplicant } from '../controllers/recruiterController.js';
 
 /**
  * @swagger
@@ -122,4 +122,18 @@ import { postRecruitmentNews } from '../controllers/recruiterController.js';
  *         description: Post success.
  */
 router.post('/postRecruitmentNews', authMiddleware(['recruiter']), postRecruitmentNews);
+
+/**
+ * @swagger
+ * /api/recruiter/getApplicant:
+ *   get:
+ *     summary: Lấy thông tin ứng viên ứng tuyển
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
 export default router;

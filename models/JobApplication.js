@@ -8,13 +8,11 @@ import CvFiles from './CvFiles.js';
 class JobApplication extends Model { }
 
 JobApplication.init({
-    userId: {
+    id: {
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         allowNull: false,
-        references: {
-            model: User,
-            key: 'id',
-        },
+        primaryKey: true,
     },
     cvId: {
         type: DataTypes.INTEGER,
@@ -22,7 +20,7 @@ JobApplication.init({
             model: CvFiles,
             key: 'id',
         },
-        primaryKey: true,
+        allowNull: false,
     },
     recruitmentNewsId: {
         type: DataTypes.INTEGER,
@@ -30,7 +28,19 @@ JobApplication.init({
             model: RecruitmentNews,
             key: 'id',
         },
-        primaryKey: true,
+        allowNull: false,
+    },
+    nameApplicant: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    avatarApllicant: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    jobTitle: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     applyDate: {
         type: DataTypes.DATE,
@@ -38,12 +48,8 @@ JobApplication.init({
         defaultValue: DataTypes.NOW,
     },
     status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: false,
-        get() {
-            const value = this.getDataValue('status');
-            return value === null || value === undefined ? true : value;
-        }
     },
 
 }, {
@@ -51,10 +57,6 @@ JobApplication.init({
     timestamps: false,
     modelName: 'JobApplication',
     tableName: 'Job_Application',
-    indexes: [{
-        unique: true,
-        fields: ['cvId','recruitmentNewsId']
-    }]
 })
 
 

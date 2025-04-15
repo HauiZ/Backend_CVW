@@ -13,7 +13,7 @@ const loginUser = async (email, password, roleName) => {
             include: [{ model: Role, attributes: ["name"], where: {name: 'admin'} }]
         });
         if (adminUser) {
-            const adminToken = jwt.sign(
+            const token = jwt.sign(
                 { id: adminUser.id, email: adminUser.email },
                 process.env.JWT_SECRET,
                 { expiresIn: "1h" }
@@ -23,12 +23,7 @@ const loginUser = async (email, password, roleName) => {
                 status: 200,
                 data: {
                     message: messages.auth.LOGIN_SUCCESS,
-                    adminToken,
-                    user: {
-                        id: adminUser.id,
-                        email: adminUser.email,
-                        role: adminUser.Role.name,
-                    },
+                    token,
                 }
             };
         }
@@ -59,7 +54,7 @@ const loginUser = async (email, password, roleName) => {
             }
         };
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error} };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL} };
     }
 };
 

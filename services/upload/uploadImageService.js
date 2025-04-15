@@ -53,7 +53,7 @@ const uploadAvatar = async (file, userId) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL} };
     }
 };
 
@@ -104,7 +104,7 @@ const uploadLogoBussiness = async (file, userId) => {
         if (!transaction.finished) {
             await transaction.rollback();
         }
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL, error } };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 export default { uploadAvatar, uploadLogoBussiness };
