@@ -5,6 +5,8 @@ import RecruitmentNews from "../models/RecruitmentNews.js";
 import Area from '../models/Area.js';
 import CompanyUser from "../models/CompanyUser.js";
 import JobApplication from '../models/JobApplication.js';
+import CvFiles from '../models/CvFiles.js';
+import moment from 'moment-timezone';
 
 const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
     const transaction = await sequelize.transaction();
@@ -72,9 +74,19 @@ const getApplicant = async (userId) => {
                 model: RecruitmentNews,
                 where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
                 attributes: []
+            }, {
+                model: CvFiles,
+                attributes: ['urlView', 'urlDowload'],
             }],
         });
-        return { status: 200, data: listApplicant };
+        const data = listApplicant.map(applicant => {
+            const data = applicant.toJSON();
+            return {
+                ...data,
+                applyDate: moment(data.applyDate).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+            };
+        })
+        return { status: 200, data: data };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }

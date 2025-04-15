@@ -8,9 +8,16 @@ import Request from "../models/Request.js";
 import moment from 'moment-timezone';
 const getAllRecruitmentNews = async () => {
     try {
-        const jobs = await RecruitmentNews.findAll({
-            where: {status: messages.recruitmentNews.status.APPROVED}
+        const listJob = await RecruitmentNews.findAll({
+            where: { status: messages.recruitmentNews.status.APPROVED }
         });
+        const jobs = listJob.map(job => {
+            const data = job.toJSON();
+            return {
+                ...data,
+                datePosted: moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+            };
+        })
         return { status: 200, data: jobs }
     } catch (err) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
