@@ -93,7 +93,7 @@ const getUserProfile = async (userId) => {
 
         if (userRole === 'candidate' && user.PersonalUser) {
             userInfo = {
-                username: user.PersonalUser.name,
+                userName: user.PersonalUser.name,
                 email: user.PersonalUser.email,
                 phone: user.PersonalUser.phone,
                 avatarUrl: user.PersonalUser.avatarUrl ? avatarUrl : null,

@@ -21,3 +21,141 @@ BEGIN
     INSERT INTO Role (name, discription, displayName)
     VALUES ('recruiter', 'Company recruiter', 'Recruiter');
 END
+
+INSERT INTO Users (roleId, email, password, typeAccount)
+VALUES 
+(3, 'company1@gamil.com', 'Pass1@', 'LOCAL'),
+(3, 'company2@gmail.com', 'Pass2@', 'LOCAL'),
+(3, 'company3@gmail.com', 'Pass3@', 'LOCAL'),
+(1, 'admin@gmail.com', 'Admin1@', 'LOCAL');
+
+INSERT INTO Area (province, district, domain)
+VALUES 
+(N'TP. Hồ Chí Minh', N'Quận 1', N'TP.HCM'),
+(N'TP. Hồ Chí Minh', N'Quận 3', N'TP.HCM'),
+(N'TP. Hồ Chí Minh', N'Quận 10', N'TP.HCM');
+
+INSERT INTO Company_User (
+    userId, name, phone, email, areaId, companyAddress, field, 
+    companySize, website, introduction, logoId, logoUrl
+)
+VALUES 
+(1, N'Công ty A', '0901234567', 'company1@example.com', 1, 
+ N'123 Lê Lợi, Quận 1', N'Công nghệ thông tin', N'50-100', 'https://companya.com', 
+ N'["Chuyên về phát triển phần mềm", "Văn hoá năng động"]', NULL, NULL),
+
+(2, N'Công ty B', '0902345678', 'company2@example.com', 2, 
+ N'45 Nguyễn Huệ, Quận 3', N'Marketing', N'100-200', 'https://companyb.com', 
+ N'["Agency truyền thông", "Tăng trưởng nhanh"]', NULL, NULL),
+
+(3, N'Công ty C', '0903456789', 'company3@example.com', 3, 
+ N'89 Trần Hưng Đạo, Quận 10', N'Tài chính', N'20-50', 'https://companyc.com', 
+ N'["Startup Fintech", "Đội ngũ trẻ"]', NULL, NULL);
+
+INSERT INTO Recruitment_News (
+    companyId, jobTitle, profession, candidateNumber, jobLevel,
+    workType, areaId, jobAddress, salaryMin, salaryMax, salaryNegotiable,
+    experience, workDateIn, workDetail, jobRequirements, benefits,
+    applicationDealine, contactInfo, contactAddress, contactPhone, contactEmail,
+    videoUrl, datePosted, status
+)
+VALUES
+-- Tin tuyển dụng 1: Marketing Manager
+(1, N'Marketing Manager', N'Marketing', 2, N'Trưởng nhóm',
+ N'Toàn thời gian', 1, N'123 Lê Lợi, Quận 1', 20000000, 30000000, 0,
+ N'3-5 năm', '2025-05-01',
+ N'["Phát triển chiến lược marketing", "Quản lý nhóm marketing", "Phân tích hiệu quả chiến dịch"]',
+ N'Kinh nghiệm lãnh đạo team, am hiểu digital marketing, kỹ năng phân tích dữ liệu tốt',
+ N'["Lương thưởng hấp dẫn", "Môi trường làm việc chuyên nghiệp", "Cơ hội thăng tiến cao"]',
+ '2025-06-15', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 2: Kế toán trưởng
+(2, N'Kế toán trưởng', N'Kế toán', 1, N'Trưởng phòng',
+ N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 25000000, 35000000, 0,
+ N'Trên 5 năm', '2025-05-10',
+ N'["Quản lý hệ thống kế toán", "Lập báo cáo tài chính", "Phân tích chi phí doanh nghiệp"]',
+ N'Tốt nghiệp đại học chuyên ngành kế toán, có chứng chỉ CPA là lợi thế, kinh nghiệm quản lý nhóm',
+ N'["Thưởng theo hiệu quả công việc", "BHXH/BHYT đầy đủ", "Đào tạo nâng cao chuyên môn"]',
+ '2025-06-20', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 3: Sales Executive
+(3, N'Sales Executive', N'Sales Bán lẻ', 3, N'Nhân viên',
+ N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 1,
+ N'1-3 năm', '2025-05-15',
+ N'["Tìm kiếm khách hàng tiềm năng", "Tư vấn bán hàng", "Chăm sóc khách hàng sau bán"]',
+ N'Kỹ năng giao tiếp tốt, tinh thần làm việc nhóm cao, chủ động trong công việc',
+ N'["Hoa hồng hấp dẫn", "Đào tạo kỹ năng bán hàng", "Cơ hội thăng tiến nhanh"]',
+ '2025-06-30', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 4: Software Developer
+(1, N'Software Developer', N'Công nghệ thông tin', 5, N'Nhân viên',
+ N'Toàn thời gian', 1, N'123 Lê Lợi, Quận 1', 15000000, 25000000, 0,
+ N'1-3 năm', '2025-05-20',
+ N'["Phát triển ứng dụng web", "Tối ưu code", "Sửa lỗi và nâng cấp hệ thống"]',
+ N'Kiến thức về JavaScript, ReactJS, NodeJS, có kinh nghiệm làm việc với RESTful API',
+ N'["Môi trường startup năng động", "Lương thưởng cạnh tranh", "Làm việc với công nghệ mới"]',
+ '2025-07-01', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 5: Quản lý dự án xây dựng
+(2, N'Quản lý dự án xây dựng', N'Quản lý dự án xây dựng', 2, N'Trưởng dự án',
+ N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 30000000, 50000000, 0,
+ N'Trên 5 năm', '2025-05-25',
+ N'["Lập kế hoạch dự án", "Quản lý nhân sự và nguồn lực", "Báo cáo tiến độ thực hiện"]',
+ N'Bằng kỹ sư xây dựng, có chứng chỉ PMP, kinh nghiệm quản lý dự án lớn',
+ N'["Lương thưởng cạnh tranh", "Phụ cấp dự án", "Cơ hội làm việc tại nhiều dự án lớn"]',
+ '2025-07-10', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 6: Nhân viên kinh doanh
+(3, N'Nhân viên kinh doanh', N'Kinh doanh/ Bán hàng khác', 4, N'Nhân viên',
+ N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 8000000, 12000000, 1,
+ N'Không yêu cầu', '2025-06-01',
+ N'["Tìm kiếm khách hàng mới", "Tư vấn giải pháp tài chính", "Thực hiện kế hoạch kinh doanh"]',
+ N'Tốt nghiệp cao đẳng trở lên, ngoại hình ưa nhìn, giao tiếp tốt',
+ N'["Thu nhập không giới hạn", "Đào tạo chuyên sâu", "Thưởng doanh số hàng tháng"]',
+ '2025-07-15', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 7: UI/UX Designer
+(1, N'UI/UX Designer', N'Marketing', 1, N'Nhân viên',
+ N'Bán thời gian', 1, N'123 Lê Lợi, Quận 1', 15000000, 20000000, 0,
+ N'1-3 năm', '2025-06-05',
+ N'["Thiết kế giao diện người dùng", "Tạo prototype", "Nghiên cứu trải nghiệm người dùng"]',
+ N'Thành thạo Figma, Adobe XD, có portfolio thiết kế UI/UX ấn tượng',
+ N'["Giờ làm việc linh hoạt", "Môi trường sáng tạo", "Phụ cấp thiết bị"]',
+ '2025-07-20', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 8: Kế toán viên
+(2, N'Kế toán viên', N'Kế toán', 2, N'Nhân viên',
+ N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0,
+ N'1 năm', '2025-06-10',
+ N'["Hạch toán chứng từ", "Kiểm tra hóa đơn", "Lập báo cáo thuế hàng tháng"]',
+ N'Tốt nghiệp chuyên ngành kế toán, sử dụng thành thạo phần mềm kế toán Misa, Fast',
+ N'["Môi trường làm việc chuyên nghiệp", "Thưởng lễ tết đầy đủ", "Đào tạo nâng cao chuyên môn"]',
+ '2025-07-25', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 9: Giám đốc điều hành
+(3, N'Giám đốc điều hành', N'Quản lý điều hành', 1, N'Giám đốc điều hành',
+ N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 50000000, 70000000, 1,
+ N'Trên 5 năm', '2025-06-15',
+ N'["Xây dựng chiến lược công ty", "Quản lý hoạt động kinh doanh", "Phát triển đội ngũ nhân sự"]',
+ N'Kinh nghiệm quản lý doanh nghiệp, kỹ năng lãnh đạo xuất sắc, tư duy chiến lược',
+ N'["Lương thưởng hấp dẫn", "Quyền lợi cổ đông", "Xe công ty riêng"]',
+ '2025-07-30', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
+ NULL, GETDATE(), N'APPROVED'),
+
+-- Tin tuyển dụng 10: Thực tập sinh Marketing
+(1, N'Thực tập sinh Marketing', N'Marketing', 5, N'Thực tập sinh',
+ N'Thực tập', 1, N'123 Lê Lợi, Quận 1', 0, 5000000, 1,
+ N'Không yêu cầu', '2025-06-20',
+ N'["Hỗ trợ viết content", "Quản lý social media", "Thực hiện các nhiệm vụ marketing cơ bản"]',
+ N'Sinh viên năm cuối chuyên ngành Marketing, có sự sáng tạo và nhiệt huyết',
+ N'["Hỗ trợ ăn trưa", "Cơ hội học hỏi thực tế", "Cơ hội trở thành nhân viên chính thức"]',
+ '2025-08-01', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
+ NULL, GETDATE(), N'APPROVED');
