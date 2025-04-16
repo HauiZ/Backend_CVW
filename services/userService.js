@@ -13,6 +13,8 @@ import checkFormatPassword from '../helper/fomatPassword.js';
 import JobApplication from '../models/JobApplication.js';
 import uploadCvService from './upload/uploadCvService.js';
 import RecruitmentNews from '../models/RecruitmentNews.js';
+import moment from 'moment-timezone';
+import Notification from '../models/Notification.js';
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -90,11 +92,11 @@ const getUserProfile = async (userId) => {
         let userInfo;
 
         if (userRole === 'candidate' && user.PersonalUser) {
-            userInfo = { 
-                username: user.PersonalUser.name, 
-                email: user.PersonalUser.email, 
+            userInfo = {
+                username: user.PersonalUser.name,
+                email: user.PersonalUser.email,
                 phone: user.PersonalUser.phone,
-                LinkAvatar: user.PersonalUser.avatarId ? `https://drive.google.com/file/d/${user.PersonalUser.avatarId}/view` : null,
+                avatarUrl: user.PersonalUser.avatarUrl ? avatarUrl : null,
             };
         } else if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo = {
@@ -106,7 +108,7 @@ const getUserProfile = async (userId) => {
                 companySize: user.CompanyUser.companySize,
                 website: user.CompanyUser.website,
                 introduction: user.CompanyUser.introduction,
-                linkLogo: user.CompanyUser.logoId ? `https://drive.google.com/file/d/${user.CompanyUser.logoId}/view` : null,
+                logoUrl: user.CompanyUser.logoId ? `https://drive.google.com/file/d/${user.CompanyUser.logoId}/view` : null,
             };
         }
 
@@ -182,19 +184,22 @@ const changeProfile = async (userId, dataProfile) => {
 
 const applyJob = async (userId, recruitmentNewsId, file) => {
     try {
+        const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
+            attributes: ['jobTitle', 'applicationDealine'],
+        });
+        if (new Date() > recruitmentNews.applicationDealine) {
+            return { status: 400, data: { message: messages.application.ERR_DEADLINE_APPLICATION } };
+        }
         const dataCv = await uploadCvService.uploadCV(file, userId);
         const cvId = dataCv.data.cvId;
         const applicant = await PersonalUser.findByPk(userId, {
-            attributes: ['name', 'avatarId'],
-        });
-        const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
-            attributes: ['jobTitle'],
+            attributes: ['name', 'avatarUrl'],
         });
         await JobApplication.create({
             userId: userId, cvId: cvId,
             recruitmentNewsId: recruitmentNewsId,
             nameApplicant: applicant.name,
-            avatarApllicant: applicant.avatarId,
+            avatarApllicant: applicant.avatarUrl,
             jobTitle: recruitmentNews.jobTitle,
             status: messages.recruitmentNews.status.PENDING
         });
@@ -205,4 +210,48 @@ const applyJob = async (userId, recruitmentNewsId, file) => {
     }
 
 };
-export default { registerUser, getUserProfile, changePassword, changeProfile, applyJob };
+
+const getInfoCompany = async (companyId) => {
+    try {
+        const companyData = await CompanyUser.findByPk(companyId);
+        const listJob = await RecruitmentNews.findAll({
+            where: { companyId: companyId, status: messages.recruitmentNews.status.APPROVED },
+            attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+        });
+        if (listJob) {
+            const jobs = listJob.map(job => {
+                const data = job.toJSON();
+                return {
+                    ...data,
+                    datePosted: moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                };
+            })
+            return { status: 200, data: { companyData, jobs } };
+        }
+        return { status: 200, data: { companyData } };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+
+};
+
+const getNotification = async (userId) => {
+    try {
+        const notifications = await Notification.findAll({
+            where: { receiverId: userId },
+        })
+        const listNotification = notifications.map(noti => {
+            const data = noti.toJSON();
+            return {
+                ...data,
+                sentAt: moment(data.sentAt).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+            }
+        })
+        return { status: 200, data: listNotification };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+export default { registerUser, getUserProfile, changePassword, changeProfile, applyJob, getInfoCompany, getNotification};

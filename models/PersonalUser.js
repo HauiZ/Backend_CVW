@@ -32,7 +32,11 @@ PersonalUser.init({
             isEmail: true,
         },
     },
-    avatarId: {
+    avataId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    avatarUrl: {
         type: DataTypes.STRING,
         allowNull: true,
     },

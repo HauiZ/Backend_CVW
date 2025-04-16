@@ -69,3 +69,21 @@ export const applyJob = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+
+export const getInfoCompany = async (req, res) => {
+    try {
+        const result = await userService.getInfoCompany(req.params.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getNotification = async (req, res) => {
+    try {
+        const result = await userService.getNotification(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};

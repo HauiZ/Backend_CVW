@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import authMiddleware from '../middleware/authMiddleware.js';
-import { postRecruitmentNews, getApplicant } from '../controllers/recruiterController.js';
+import { postRecruitmentNews, getApplicant, approvedApplication } from '../controllers/recruiterController.js';
 
 /**
  * @swagger
@@ -136,4 +136,39 @@ router.post('/postRecruitmentNews', authMiddleware(['recruiter']), postRecruitme
  *         description: Success
  */
 router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
+
+/**
+ * @swagger
+ * /api/recruiter/approvedApplication/{id}:
+ *   patch:
+ *     summary: Duyệt yêu cầu ứng tuyển
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID của yêu cầu ứng tuyển.
+ *         schema:
+ *           type: integer
+ *           format: int64
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum:
+ *                   - PENDING
+ *                   - APPROVED
+ *                   - REJECTED
+ *     responses:
+ *       200:
+ *         description: Duyệt tin yêu cầu ứng tuyển thành công
+ */
+router.patch('/approvedApplication/:id', authMiddleware(['recruiter']), approvedApplication);
 export default router;

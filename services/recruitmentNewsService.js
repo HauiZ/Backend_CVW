@@ -9,17 +9,23 @@ import moment from 'moment-timezone';
 const getAllRecruitmentNews = async () => {
     try {
         const listJob = await RecruitmentNews.findAll({
-            where: { status: messages.recruitmentNews.status.APPROVED }
+            where: { status: messages.recruitmentNews.status.APPROVED },
+            attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
         });
-        const jobs = listJob.map(job => {
+        const jobs = await Promise.all(listJob.map(async job => {
+            const logoUrl = await CompanyUser.findByPk(job.companyId, {
+                attributes: ['logoUrl']
+            });
             const data = job.toJSON();
             return {
                 ...data,
+                logoUrl: logoUrl,
                 datePosted: moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
             };
-        })
+        }));
         return { status: 200, data: jobs }
     } catch (err) {
+        console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 }

@@ -39,7 +39,7 @@ const uploadAvatar = async (file, userId) => {
         const personal = await PersonalUser.findOne({
             where: {userId: userId},
         })
-        await personal.update({avatarId: response.data.id});
+        await personal.update({avatarId: response.data.id, avatarUrl: `https://drive.google.com/file/d/${response.data.id}/view`});
         await transaction.commit();
         return {
             status: 200, data: {
@@ -90,7 +90,7 @@ const uploadLogoBussiness = async (file, userId) => {
         const company = await CompanyUser.findOne({
             where: {userId: userId},
         })
-        await company.update({logoId: response.data.id});
+        await company.update({logoId: response.data.id, logoUrl: `https://drive.google.com/file/d/${response.data.id}/view`});
         await transaction.commit();
         return {
             status: 200, data: {

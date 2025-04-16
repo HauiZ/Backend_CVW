@@ -10,6 +10,7 @@ import CvFiles from './CvFiles.js';
 import Request from './Request.js';
 import CVTemplate from './CVTemplate.js';
 import JobApplication from './JobApplication.js';
+import Notification from './Notification.js';
 
 User.belongsTo(Role, {foreignKey: 'roleId'});
 Role.hasMany(User, {foreignKey: 'roleId'});
@@ -44,6 +45,12 @@ CvFiles.hasMany(JobApplication, { foreignKey: 'cvId' });
 JobApplication.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId' });
 RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' });
 
-const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, CV, RecruitmentNews, Request, CVTemplate , JobApplication};
+Notification.belongsTo(JobApplication, {foreignKey: 'applyId'});
+JobApplication.hasOne(Notification, {foreignKey: 'applyId'});
+
+Notification.belongsTo(PersonalUser, {foreignKey: 'receiverId'});
+PersonalUser.hasMany(Notification, {foreignKey: 'receiverId'});
+
+const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, CV, RecruitmentNews, Request, CVTemplate , JobApplication, Notification};
 
 export default models;

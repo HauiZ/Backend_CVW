@@ -6,6 +6,7 @@ import User from '../models/User.js';
 import Role from '../models/Role.js';
 import PersonalUser from '../models/PersonalUser.js';
 import CvFiles from '../models/CvFiles.js';
+import CompanyUser from '../models/CompanyUser.js';
 
 const getAllUsers = async () => {
     try {
@@ -32,6 +33,7 @@ const deleteAUser = async (userId) => {
             include: [
                 { model: Role, attributes: ['name'] },
                 { model: PersonalUser, attributes: ['avatarId'] },
+                { model: CompanyUser, attributes: ['logoId'] },
             ],
         });
         if (!userToDelete) {
@@ -57,6 +59,13 @@ const deleteAUser = async (userId) => {
 
         if (userToDelete.PersonalUser.avatarId !== null) {
             const googleDriveFileId = userToDelete.PersonalUser.avatarId;
+            await drive.files.delete({
+                fileId: googleDriveFileId
+            },);
+        }
+
+        if (userToDelete.CompanyUser.logoId !== null) {
+            const googleDriveFileId = userToDelete.PersonalUser.logoId;
             await drive.files.delete({
                 fileId: googleDriveFileId
             },);
@@ -93,7 +102,7 @@ const approveRecruitment = async (requestId, status) => {
         const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId);
         await recruitmentNew.update({ status: status });
         await request.destroy();
-        return {status: 200, data: {message: messages.recruitmentNews.UPDATE_SUCCESS}};
+        return { status: 200, data: { message: messages.recruitmentNews.UPDATE_SUCCESS } };
     } catch (error) {
         console.log(error)
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

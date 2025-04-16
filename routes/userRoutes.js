@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, applyJob } from '../controllers/userController.js';
+import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, applyJob, getInfoCompany, getNotification } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import upload from '../middleware/uploadFile.js';
 
@@ -247,4 +247,40 @@ router.patch('/changeProfile',authMiddleware(['candidate', 'recruiter']) , chang
  *         description: Lỗi server
  */
 router.post('/applyJob/:id', authMiddleware(['candidate']), upload.pdfUpload.single('file'), applyJob);
+
+/**
+ * @swagger
+ * /api/users/getInfoCompany/{id}:
+ *  get:
+ *    summary: Lấy thông tin chi tiết company
+ *    tags: [Users]
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của company
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Get Info company success.
+ */
+router.get('/getInfoCompany/:id', authMiddleware(['candidate']), getInfoCompany);
+
+/**
+ * @swagger
+ * /api/users/getNotification:
+ *   get:
+ *     summary: Lấy thông báo
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getNotification', authMiddleware(['candidate']), getNotification);
 export default router;
