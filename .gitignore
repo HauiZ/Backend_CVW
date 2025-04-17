@@ -1,3 +1,5 @@
 .env 
 
 config/googleDrive/cvwebsite-456504-d35cb6ec8b06.json
+
+node_modules/
