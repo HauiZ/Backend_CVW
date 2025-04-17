@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import JobApplication from './JobApplication.js';
-import PersonalUser from './PersonalUser.js';
+import User from './User.js';
 
 class Notification extends Model { }
 
@@ -11,14 +10,6 @@ Notification.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    applyId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: JobApplication,
-            key: 'id',
-        },
-        allowNull: false,
-    },
     sender: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,8 +17,8 @@ Notification.init({
     receiverId: {
         type: DataTypes.INTEGER,
         references: {
-            model: PersonalUser,
-            key: 'userId'
+            model: User,
+            key: 'id'
         },
         allowNull: false,
     },

@@ -24,7 +24,7 @@ const getAllRecruitmentNews = async () => {
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
-        return { status: 200, data: jobs }
+        return { status: 200, data: jobs };
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -115,7 +115,8 @@ const filterAllRecruitmentNews = async (filterData) => {
         const jobs = await RecruitmentNews.findAll({
             where: whereCondition,
             order: orderCondition,
-            include: includeOptions
+            include: includeOptions,
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
         });
 
         return { status: 200, data: jobs };
@@ -127,10 +128,10 @@ const filterAllRecruitmentNews = async (filterData) => {
 
 const getDetailRecruitmentNews = async (recruitmentNewId) => {
     try {
-        const recruitmentNew = await RecruitmentNews.findOne({
-            where: { id: recruitmentNewId },
-        })
+        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId)
         const data = recruitmentNew.toJSON();
+        data.workDateIn = moment(data.workDateIn).format('YYYY-MM-DD HH:mm:ss');
+        data.applicationDealine = moment(data.applicationDealine).format('YYYY-MM-DD HH:mm:ss');
         data.datePosted = moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss');
         return { status: 200, data: data };
     } catch (error) {

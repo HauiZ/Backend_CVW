@@ -53,6 +53,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
 
 
 };
+
 const checkRecruitmentNewsData = (recruitmentNewsData) => {
     const requiredFields = [
         'jobTitle', 'profession', 'candidateNumber', 'jobLevel', 'workType', 'province',
@@ -69,26 +70,43 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
     return missingFields;
 };
 
-const getApplicant = async (userId) => {
+const getApplicant = async (userId, recruitmentNewsId) => {
     try {
-        const listApplicant = await JobApplication.findAll({
-            include: [{
-                model: RecruitmentNews,
-                where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
-                attributes: []
-            }, {
-                model: CvFiles,
-                attributes: ['urlView', 'urlDowload'],
-            }],
-        });
-        const data = listApplicant.map(applicant => {
-            const data = applicant.toJSON();
-            return {
-                ...data,
-                applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
-            };
-        }).sort((a, b) => a.recruitmentNewsId - b.recruitmentNewsId);
-        return { status: 200, data: data };
+        let listApplicant;
+        if (recruitmentNewsId) {
+            listApplicant = await JobApplication.findAll({
+                include: [{
+                    model: RecruitmentNews,
+                    where: { id: recruitmentNewsId, companyId: userId, status: messages.recruitmentNews.status.APPROVED },
+                    attributes: []
+                }, {
+                    model: CvFiles,
+                    attributes: ['urlView', 'urlDowload'],
+                }],
+            });
+        } else {
+            listApplicant = await JobApplication.findAll({
+                include: [{
+                    model: RecruitmentNews,
+                    where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
+                    attributes: []
+                }, {
+                    model: CvFiles,
+                    attributes: ['urlView', 'urlDowload'],
+                }],
+            });
+        }
+        if (listApplicant) {
+            const data = listApplicant.map(applicant => {
+                const data = applicant.toJSON();
+                return {
+                    ...data,
+                    applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
+                };
+            }).sort((a, b) => a.recruitmentNewsId - b.recruitmentNewsId);
+            return { status: 200, data: data };
+        }
+        return { status: 200, data: messages.application.NO_APPLICANT };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
@@ -102,7 +120,7 @@ const approvedApplication = async (applyId, status, companyId) => {
                 attributes: ['personalId'],
                 include: [{
                     model: PersonalUser,
-                    attributes: ['userId','name'],
+                    attributes: ['userId', 'name'],
                 }],
             }],
         });
@@ -117,7 +135,6 @@ const approvedApplication = async (applyId, status, companyId) => {
             content = messages.application.REJECTED_FEEDBACK;
         }
         await Notification.create({
-            applyId: request.id,
             sender: company.name,
             receiverId: request.CvFile.PersonalUser.userId,
             receiver: request.CvFile.PersonalUser.name,
@@ -131,4 +148,75 @@ const approvedApplication = async (applyId, status, companyId) => {
     }
 
 };
-export default { postRecruitmentNews, getApplicant, approvedApplication };
+
+const getNotification = async (userId) => {
+    try {
+        const notifications = await Notification.findAll({
+            where: { receiverId: userId },
+        })
+        const listNotification = notifications.map(noti => {
+            const data = noti.toJSON();
+            return {
+                ...data,
+                sentAt: moment(data.sentAt).format('YYYY-MM-DD HH:mm:ss')
+            }
+        })
+        return { status: 200, data: listNotification };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getPostedRecruitmentNews = async (userId) => {
+    try {
+        const listJob = await RecruitmentNews.findAll({
+            where: { companyId: userId },
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+        });
+        const jobs = await Promise.all(listJob.map(async job => {
+            const company = await CompanyUser.findByPk(userId, {
+                attributes: ['name', 'logoUrl'],
+            });
+            const countApplicant = await JobApplication.count({
+                where: { recruitmentNewsId: job.id }
+            });
+            const data = job.toJSON();
+            return {
+                ...data,
+                companyName: company.name,
+                logoUrl: company.logoUrl,
+                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+                numberApplicant: countApplicant,
+            };
+        }));
+        return { status: 200, data: jobs };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getDataDashBoard = async (userId) => {
+    try {
+        const data = {
+            recruitmentNews: await RecruitmentNews.count({
+                where: { companyId: userId },
+            }),
+            recruitmentNewsPosted: await RecruitmentNews.count({
+                where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
+            }),
+            numberApplicant: await JobApplication.count({
+                include: [{
+                    model: RecruitmentNews,
+                    where: { companyId: userId }
+                }],
+            }),
+        }
+        return { status: 200, data: data };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+export default { postRecruitmentNews, getApplicant, approvedApplication, getNotification, getPostedRecruitmentNews, getDataDashBoard };

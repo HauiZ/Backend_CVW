@@ -45,11 +45,8 @@ CvFiles.hasMany(JobApplication, { foreignKey: 'cvId' });
 JobApplication.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId' });
 RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' });
 
-Notification.belongsTo(JobApplication, {foreignKey: 'applyId'});
-JobApplication.hasOne(Notification, {foreignKey: 'applyId'});
-
-Notification.belongsTo(PersonalUser, {foreignKey: 'receiverId'});
-PersonalUser.hasMany(Notification, {foreignKey: 'receiverId'});
+Notification.belongsTo(User, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
+User.hasMany(Notification, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
 
 const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, CV, RecruitmentNews, Request, CVTemplate , JobApplication, Notification};
 

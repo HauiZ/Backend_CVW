@@ -70,7 +70,7 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID của tin tuyển dụng.
+ *         description: ID của request.
  *         schema:
  *           type: integer
  *           format: int64

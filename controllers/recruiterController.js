@@ -12,7 +12,7 @@ export const postRecruitmentNews = async (req, res) => {
 
 export const getApplicant = async (req, res) => {
     try {
-        const result = await recruiterService.getApplicant(req.user.id);
+        const result = await recruiterService.getApplicant(req.user.id, req.params.id);
         return res.status(result.status).json(result.data);
     } catch (err) {
         console.error(err);
@@ -31,3 +31,29 @@ export const approvedApplication = async (req, res) => {
     }
 };
 
+export const getNotification = async (req, res) => {
+    try {
+        const result = await recruiterService.getNotification(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getPostedRecruitmentNews = async (req, res) => {
+    try {
+        const result = await recruiterService.getPostedRecruitmentNews(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getDataDashBoard = async (req, res) => {
+    try {
+        const result = await recruiterService.getDataDashBoard(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};

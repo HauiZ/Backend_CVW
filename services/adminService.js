@@ -9,6 +9,7 @@ import CvFiles from '../models/CvFiles.js';
 import CompanyUser from '../models/CompanyUser.js';
 import uploadToDrive from '../helper/uploadFile.js';
 import CVTemplate from '../models/CVTemplate.js';
+import Notification from '../models/Notification.js';
 
 const getAllUsers = async () => {
     try {
@@ -100,8 +101,27 @@ const approveRecruitment = async (requestId, status) => {
     try {
         const request = await Request.findByPk(requestId);
         const recruitmentNewId = request.recruitmentNewsId;
-        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId);
+        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
+            attributes: ['id', 'companyId', 'status'],
+            include: [{
+                model: CompanyUser,
+                attributes: ['name', 'userId'],
+            }]
+        });
         await recruitmentNew.update({ status: status });
+        let content;
+        if (status === messages.recruitmentNews.status.APPROVED) {
+            content = messages.recruitmentNews.APPROVED_POST;
+        } else if (status === messages.recruitmentNews.status.REJECTED) {
+            content = messages.recruitmentNews.REJECTED_POST;
+        }
+        await Notification.create({
+            sender: 'ADMIN',
+            receiverId: recruitmentNew.CompanyUser.userId,
+            receiver: recruitmentNew.CompanyUser.name,
+            title: 'Job Posting Status Notifications',
+            content: content,
+        });
         await request.destroy();
         return { status: 200, data: { message: messages.recruitmentNews.UPDATE_SUCCESS } };
     } catch (error) {

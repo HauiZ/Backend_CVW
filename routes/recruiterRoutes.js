@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import authMiddleware from '../middleware/authMiddleware.js';
-import { postRecruitmentNews, getApplicant, approvedApplication } from '../controllers/recruiterController.js';
+import { postRecruitmentNews, getApplicant, approvedApplication, getNotification, getPostedRecruitmentNews, getDataDashBoard } from '../controllers/recruiterController.js';
 
 /**
  * @swagger
@@ -139,6 +139,29 @@ router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
 
 /**
  * @swagger
+ * /api/recruiter/getApplicant/{id}:
+ *   get:
+ *     summary: Lấy thông tin ứng viên ứng tuyển
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID của tin tuyển dụng.
+ *         schema:
+ *           type: integer
+ *           format: int64
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getApplicant/:id', authMiddleware(['recruiter']), getApplicant);
+
+
+/**
+ * @swagger
  * /api/recruiter/approvedApplication/{id}:
  *   patch:
  *     summary: Duyệt yêu cầu ứng tuyển
@@ -171,4 +194,46 @@ router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
  *         description: Duyệt tin yêu cầu ứng tuyển thành công
  */
 router.patch('/approvedApplication/:id', authMiddleware(['recruiter']), approvedApplication);
+
+/**
+ * @swagger
+ * /api/recruiter/getNotification:
+ *   get:
+ *     summary: Lấy thông báo
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getNotification', authMiddleware(['recruiter']), getNotification);
+
+/**
+ * @swagger
+ * /api/recruiter/getPostedRecruitmentNews:
+ *   get:
+ *     summary: Lấy các tin tuyển dụng đã đăng
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getPostedRecruitmentNews', authMiddleware(['recruiter']), getPostedRecruitmentNews);
+
+/**
+ * @swagger
+ * /api/recruiter/getDataDashBoard:
+ *   get:
+ *     summary: Lấy thông tin dashboard
+ *     tags: [Recruiter]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getDataDashBoard', authMiddleware(['recruiter']), getDataDashBoard);
 export default router;
