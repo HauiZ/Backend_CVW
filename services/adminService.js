@@ -87,7 +87,7 @@ const getRequest = async () => {
             const data = request.toJSON();
             return {
                 ...data,
-                createAt: moment(data.createAt).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                createAt: moment(data.createAt).format('YYYY-MM-DD HH:mm:ss')
             };
         })
         return { status: 200, data: requestList };

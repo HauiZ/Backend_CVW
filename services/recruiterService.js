@@ -85,14 +85,13 @@ const getApplicant = async (userId) => {
             const data = applicant.toJSON();
             return {
                 ...data,
-                applyDate: moment(data.applyDate).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
             };
-        })
+        }).sort((a, b) => a.recruitmentNewsId - b.recruitmentNewsId);
         return { status: 200, data: data };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-
 };
 
 const approvedApplication = async (applyId, status, companyId) => {

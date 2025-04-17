@@ -10,17 +10,18 @@ const getAllRecruitmentNews = async () => {
     try {
         const listJob = await RecruitmentNews.findAll({
             where: { status: messages.recruitmentNews.status.APPROVED },
-            attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
         });
         const jobs = await Promise.all(listJob.map(async job => {
-            const logoUrl = await CompanyUser.findByPk(job.companyId, {
-                attributes: ['logoUrl']
+            const company = await CompanyUser.findByPk(job.companyId, {
+                attributes: ['name', 'logoUrl' ],
             });
             const data = job.toJSON();
             return {
                 ...data,
-                logoUrl: logoUrl,
-                datePosted: moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                companyName: company.name,
+                logoUrl: company.logoUrl,
+                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
         return { status: 200, data: jobs }
@@ -130,7 +131,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
             where: { id: recruitmentNewId },
         })
         const data = recruitmentNew.toJSON();
-        data.datePosted = moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss');
+        data.datePosted = moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss');
         return { status: 200, data: data };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

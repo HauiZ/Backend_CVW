@@ -189,7 +189,7 @@ const applyJob = async (userId, recruitmentNewsId, file) => {
         const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
             attributes: ['jobTitle', 'applicationDealine'],
         });
-        if (new Date() > recruitmentNews.applicationDealine) {
+        if (new Date().getTime() > recruitmentNews.applicationDealine.getTime()) {
             return { status: 400, data: { message: messages.application.ERR_DEADLINE_APPLICATION } };
         }
         const dataCv = await uploadCvService.uploadCV(file, userId);
@@ -225,7 +225,7 @@ const getInfoCompany = async (companyId) => {
                 const data = job.toJSON();
                 return {
                     ...data,
-                    datePosted: moment(data.datePosted).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                    datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
                 };
             })
             return { status: 200, data: { companyData, jobs } };
@@ -266,7 +266,7 @@ const getNotification = async (userId) => {
             const data = noti.toJSON();
             return {
                 ...data,
-                sentAt: moment(data.sentAt).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                sentAt: moment(data.sentAt).format('YYYY-MM-DD HH:mm:ss')
             }
         })
         return { status: 200, data: listNotification };
@@ -317,7 +317,7 @@ const getInfoApplication = async (userId) => {
             const data = apply.toJSON();
             return {
                 ...data,
-                applyDate: moment(data.applyDate).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+                applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
             };
         })
         return { status: 200, data: data };

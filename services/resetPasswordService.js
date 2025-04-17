@@ -18,7 +18,7 @@ const forgotPassword = async (dataUser, roleName) => {
             if (otpCode !== user.otpCode) {
                 return { status: 400, data: { message: messages.auth.ERR_WRONG_OTP } };
             }
-            if (new Date() > user.otpExpiresAt) {
+            if (new Date().getTime() > user.otpExpiresAt.getTime()) {
                 return { status: 400, data: { message: messages.auth.ERR_OTP_EXPIRED } };
             }
             const checkPass = checkFormatPassword(newPassword, confirmNewPassword);
