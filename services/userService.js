@@ -15,6 +15,7 @@ import uploadCvService from './upload/uploadCvService.js';
 import RecruitmentNews from '../models/RecruitmentNews.js';
 import moment from 'moment-timezone';
 import Notification from '../models/Notification.js';
+import CVTemplate from '../models/CVTemplate.js';
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -96,7 +97,7 @@ const getUserProfile = async (userId) => {
                 userName: user.PersonalUser.name,
                 email: user.PersonalUser.email,
                 phone: user.PersonalUser.phone,
-                avatarUrl: user.PersonalUser.avatarUrl ? avatarUrl : null,
+                avatarUrl: user.PersonalUser.avatarUrl ? user.PersonalUser.avatarUrl : null,
             };
         } else if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo = {
@@ -108,13 +109,14 @@ const getUserProfile = async (userId) => {
                 companySize: user.CompanyUser.companySize,
                 website: user.CompanyUser.website,
                 introduction: user.CompanyUser.introduction,
-                logoUrl: user.CompanyUser.logoId ? `https://drive.google.com/file/d/${user.CompanyUser.logoId}/view` : null,
+                logoUrl: user.CompanyUser.logoUrl ? user.CompanyUser.logoUrl : null,
             };
         }
 
         return { status: 200, data: { message: messages.user.GET_INFO, user: userInfo } };
 
     } catch (error) {
+        console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
@@ -236,6 +238,25 @@ const getInfoCompany = async (companyId) => {
 
 };
 
+const getAllCompany = async () => {
+    try {
+        const listCompany = await CompanyUser.findAll({
+            attributes: ['userId', 'name', 'logoUrl', 'field'],
+        })
+        const data = listCompany.map(company => {
+            const data = company.toJSON();
+            return {
+                id: company.userId,
+                ...data,
+            }
+        })
+        return { status: 200, data: data };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
 const getNotification = async (userId) => {
     try {
         const notifications = await Notification.findAll({
@@ -254,4 +275,58 @@ const getNotification = async (userId) => {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
-export default { registerUser, getUserProfile, changePassword, changeProfile, applyJob, getInfoCompany, getNotification};
+
+const getTemplateCV = async () => {
+    try {
+        const listTemplate = await CVTemplate.findAll({
+            attributes: ['id', 'name', 'url', 'propoties'],
+        });
+        return { status: 200, data: listTemplate };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getDetailTemplateCV = async (templateId) => {
+    try {
+        const template = await CVTemplate.findByPk(templateId, {
+            attributes: ['url'],
+        })
+        return { status: 200, data: template };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getInfoApplication = async (userId) => {
+    try {
+        const listApply = await JobApplication.findAll({
+            include: [{
+                model: RecruitmentNews,
+                where: { status: messages.recruitmentNews.status.APPROVED },
+                attributes: []
+            }, {
+                model: CvFiles,
+                where: { personalId: userId },
+                attributes: ['urlView'],
+            }],
+        });
+        const data = listApply.map(apply => {
+            const data = apply.toJSON();
+            return {
+                ...data,
+                applyDate: moment(data.applyDate).tz('Asia/Bangkok').format('YYYY-MM-DD HH:mm:ss')
+            };
+        })
+        return { status: 200, data: data };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+export default {
+    registerUser, getUserProfile, changePassword, changeProfile, applyJob, getInfoCompany,
+    getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication
+};

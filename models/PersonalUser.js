@@ -32,7 +32,7 @@ PersonalUser.init({
             isEmail: true,
         },
     },
-    avataId: {
+    avatarId: {
         type: DataTypes.STRING,
         allowNull: true,
     },

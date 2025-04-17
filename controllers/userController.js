@@ -1,5 +1,6 @@
 
 import userService from '../services/userService.js';
+import messages from '../config/message.js';
 
 export const registerCandidate = async (req, res) => {
     try {
@@ -20,16 +21,6 @@ export const registerRecruiter = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
-
-// export const registerAdmin = async (req, res) => {
-//     try {
-//         const result = await userService.registerUser(req.body, "admin");
-//         res.status(result.status).json(result.data);
-//     } catch (error) {
-//         console.error("Lỗi đăng ký admin (controller):", error);
-//         res.status(500).json({ message: "Lỗi máy chủ!" });
-//     }
-// };
 
 export const getProfile = async (req, res) => {
     try {
@@ -79,9 +70,45 @@ export const getInfoCompany = async (req, res) => {
     }
 };
 
+export const getAllCompany = async (req, res) => {
+    try {
+        const result = await userService.getAllCompany();
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
 export const getNotification = async (req, res) => {
     try {
         const result = await userService.getNotification(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getTemplateCV = async (req, res) => {
+    try {
+        const result = await userService.getTemplateCV();
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getDetailTemplateCV = async (req, res) => {
+    try {
+        const result = await userService.getDetailTemplateCV(req.params.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getInfoApplication = async (req, res) => {
+    try {
+        const result = await userService.getInfoApplication(req.user.id);
         res.status(result.status).json(result.data);
     } catch (error) {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });

@@ -1,6 +1,9 @@
 import express from 'express';
 const router = express.Router();
-import {  registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, applyJob, getInfoCompany, getNotification } from '../controllers/userController.js';
+import {
+    registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile,
+    applyJob, getInfoCompany, getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication
+} from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import upload from '../middleware/uploadFile.js';
 
@@ -92,38 +95,6 @@ router.post('/registerRecruiter', registerRecruiter);
  */
 router.get('/getProfile', authMiddleware(['candidate', 'recruiter']), getProfile);
 
-
-
-// /**
-//  * @swagger
-//  * /api/users/registerAdmin:
-//  *   post:
-//  *     summary: Đăng ký tài khoản administrator
-//  *     tags: [Users]
-//  *     requestBody:
-//  *       required: true
-//  *       content:
-//  *         application/json:
-//  *           schema:
-//  *             type: object
-//  *             properties:
-//  *               email:
-//  *                 type: string
-//  *                 example: "user@example.com"
-//  *               password:
-//  *                 type: string
-//  *                 example: "password123"
-//  *               confirmpassword:   
-//  *                 type: string
-//  *                 example: "password123" 
-//  *     responses:
-//  *       201:
-//  *         description: Đăng ký thành công
-//  */
-// router.post('/registerAdmin', registerAdmin);
-
-
-
 /**
  * @swagger
  * /api/users/changePassword:
@@ -152,7 +123,7 @@ router.get('/getProfile', authMiddleware(['candidate', 'recruiter']), getProfile
  *       200:
  *         description: Đổi mật khẩu thành công
  */
-router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']) ,changePassword);
+router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']), changePassword);
 
 /**
  * @swagger
@@ -210,7 +181,7 @@ router.patch('/changePassword', authMiddleware(['candidate', 'recruiter']) ,chan
  *       201:
  *         description: Đăng ký thành công
  */
-router.patch('/changeProfile',authMiddleware(['candidate', 'recruiter']) , changeProfile);
+router.patch('/changeProfile', authMiddleware(['candidate', 'recruiter']), changeProfile);
 
 /**
  * @swagger
@@ -272,6 +243,20 @@ router.get('/getInfoCompany/:id', authMiddleware(['candidate']), getInfoCompany)
 
 /**
  * @swagger
+ * /api/users/getAllCompany:
+ *   get:
+ *     summary: Lấy tất cả các công ty
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getAllCompany', authMiddleware(['candidate']), getAllCompany);
+
+/**
+ * @swagger
  * /api/users/getNotification:
  *   get:
  *     summary: Lấy thông báo
@@ -283,4 +268,54 @@ router.get('/getInfoCompany/:id', authMiddleware(['candidate']), getInfoCompany)
  *         description: Success
  */
 router.get('/getNotification', authMiddleware(['candidate']), getNotification);
+
+/**
+ * @swagger
+ * /api/users/getTemplateCV:
+ *   get:
+ *     summary: Lấy tất cả các template CV
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getTemplateCV', authMiddleware(['candidate']), getTemplateCV);
+
+/**
+ * @swagger
+ * /api/users/getDetailTemplateCV/{id}:
+ *  get:
+ *    summary: Lấy thông tin chi tiết tmplate
+ *    tags: [Users]
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của template
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Get Info template success.
+ */
+router.get('/getDetailTemplateCV/:id', authMiddleware(['candidate']), getDetailTemplateCV);
+
+/**
+ * @swagger
+ * /api/users/getInfoApplication:
+ *   get:
+ *     summary: Lấy tất cả các Cv và tin đã ứng tuyển
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getInfoApplication', authMiddleware(['candidate']), getInfoApplication);
 export default router;

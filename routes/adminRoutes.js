@@ -1,7 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import { getRequest, getUsers, deleteUser, approveRecruitment  } from "../controllers/adminController.js";
+import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBorad } from "../controllers/adminController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
+import upload from '../middleware/uploadFile.js';
 
 /**
  * @swagger
@@ -91,5 +92,58 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
  *         description: Duyệt tin tuyển dụng thành công
  */
 router.patch('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruitment);
+
+/**
+ * @swagger
+ * /api/admin/uploadCvTemplate:
+ *   post:
+ *     summary: Tải lên CV Template
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *               name:
+ *                 type: string
+ *                 example: "Cao cấp"
+ *               url:
+ *                 type: string
+ *                 example: "http://localhost::5173/template1"
+ *               propoties:
+ *                 type: array
+ *                 example: ["cao cấp", "tinh tế", "sang trọng"]    
+ *     responses:
+ *       200:
+ *         description: Upload thành công
+ *       400:
+ *         description: Không có file
+ *       500:
+ *         description: Lỗi server
+ */
+router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.imageUpload.single('file'), uploadCvTemplate);
+
+
+/**
+ * @swagger
+ * /api/admin/getDataDashBorad:
+ *   get:
+ *     summary: Lấy thông tin Dashboard
+ *     tags: [Admin]
+ *     description: API lấy thông tin Dashboard
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getDataDashBorad', authMiddleware(['admin']), getDataDashBorad);
 
 export default router;

@@ -7,6 +7,8 @@ import Role from '../models/Role.js';
 import PersonalUser from '../models/PersonalUser.js';
 import CvFiles from '../models/CvFiles.js';
 import CompanyUser from '../models/CompanyUser.js';
+import uploadToDrive from '../helper/uploadFile.js';
+import CVTemplate from '../models/CVTemplate.js';
 
 const getAllUsers = async () => {
     try {
@@ -92,8 +94,7 @@ const getRequest = async () => {
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-}
-
+};
 
 const approveRecruitment = async (requestId, status) => {
     try {
@@ -107,6 +108,55 @@ const approveRecruitment = async (requestId, status) => {
         console.log(error)
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
+};
+
+const uploadCvTemplate = async (data, file) => {
+    try {
+        const { name, url, propoties } = data;
+        const parentId = '1Ng35Wh0zOIu1Upct0ytW9R2vWKSozxtW';
+        const response = await uploadToDrive(file, parentId);
+        if (response) {
+            await CVTemplate.create({
+                name,
+                url,
+                fileId: response.data.id,
+                fileUrl: `https://drive.google.com/file/d/${response.data.id}/view`,
+                propoties
+            })
+            return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
+        }
+        return { status: 200, data: { message: messages.file.UPLOAD_FAILED } };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getDataDashBorad = async () => {
+    try {
+        const data = {
+            user: await User.count(),
+            candidate: await User.count({
+                include: [{
+                    model: Role,
+                    where: { name: 'candidate' },
+                }]
+            }),
+            recruiter: await User.count({
+                include: [{
+                    model: Role,
+                    where: { name: 'recruiter' },
+                }]
+            }),
+            recruitmentNews: await RecruitmentNews.count({
+                where: { status: messages.recruitmentNews.status.APPROVED },
+            }),
+        }
+        return { status: 200, data: data };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
 }
 
-export default { getAllUsers, deleteAUser, getRequest, approveRecruitment };
+export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBorad };
