@@ -12,6 +12,7 @@ passport.use(new GoogleStrategy({
   callbackURL: '/api/auth/google/callback',
 }, async (accessToken, refreshToken, profile, done) => {
   const userEmail = profile.emails[0].value;
+  const avatarUrl = profile.photos[0].value;
   const googleId = profile.id;
 
   try {
@@ -38,6 +39,7 @@ passport.use(new GoogleStrategy({
         name: profile.displayName,
         email: userEmail,
         userId: user.id,
+        avatarUrl: avatarUrl,
       });
     } else {
       if (!personalUser.googleId) {
