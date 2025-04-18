@@ -20,7 +20,7 @@ import CVTemplate from '../models/CVTemplate.js';
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
     try {
-        const { userName, email, password, confirmPassword, BusinessName, phone, province, district, domain } = userData;
+        const { userName, email, password, confirmPassword, businessName, phone, province, district, domain } = userData;
 
         const role = await Role.findOne({ where: { name: roleName }, transaction });
         if (!role) {
@@ -60,7 +60,7 @@ const registerUser = async (userData, roleName) => {
             if (!area) {
                 area = await Area.create({ province, district, domain }, { transaction });
             }
-            await CompanyUser.create({ userId: user.id, name: BusinessName, email, phone, areaId: area.id }, { transaction });
+            await CompanyUser.create({ userId: user.id, name: businessName, email, phone, areaId: area.id }, { transaction });
         }
 
         await transaction.commit();
@@ -329,8 +329,22 @@ const getInfoApplication = async (userId) => {
 
 const getInfoArea = async () => {
     try {
-        const area = await Area.findAll();
-        return { status: 200, data: area };
+        const areas = await Area.findAll();
+        const result = Object.values(
+            areas.reduce((acc, area) => {
+                const key = area.province; 
+                if (!acc[key]) {
+                    acc[key] = {
+                        province: area.province,
+                        districts: [area.district]
+                    };
+                } else {
+                    acc[key].districts.push(area.district);
+                }
+                return acc;
+            }, {})
+        );
+        return { status: 200, data: result };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

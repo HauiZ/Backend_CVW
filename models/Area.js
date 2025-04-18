@@ -17,10 +17,6 @@ Area.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    domain: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
 }, {
     sequelize,
     modelName: 'Area',
