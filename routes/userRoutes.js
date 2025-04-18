@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import {
-    registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile,
+    registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, getInfoArea,
     applyJob, getInfoCompany, getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication
 } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
@@ -318,4 +318,18 @@ router.get('/getDetailTemplateCV/:id', authMiddleware(['candidate']), getDetailT
  *         description: Success
  */
 router.get('/getInfoApplication', authMiddleware(['candidate']), getInfoApplication);
+
+/**
+ * @swagger
+ * /api/users/getInfoArea:
+ *   get:
+ *     summary: Lấy tất cả Area
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getInfoArea', getInfoArea);
 export default router;

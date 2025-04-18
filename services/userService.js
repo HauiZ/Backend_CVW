@@ -326,7 +326,17 @@ const getInfoApplication = async (userId) => {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
+
+const getInfoArea = async () => {
+    try {
+        const area = await Area.findAll();
+        return { status: 200, data: area };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
 export default {
     registerUser, getUserProfile, changePassword, changeProfile, applyJob, getInfoCompany,
-    getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication
+    getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication, getInfoArea
 };
