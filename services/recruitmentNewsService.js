@@ -14,7 +14,7 @@ const getAllRecruitmentNews = async () => {
         });
         const jobs = await Promise.all(listJob.map(async job => {
             const company = await CompanyUser.findByPk(job.companyId, {
-                attributes: ['name', 'logoUrl' ],
+                attributes: ['name', 'logoUrl'],
             });
             const data = job.toJSON();
             return {
@@ -128,13 +128,47 @@ const filterAllRecruitmentNews = async (filterData) => {
 
 const getDetailRecruitmentNews = async (recruitmentNewId) => {
     try {
-        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId)
+        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
+            include: [{
+                model: Area,
+                attributes: ['province'],
+            }]
+        });
         const data = recruitmentNew.toJSON();
-        data.workDateIn = moment(data.workDateIn).format('YYYY-MM-DD HH:mm:ss');
-        data.applicationDealine = moment(data.applicationDealine).format('YYYY-MM-DD HH:mm:ss');
-        data.datePosted = moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss');
-        return { status: 200, data: data };
+        const job = {
+            general: {
+                jobLevel: data.jobLevel,
+                candidateNumber: data.candidateNumber,
+                workType: data.workType
+            },
+            introduce: {
+                jobTitle: data.jobTitle,
+                salaryRange: `${data.salaryMin}-${data.salaryMax}`,
+                address: data.Area.province,
+                experience: data.experience,
+                applicationDealine: moment(data.applicationDealine).format('YYYY-MM-DD HH:mm:ss')
+            },
+            detailRecruitment: {
+                profession: data.profession,
+                jobRequirements: data.jobRequirements,
+                workDetail: data.workDetail,
+                benefits: data.benefits,
+                degree: data.degree,
+                jobAddress: data.jobAddress,
+                salaryNegotiable: data.salaryNegotiable,
+                workDateIn: moment(data.workDateIn).format('YYYY-MM-DD HH:mm:ss'),
+                contactInfo: data.contactInfo,
+                contactAddress: data.contactAddress,
+                contactPhone: data.contactPhone,
+                contactEmail: data.contactEmail,
+                videoUrl: data.videoUrl,
+                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+            }
+        }
+
+        return { status: 200, data: job };
     } catch (error) {
+        console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 }

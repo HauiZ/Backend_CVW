@@ -39,6 +39,10 @@ RecruitmentNews.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    degree: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     areaId: {
         type: DataTypes.INTEGER,
         references: {

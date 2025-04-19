@@ -29,11 +29,11 @@ VALUES
 (3, 'company3@gmail.com', 'Pass1@', 'LOCAL'),
 (1, 'admin@gmail.com', 'Pass1@', 'LOCAL');
 
-INSERT INTO Area (province, district, domain)
+INSERT INTO Area (province, district)
 VALUES 
-(N'TP. Hồ Chí Minh', N'Quận 1', N'TP.HCM'),
-(N'TP. Hồ Chí Minh', N'Quận 3', N'TP.HCM'),
-(N'TP. Hồ Chí Minh', N'Quận 10', N'TP.HCM');
+(N'TP. Hồ Chí Minh', N'Quận 1'),
+(N'TP. Hồ Chí Minh', N'Quận 3'),
+(N'TP. Hồ Chí Minh', N'Quận 10');
 
 INSERT INTO Company_User (
     userId, name, phone, email, areaId, companyAddress, field, 
@@ -54,7 +54,7 @@ VALUES
 
 INSERT INTO Recruitment_News (
     companyId, jobTitle, profession, candidateNumber, jobLevel,
-    workType, areaId, jobAddress, salaryMin, salaryMax, salaryNegotiable,
+    workType, degree, areaId, jobAddress, salaryMin, salaryMax, salaryNegotiable,
     experience, workDateIn, workDetail, jobRequirements, benefits,
     applicationDealine, contactInfo, contactAddress, contactPhone, contactEmail,
     videoUrl, datePosted, status
@@ -62,7 +62,7 @@ INSERT INTO Recruitment_News (
 VALUES
 -- Tin tuyển dụng 1: Marketing Manager
 (1, N'Marketing Manager', N'Marketing', 2, N'Trưởng nhóm',
- N'Toàn thời gian', 1, N'123 Lê Lợi, Quận 1', 20000000, 30000000, 0,
+ N'Toàn thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 20000000, 30000000, 0,
  N'3-5 năm', '2025-05-01',
  N'["Phát triển chiến lược marketing", "Quản lý nhóm marketing", "Phân tích hiệu quả chiến dịch"]',
  N'Kinh nghiệm lãnh đạo team, am hiểu digital marketing, kỹ năng phân tích dữ liệu tốt',
@@ -72,7 +72,7 @@ VALUES
 
 -- Tin tuyển dụng 2: Kế toán trưởng
 (2, N'Kế toán trưởng', N'Kế toán', 1, N'Trưởng phòng',
- N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 25000000, 35000000, 0,
+ N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 25000000, 35000000, 0,
  N'Trên 5 năm', '2025-05-10',
  N'["Quản lý hệ thống kế toán", "Lập báo cáo tài chính", "Phân tích chi phí doanh nghiệp"]',
  N'Tốt nghiệp đại học chuyên ngành kế toán, có chứng chỉ CPA là lợi thế, kinh nghiệm quản lý nhóm',
@@ -82,7 +82,7 @@ VALUES
 
 -- Tin tuyển dụng 3: Sales Executive
 (3, N'Sales Executive', N'Sales Bán lẻ', 3, N'Nhân viên',
- N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 1,
+ N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 1,
  N'1-3 năm', '2025-05-15',
  N'["Tìm kiếm khách hàng tiềm năng", "Tư vấn bán hàng", "Chăm sóc khách hàng sau bán"]',
  N'Kỹ năng giao tiếp tốt, tinh thần làm việc nhóm cao, chủ động trong công việc',
@@ -92,7 +92,7 @@ VALUES
 
 -- Tin tuyển dụng 4: Software Developer
 (1, N'Software Developer', N'Công nghệ thông tin', 5, N'Nhân viên',
- N'Toàn thời gian', 1, N'123 Lê Lợi, Quận 1', 15000000, 25000000, 0,
+ N'Toàn thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 15000000, 25000000, 0,
  N'1-3 năm', '2025-05-20',
  N'["Phát triển ứng dụng web", "Tối ưu code", "Sửa lỗi và nâng cấp hệ thống"]',
  N'Kiến thức về JavaScript, ReactJS, NodeJS, có kinh nghiệm làm việc với RESTful API',
@@ -102,7 +102,7 @@ VALUES
 
 -- Tin tuyển dụng 5: Quản lý dự án xây dựng
 (2, N'Quản lý dự án xây dựng', N'Quản lý dự án xây dựng', 2, N'Trưởng dự án',
- N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 30000000, 50000000, 0,
+ N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 30000000, 50000000, 0,
  N'Trên 5 năm', '2025-05-25',
  N'["Lập kế hoạch dự án", "Quản lý nhân sự và nguồn lực", "Báo cáo tiến độ thực hiện"]',
  N'Bằng kỹ sư xây dựng, có chứng chỉ PMP, kinh nghiệm quản lý dự án lớn',
@@ -112,7 +112,7 @@ VALUES
 
 -- Tin tuyển dụng 6: Nhân viên kinh doanh
 (3, N'Nhân viên kinh doanh', N'Kinh doanh/ Bán hàng khác', 4, N'Nhân viên',
- N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 8000000, 12000000, 1,
+ N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 8000000, 12000000, 1,
  N'Không yêu cầu', '2025-06-01',
  N'["Tìm kiếm khách hàng mới", "Tư vấn giải pháp tài chính", "Thực hiện kế hoạch kinh doanh"]',
  N'Tốt nghiệp cao đẳng trở lên, ngoại hình ưa nhìn, giao tiếp tốt',
@@ -122,7 +122,7 @@ VALUES
 
 -- Tin tuyển dụng 7: UI/UX Designer
 (1, N'UI/UX Designer', N'Marketing', 1, N'Nhân viên',
- N'Bán thời gian', 1, N'123 Lê Lợi, Quận 1', 15000000, 20000000, 0,
+ N'Bán thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 15000000, 20000000, 0,
  N'1-3 năm', '2025-06-05',
  N'["Thiết kế giao diện người dùng", "Tạo prototype", "Nghiên cứu trải nghiệm người dùng"]',
  N'Thành thạo Figma, Adobe XD, có portfolio thiết kế UI/UX ấn tượng',
@@ -132,7 +132,7 @@ VALUES
 
 -- Tin tuyển dụng 8: Kế toán viên
 (2, N'Kế toán viên', N'Kế toán', 2, N'Nhân viên',
- N'Toàn thời gian', 2, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0,
+ N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0,
  N'1 năm', '2025-06-10',
  N'["Hạch toán chứng từ", "Kiểm tra hóa đơn", "Lập báo cáo thuế hàng tháng"]',
  N'Tốt nghiệp chuyên ngành kế toán, sử dụng thành thạo phần mềm kế toán Misa, Fast',
@@ -142,7 +142,7 @@ VALUES
 
 -- Tin tuyển dụng 9: Giám đốc điều hành
 (3, N'Giám đốc điều hành', N'Quản lý điều hành', 1, N'Giám đốc điều hành',
- N'Toàn thời gian', 3, N'89 Trần Hưng Đạo, Quận 10', 50000000, 70000000, 1,
+ N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 50000000, 70000000, 1,
  N'Trên 5 năm', '2025-06-15',
  N'["Xây dựng chiến lược công ty", "Quản lý hoạt động kinh doanh", "Phát triển đội ngũ nhân sự"]',
  N'Kinh nghiệm quản lý doanh nghiệp, kỹ năng lãnh đạo xuất sắc, tư duy chiến lược',
@@ -152,7 +152,7 @@ VALUES
 
 -- Tin tuyển dụng 10: Thực tập sinh Marketing
 (1, N'Thực tập sinh Marketing', N'Marketing', 5, N'Thực tập sinh',
- N'Thực tập', 1, N'123 Lê Lợi, Quận 1', 0, 5000000, 1,
+ N'Thực tập', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 0, 5000000, 1,
  N'Không yêu cầu', '2025-06-20',
  N'["Hỗ trợ viết content", "Quản lý social media", "Thực hiện các nhiệm vụ marketing cơ bản"]',
  N'Sinh viên năm cuối chuyên ngành Marketing, có sự sáng tạo và nhiệt huyết',

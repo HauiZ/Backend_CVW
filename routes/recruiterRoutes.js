@@ -23,9 +23,9 @@ import { postRecruitmentNews, getApplicant, approvedApplication, getNotification
  *               - candidateNumber
  *               - jobLevel
  *               - workType
+ *               - degree
  *               - province
  *               - district
- *               - domain
  *               - jobAddress
  *               - salaryMin
  *               - salaryMax
@@ -55,15 +55,15 @@ import { postRecruitmentNews, getApplicant, approvedApplication, getNotification
  *               workType:
  *                 type: string
  *                 example: Full-time
+ *               degree:
+ *                 type: string
+ *                 example: Thạc sỹ
  *               province:
  *                 type: string
  *                 example: Hà Nội
  *               district:
  *                 type: string
  *                 example: Nam Từ Liêm
- *               domain:
- *                 type: string
- *                 example: Backend
  *               jobAddress:
  *                 type: string
  *                 example: Số 1, Trần Duy Hưng, Cầu Giấy, Hà Nội
@@ -158,7 +158,6 @@ router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
  *         description: Success
  */
 router.get('/getApplicant/:id', authMiddleware(['recruiter']), getApplicant);
-
 
 /**
  * @swagger

@@ -13,7 +13,7 @@ import PersonalUser from '../models/PersonalUser.js';
 const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
     const transaction = await sequelize.transaction();
     try {
-        const { jobTitle, profession, candidateNumber, jobLevel, workType, province, district, domain, jobAddress,
+        const { jobTitle, profession, candidateNumber, jobLevel, workType, degree, province, district, jobAddress,
             salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
             contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
 
@@ -21,12 +21,12 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
         if (missingFields.length > 0) {
             return { status: 400, data: { message: `Missing required fields: ${missingFields.join(', ')}` } }
         }
-        let area = await Area.findOne({ where: { province, district, domain }, transaction });
+        let area = await Area.findOne({ where: { province, district }, transaction });
         if (!area) {
-            area = await Area.create({ province, district, domain }, { transaction });
+            area = await Area.create({ province, district }, { transaction });
         }
         const recruitmentNews = await RecruitmentNews.create({
-            companyId: companyId, jobTitle, profession, candidateNumber, jobLevel, workType, areaId: area.id, jobAddress,
+            companyId: companyId, jobTitle, profession, candidateNumber, jobLevel, workType, degree, areaId: area.id, jobAddress,
             salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
             contactInfo, contactAddress, contactPhone, contactEmail, videoUrl, status: messages.recruitmentNews.status.PENDING
         }, { transaction });
@@ -56,8 +56,8 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
 
 const checkRecruitmentNewsData = (recruitmentNewsData) => {
     const requiredFields = [
-        'jobTitle', 'profession', 'candidateNumber', 'jobLevel', 'workType', 'province',
-        'district', 'domain', 'jobAddress', 'salaryMin', 'salaryMax', 'salaryNegotiable',
+        'jobTitle', 'profession', 'candidateNumber', 'jobLevel', 'workType', 'degree', 'province',
+        'district', 'jobAddress', 'salaryMin', 'salaryMax', 'salaryNegotiable',
         'experience', 'workDateIn', 'workDetail', 'jobRequirements', 'benefits',
         'applicationDealine', 'contactInfo', 'contactAddress', 'contactPhone',
         'contactEmail'

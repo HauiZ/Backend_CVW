@@ -56,9 +56,9 @@ const registerUser = async (userData, roleName) => {
         if (roleName === "candidate") {
             await PersonalUser.create({ userId: user.id, name: userName, email }, { transaction });
         } else if (roleName === "recruiter") {
-            let area = await Area.findOne({ where: { province, district, domain }, transaction });
+            let area = await Area.findOne({ where: { province, district }, transaction });
             if (!area) {
-                area = await Area.create({ province, district, domain }, { transaction });
+                area = await Area.create({ province, district }, { transaction });
             }
             await CompanyUser.create({ userId: user.id, name: businessName, email, phone, areaId: area.id }, { transaction });
         }
