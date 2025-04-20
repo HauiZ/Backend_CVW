@@ -15,12 +15,17 @@ const getAllRecruitmentNews = async () => {
         const jobs = await Promise.all(listJob.map(async job => {
             const company = await CompanyUser.findByPk(job.companyId, {
                 attributes: ['name', 'logoUrl'],
+                include: {
+                    model: Area,
+                    attributes: ['province'],
+                }
             });
             const data = job.toJSON();
             return {
                 ...data,
                 companyName: company.name,
                 logoUrl: company.logoUrl,
+                companyAddress: company.Area.province,
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
@@ -33,7 +38,7 @@ const getAllRecruitmentNews = async () => {
 
 const filterAllRecruitmentNews = async (filterData) => {
     try {
-        const { keyword, jobTitle, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
+        const { keyword, profession, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
         const whereCondition = {};
         const orderCondition = [];
         const includeOptions = [];
@@ -74,8 +79,8 @@ const filterAllRecruitmentNews = async (filterData) => {
             });
         }
 
-        if (jobTitle) {
-            whereCondition.jobTitle = Array.isArray(jobTitle) ? { [Op.in]: jobTitle } : { [Op.like]: `%${jobTitle}%` };
+        if (profession) {
+            whereCondition.profession = Array.isArray(profession) ? { [Op.in]: profession } : { [Op.like]: `%${profession}%` };
         }
 
         if (jobLevel) {
@@ -118,8 +123,29 @@ const filterAllRecruitmentNews = async (filterData) => {
             include: includeOptions,
             attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
         });
-
-        return { status: 200, data: jobs };
+        const data = await Promise.all(jobs.map(async job => {
+            const company = await CompanyUser.findByPk(job.companyId, {
+                attributes: ['name', 'logoUrl'],
+                include: {
+                    model: Area,
+                    attributes: ['province'],
+                }
+            });
+            const data = job.toJSON();
+            return {
+                id: data.id,
+                companyId: data.companyId,
+                jobTitle: data.jobTitle,
+                profession: data.profession,
+                salaryMin: data.salaryMin,
+                salaryMax: data.salaryMax,
+                companyName: company.name,
+                logoUrl: company.logoUrl,
+                companyAddress: company.Area.province,
+                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
+            };
+        }));
+        return { status: 200, data: data };
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -132,6 +158,9 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
             include: [{
                 model: Area,
                 attributes: ['province'],
+            }, {
+                model: CompanyUser,
+                attributes: ['name', 'field', 'companySize', 'companyAddress', 'logoUrl'],
             }]
         });
         const data = recruitmentNew.toJSON();
@@ -146,7 +175,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 salaryRange: `${data.salaryMin}-${data.salaryMax}`,
                 address: data.Area.province,
                 experience: data.experience,
-                applicationDealine: moment(data.applicationDealine).format('YYYY-MM-DD HH:mm:ss')
+                applicationDeadline: moment(data.applicationDeadline).format('YYYY-MM-DD HH:mm:ss')
             },
             detailRecruitment: {
                 profession: data.profession,
@@ -163,6 +192,13 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 contactEmail: data.contactEmail,
                 videoUrl: data.videoUrl,
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+            },
+            company: {
+                companyName: data.CompanyUser.name,
+                companyLogo: data.CompanyUser.logoUrl,
+                field: data.CompanyUser.field,
+                companySize: data.CompanyUser.companySize,
+                companyAddress: data.CompanyUser.companyAddress
             }
         }
 

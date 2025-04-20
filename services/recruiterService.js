@@ -14,7 +14,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
     const transaction = await sequelize.transaction();
     try {
         const { jobTitle, profession, candidateNumber, jobLevel, workType, degree, province, district, jobAddress,
-            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
+            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDeadline,
             contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
 
         const missingFields = checkRecruitmentNewsData(recruitmentNewsData);
@@ -27,7 +27,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
         }
         const recruitmentNews = await RecruitmentNews.create({
             companyId: companyId, jobTitle, profession, candidateNumber, jobLevel, workType, degree, areaId: area.id, jobAddress,
-            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDealine,
+            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDeadline,
             contactInfo, contactAddress, contactPhone, contactEmail, videoUrl, status: messages.recruitmentNews.status.PENDING
         }, { transaction });
         const companyName = await CompanyUser.findOne({
@@ -59,7 +59,7 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
         'jobTitle', 'profession', 'candidateNumber', 'jobLevel', 'workType', 'degree', 'province',
         'district', 'jobAddress', 'salaryMin', 'salaryMax', 'salaryNegotiable',
         'experience', 'workDateIn', 'workDetail', 'jobRequirements', 'benefits',
-        'applicationDealine', 'contactInfo', 'contactAddress', 'contactPhone',
+        'applicationDeadline', 'contactInfo', 'contactAddress', 'contactPhone',
         'contactEmail'
     ];
 

@@ -187,9 +187,9 @@ const changeProfile = async (userId, dataProfile) => {
 const applyJob = async (userId, recruitmentNewsId, file) => {
     try {
         const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
-            attributes: ['jobTitle', 'applicationDealine'],
+            attributes: ['jobTitle', 'applicationDeadline'],
         });
-        if (new Date().getTime() > recruitmentNews.applicationDealine.getTime()) {
+        if (new Date().getTime() > recruitmentNews.applicationDeadline.getTime()) {
             return { status: 400, data: { message: messages.application.ERR_DEADLINE_APPLICATION } };
         }
         const dataCv = await uploadCvService.uploadCV(file, userId);

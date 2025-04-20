@@ -105,7 +105,7 @@ RecruitmentNews.init({
             this.setDataValue('benefits', JSON.stringify(value));
         }
     },
-    applicationDealine: {
+    applicationDeadline: {
         type: DataTypes.DATE,
         allowNull: false,
     },

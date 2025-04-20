@@ -32,7 +32,7 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
  *           type: string
  *         description: Từ khóa để tìm kiếm trong tiêu đề công việc, chuyên môn hoặc tên công ty.
  *       - in: query
- *         name: jobTitle
+ *         name: profession
  *         schema:
  *           type: string
  *         description: Tiêu đề công việc để lọc (có thể là một chuỗi hoặc một mảng các chuỗi).
