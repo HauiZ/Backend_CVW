@@ -160,7 +160,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 attributes: ['province'],
             }, {
                 model: CompanyUser,
-                attributes: ['name', 'field', 'companySize', 'companyAddress', 'logoUrl'],
+                attributes: ['userId', 'name', 'field', 'companySize', 'companyAddress', 'logoUrl'],
             }]
         });
         const data = recruitmentNew.toJSON();
@@ -194,6 +194,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
             },
             company: {
+                id: data.CompanyUser.userId,
                 companyName: data.CompanyUser.name,
                 companyLogo: data.CompanyUser.logoUrl,
                 field: data.CompanyUser.field,

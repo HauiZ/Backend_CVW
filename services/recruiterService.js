@@ -70,11 +70,16 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
     return missingFields;
 };
 
-const getApplicant = async (userId, recruitmentNewsId) => {
+const getApplicant = async (userId, recruitmentNewsId, status) => {
     try {
         let listApplicant;
+        const listCondition = {};
+        if (status) {
+            listCondition.status = status;
+        }
         if (recruitmentNewsId) {
             listApplicant = await JobApplication.findAll({
+                where: listCondition,
                 include: [{
                     model: RecruitmentNews,
                     where: { id: recruitmentNewsId, companyId: userId, status: messages.recruitmentNews.status.APPROVED },
@@ -86,6 +91,7 @@ const getApplicant = async (userId, recruitmentNewsId) => {
             });
         } else {
             listApplicant = await JobApplication.findAll({
+                where: listCondition,
                 include: [{
                     model: RecruitmentNews,
                     where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
