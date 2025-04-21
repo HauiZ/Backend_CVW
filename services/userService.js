@@ -219,13 +219,22 @@ const getInfoCompany = async (companyId) => {
         const listJob = await RecruitmentNews.findAll({
             where: { companyId: companyId, status: messages.recruitmentNews.status.APPROVED },
             attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            include: [{
+                model: Area,
+                attributes: ['province']
+            }]
         });
         if (listJob) {
             const jobs = listJob.map(job => {
                 const data = job.toJSON();
                 return {
-                    ...data,
-                    datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
+                    id: job.id,
+                    jobTitle: job.jobTitle,
+                    profession: job.profession,
+                    salaryMin: job.salaryMin,
+                    salaryMax: job.salaryMax,
+                    datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+                    companyAddress: job.Area.province,
                 };
             })
             return { status: 200, data: { companyData, jobs } };
@@ -243,13 +252,17 @@ const getAllCompany = async () => {
         const listCompany = await CompanyUser.findAll({
             attributes: ['userId', 'name', 'logoUrl', 'field'],
         })
-        const data = listCompany.map(company => {
+        const data = await Promise.all(listCompany.map(async company => {
+            const jobNumber = await RecruitmentNews.count({
+                where: {companyId: company.userId}
+            })
             const data = company.toJSON();
             return {
                 id: company.userId,
                 ...data,
+                jobNumber: jobNumber,
             }
-        })
+        }))
         return { status: 200, data: data };
     } catch (error) {
         console.log(error);
@@ -332,7 +345,7 @@ const getInfoArea = async () => {
         const areas = await Area.findAll();
         const result = Object.values(
             areas.reduce((acc, area) => {
-                const key = area.province; 
+                const key = area.province;
                 if (!acc[key]) {
                     acc[key] = {
                         province: area.province,
