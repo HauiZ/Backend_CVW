@@ -253,7 +253,7 @@ router.get('/getInfoCompany/:id', authMiddleware(['candidate']), getInfoCompany)
  *       200:
  *         description: Success
  */
-router.get('/getAllCompany', authMiddleware(['candidate']), getAllCompany);
+router.get('/getAllCompany', getAllCompany);
 
 /**
  * @swagger

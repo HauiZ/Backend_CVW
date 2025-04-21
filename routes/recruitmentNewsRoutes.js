@@ -84,7 +84,7 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
  *       200:
  *         description: Danh sách tin tuyển dụng đã được lọc thành công.
  */
-router.get('/filterRecruitmentNews', authMiddleware(['candidate']), filterRecruitmentNews);
+router.get('/filterRecruitmentNews', filterRecruitmentNews);
 
 /**
  * @swagger
