@@ -251,6 +251,7 @@ const getAllCompany = async () => {
     try {
         const listCompany = await CompanyUser.findAll({
             attributes: ['userId', 'name', 'logoUrl', 'field'],
+            limit: 9,
         })
         const data = await Promise.all(listCompany.map(async company => {
             const jobNumber = await RecruitmentNews.count({

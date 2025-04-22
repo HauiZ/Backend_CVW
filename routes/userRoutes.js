@@ -247,8 +247,6 @@ router.get('/getInfoCompany/:id', authMiddleware(['candidate']), getInfoCompany)
  *   get:
  *     summary: Lấy tất cả các công ty
  *     tags: [Users]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Success
