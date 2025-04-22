@@ -22,7 +22,7 @@ export const deleteUser = async (req, res) => {
 
 export const getRequest = async (req, res) => {
     try {
-        const result = await adminService.getRequest();
+        const result = await adminService.getRequest(req.query);
         res.status(result.status).json(result.data);
     } catch (error) {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });

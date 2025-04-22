@@ -43,64 +43,64 @@ const filterAllRecruitmentNews = async (filterData) => {
         const orderCondition = [];
         const includeOptions = [];
 
-        if (keyword) {
+        whereCondition.status = messages.recruitmentNews.status.APPROVED;
+
+        if (keyword && keyword.trim() !== '') {
+            const searchTerm = `%${keyword.trim()}%`;
             whereCondition[Op.or] = [
-                { jobTitle: { [Op.like]: `%${keyword}%` } },
-                { profession: { [Op.like]: `%${keyword}%` } },
-                { '$CompanyUser.name$': { [Op.like]: `%${keyword}%` } },
+                { jobTitle: { [Op.like]: searchTerm } },
+                { profession: { [Op.like]: searchTerm } },
+                { '$CompanyUser.name$': { [Op.like]: searchTerm } }
             ];
-            includeOptions.push({
-                model: CompanyUser,
-                as: 'CompanyUser',
-                attributes: [],
-                where: { name: { [Op.like]: `%${keyword}%` } }
-            });
-        } else {
-            includeOptions.push({
-                model: CompanyUser,
-                as: 'CompanyUser',
-                attributes: ['name'],
-            });
         }
 
-        if (area) {
-            whereCondition['$Area.province$'] = { [Op.like]: `%${area}%` };
+        includeOptions.push({
+            model: CompanyUser,
+            as: 'CompanyUser',
+            attributes: ['userId', 'name', 'logoUrl'],
+        });
+
+        if (area && area.trim() !== '') {
+            const searchArea = `%${area.trim()}%`;
             includeOptions.push({
                 model: Area,
                 as: 'Area',
-                attributes: [],
-                where: { province: { [Op.like]: `%${area}%` } }
+                attributes: ['id', 'province'],
+                where: { province: { [Op.like]: searchArea } },
             });
         } else {
             includeOptions.push({
                 model: Area,
                 as: 'Area',
-                attributes: ['province'],
+                attributes: ['id', 'province'],
             });
         }
 
         if (profession) {
-            whereCondition.profession = Array.isArray(profession) ? { [Op.in]: profession } : { [Op.like]: `%${profession}%` };
+            if (Array.isArray(profession) && profession.length > 0) {
+                whereCondition.profession = { [Op.in]: profession };
+            } else if (typeof profession === 'string' && profession.trim() !== '') {
+                whereCondition.profession = { [Op.like]: `%${profession.trim()}%` };
+            }
         }
 
         if (jobLevel) {
             whereCondition.jobLevel = jobLevel;
         }
 
-        if (salaryMin !== undefined && salaryMin !== null) {
-            whereCondition.salaryMin = { [Op.gte]: parseInt(salaryMin) };
-        }
-        if (salaryMax !== undefined && salaryMax !== null) {
-            whereCondition.salaryMax = { [Op.lte]: parseInt(salaryMax) };
-        }
-        if ((salaryMin !== undefined && salaryMin !== null) && (salaryMax !== undefined && salaryMax !== null)) {
-            if (!whereCondition[Op.and]) {
-                whereCondition[Op.and] = [];
+        if (salaryMin !== undefined && salaryMin !== null && salaryMax !== undefined && salaryMax !== null) {
+            whereCondition[Op.and] = whereCondition[Op.and] || [];
+            whereCondition[Op.and].push(
+                { salaryMin: { [Op.gte]: parseInt(salaryMin) } },
+                { salaryMax: { [Op.lte]: parseInt(salaryMax) } }
+            );
+        } else {
+            if (salaryMin !== undefined && salaryMin !== null) {
+                whereCondition.salaryMin = { [Op.gte]: parseInt(salaryMin) };
             }
-            whereCondition[Op.and].push({ salaryMin: { [Op.gte]: parseInt(salaryMin) } });
-            whereCondition[Op.and].push({ salaryMax: { [Op.lte]: parseInt(salaryMax) } });
-            delete whereCondition.salaryMin;
-            delete whereCondition.salaryMax;
+            if (salaryMax !== undefined && salaryMax !== null) {
+                whereCondition.salaryMax = { [Op.lte]: parseInt(salaryMax) };
+            }
         }
 
         if (experience) {
@@ -111,48 +111,54 @@ const filterAllRecruitmentNews = async (filterData) => {
             whereCondition.workType = workType;
         }
 
-        const validSortFields = ['experience', 'salaryMin', 'salaryMax', 'datePosted'];
-        const orderBy = sortBy && validSortFields.includes(sortBy) ? sortBy : 'datePosted';
-        const orderDirection = order === 'ASC' ? 'ASC' : 'DESC';
-
-        orderCondition.push([orderBy, orderDirection]);
-
-        let currentId = null;
         if (currentNewsId) {
-            currentId = currentNewsId
+            whereCondition.id = { [Op.ne]: currentNewsId };
         }
 
+        const validSortFields = ['experience', 'salary', 'datePosted'];
+        let orderBy;
+        if (sortBy === 'salary') {
+            orderBy = 'salaryMax';
+        } else {
+            orderBy = sortBy && validSortFields.includes(sortBy) ? sortBy : 'datePosted';
+        }
+        const orderDirection = order === 'ASC' ? 'ASC' : 'DESC';
+        orderCondition.push([orderBy, orderDirection]);
+
         const jobs = await RecruitmentNews.findAll({
-            where: {
-                ...whereCondition,
-                id: { [Op.ne]: currentId }
-            },
+            where: whereCondition,
             order: orderCondition,
             include: includeOptions,
             attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            subQuery: false // Tắt subquery để tránh một số vấn đề với điều kiện phức tạp
         });
+
         const data = await Promise.all(jobs.map(async job => {
-            const company = await CompanyUser.findByPk(job.companyId, {
-                attributes: ['name', 'logoUrl'],
-                include: {
-                    model: Area,
-                    attributes: ['province'],
-                }
-            });
-            const data = job.toJSON();
+            let company = job.CompanyUser;
+            if (!company) {
+                company = await CompanyUser.findByPk(job.companyId, {
+                    attributes: ['name', 'logoUrl'],
+                    include: {
+                        model: Area,
+                        attributes: ['province'],
+                    }
+                });
+            }
+
             return {
-                id: data.id,
-                companyId: data.companyId,
-                jobTitle: data.jobTitle,
-                profession: data.profession,
-                salaryMin: data.salaryMin,
-                salaryMax: data.salaryMax,
-                companyName: company.name,
-                logoUrl: company.logoUrl,
-                companyAddress: company.Area.province,
-                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
+                id: job.id,
+                companyId: job.companyId,
+                jobTitle: job.jobTitle,
+                profession: job.profession,
+                salaryMin: job.salaryMin,
+                salaryMax: job.salaryMax,
+                companyName: company?.name || null,
+                logoUrl: company?.logoUrl || null,
+                companyAddress: job.Area?.province || company?.Area?.province || null,
+                datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
+
         return { status: 200, data: data };
     } catch (err) {
         console.log(err);

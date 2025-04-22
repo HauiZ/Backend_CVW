@@ -1,161 +1,384 @@
 USE JobPortal;
 GO
 
--- Thêm role 'admin' nếu chưa có
+-- =============================================
+-- 1. Thêm các Role nếu chưa tồn tại (Idempotent)
+-- =============================================
 IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'admin')
 BEGIN
     INSERT INTO Role (name, discription, displayName)
     VALUES ('admin', 'System administrator', 'Administrator');
 END
 
--- Thêm role 'candidate' nếu chưa có
 IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'candidate')
 BEGIN
     INSERT INTO Role (name, discription, displayName)
     VALUES ('candidate', 'Job-seeking candidate', 'Candidate');
 END
 
--- Thêm role 'recruiter' nếu chưa có
 IF NOT EXISTS (SELECT 1 FROM Role WHERE name = 'recruiter')
 BEGIN
     INSERT INTO Role (name, discription, displayName)
     VALUES ('recruiter', 'Company recruiter', 'Recruiter');
 END
+GO
 
-INSERT INTO Users (roleId, email, password, typeAccount)
-VALUES 
-(3, 'company1@gmail.com', 'Pass1@', 'LOCAL'),
-(3, 'company2@gmail.com', 'Pass1@', 'LOCAL'),
-(3, 'company3@gmail.com', 'Pass1@', 'LOCAL'),
-(1, 'admin@gmail.com', 'Pass1@', 'LOCAL');
+-- =============================================
+-- 2. Thêm dữ liệu Area (Không kiểm tra trùng lặp, chạy 1 lần nếu bảng trống)
+-- =============================================
+-- Script này giả định bảng Area trống khi chạy phần này
+-- SET IDENTITY_INSERT dbo.Area OFF; -- Đảm bảo IDENTITY_INSERT OFF
 
-INSERT INTO Area (province, district)
-VALUES 
-(N'TP. Hồ Chí Minh', N'Quận 1'),
-(N'TP. Hồ Chí Minh', N'Quận 3'),
-(N'TP. Hồ Chí Minh', N'Quận 10');
+-- ==================== MIỀN BẮC (NORTHERN VIETNAM) ====================
+INSERT INTO dbo.Area (province, district) VALUES
+(N'Hà Nội', N'Quận Ba Đình'), (N'Hà Nội', N'Quận Hoàn Kiếm'), (N'Hà Nội', N'Quận Hai Bà Trưng'), (N'Hà Nội', N'Quận Đống Đa'), (N'Hà Nội', N'Quận Tây Hồ'), (N'Hà Nội', N'Quận Cầu Giấy'), (N'Hà Nội', N'Quận Thanh Xuân'), (N'Hà Nội', N'Quận Hoàng Mai'), (N'Hà Nội', N'Quận Long Biên'), (N'Hà Nội', N'Quận Bắc Từ Liêm'), (N'Hà Nội', N'Quận Nam Từ Liêm'),
+(N'Hà Nội', N'Thị xã Sơn Tây'), (N'Hà Nội', N'Huyện Ba Vì'), (N'Hà Nội', N'Huyện Chương Mỹ'), (N'Hà Nội', N'Huyện Đan Phượng'), (N'Hà Nội', N'Huyện Đông Anh'), (N'Hà Nội', N'Huyện Gia Lâm'), (N'Hà Nội', N'Huyện Hoài Đức'), (N'Hà Nội', N'Huyện Mê Linh'), (N'Hà Nội', N'Huyện Mỹ Đức'), (N'Hà Nội', N'Huyện Phú Xuyên'), (N'Hà Nội', N'Huyện Phúc Thọ'), (N'Hà Nội', N'Huyện Quốc Oai'), (N'Hà Nội', N'Huyện Sóc Sơn'), (N'Hà Nội', N'Huyện Thạch Thất'), (N'Hà Nội', N'Huyện Thanh Oai'), (N'Hà Nội', N'Huyện Thanh Trì'), (N'Hà Nội', N'Huyện Thường Tín'), (N'Hà Nội', N'Huyện Ứng Hòa');
+GO
+INSERT INTO dbo.Area (province, district) VALUES
+(N'Hà Giang', N'Thành phố Hà Giang'), (N'Hà Giang', N'Huyện Đồng Văn'), (N'Hà Giang', N'Huyện Mèo Vạc'),
+(N'Cao Bằng', N'Thành phố Cao Bằng'), (N'Cao Bằng', N'Huyện Trùng Khánh'),
+(N'Bắc Kạn', N'Thành phố Bắc Kạn'), (N'Bắc Kạn', N'Huyện Ba Bể'),
+(N'Tuyên Quang', N'Thành phố Tuyên Quang'), (N'Tuyên Quang', N'Huyện Chiêm Hóa'),
+(N'Lào Cai', N'Thành phố Lào Cai'), (N'Lào Cai', N'Thị xã Sa Pa'), (N'Lào Cai', N'Huyện Bắc Hà'),
+(N'Yên Bái', N'Thành phố Yên Bái'), (N'Yên Bái', N'Thị xã Nghĩa Lộ'), (N'Yên Bái', N'Huyện Mù Cang Chải'),
+(N'Lai Châu', N'Thành phố Lai Châu'), (N'Lai Châu', N'Huyện Sìn Hồ'),
+(N'Sơn La', N'Thành phố Sơn La'), (N'Sơn La', N'Huyện Mộc Châu'),
+(N'Điện Biên', N'Thành phố Điện Biên Phủ'), (N'Điện Biên', N'Thị xã Mường Lay'),
+(N'Hoà Bình', N'Thành phố Hòa Bình'), (N'Hoà Bình', N'Huyện Mai Châu'),
+(N'Thái Nguyên', N'Thành phố Thái Nguyên'), (N'Thái Nguyên', N'Thành phố Sông Công'), (N'Thái Nguyên', N'Thị xã Phổ Yên'),
+(N'Lạng Sơn', N'Thành phố Lạng Sơn'), (N'Lạng Sơn', N'Huyện Hữu Lũng'),
+(N'Quảng Ninh', N'Thành phố Hạ Long'), (N'Quảng Ninh', N'Thành phố Cẩm Phả'), (N'Quảng Ninh', N'Thành phố Uông Bí'), (N'Quảng Ninh', N'Thành phố Móng Cái'),
+(N'Bắc Giang', N'Thành phố Bắc Giang'), (N'Bắc Giang', N'Thị xã Việt Yên'), (N'Bắc Giang', N'Huyện Lục Ngạn'),
+(N'Phú Thọ', N'Thành phố Việt Trì'), (N'Phú Thọ', N'Thị xã Phú Thọ'), (N'Phú Thọ', N'Huyện Lâm Thao'),
+(N'Vĩnh Phúc', N'Thành phố Vĩnh Yên'), (N'Vĩnh Phúc', N'Thành phố Phúc Yên'), (N'Vĩnh Phúc', N'Huyện Tam Đảo'),
+(N'Bắc Ninh', N'Thành phố Bắc Ninh'), (N'Bắc Ninh', N'Thành phố Từ Sơn'), (N'Bắc Ninh', N'Huyện Yên Phong'),
+(N'Hải Dương', N'Thành phố Hải Dương'), (N'Hải Dương', N'Thành phố Chí Linh'), (N'Hải Dương', N'Thị xã Kinh Môn'),
+(N'Hải Phòng', N'Quận Hồng Bàng'), (N'Hải Phòng', N'Quận Ngô Quyền'), (N'Hải Phòng', N'Quận Lê Chân'), (N'Hải Phòng', N'Quận Kiến An'), (N'Hải Phòng', N'Huyện Thủy Nguyên'),
+(N'Hưng Yên', N'Thành phố Hưng Yên'), (N'Hưng Yên', N'Thị xã Mỹ Hào'), (N'Hưng Yên', N'Huyện Văn Lâm'),
+(N'Thái Bình', N'Thành phố Thái Bình'), (N'Thái Bình', N'Huyện Tiền Hải'),
+(N'Hà Nam', N'Thành phố Phủ Lý'), (N'Hà Nam', N'Thị xã Duy Tiên'),
+(N'Nam Định', N'Thành phố Nam Định'), (N'Nam Định', N'Huyện Hải Hậu'),
+(N'Ninh Bình', N'Thành phố Ninh Bình'), (N'Ninh Bình', N'Thành phố Tam Điệp'), (N'Ninh Bình', N'Huyện Hoa Lư'),
+(N'Thanh Hóa', N'Thành phố Thanh Hóa'), (N'Thanh Hóa', N'Thành phố Sầm Sơn'), (N'Thanh Hóa', N'Thị xã Bỉm Sơn'), (N'Thanh Hóa', N'Huyện Hoằng Hóa');
+GO
+-- ==================== MIỀN TRUNG (CENTRAL VIETNAM) ====================
+INSERT INTO dbo.Area (province, district) VALUES
+(N'Nghệ An', N'Thành phố Vinh'), (N'Nghệ An', N'Thị xã Cửa Lò'), (N'Nghệ An', N'Thị xã Thái Hòa'), (N'Nghệ An', N'Huyện Diễn Châu'),
+(N'Hà Tĩnh', N'Thành phố Hà Tĩnh'), (N'Hà Tĩnh', N'Thị xã Kỳ Anh'), (N'Hà Tĩnh', N'Huyện Can Lộc'),
+(N'Quảng Bình', N'Thành phố Đồng Hới'), (N'Quảng Bình', N'Thị xã Ba Đồn'), (N'Quảng Bình', N'Huyện Phong Nha-Kẻ Bàng'),
+(N'Quảng Trị', N'Thành phố Đông Hà'), (N'Quảng Trị', N'Thị xã Quảng Trị'), (N'Quảng Trị', N'Huyện Vĩnh Linh'),
+(N'Thừa Thiên Huế', N'Thành phố Huế'), (N'Thừa Thiên Huế', N'Thị xã Hương Thủy'), (N'Thừa Thiên Huế', N'Huyện Phú Vang'),
+(N'Đà Nẵng', N'Quận Hải Châu'), (N'Đà Nẵng', N'Quận Sơn Trà'), (N'Đà Nẵng', N'Quận Ngũ Hành Sơn'), (N'Đà Nẵng', N'Huyện Hòa Vang'),
+(N'Quảng Nam', N'Thành phố Tam Kỳ'), (N'Quảng Nam', N'Thành phố Hội An'), (N'Quảng Nam', N'Thị xã Điện Bàn'),
+(N'Quảng Ngãi', N'Thành phố Quảng Ngãi'), (N'Quảng Ngãi', N'Huyện Lý Sơn'),
+(N'Bình Định', N'Thành phố Quy Nhơn'), (N'Bình Định', N'Thị xã An Nhơn'), (N'Bình Định', N'Huyện Tây Sơn'),
+(N'Phú Yên', N'Thành phố Tuy Hòa'), (N'Phú Yên', N'Thị xã Sông Cầu'),
+(N'Khánh Hòa', N'Thành phố Nha Trang'), (N'Khánh Hòa', N'Thành phố Cam Ranh'), (N'Khánh Hòa', N'Huyện Trường Sa'),
+(N'Ninh Thuận', N'Thành phố Phan Rang-Tháp Chàm'), (N'Ninh Thuận', N'Huyện Ninh Hải'),
+(N'Bình Thuận', N'Thành phố Phan Thiết'), (N'Bình Thuận', N'Thị xã La Gi'), (N'Bình Thuận', N'Huyện Hàm Thuận Bắc'),
+(N'Kon Tum', N'Thành phố Kon Tum'), (N'Kon Tum', N'Huyện Sa Thầy'),
+(N'Gia Lai', N'Thành phố Pleiku'), (N'Gia Lai', N'Thị xã An Khê'), (N'Gia Lai', N'Thị xã Ayun Pa'),
+(N'Đắk Lắk', N'Thành phố Buôn Ma Thuột'), (N'Đắk Lắk', N'Thị xã Buôn Hồ'), (N'Đắk Lắk', N'Huyện Ea Kar'),
+(N'Đắk Nông', N'Thành phố Gia Nghĩa'), (N'Đắk Nông', N'Huyện Đắk R''lấp'),
+(N'Lâm Đồng', N'Thành phố Đà Lạt'), (N'Lâm Đồng', N'Thành phố Bảo Lộc'), (N'Lâm Đồng', N'Huyện Đức Trọng');
+GO
+-- ==================== MIỀN NAM (SOUTHERN VIETNAM) ====================
+INSERT INTO dbo.Area (province, district) VALUES
+(N'Bình Phước', N'Thành phố Đồng Xoài'), (N'Bình Phước', N'Thị xã Bình Long'), (N'Bình Phước', N'Thị xã Phước Long'),
+(N'Tây Ninh', N'Thành phố Tây Ninh'), (N'Tây Ninh', N'Thị xã Trảng Bàng'),
+(N'Bình Dương', N'Thành phố Thủ Dầu Một'), (N'Bình Dương', N'Thành phố Dĩ An'), (N'Bình Dương', N'Thành phố Thuận An'), (N'Bình Dương', N'Thị xã Bến Cát'), (N'Bình Dương', N'Thị xã Tân Uyên'),
+(N'Đồng Nai', N'Thành phố Biên Hòa'), (N'Đồng Nai', N'Thành phố Long Khánh'), (N'Đồng Nai', N'Huyện Long Thành'),
+(N'Bà Rịa - Vũng Tàu', N'Thành phố Vũng Tàu'), (N'Bà Rịa - Vũng Tàu', N'Thành phố Bà Rịa'), (N'Bà Rịa - Vũng Tàu', N'Thị xã Phú Mỹ'), (N'Bà Rịa - Vũng Tàu', N'Huyện Côn Đảo'),
+(N'TP Hồ Chí Minh', N'Quận 1'), (N'TP Hồ Chí Minh', N'Quận 3'), (N'TP Hồ Chí Minh', N'Quận 4'), (N'TP Hồ Chí Minh', N'Quận 5'), (N'TP Hồ Chí Minh', N'Quận 6'), (N'TP Hồ Chí Minh', N'Quận 7'), (N'TP Hồ Chí Minh', N'Quận 8'), (N'TP Hồ Chí Minh', N'Quận 10'), (N'TP Hồ Chí Minh', N'Quận 11'), (N'TP Hồ Chí Minh', N'Quận 12'), (N'TP Hồ Chí Minh', N'Quận Gò Vấp'), (N'TP Hồ Chí Minh', N'Quận Tân Bình'), (N'TP Hồ Chí Minh', N'Quận Tân Phú'), (N'TP Hồ Chí Minh', N'Quận Bình Thạnh'), (N'TP Hồ Chí Minh', N'Quận Phú Nhuận'), (N'TP Hồ Chí Minh', N'Thành phố Thủ Đức'), (N'TP Hồ Chí Minh', N'Quận Bình Tân'), (N'TP Hồ Chí Minh', N'Huyện Củ Chi'), (N'TP Hồ Chí Minh', N'Huyện Hóc Môn'), (N'TP Hồ Chí Minh', N'Huyện Bình Chánh'), (N'TP Hồ Chí Minh', N'Huyện Nhà Bè'), (N'TP Hồ Chí Minh', N'Huyện Cần Giờ'),
+(N'Long An', N'Thành phố Tân An'), (N'Long An', N'Thị xã Kiến Tường'), (N'Long An', N'Huyện Đức Hòa'),
+(N'Tiền Giang', N'Thành phố Mỹ Tho'), (N'Tiền Giang', N'Thị xã Cai Lậy'), (N'Tiền Giang', N'Huyện Gò Công Đông'),
+(N'Bến Tre', N'Thành phố Bến Tre'), (N'Bến Tre', N'Huyện Châu Thành'), -- Đã sửa lỗi lặp tên tỉnh
+(N'Trà Vinh', N'Thành phố Trà Vinh'), (N'Trà Vinh', N'Thị xã Duyên Hải'),
+(N'Vĩnh Long', N'Thành phố Vĩnh Long'), (N'Vĩnh Long', N'Thị xã Bình Minh'),
+(N'Đồng Tháp', N'Thành phố Cao Lãnh'), (N'Đồng Tháp', N'Thành phố Sa Đéc'), (N'Đồng Tháp', N'Thành phố Hồng Ngự'),
+(N'An Giang', N'Thành phố Long Xuyên'), (N'An Giang', N'Thành phố Châu Đốc'), (N'An Giang', N'Thị xã Tân Châu'),
+(N'Kiên Giang', N'Thành phố Rạch Giá'), (N'Kiên Giang', N'Thành phố Hà Tiên'), (N'Kiên Giang', N'Thành phố Phú Quốc'),
+(N'Cần Thơ', N'Quận Ninh Kiều'), (N'Cần Thơ', N'Quận Cái Răng'), (N'Cần Thơ', N'Quận Bình Thủy'), (N'Cần Thơ', N'Huyện Phong Điền'),
+(N'Hậu Giang', N'Thành phố Vị Thanh'), (N'Hậu Giang', N'Thành phố Ngã Bảy'), (N'Hậu Giang', N'Thị xã Long Mỹ'),
+(N'Sóc Trăng', N'Thành phố Sóc Trăng'), (N'Sóc Trăng', N'Thị xã Vĩnh Châu'),
+(N'Bạc Liêu', N'Thành phố Bạc Liêu'), (N'Bạc Liêu', N'Thị xã Giá Rai'),
+(N'Cà Mau', N'Thành phố Cà Mau'), (N'Cà Mau', N'Huyện Đất Mũi'), (N'Cà Mau', N'Huyện Năm Căn');
+GO
 
-INSERT INTO Company_User (
-    userId, name, phone, email, areaId, companyAddress, field, 
-    companySize, website, introduction, logoId, logoUrl
-)
-VALUES 
-(1, N'Công ty A', '0901234567', 'company1@example.com', 1, 
- N'123 Lê Lợi, Quận 1', N'Công nghệ thông tin', N'50-100', 'https://companya.com', 
- N'["Chuyên về phát triển phần mềm", "Văn hoá năng động"]', NULL, NULL),
+-- =============================================
+-- 4. Thêm Users (1 admin + 10 recruiters) (Idempotent theo email)
+-- =============================================
+DECLARE @adminRoleId INT = (SELECT id FROM Role WHERE name = 'admin');
+DECLARE @recruiterRoleId INT = (SELECT id FROM Role WHERE name = 'recruiter');
 
-(2, N'Công ty B', '0902345678', 'company2@example.com', 2, 
- N'45 Nguyễn Huệ, Quận 3', N'Marketing', N'100-200', 'https://companyb.com', 
- N'["Agency truyền thông", "Tăng trưởng nhanh"]', NULL, NULL),
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'admin@gmail.com')
+BEGIN
+    INSERT INTO Users (roleId, email, password, typeAccount)
+    VALUES (@adminRoleId, 'admin@gmail.com', 'Pass1@', 'LOCAL');
+END
 
-(3, N'Công ty C', '0903456789', 'company3@example.com', 3, 
- N'89 Trần Hưng Đạo, Quận 10', N'Tài chính', N'20-50', 'https://companyc.com', 
- N'["Startup Fintech", "Đội ngũ trẻ"]', NULL, NULL);
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company1@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company1@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company2@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company2@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company3@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company3@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company4@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company4@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company5@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company5@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company6@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company6@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company7@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company7@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company8@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company8@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company9@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company9@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company10@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company10@gmail.com', 'Pass1@', 'LOCAL');
+GO
+
+-- =============================================
+-- 5. Thêm 10 Company_User (Idempotent theo tên/email công ty)
+-- Liên kết với Users recruiter, gán areaId
+-- =============================================
+-- Declare variables for User and Area IDs before using them in the batch
+DECLARE @userId1 INT = (SELECT id FROM Users WHERE email = 'company1@gmail.com');
+DECLARE @userId2 INT = (SELECT id FROM Users WHERE email = 'company2@gmail.com');
+DECLARE @userId3 INT = (SELECT id FROM Users WHERE email = 'company3@gmail.com');
+DECLARE @userId4 INT = (SELECT id FROM Users WHERE email = 'company4@gmail.com');
+DECLARE @userId5 INT = (SELECT id FROM Users WHERE email = 'company5@gmail.com');
+DECLARE @userId6 INT = (SELECT id FROM Users WHERE email = 'company6@gmail.com');
+DECLARE @userId7 INT = (SELECT id FROM Users WHERE email = 'company7@gmail.com');
+DECLARE @userId8 INT = (SELECT id FROM Users WHERE email = 'company8@gmail.com');
+DECLARE @userId9 INT = (SELECT id FROM Users WHERE email = 'company9@gmail.com');
+DECLARE @userId10 INT = (SELECT id FROM Users WHERE email = 'company10@gmail.com');
+
+DECLARE @areaIdHCM_Q1 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 1');
+DECLARE @areaIdHCM_Q3 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 3');
+DECLARE @areaIdHCM_Q10 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 10');
+DECLARE @areaIdHN_TX INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Thanh Xuân');
+DECLARE @areaIdHN_CG INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Cầu Giấy');
+DECLARE @areaIdDN_HC INT = (SELECT TOP 1 id FROM Area WHERE province = N'Đà Nẵng' AND district = N'Quận Hải Châu');
+DECLARE @areaIdHP_NQ INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hải Phòng' AND district = N'Quận Ngô Quyền');
+DECLARE @areaIdCT_NK INT = (SELECT TOP 1 id FROM Area WHERE province = N'Cần Thơ' AND district = N'Quận Ninh Kiều');
+DECLARE @areaIdBD_TA INT = (SELECT TOP 1 id FROM Area WHERE province = N'Bình Dương' AND district = N'Thành phố Thuận An');
+DECLARE @areaIdNA_TPV INT = (SELECT TOP 1 id FROM Area WHERE province = N'Nghệ An' AND district = N'Thành phố Vinh');
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty A')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId1, N'Công ty A', '0901234567', 'company1@example.com', @areaIdHCM_Q1, N'123 Lê Lợi, Quận 1', N'Công nghệ thông tin', N'50-100', 'https://companya.com', N'[
+        "Công ty A là một đơn vị tiên phong trong lĩnh vực giải pháp công nghệ thông tin tại Việt Nam, được thành lập từ năm 2010 với sứ mệnh kiến tạo tương lai số cho doanh nghiệp và cộng đồng. Chúng tôi không ngừng đổi mới để cung cấp các giải pháp phần mềm tiên tiến, đáp ứng nhu cầu ngày càng đa dạng của thị trường.",
+        "Lĩnh vực chuyên môn cốt lõi của chúng tôi bao gồm phát triển ứng dụng doanh nghiệp trên nền tảng Web và Mobile, tư vấn và triển khai hệ thống ERP/CRM, phát triển giải pháp dựa trên Công nghệ AI & Machine Learning, Phân tích dữ liệu lớn (Big Data) và Điện toán đám mây (Cloud Computing). Chúng tôi tự hào là đối tác công nghệ của nhiều doanh nghiệp hàng đầu trong các ngành Tài chính, Bán lẻ, Y tế và Giáo dục.",
+        "Với phương pháp làm việc Agile và Scrum, chúng tôi đảm bảo quy trình phát triển linh hoạt, hiệu quả và luôn bám sát yêu cầu của khách hàng. Đội ngũ kỹ sư và chuyên gia của chúng tôi không chỉ giỏi chuyên môn mà còn có khả năng tư vấn sâu sắc, giúp khách hàng lựa chọn và áp dụng công nghệ phù hợp nhất.",
+        "Văn hóa công ty A đề cao sự hợp tác, sáng tạo và liên tục học hỏi. Chúng tôi tạo ra một môi trường làm việc mở, năng động, nơi mỗi cá nhân được khuyến khích chia sẻ ý tưởng và phát triển bản thân thông qua các chương trình đào tạo nội bộ và tham gia các dự án công nghệ thách thức. Chúng tôi tin rằng sự phát triển của nhân viên chính là động lực cho sự thành công của công ty.",
+        "Cam kết của chúng tôi là mang đến những sản phẩm công nghệ có chất lượng vượt trội, hiệu năng cao và bảo mật tối đa. Chúng tôi luôn đặt sự hài lòng của khách hàng làm trung tâm và nỗ lực vượt mong đợi thông qua dịch vụ hỗ trợ chuyên nghiệp. Công ty A hướng tới mục tiêu trở thành đơn vị cung cấp giải pháp IT hàng đầu Việt Nam và vươn tầm khu vực, đóng góp tích cực vào sự phát triển của ngành công nghệ thông tin quốc gia."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty B')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId2, N'Công ty B', '0902345678', 'company2@example.com', @areaIdHCM_Q3, N'45 Nguyễn Huệ, Quận 3', N'Marketing', N'100-200', 'https://companyb.com', N'[
+        "Công ty B là một agency Marketing và Truyền thông tích hợp (Integrated Marketing Communications - IMC) uy tín tại TP. Hồ Chí Minh, chuyên cung cấp các giải pháp đột phá và toàn diện giúp doanh nghiệp xây dựng, phát triển và bảo vệ thương hiệu trong bối cảnh thị trường cạnh tranh.",
+        "Phạm vi dịch vụ của chúng tôi rất rộng, bao gồm: Tư vấn chiến lược thương hiệu & marketing, Digital Marketing (SEO, PPC, Social Media Marketing, Influencer Marketing, Email Marketing, Content Marketing, Marketing Automation), PR & Quan hệ công chúng, Tổ chức sự kiện (Event Management), Thiết kế & Sản xuất quảng cáo (Creative & Production), Nghiên cứu thị trường và Phân tích dữ liệu khách hàng.",
+        "Chúng tôi tiếp cận mỗi dự án bằng sự thấu hiểu sâu sắc về khách hàng mục tiêu, phân tích dữ liệu thị trường và áp dụng các xu hướng marketing mới nhất. Khả năng sáng tạo không giới hạn cùng với chuyên môn triển khai bài bản là yếu tố then chốt giúp chúng tôi tạo ra những chiến dịch gây tiếng vang, chạm đến cảm xúc và thúc đẩy hành động từ phía người tiêu dùng.",
+        "Với tốc độ tăng trưởng vượt trội và danh mục khách hàng đa dạng từ các tập đoàn lớn đến các SME năng động trong nhiều ngành (FMCG, Bất động sản, Tài chính, Công nghệ, Y tế...), Công ty B đã khẳng định được năng lực và hiệu quả công việc. Chúng tôi tự hào là đối tác tin cậy, luôn đồng hành và đóng góp vào sự thành công kinh doanh của khách hàng.",
+        "Đội ngũ nhân sự của Công ty B là tập hợp những chuyên gia marketing và truyền thông tài năng, giàu kinh nghiệm, luôn tràn đầy nhiệt huyết và không ngừng học hỏi. Chúng tôi xây dựng một văn hóa làm việc chuyên nghiệp, cởi mở, khuyến khích sự hợp tác và đổi mới. Công ty B cam kết mang đến những giải pháp marketing không chỉ hiệu quả về mặt thương mại mà còn tạo ra giá trị bền vững cho thương hiệu và xã hội."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty C')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId3, N'Công ty C', '0903456789', 'company3@example.com', @areaIdHCM_Q10, N'89 Trần Hưng Đạo, Quận 10', N'Tài chính', N'20-50', 'https://companyc.com', N'[
+        "Công ty C là một Startup Fintech tiên phong tại Việt Nam, được thành lập vào năm 2018 với tầm nhìn trở thành nền tảng công nghệ tài chính hàng đầu, mang đến sự tiếp cận tài chính dễ dàng, minh bạch và an toàn cho mọi người.",
+        "Chúng tôi tập trung phát triển các sản phẩm và giải pháp dựa trên công nghệ tiên tiến như Trí tuệ nhân tạo (AI), Phân tích dữ liệu lớn (Big Data), Blockchain và Điện toán đám mây. Các sản phẩm chủ lực bao gồm: Ứng dụng quản lý tài chính cá nhân thông minh, Nền tảng đầu tư vi mô (Micro-investment), Giải pháp thanh toán số và Ví điện tử, Công cụ chấm điểm tín dụng tự động, và các dịch vụ tài chính tích hợp cho SME.",
+        "Công ty C hoạt động dưới sự giám sát chặt chẽ và tuân thủ đầy đủ các quy định pháp luật liên quan đến lĩnh vực tài chính và công nghệ. Chúng tôi đặc biệt chú trọng đến bảo mật dữ liệu người dùng và an toàn giao dịch, áp dụng các tiêu chuẩn bảo mật quốc tế cao nhất.",
+        "Đội ngũ sáng lập và các thành viên chủ chốt của Công ty C là sự kết hợp giữa các chuyên gia công nghệ giàu kinh nghiệm và các chuyên gia trong lĩnh vực tài chính ngân hàng. Sự am hiểu sâu sắc cả hai lĩnh vực này giúp chúng tôi tạo ra các sản phẩm vừa mang tính công nghệ đột phá, vừa đáp ứng đúng nhu cầu thực tế của thị trường tài chính.",
+        "Chúng tôi xây dựng một văn hóa doanh nghiệp đề cao sự linh hoạt, sáng tạo và tinh thần học hỏi không ngừng. Môi trường làm việc tại Công ty C khuyến khích nhân viên đưa ra ý tưởng mới, thử nghiệm và cùng nhau giải quyết các bài toán khó. Công ty C cam kết đóng góp vào sự phát triển của hệ sinh thái Fintech tại Việt Nam, mang đến các sản phẩm tài chính số ưu việt, giúp nâng cao chất lượng cuộc sống và hiệu quả kinh doanh cho hàng triệu người dùng."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty D')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId4, N'Công ty D', '0904567890', 'company4@example.com', @areaIdHN_TX, N'789 Giải Phóng, Quận Thanh Xuân', N'Giáo dục', N'50-100', 'https://companyd.edu.vn', N'[
+        "Công ty D là hệ thống trung tâm đào tạo ngoại ngữ và kỹ năng hàng đầu tại Hà Nội, với hơn 15 năm kinh nghiệm trong lĩnh vực giáo dục. Chúng tôi cam kết mang đến những chương trình đào tạo chất lượng cao, giúp học viên phát triển toàn diện kiến thức, kỹ năng và sự tự tin để thành công trong môi trường toàn cầu.",
+        "Các chương trình đào tạo cốt lõi của chúng tôi bao gồm: Tiếng Anh cho mọi lứa tuổi (Trẻ em, Thanh thiếu niên, Người lớn), luyện thi các chứng chỉ quốc tế (IELTS, TOEFL iBT, TOEIC, Cambridge), đào tạo kỹ năng mềm (Giao tiếp, Thuyết trình, Làm việc nhóm), và các khóa học chuyên sâu theo yêu cầu doanh nghiệp.",
+        "Phương pháp giảng dạy tại Công ty D được thiết kế hiện đại, tương tác cao, lấy người học làm trung tâm. Chúng tôi áp dụng kết hợp các phương pháp truyền thống và công nghệ giáo dục tiên tiến (EdTech) để tối ưu hóa trải nghiệm và hiệu quả học tập. Đội ngũ giáo viên của chúng tôi là những chuyên gia, giảng viên trong và ngoài nước giàu kinh nghiệm, có chứng chỉ quốc tế và tâm huyết với nghề.",
+        "Chúng tôi tự hào về môi trường học tập thân thiện, năng động và truyền cảm hứng. Hệ thống cơ sở vật chất hiện đại, phòng học đầy đủ tiện nghi, thư viện tài nguyên phong phú và các hoạt động ngoại khóa đa dạng (Câu lạc bộ Tiếng Anh, Workshop kỹ năng, Sự kiện văn hóa...) tạo điều kiện tốt nhất cho học viên rèn luyện và phát triển.",
+        "Công ty D luôn chú trọng đến sự tiến bộ của từng học viên, cung cấp lộ trình học tập cá nhân hóa và hỗ trợ xuyên suốt quá trình học. Tỷ lệ học viên đạt điểm cao trong các kỳ thi quốc tế và thành công trong sự nghiệp là minh chứng rõ nét nhất cho chất lượng đào tạo của chúng tôi. Công ty D không ngừng cải tiến chương trình và dịch vụ để khẳng định vị thế dẫn đầu trong lĩnh vực giáo dục."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty E')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId5, N'Công ty E', '0905678901', 'company5@example.com', @areaIdHN_CG, N'101 Trần Duy Hưng, Quận Cầu Giấy', N'Tư vấn', N'20-50', 'https://companyeconsulting.com', N'[
+        "Công ty E là một đơn vị tư vấn quản trị hàng đầu Việt Nam, chuyên cung cấp các giải pháp chiến lược và vận hành toàn diện giúp doanh nghiệp nâng cao hiệu quả, tối ưu hóa nguồn lực và đạt được tăng trưởng bền vững trong bối cảnh thị trường đầy biến động.",
+        "Các dịch vụ tư vấn chính của chúng tôi bao gồm: Xây dựng và triển khai chiến lược kinh doanh, Tái cấu trúc tổ chức và bộ máy quản lý, Tối ưu hóa quy trình hoạt động và chuỗi cung ứng, Quản lý hiệu suất (Performance Management), Tư vấn chuyển đổi số (Digital Transformation), Quản lý dự án (Project Management) và Tư vấn Mua bán & Sáp nhập (M&A).",
+        "Chúng tôi tiếp cận mỗi bài toán của khách hàng bằng sự chuyên nghiệp, độc lập và dựa trên dữ liệu. Quy trình tư vấn của chúng tôi bao gồm: Phân tích sâu sắc tình hình hiện tại, Xác định nguyên nhân cốt lõi, Đề xuất giải pháp khả thi và sáng tạo, Hỗ trợ triển khai và đánh giá kết quả. Chúng tôi áp dụng các framework tư vấn tiên tiến được công nhận trên thế giới, điều chỉnh phù hợp với đặc thù thị trường Việt Nam.",
+        "Đội ngũ chuyên gia tư vấn của Công ty E là những người có trình độ chuyên môn cao, giàu kinh nghiệm thực chiến từ nhiều ngành nghề và đã từng làm việc cho các tập đoàn đa quốc gia hoặc các công ty tư vấn quốc tế lớn. Sự am hiểu sâu sắc về kinh doanh, quản trị và thị trường giúp chúng tôi đưa ra những khuyến nghị mang tính đột phá và thực tiễn.",
+        "Công ty E không chỉ là nhà cung cấp dịch vụ, mà là đối tác chiến lược, đồng hành cùng doanh nghiệp từ khi xác định vấn đề đến khi giải pháp được triển khai thành công và mang lại hiệu quả đo lường được. Chúng tôi cam kết mang đến giá trị gia tăng thực sự, giúp khách hàng đưa ra quyết định sáng suốt và xây dựng lợi thế cạnh tranh bền vững trên thị trường."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty F')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId6, N'Công ty F', '0906789012', 'company6@example.com', @areaIdDN_HC, N'200 Phan Châu Trinh, Quận Hải Châu', N'Du lịch - Khách sạn', N'200-500', 'https://companyftravel.vn', N'[
+        "Công ty F là một trong những tập đoàn du lịch và khách sạn hàng đầu tại Việt Nam, được thành lập từ năm 2005. Chúng tôi tự hào mang đến những trải nghiệm du lịch và nghỉ dưỡng đẳng cấp, góp phần nâng tầm ngành công nghiệp không khói của đất nước.",
+        "Hệ sinh thái dịch vụ của chúng tôi rất đa dạng, bao gồm: Tổ chức tour du lịch trọn gói (Inbound, Outbound, Nội địa) với các loại hình phong phú (du lịch nghỉ dưỡng, khám phá văn hóa, du lịch mạo hiểm, MICE - Du lịch kết hợp hội nghị/sự kiện); Dịch vụ đặt phòng khách sạn/resort; Đặt vé máy bay, tàu, xe; Dịch vụ làm visa; Cho thuê xe du lịch; và các dịch vụ hỗ trợ lữ hành khác.",
+        "Công ty F sở hữu và quản lý chuỗi khách sạn và resort cao cấp tọa lạc tại các điểm đến du lịch nổi tiếng khắp Việt Nam. Các cơ sở lưu trú của chúng tôi được thiết kế sang trọng, tiện nghi hiện đại, cung cấp dịch vụ chuyên nghiệp, chu đáo, mang đến cho du khách không gian nghỉ ngơi lý tưởng và những trải nghiệm khó quên.",
+        "Đội ngũ nhân sự của chúng tôi là những chuyên gia du lịch, lữ hành và khách sạn giàu kinh nghiệm, am hiểu sâu sắc về văn hóa và điểm đến. Sự tận tâm, nhiệt tình và chuyên nghiệp của đội ngũ là yếu tố then chốt tạo nên sự khác biệt trong chất lượng dịch vụ của Công ty F.",
+        "Chúng tôi luôn đặt sự hài lòng và an toàn của du khách lên hàng đầu. Công ty F không ngừng đầu tư vào công nghệ quản lý, nâng cao chất lượng dịch vụ và phát triển các sản phẩm du lịch mới lạ, hấp dẫn. Chúng tôi cam kết phát triển du lịch bền vững, có trách nhiệm với môi trường và cộng đồng địa phương, góp phần vào sự tăng trưởng chung của ngành du lịch Việt Nam và mang hình ảnh đất nước đến gần hơn với bạn bè quốc tế."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty G')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId7, N'Công ty G', '0907890123', 'company7@example.com', @areaIdHP_NQ, N'300 Lê Hồng Phong, Quận Ngô Quyền', N'Logistics', N'100-200', 'https://companyglogistics.com', N'[
+        "Công ty G là nhà cung cấp dịch vụ logistics hàng đầu tại khu vực Hải Phòng và các tỉnh phía Bắc, chuyên cung cấp các giải pháp chuỗi cung ứng toàn diện và hiệu quả cho doanh nghiệp. Với kinh nghiệm lâu năm và mạng lưới hoạt động rộng khắp, chúng tôi tự tin đáp ứng mọi nhu cầu vận chuyển và lưu trữ hàng hóa.",
+        "Các dịch vụ logistics chính của chúng tôi bao gồm: Vận tải đa phương thức (đường bộ, đường biển, đường hàng không, đường sắt); Dịch vụ kho bãi và quản lý hàng tồn kho (bao gồm kho thường, kho ngoại quan, kho lạnh); Dịch vụ khai báo hải quan và thông quan hàng hóa xuất nhập khẩu; Dịch vụ gom hàng (Consolidation) và chia hàng (Deconsolidation); Quản lý chuỗi cung ứng và tư vấn logistics.",
+        "Công ty G sở hữu hệ thống cơ sở vật chất hiện đại, bao gồm đội xe tải, xe container đa dạng tải trọng, hệ thống kho bãi rộng khắp được trang bị công nghệ quản lý kho (WMS) tiên tiến, đảm bảo hàng hóa được vận chuyển, lưu trữ và quản lý một cách an toàn, chính xác.",
+        "Đội ngũ nhân sự của chúng tôi là những chuyên gia logistics có trình độ cao, am hiểu sâu sắc về quy trình, pháp luật và thị trường. Sự tận tâm, chuyên nghiệp và khả năng xử lý tình huống nhanh chóng là điểm mạnh của đội ngũ Công ty G, giúp chúng tôi giải quyết hiệu quả các thách thức trong chuỗi cung ứng.",
+        "Chúng tôi áp dụng công nghệ thông tin vào quản lý và điều hành hoạt động logistics, cung cấp khả năng theo dõi hàng hóa theo thời gian thực (real-time tracking), tối ưu hóa lộ trình vận chuyển và nâng cao hiệu quả hoạt động. Công ty G cam kết mang đến cho khách hàng những giải pháp logistics tối ưu chi phí, hiệu quả và đáng tin cậy, góp phần vào sự phát triển kinh doanh của khách hàng và nâng cao năng lực cạnh tranh của ngành logistics Việt Nam."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty H')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId8, N'Công ty H', '0908901234', 'company8@example.com', @areaIdCT_NK, N'400 Mậu Thân, Quận Ninh Kiều', N'Nông nghiệp - Thực phẩm', N'50-100', 'https://companyhfood.vn', N'[
+        "Công ty H là một trong những doanh nghiệp hàng đầu tại Đồng bằng sông Cửu Long hoạt động trong lĩnh vực Nông nghiệp công nghệ cao và Chế biến thực phẩm. Chúng tôi theo đuổi mô hình chuỗi giá trị khép kín từ Nông trại đến Bàn ăn, đảm bảo kiểm soát chặt chẽ chất lượng và an toàn vệ sinh thực phẩm trên toàn bộ quy trình.",
+        "Lĩnh vực hoạt động chính của chúng tôi bao gồm: Trồng trọt các loại nông sản đặc sản theo quy trình GlobalGAP/VietGAP/Hữu cơ (ví dụ: lúa chất lượng cao, rau ăn lá, cây ăn trái); Chăn nuôi thủy sản (tôm, cá tra) theo tiêu chuẩn quốc tế (ASC, BAP); và Nhà máy chế biến thực phẩm hiện đại, ứng dụng công nghệ tiên tiến để sản xuất các sản phẩm giá trị gia tăng (ví dụ: gạo đóng gói, trái cây sấy, thủy sản đông lạnh, thực phẩm chế biến sẵn).",
+        "Công ty H đầu tư mạnh vào nghiên cứu và phát triển (R&D) các giống cây trồng, vật nuôi mới có năng suất cao, khả năng chống chịu tốt và phù hợp với điều kiện thổ nhưỡng. Chúng tôi ứng dụng công nghệ IOT, Big Data trong quản lý trang trại thông minh, tối ưu hóa quy trình canh tác, giảm thiểu sử dụng thuốc bảo vệ thực vật và phân bón hóa học.",
+        "Chúng tôi đặc biệt chú trọng đến vấn đề truy xuất nguồn gốc sản phẩm, đảm bảo tính minh bạch và xây dựng lòng tin với người tiêu dùng. Hệ thống quản lý chất lượng theo tiêu chuẩn HACCP, ISO 22000 được áp dụng nghiêm ngặt trong toàn bộ nhà máy chế biến.",
+        "Công ty H cam kết mang đến nguồn thực phẩm Sạch - An toàn - Dinh dưỡng cho thị trường trong nước và xuất khẩu. Chúng tôi không chỉ tạo ra sản phẩm chất lượng mà còn góp phần nâng cao thu nhập cho bà con nông dân thông qua các chương trình liên kết sản xuất bền vững. Công ty H hướng tới mục tiêu trở thành thương hiệu thực phẩm uy tín hàng đầu Việt Nam, được người tiêu dùng tin cậy và yêu thích."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty I')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId9, N'Công ty I', '0909012345', 'company9@example.com', @areaIdBD_TA, N'KCN VSIP I, Thành phố Thuận An', N'Sản xuất', N'500+', 'https://companyimanufacturing.com', N'[
+        "Công ty I là một nhà máy sản xuất quy mô lớn và hiện đại, tọa lạc tại Khu công nghiệp VSIP I, chuyên gia công và sản xuất các loại linh kiện điện tử, bo mạch chủ (PCBs), và sản phẩm điện tử tiêu dùng theo đơn đặt hàng (OEM/ODM) cho các tập đoàn công nghệ hàng đầu thế giới.",
+        "Với diện tích nhà máy rộng lớn và tổng vốn đầu tư hàng trăm triệu USD, chúng tôi sở hữu dây chuyền sản xuất hoàn toàn tự động hóa, áp dụng công nghệ SMT (Surface Mount Technology), AI (Automated Optical Inspection), Robot công nghiệp và hệ thống MES (Manufacturing Execution System) để đảm bảo năng suất cao, độ chính xác tuyệt đối và khả năng đáp ứng các đơn hàng lớn.",
+        "Quy trình sản xuất tại Công ty I tuân thủ nghiêm ngặt các tiêu chuẩn chất lượng quốc tế như ISO 9001, IATF 16949 (cho linh kiện ô tô), ISO 14001 (môi trường) và OHSAS 18001 (an toàn lao động). Hệ thống kiểm soát chất lượng (QC) và đảm bảo chất lượng (QA) được tích hợp ở mọi công đoạn, từ kiểm tra nguyên liệu đầu vào, quá trình sản xuất đến kiểm tra sản phẩm cuối cùng trước khi xuất xưởng.",
+        "Chúng tôi có đội ngũ kỹ sư và chuyên gia R&D giàu kinh nghiệm, luôn làm việc chặt chẽ với khách hàng để tối ưu hóa thiết kế sản phẩm và quy trình sản xuất. Hơn 500 công nhân viên của Công ty I được đào tạo bài bản, có tay nghề cao và làm việc trong môi trường chuyên nghiệp, an toàn.",
+        "Công ty I không ngừng đầu tư vào công nghệ mới và cải tiến quy trình để duy trì lợi thế cạnh tranh. Chúng tôi cam kết sản xuất có trách nhiệm với môi trường, áp dụng các biện pháp tiết kiệm năng lượng, quản lý chất thải hiệu quả và tham gia các hoạt động xã hội tại địa phương. Công ty I hướng tới mục tiêu trở thành trung tâm sản xuất điện tử thông minh hàng đầu trong khu vực, góp phần vào chuỗi cung ứng công nghệ toàn cầu."
+    ]', NULL, NULL);
+END
+
+IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Công ty J')
+BEGIN
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
+    VALUES (@userId10, N'Công ty J', '0910123456', 'company10@example.com', @areaIdNA_TPV, N'500 Quang Trung, Thành phố Vinh', N'Xây dựng', N'200-500', 'https://companyjconstruction.vn', N'[
+        "Công ty J là một trong những tổng thầu xây dựng hàng đầu tại khu vực Bắc Trung Bộ, với bề dày kinh nghiệm gần 20 năm trong ngành. Chúng tôi chuyên nhận thầu thi công các công trình cơ sở hạ tầng, công nghiệp và dân dụng quy mô lớn, phức tạp, đòi hỏi kỹ thuật cao và tiến độ gấp rút.",
+        "Các lĩnh vực thi công chủ yếu của Công ty J bao gồm: Xây dựng cầu, đường, cảng biển, sân bay; Thi công các công trình công nghiệp (nhà máy, xưởng sản xuất); Xây dựng các tòa nhà thương mại, văn phòng, chung cư cao tầng; Xây dựng công trình dân dụng (nhà ở, trường học, bệnh viện); và Thi công hạ tầng kỹ thuật khu đô thị, khu công nghiệp.",
+        "Công ty J sở hữu năng lực tài chính vững mạnh, đảm bảo khả năng triển khai các dự án có tổng mức đầu tư lớn. Đội ngũ quản lý dự án chuyên nghiệp, kỹ sư và kiến trúc sư giàu kinh nghiệm, cùng lực lượng công nhân lành nghề lên đến hàng trăm người là tài sản quý giá, đảm bảo chất lượng và tiến độ của mọi công trình.",
+        "Chúng tôi đầu tư vào dàn máy móc, thiết bị thi công hiện đại, áp dụng công nghệ xây dựng tiên tiến và hệ thống quản lý chất lượng theo tiêu chuẩn ISO 9001. Công tác an toàn lao động luôn được đặt lên ưu tiên hàng đầu, với các quy trình kiểm soát chặt chẽ và đào tạo định kỳ cho toàn bộ nhân viên tại công trường.",
+        "Công ty J đã ghi dấu ấn qua hàng loạt công trình tiêu biểu tại khu vực và trên cả nước, được chủ đầu tư và các bên liên quan đánh giá cao về chất lượng, thẩm mỹ và hiệu quả đầu tư. Chúng tôi làm việc với tinh thần hợp tác, minh bạch và trách nhiệm cao, luôn nỗ lực vượt mọi thách thức để hoàn thành công trình đúng cam kết. Công ty J hướng tới mục tiêu trở thành tổng thầu xây dựng uy tín và chuyên nghiệp hàng đầu Việt Nam, góp phần vào sự phát triển hạ tầng và đô thị hóa của đất nước."
+    ]', NULL, NULL);
+END
+
+GO
+
+-- =============================================
+-- 7. Thêm khoảng 40 tin Recruitment_News mới (Idempotent theo companyId + JobTitle)
+-- Phân bổ cho companyId 1..10, sử dụng areaId phù hợp
+-- =============================================
+
+-- Declare variables for Company and Area IDs before using them in the batch
+DECLARE @companyAId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty A');
+DECLARE @companyBId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty B');
+DECLARE @companyCId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty C');
+DECLARE @companyDId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty D');
+DECLARE @companyEId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty E');
+DECLARE @companyFId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty F');
+DECLARE @companyGId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty G');
+DECLARE @companyHId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty H');
+DECLARE @companyIId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty I');
+DECLARE @companyJId INT = (SELECT userId FROM Company_User WHERE name = N'Công ty J');
+
+DECLARE @areaIdHCM_Q1_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 1');
+DECLARE @areaIdHCM_Q3_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 3');
+DECLARE @areaIdHCM_Q10_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 10');
+DECLARE @areaIdHN_TX_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Thanh Xuân');
+DECLARE @areaIdHN_CG_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Cầu Giấy');
+DECLARE @areaIdDN_HC_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Đà Nẵng' AND district = N'Quận Hải Châu');
+DECLARE @areaIdHP_NQ_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hải Phòng' AND district = N'Quận Ngô Quyền');
+DECLARE @areaIdCT_NK_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Cần Thơ' AND district = N'Quận Ninh Kiều');
+DECLARE @areaIdBD_TA_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Bình Dương' AND district = N'Thành phố Thuận An');
+DECLARE @areaIdNA_TPV_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Nghệ An' AND district = N'Thành phố Vinh');
+DECLARE @areaIdHP_TN_News INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hải Phòng' AND district = N'Huyện Thủy Nguyên'); -- Example of using a different district
 
 INSERT INTO Recruitment_News (
     companyId, jobTitle, profession, candidateNumber, jobLevel,
     workType, degree, areaId, jobAddress, salaryMin, salaryMax, salaryNegotiable,
     experience, workDateIn, workDetail, jobRequirements, benefits,
-    applicationDealine, contactInfo, contactAddress, contactPhone, contactEmail,
+    applicationDeadline, contactInfo, contactAddress, contactPhone, contactEmail,
     videoUrl, datePosted, status
 )
 VALUES
--- Tin tuyển dụng 1: Marketing Manager
-(1, N'Marketing Manager', N'Marketing', 2, N'Trưởng nhóm',
- N'Toàn thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 20000000, 30000000, 0,
- N'3-5 năm', '2025-05-01',
- N'["Phát triển chiến lược marketing", "Quản lý nhóm marketing", "Phân tích hiệu quả chiến dịch"]',
- N'Kinh nghiệm lãnh đạo team, am hiểu digital marketing, kỹ năng phân tích dữ liệu tốt',
- N'["Lương thưởng hấp dẫn", "Môi trường làm việc chuyên nghiệp", "Cơ hội thăng tiến cao"]',
- '2025-06-15', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company A (TP.HCM Q1)
+(@companyAId, N'Senior Frontend Developer', N'Công nghệ thông tin', 3, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q1_News, N'123 Lê Lợi, Quận 1', 25000000, 35000000, 0, N'Trên 3 năm', '2025-05-01', N'["Xây dựng giao diện React", "Tối ưu hiệu năng"]', N'Thành thạo React, Redux, API', N'["Lương 13 tháng", "Thưởng dự án"]', '2025-08-01', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyAId, N'Tester/QA Engineer', N'Công nghệ thông tin', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q1_News, N'123 Lê Lợi, Quận 1', 12000000, 18000000, 0, N'1-3 năm', '2025-05-05', N'["Viết test case", "Thực hiện kiểm thử"]', N'Hiểu biết quy trình test', N'["Bảo hiểm sức khỏe", "Team building"]', '2025-08-10', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyAId, N'Business Analyst', N'Công nghệ thông tin', 1, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q1_News, N'123 Lê Lợi, Quận 1', 18000000, 25000000, 0, N'3-5 năm', '2025-05-10', N'["Thu thập yêu cầu", "Phân tích, đặc tả"]', N'Kỹ năng phân tích, tiếng Anh tốt', N'["Dự án nước ngoài"]', '2025-08-15', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyAId, N'IT Helpdesk', N'Công nghệ thông tin', 2, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdHCM_Q1_News, N'123 Lê Lợi, Quận 1', 8000000, 12000000, 0, N'Dưới 1 năm', '2025-05-12', N'["Hỗ trợ người dùng", "Cài đặt, xử lý sự cố"]', N'Kiến thức cơ bản IT, nhiệt tình', N'["Đào tạo nghiệp vụ"]', '2025-08-18', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyAId, N'Kỹ sư Back-end Developer', N'Công nghệ thông tin', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q1_News, N'123 Lê Lợi, Quận 1', 18000000, 28000000, 0, N'1-3 năm', '2025-05-15', N'["Phát triển API", "Thiết kế database"]', N'Thành thạo NodeJS, Express, SQL', N'["Môi trường startup"]', '2025-08-20', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 2: Kế toán trưởng
-(2, N'Kế toán trưởng', N'Kế toán', 1, N'Trưởng phòng',
- N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 25000000, 35000000, 0,
- N'Trên 5 năm', '2025-05-10',
- N'["Quản lý hệ thống kế toán", "Lập báo cáo tài chính", "Phân tích chi phí doanh nghiệp"]',
- N'Tốt nghiệp đại học chuyên ngành kế toán, có chứng chỉ CPA là lợi thế, kinh nghiệm quản lý nhóm',
- N'["Thưởng theo hiệu quả công việc", "BHXH/BHYT đầy đủ", "Đào tạo nâng cao chuyên môn"]',
- '2025-06-20', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company B (TP.HCM Q3)
+(@companyBId, N'Content Marketing Executive', N'Marketing', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q3_News, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0, N'1-3 năm', '2025-05-01', N'["Viết bài PR", "Quản lý fanpage"]', N'Viết lách tốt, sáng tạo, SEO cơ bản', N'["Môi trường sáng tạo"]', '2025-08-05', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyBId, N'Digital Marketing Specialist', N'Marketing', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q3_News, N'45 Nguyễn Huệ, Quận 3', 15000000, 22000000, 0, N'3-5 năm', '2025-05-08', N'["Lập kế hoạch digital", "Chạy quảng cáo"]', N'Kinh nghiệm chạy quảng cáo, phân tích', N'["Thưởng hiệu quả chiến dịch"]', '2025-08-12', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyBId, N'Marketing Intern', N'Marketing', 4, N'Thực tập sinh', N'Thực tập', N'Sinh viên', @areaIdHCM_Q3_News, N'45 Nguyễn Huệ, Quận 3', 2000000, 4000000, 1, N'Không yêu cầu', '2025-05-15', N'["Hỗ trợ team", "Tìm hiểu thị trường"]', N'Nhiệt tình, ham học hỏi', N'["Hỗ trợ chi phí"]', '2025-08-20', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyBId, N'PR Executive', N'Marketing', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q3_News, N'45 Nguyễn Huệ, Quận 3', 12000000, 18000000, 0, N'1-3 năm', '2025-05-18', N'["Quan hệ báo chí", "Tổ chức sự kiện"]', N'Mạng lưới quan hệ, kỹ năng tổ chức', N'["Phụ cấp công tác"]', '2025-08-25', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyBId, N'Copywriter', N'Marketing', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q3_News, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0, N'1-3 năm', '2025-05-18', N'["Viết bài quảng cáo", "Slogan"]', N'Sáng tạo, khả năng dùng từ', N'["Thưởng sản phẩm"]', '2025-08-25', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 3: Sales Executive
-(3, N'Sales Executive', N'Sales Bán lẻ', 3, N'Nhân viên',
- N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 1,
- N'1-3 năm', '2025-05-15',
- N'["Tìm kiếm khách hàng tiềm năng", "Tư vấn bán hàng", "Chăm sóc khách hàng sau bán"]',
- N'Kỹ năng giao tiếp tốt, tinh thần làm việc nhóm cao, chủ động trong công việc',
- N'["Hoa hồng hấp dẫn", "Đào tạo kỹ năng bán hàng", "Cơ hội thăng tiến nhanh"]',
- '2025-06-30', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company C (TP.HCM Q10)
+(@companyCId, N'Investment Analyst', N'Tài chính', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q10_News, N'89 Trần Hưng Đạo, Quận 10', 15000000, 25000000, 0, N'1-3 năm', '2025-05-01', N'["Phân tích thị trường CK", "Đề xuất đầu tư"]', N'Kiến thức tài chính, chứng khoán', N'["Thưởng hiệu quả đầu tư"]', '2025-08-01', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyCId, N'Financial Controller', N'Tài chính', 1, N'Trưởng phòng', N'Toàn thời gian', N'Thạc sỹ', @areaIdHCM_Q10_News, N'89 Trần Hưng Đạo, Quận 10', 30000000, 45000000, 0, N'Trên 5 năm', '2025-05-05', N'["Kiểm soát tài chính", "Lập ngân sách"]', N'Kinh nghiệm quản lý tài chính', N'["Lương thưởng hấp dẫn"]', '2025-08-10', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyCId, N'Accountant', N'Kế toán', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q10_News, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 0, N'1-3 năm', '2025-05-10', N'["Hạch toán, đối chiếu", "Kê khai thuế"]', N'Thành thạo nghiệp vụ KT', N'["Môi trường chuyên nghiệp"]', '2025-08-15', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyCId, N'Financial Advisor', N'Tài chính', 5, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q10_News, N'89 Trần Hưng Đạo, Quận 10', 10000000, 15000000, 1, N'Không yêu cầu', '2025-05-12', N'["Tư vấn giải pháp tài chính"]', N'Giao tiếp, thuyết phục tốt', N'["Hoa hồng hấp dẫn"]', '2025-08-18', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyCId, N'Chuyên viên Quan hệ Khách hàng (RM)', N'Ngân hàng', 5, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHCM_Q10_News, N'89 Trần Hưng Đạo, Quận 10', 12000000, 18000000, 1, N'1-3 năm', '2025-05-20', N'["Quản lý danh mục KH", "Tư vấn SP ngân hàng"]', N'Ngoại hình khá, giao tiếp tốt', N'["Hoa hồng theo doanh số"]', '2025-08-30', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 4: Software Developer
-(1, N'Software Developer', N'Công nghệ thông tin', 5, N'Nhân viên',
- N'Toàn thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 15000000, 25000000, 0,
- N'1-3 năm', '2025-05-20',
- N'["Phát triển ứng dụng web", "Tối ưu code", "Sửa lỗi và nâng cấp hệ thống"]',
- N'Kiến thức về JavaScript, ReactJS, NodeJS, có kinh nghiệm làm việc với RESTful API',
- N'["Môi trường startup năng động", "Lương thưởng cạnh tranh", "Làm việc với công nghệ mới"]',
- '2025-07-01', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company D (Hà Nội Thanh Xuân)
+(@companyDId, N'Giáo viên Tiếng Anh', N'Giáo dục - Đào tạo', 5, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHN_TX_News, N'789 Giải Phóng, Thanh Xuân', 15000000, 25000000, 0, N'1-3 năm', '2025-05-01', N'["Giảng dạy theo giáo trình", "Kiểm tra học viên"]', N'Chứng chỉ giảng dạy, phát âm chuẩn', N'["Lương theo giờ dạy"]', '2025-08-01', N'Nguyễn Thị D', N'789 Giải Phóng, Quận Thanh Xuân', '0904567890', 'hr@companyd.edu.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyDId, N'Tư vấn Tuyển sinh', N'Giáo dục - Đào tạo', 3, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdHN_TX_News, N'789 Giải Phóng, Thanh Xuân', 8000000, 12000000, 1, N'Không yêu cầu', '2025-05-05', N'["Tiếp nhận thông tin", "Tư vấn khóa học"]', N'Ngoại hình ưa nhìn, kỹ năng tư vấn', N'["Thưởng doanh số"]', '2025-08-10', N'Nguyễn Thị D', N'789 Giải Phóng, Quận Thanh Xuân', '0904567890', 'hr@companyd.edu.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyDId, N'Trợ giảng', N'Giáo dục - Đào tạo', 5, N'Nhân viên', N'Bán thời gian', N'Sinh viên', @areaIdHN_TX_News, N'789 Giải Phóng, Thanh Xuân', 4000000, 6000000, 0, N'Không yêu cầu', '2025-05-08', N'["Hỗ trợ giáo viên", "Theo dõi lớp"]', N'Nhiệt tình, trách nhiệm', N'["Môi trường học thuật"]', '2025-08-15', N'Nguyễn Thị D', N'789 Giải Phóng, Quận Thanh Xuân', '0904567890', 'hr@companyd.edu.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyDId, N'Quản lý Trung tâm', N'Quản lý điều hành', 1, N'Trưởng phòng', N'Toàn thời gian', N'Đại học', @areaIdHN_TX_News, N'789 Giải Phóng, Thanh Xuân', 20000000, 30000000, 0, N'Trên 3 năm', '2025-05-10', N'["Quản lý vận hành", "Tuyển dụng"]', N'Kinh nghiệm quản lý giáo dục', N'["Thưởng kinh doanh"]', '2025-08-20', N'Nguyễn Thị D', N'789 Giải Phóng, Quận Thanh Xuân', '0904567890', 'hr@companyd.edu.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyDId, N'Giáo viên Toán', N'Giáo dục - Đào tạo', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHN_TX_News, N'789 Giải Phóng, Thanh Xuân', 15000000, 22000000, 0, N'1-3 năm', '2025-05-22', N'["Giảng dạy Toán"]', N'Chuyên ngành Toán, phương pháp tốt', N'["Lương theo giờ dạy"]', '2025-09-01', N'Nguyễn Thị D', N'789 Giải Phóng, Quận Thanh Xuân', '0904567890', 'hr@companyd.edu.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 5: Quản lý dự án xây dựng
-(2, N'Quản lý dự án xây dựng', N'Quản lý dự án xây dựng', 2, N'Trưởng dự án',
- N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 30000000, 50000000, 0,
- N'Trên 5 năm', '2025-05-25',
- N'["Lập kế hoạch dự án", "Quản lý nhân sự và nguồn lực", "Báo cáo tiến độ thực hiện"]',
- N'Bằng kỹ sư xây dựng, có chứng chỉ PMP, kinh nghiệm quản lý dự án lớn',
- N'["Lương thưởng cạnh tranh", "Phụ cấp dự án", "Cơ hội làm việc tại nhiều dự án lớn"]',
- '2025-07-10', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 6: Nhân viên kinh doanh
-(3, N'Nhân viên kinh doanh', N'Kinh doanh/ Bán hàng khác', 4, N'Nhân viên',
- N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 8000000, 12000000, 1,
- N'Không yêu cầu', '2025-06-01',
- N'["Tìm kiếm khách hàng mới", "Tư vấn giải pháp tài chính", "Thực hiện kế hoạch kinh doanh"]',
- N'Tốt nghiệp cao đẳng trở lên, ngoại hình ưa nhìn, giao tiếp tốt',
- N'["Thu nhập không giới hạn", "Đào tạo chuyên sâu", "Thưởng doanh số hàng tháng"]',
- '2025-07-15', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company E (Hà Nội Cầu Giấy)
+(@companyEId, N'Chuyên viên Tư vấn Chiến lược', N'Tư vấn', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Thạc sỹ', @areaIdHN_CG_News, N'101 Trần Duy Hưng, Cầu Giấy', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-01', N'["Phân tích thị trường", "Xây dựng mô hình"]', N'Phân tích xuất sắc, kinh nghiệm tư vấn', N'["Thưởng dự án", "Công tác nước ngoài"]', '2025-08-05', N'Phạm Văn E', N'101 Trần Duy Hưng, Quận Cầu Giấy', '0905678901', 'hr@companyeconsulting.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyEId, N'Research Analyst', N'Tư vấn', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHN_CG_News, N'101 Trần Duy Hưng, Cầu Giấy', 15000000, 22000000, 0, N'1-3 năm', '2025-05-05', N'["Thu thập, xử lý dữ liệu", "Báo cáo phân tích"]', N'Nghiên cứu, phân tích tốt', N'["Môi trường học hỏi cao"]', '2025-08-10', N'Phạm Văn E', N'101 Trần Duy Hưng, Quận Cầu Giấy', '0905678901', 'hr@companyeconsulting.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyEId, N'Management Trainee', N'Tư vấn', 5, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaIdHN_CG_News, N'101 Trần Duy Hưng, Cầu Giấy', 8000000, 12000000, 0, N'Không yêu cầu', '2025-05-10', N'["Luân chuyển phòng ban", "Tham gia dự án"]', N'Tốt nghiệp khá/giỏi, tiềm năng lãnh đạo', N'["Lộ trình thăng tiến"]', '2025-08-15', N'Phạm Văn E', N'101 Trần Duy Hưng, Quận Cầu Giấy', '0905678901', 'hr@companyeconsulting.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyEId, N'Tư vấn ERP', N'Tư vấn', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaIdHN_CG_News, N'101 Trần Duy Hưng, Cầu Giấy', 25000000, 40000000, 0, N'Trên 3 năm', '2025-05-25', N'["Phân tích yêu cầu ERP", "Tư vấn triển khai"]', N'Kinh nghiệm ERP, kiến thức quy trình DN', N'["Thưởng dự án lớn"]', '2025-09-05', N'Phạm Văn E', N'101 Trần Duy Hưng, Quận Cầu Giấy', '0905678901', 'hr@companyeconsulting.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 7: UI/UX Designer
-(1, N'UI/UX Designer', N'Marketing', 1, N'Nhân viên',
- N'Bán thời gian', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 15000000, 20000000, 0,
- N'1-3 năm', '2025-06-05',
- N'["Thiết kế giao diện người dùng", "Tạo prototype", "Nghiên cứu trải nghiệm người dùng"]',
- N'Thành thạo Figma, Adobe XD, có portfolio thiết kế UI/UX ấn tượng',
- N'["Giờ làm việc linh hoạt", "Môi trường sáng tạo", "Phụ cấp thiết bị"]',
- '2025-07-20', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company F (Đà Nẵng Hải Châu)
+(@companyFId, N'Hướng dẫn viên Du lịch', N'Du lịch', 10, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdDN_HC_News, N'200 Phan Châu Trinh, Đà Nẵng', 10000000, 15000000, 1, N'Dưới 1 năm', '2025-05-01', N'["Dẫn đoàn", "Giới thiệu địa điểm"]', N'Yêu du lịch, kiến thức văn hóa, giao tiếp', N'["Thưởng theo tour", "Cơ hội khám phá"]', '2025-08-01', N'Lê Thị F', N'200 Phan Châu Trinh, Quận Hải Châu', '0906789012', 'hr@companyftravel.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyFId, N'Nhân viên Lễ tân Khách sạn', N'Nhà hàng - Khách sạn', 5, N'Nhân viên', N'Toàn thời gian', N'Trung cấp', @areaIdDN_HC_News, N'Khách sạn ven biển, Đà Nẵng', 8000000, 12000000, 0, N'Không yêu cầu', '2025-05-05', N'["Check-in/out", "Giải quyết yêu cầu"]', N'Ngoại hình khá, giao tiếp TA cơ bản', N'["Phụ cấp ca đêm"]', '2025-08-10', N'Lê Thị F', N'200 Phan Châu Trinh, Quận Hải Châu', '0906789012', 'hr@companyftravel.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyFId, N'Điều hành Tour', N'Du lịch', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdDN_HC_News, N'200 Phan Châu Trinh, Đà Nẵng', 12000000, 18000000, 0, N'1-3 năm', '2025-05-10', N'["Lập kế hoạch tour", "Liên hệ đối tác"]', N'Tổ chức, đàm phán tốt', N'["Thưởng theo tour"]', '2025-08-15', N'Lê Thị F', N'200 Phan Châu Trinh, Quận Hải Châu', '0906789012', 'hr@companyftravel.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyFId, N'Nhân viên Kinh doanh Tour', N'Du lịch', 5, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdDN_HC_News, N'200 Phan Châu Trinh, Đà Nẵng', 8000000, 12000000, 1, N'Không yêu cầu', '2025-05-28', N'["Tìm khách hàng tour", "Tư vấn, chốt sales"]', N'Kỹ năng bán hàng, giao tiếp, đam mê DL', N'["Hoa hồng tour"]', '2025-09-10', N'Lê Thị F', N'200 Phan Châu Trinh, Quận Hải Châu', '0906789012', 'hr@companyftravel.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 8: Kế toán viên
-(2, N'Kế toán viên', N'Kế toán', 2, N'Nhân viên',
- N'Toàn thời gian', N'Thạc sỹ', 2, N'45 Nguyễn Huệ, Quận 3', 10000000, 15000000, 0,
- N'1 năm', '2025-06-10',
- N'["Hạch toán chứng từ", "Kiểm tra hóa đơn", "Lập báo cáo thuế hàng tháng"]',
- N'Tốt nghiệp chuyên ngành kế toán, sử dụng thành thạo phần mềm kế toán Misa, Fast',
- N'["Môi trường làm việc chuyên nghiệp", "Thưởng lễ tết đầy đủ", "Đào tạo nâng cao chuyên môn"]',
- '2025-07-25', N'Trần Thị B', N'45 Nguyễn Huệ, Quận 3', '0902345678', 'hr@companyb.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company G (Hải Phòng Ngô Quyền)
+(@companyGId, N'Nhân viên Xuất nhập khẩu', N'Xuất nhập khẩu', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdHP_NQ_News, N'300 Lê Hồng Phong, Hải Phòng', 10000000, 16000000, 0, N'1-3 năm', '2025-05-01', N'["Làm thủ tục hải quan", "Liên hệ hãng tàu"]', N'Hiểu biết Incoterms, chứng từ XNK, TA', N'["Phụ cấp", "BHXH đầy đủ"]', '2025-08-01', N'Trần Văn G', N'300 Lê Hồng Phong, Quận Ngô Quyền', '0907890123', 'hr@companyglogistics.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyGId, N'Nhân viên Giao nhận (Forwarder)', N'Logistics', 5, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdHP_NQ_News, N'300 Lê Hồng Phong, Hải Phòng', 8000000, 12000000, 0, N'Dưới 1 năm', '2025-05-05', N'["Theo dõi đơn hàng", "Làm việc khách hàng"]', N'Nhanh nhẹn, giao tiếp tốt', N'["Thưởng năng suất"]', '2025-08-10', N'Trần Văn G', N'300 Lê Hồng Phong, Quận Ngô Quyền', '0907890123', 'hr@companyglogistics.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyGId, N'Tổ trưởng Kho', N'Kho vận', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Trung cấp', @areaIdHP_TN_News, N'Khu công nghiệp, Thủy Nguyên', 12000000, 18000000, 0, N'Trên 3 năm', '2025-05-10', N'["Quản lý nhập xuất tồn", "Giám sát nhân viên"]', N'Kinh nghiệm quản lý kho', N'["Phụ cấp trách nhiệm"]', '2025-08-15', N'Trần Văn G', N'300 Lê Hồng Phong, Quận Ngô Quyền', '0907890123', 'hr@companyglogistics.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyGId, N'Nhân viên Vận hành Cảng', N'Logistics', 10, N'Nhân viên', N'Toàn thời gian', N'Trung cấp', @areaIdHP_NQ_News, N'Cảng biển, Hải Phòng', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-06-01', N'["Giám sát xếp dỡ", "Làm việc với tàu"]', N'Chịu khó, làm việc ca', N'["Phụ cấp ca", "Thưởng NS"]', '2025-09-15', N'Trần Văn G', N'300 Lê Hồng Phong, Quận Ngô Quyền', '0907890123', 'hr@companyglogistics.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 9: Giám đốc điều hành
-(3, N'Giám đốc điều hành', N'Quản lý điều hành', 1, N'Giám đốc điều hành',
- N'Toàn thời gian', N'Thạc sỹ', 3, N'89 Trần Hưng Đạo, Quận 10', 50000000, 70000000, 1,
- N'Trên 5 năm', '2025-06-15',
- N'["Xây dựng chiến lược công ty", "Quản lý hoạt động kinh doanh", "Phát triển đội ngũ nhân sự"]',
- N'Kinh nghiệm quản lý doanh nghiệp, kỹ năng lãnh đạo xuất sắc, tư duy chiến lược',
- N'["Lương thưởng hấp dẫn", "Quyền lợi cổ đông", "Xe công ty riêng"]',
- '2025-07-30', N'Lê Văn C', N'89 Trần Hưng Đạo, Quận 10', '0903456789', 'hr@companyc.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+-- Tin cho Company H (Cần Thơ Ninh Kiều)
+(@companyHId, N'Kỹ sư Nông nghiệp', N'Nông - Lâm - Ngư nghiệp', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdCT_NK_News, N'400 Mậu Thân, Cần Thơ', 10000000, 15000000, 0, N'1-3 năm', '2025-05-01', N'["Nghiên cứu giống", "Giám sát canh tác"]', N'Chuyên ngành Nông nghiệp', N'["Phụ cấp công tác"]', '2025-08-01', N'Huỳnh Thị H', N'400 Mậu Thân, Quận Ninh Kiều', '0908901234', 'hr@companyhfood.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyHId, N'Nhân viên KCS', N'Chất lượng', 4, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdCT_NK_News, N'Khu chế biến, Cần Thơ', 8000000, 12000000, 0, N'Dưới 1 năm', '2025-05-05', N'["Kiểm tra nguyên liệu", "Kiểm thành phẩm"]', N'Cẩn thận, tiêu chuẩn thực phẩm', N'["Thưởng năng suất"]', '2025-08-10', N'Huỳnh Thị H', N'400 Mậu Thân, Quận Ninh Kiều', '0908901234', 'hr@companyhfood.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyHId, N'Nhân viên Kinh doanh Xuất khẩu', N'Kinh doanh quốc tế', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdCT_NK_News, N'400 Mậu Thân, Cần Thơ', 15000000, 25000000, 1, N'1-3 năm', '2025-05-10', N'["Tìm KH nước ngoài", "Đàm phán"]', N'Tiếng Anh lưu loát, đàm phán', N'["Hoa hồng xuất khẩu"]', '2025-08-15', N'Huỳnh Thị H', N'400 Mậu Thân, Quận Ninh Kiều', '0908901234', 'hr@companyhfood.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyHId, N'Chuyên viên Phát triển Sản phẩm Nông nghiệp', N'Nông - Lâm - Ngư nghiệp', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdCT_NK_News, N'400 Mậu Thân, Cần Thơ', 12000000, 18000000, 0, N'1-3 năm', '2025-06-05', N'["Nghiên cứu thị trường", "Phát triển SP mới"]', N'Sáng tạo, am hiểu thị trường', N'["Thưởng SP mới"]', '2025-09-20', N'Huỳnh Thị H', N'400 Mậu Thân, Quận Ninh Kiều', '0908901234', 'hr@companyhfood.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
 
--- Tin tuyển dụng 10: Thực tập sinh Marketing
-(1, N'Thực tập sinh Marketing', N'Marketing', 5, N'Thực tập sinh',
- N'Thực tập', N'Thạc sỹ', 1, N'123 Lê Lợi, Quận 1', 0, 5000000, 1,
- N'Không yêu cầu', '2025-06-20',
- N'["Hỗ trợ viết content", "Quản lý social media", "Thực hiện các nhiệm vụ marketing cơ bản"]',
- N'Sinh viên năm cuối chuyên ngành Marketing, có sự sáng tạo và nhiệt huyết',
- N'["Hỗ trợ ăn trưa", "Cơ hội học hỏi thực tế", "Cơ hội trở thành nhân viên chính thức"]',
- '2025-08-01', N'Nguyễn Văn A', N'123 Lê Lợi, Quận 1', '0901234567', 'hr@companya.com',
- NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED');
+-- Tin cho Company I (Bình Dương Thuận An)
+(@companyIId, N'Công nhân Kỹ thuật', N'Kỹ thuật ứng dụng', 20, N'Nhân viên', N'Toàn thời gian', N'Trung cấp', @areaIdBD_TA_News, N'KCN VSIP I, Thuận An', 8000000, 12000000, 0, N'Không yêu cầu', '2025-05-01', N'["Vận hành máy", "Kiểm tra sản phẩm"]', N'Chịu khó, kỷ luật', N'["Phụ cấp độc hại", "Thưởng NS"]', '2025-08-01', N'Trần Văn I', N'KCN VSIP I, Thành phố Thuận An', '0909012345', 'hr@companyimanufacturing.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyIId, N'Kỹ sư Cơ khí', N'Cơ khí', 5, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdBD_TA_News, N'KCN VSIP I, Thuận An', 15000000, 25000000, 0, N'1-3 năm', '2025-05-05', N'["Thiết kế chi tiết", "Giám sát lắp đặt"]', N'Thành thạo phần mềm thiết kế', N'["Môi trường chuyên nghiệp"]', '2025-08-10', N'Trần Văn I', N'KCN VSIP I, Thành phố Thuận An', '0909012345', 'hr@companyimanufacturing.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyIId, N'Quản lý Sản xuất', N'Quản lý sản xuất', 1, N'Trưởng phòng', N'Toàn thời gian', N'Đại học', @areaIdBD_TA_News, N'KCN VSIP I, Thuận An', 25000000, 40000000, 0, N'Trên 5 năm', '2025-05-10', N'["Lập kế hoạch SX", "Quản lý chuyền"]', N'Kinh nghiệm quản lý SX', N'["Thưởng hiệu quả SX"]', '2025-08-15', N'Trần Văn I', N'KCN VSIP I, Thành phố Thuận An', '0909012345', 'hr@companyimanufacturing.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyIId, N'Chuyên viên Mua hàng', N'Thu mua', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdBD_TA_News, N'KCN VSIP I, Thuận An', 10000000, 15000000, 0, N'1-3 năm', '2025-05-12', N'["Tìm NCC", "Đàm phán giá"]', N'Kỹ năng đàm phán', N'["Phụ cấp ĐT"]', '2025-08-18', N'Trần Văn I', N'KCN VSIP I, Thành phố Thuận An', '0909012345', 'hr@companyimanufacturing.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyIId, N'Kỹ sư Điện - Điện tử', N'Điện - Điện tử', 7, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdBD_TA_News, N'KCN VSIP I, Thuận An', 15000000, 25000000, 0, N'1-3 năm', '2025-06-08', N'["Thiết kế mạch", "Kiểm tra linh kiện"]', N'Chuyên ngành ĐĐTT, phần mềm thiết kế', N'["Công nghệ cao"]', '2025-09-25', N'Trần Văn I', N'KCN VSIP I, Thành phố Thuận An', '0909012345', 'hr@companyimanufacturing.com', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+
+-- Tin cho Company J (Nghệ An TP. Vinh)
+(@companyJId, N'Công nhân Xây dựng', N'Xây dựng', 15, N'Nhân viên', N'Toàn thời gian', N'Lao động phổ thông', @areaIdNA_TPV_News, N'Công trình, TP. Vinh', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-01', N'["Thi công công trình"]', N'Sức khỏe tốt, chịu khó', N'["Phụ cấp công trường"]', '2025-08-01', N'Nguyễn Văn J', N'500 Quang Trung, Thành phố Vinh', '0910123456', 'hr@companyjconstruction.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyJId, N'Kỹ sư Xây dựng', N'Xây dựng', 5, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdNA_TPV_News, N'Công trình, TP. Vinh', 15000000, 25000000, 0, N'1-3 năm', '2025-05-05', N'["Giám sát thi công", "Tính toán kết cấu"]', N'Chuyên ngành XD, phần mềm thiết kế', N'["Thưởng dự án"]', '2025-08-10', N'Nguyễn Văn J', N'500 Quang Trung, Thành phố Vinh', '0910123456', 'hr@companyjconstruction.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyJId, N'Giám sát An toàn Lao động', N'An toàn lao động', 2, N'Nhân viên', N'Toàn thời gian', N'Cao đẳng', @areaIdNA_TPV_News, N'Công trình, TP. Vinh', 10000000, 15000000, 0, N'1-3 năm', '2025-05-10', N'["Kiểm tra ATLĐ", "Huấn luyện AT"]', N'Chứng chỉ ATLĐ, kinh nghiệm hiện trường', N'["Phụ cấp độc hại"]', '2025-08-15', N'Nguyễn Văn J', N'500 Quang Trung, Thành phố Vinh', '0910123456', 'hr@companyjconstruction.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED'),
+(@companyJId, N'Nhân viên Dự án', N'Quản lý dự án', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaIdNA_TPV_News, N'500 Quang Trung, TP. Vinh', 12000000, 18000000, 0, N'1-3 năm', '2025-05-15', N'["Hỗ trợ quản lý dự án", "Theo dõi tiến độ"]', N'Kỹ năng tổ chức, giao tiếp tốt', N'["Thưởng dự án"]', '2025-08-20', N'Nguyễn Văn J', N'500 Quang Trung, Thành phố Vinh', '0910123456', 'hr@companyjconstruction.vn', NULL, SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'), N'APPROVED');
+
+GO

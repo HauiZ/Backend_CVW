@@ -34,7 +34,7 @@ import { postRecruitmentNews, getApplicant, approvedApplication, getNotification
  *               - workDetail
  *               - jobRequirements
  *               - benefits
- *               - applicationDealine
+ *               - applicationDeadline
  *               - contactInfo
  *               - contactAddress
  *               - contactPhone
@@ -69,10 +69,10 @@ import { postRecruitmentNews, getApplicant, approvedApplication, getNotification
  *                 example: Số 1, Trần Duy Hưng, Cầu Giấy, Hà Nội
  *               salaryMin:
  *                 type: integer
- *                 example: 1500
+ *                 example: 15000000
  *               salaryMax:
  *                 type: integer
- *                 example: 2500
+ *                 example: 25000000
  *               salaryNegotiable:
  *                 type: boolean
  *                 example: true
@@ -97,7 +97,7 @@ import { postRecruitmentNews, getApplicant, approvedApplication, getNotification
  *                   bonus: "Thưởng Tết"
  *                   insurance: true
  *                   activities: ["Team building", "Du lịch"]
- *               applicationDealine:
+ *               applicationDeadline:
  *                 type: string
  *                 format: date
  *                 example: 2025-06-30

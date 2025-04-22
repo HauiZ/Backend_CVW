@@ -40,6 +40,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
             sender: companyName.name,
             typeOf: messages.recruitmentNews.typeof.RECRUITMENT_NEWS,
             status: messages.recruitmentNews.status.PENDING,
+            isReviewed: false,
         }, { transaction })
         await transaction.commit();
         return { status: 200, data: { message: messages.recruitmentNews.POST_SUCCESS } };

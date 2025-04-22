@@ -103,9 +103,15 @@ const deleteAUser = async (userId) => {
     }
 };
 
-const getRequest = async () => {
+const getRequest = async (filterData) => {
     try {
-        const requests = await Request.findAll();
+        const { status, isReviewed } = filterData;
+        const whereCondition = {};
+        if (status !== undefined) whereCondition.status = status;
+        if (isReviewed !== undefined) whereCondition.isReviewed = isReviewed;
+        const requests = await Request.findAll({
+            where: whereCondition
+        });
         const requestList = requests.map(request => {
             const data = request.toJSON();
             return {
@@ -144,7 +150,7 @@ const approveRecruitment = async (requestId, status) => {
             title: 'Job Posting Status Notifications',
             content: content,
         });
-        await request.destroy();
+        await request.update({ status: status, isReviewed: true });
         return { status: 200, data: { message: messages.recruitmentNews.UPDATE_SUCCESS } };
     } catch (error) {
         console.log(error)

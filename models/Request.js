@@ -32,6 +32,10 @@ Request.init({
     status: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    isReviewed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
     }
 }, {
     sequelize,
