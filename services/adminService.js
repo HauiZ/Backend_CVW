@@ -10,19 +10,41 @@ import CompanyUser from '../models/CompanyUser.js';
 import uploadToDrive from '../helper/uploadFile.js';
 import CVTemplate from '../models/CVTemplate.js';
 import Notification from '../models/Notification.js';
+import { Op } from 'sequelize';
 
-const getAllUsers = async () => {
+const getAllUsers = async (userId) => {
     try {
         const users = await User.findAll({
             attributes: { exclude: ["password"] },
-            include: [{ model: Role, attributes: ["name"] }]
+            include: [
+                { model: Role, attributes: ["name"] },
+                { model: CompanyUser, attributes: ["logoUrl"] },
+                { model: PersonalUser, attributes: ["avatarUrl"] },
+            ],
+            where: { id: { [Op.ne]: userId } }
         });
 
         if (!users.length) {
             return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } };
         }
 
-        const userList = users.map(user => ({ id: user.id, email: user.email, role: user.Role.name }));
+        const userList = users.map(user => {
+            const userData = {
+                id: user.id,
+                email: user.email,
+                role: user.Role.name,
+                imageUrl: null
+            };
+
+            if (user.Role.name === 'candidate') {
+                userData.imageUrl = user.PersonalUser.avatarUrl;
+            } else if (user.Role.name === 'recruiter') {
+                if (user.Company) {
+                    userData.imageUrl = user.CompanyUser.logoUrl;
+                }
+            }
+            return userData;
+        });
         return { status: 200, data: { message: messages.user.GET_INFO, users: userList } };
 
     } catch (error) {

@@ -18,7 +18,7 @@ const router = express.Router();
  *        description: role cần đăng nhập.
  *        schema:
  *          type: string
- *          enum: [candidate, recruiter]
+ *          enum: [candidate, recruiter, admin]
  *     requestBody:
  *       required: true
  *       content:

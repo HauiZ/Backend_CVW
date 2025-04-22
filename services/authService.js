@@ -8,25 +8,6 @@ import messages from '../config/message.js';
 
 const loginUser = async (email, password, roleName) => {
     try {
-        const adminUser = await User.findOne({
-            where: { email },
-            include: [{ model: Role, attributes: ["name"], where: {name: 'admin'} }]
-        });
-        if (adminUser) {
-            const token = jwt.sign(
-                { id: adminUser.id, email: adminUser.email },
-                process.env.JWT_SECRET,
-                { expiresIn: "1h" }
-            );
-    
-            return {
-                status: 200,
-                data: {
-                    message: messages.auth.LOGIN_SUCCESS,
-                    token,
-                }
-            };
-        }
         const user = await User.findOne({
             where: { email },
             include: [{ model: Role, attributes: ["name"], where: {name: roleName} }]

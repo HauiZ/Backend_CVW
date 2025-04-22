@@ -38,7 +38,7 @@ const getAllRecruitmentNews = async () => {
 
 const filterAllRecruitmentNews = async (filterData) => {
     try {
-        const { keyword, profession, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
+        const { currentNewsId, keyword, profession, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
         const whereCondition = {};
         const orderCondition = [];
         const includeOptions = [];
@@ -117,8 +117,16 @@ const filterAllRecruitmentNews = async (filterData) => {
 
         orderCondition.push([orderBy, orderDirection]);
 
+        let currentId = null;
+        if (currentNewsId) {
+            currentId = currentNewsId
+        }
+
         const jobs = await RecruitmentNews.findAll({
-            where: whereCondition,
+            where: {
+                ...whereCondition,
+                id: { [Op.ne]: currentId }
+            },
             order: orderCondition,
             include: includeOptions,
             attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],

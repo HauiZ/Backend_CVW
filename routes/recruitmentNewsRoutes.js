@@ -27,6 +27,12 @@ router.get('/getRecruitmentNews', getRecruitmentNews);
  *      - bearerAuth: []
  *     parameters:
  *       - in: query
+ *         name: currentNewsId
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID tin tuyển dụng hiện tại.
+ *       - in: query
  *         name: keyword
  *         schema:
  *           type: string
