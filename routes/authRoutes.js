@@ -39,7 +39,7 @@ const router = express.Router();
 router.post('/auth/login/:roleName', login);
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'], session: false})
+  passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account', session: false})
 );
 
 router.get('/auth/google/callback',

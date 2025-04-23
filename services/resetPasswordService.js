@@ -67,6 +67,7 @@ const sendOTPCode = async (userEmail, roleName) => {
         }
         return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
+        console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 
