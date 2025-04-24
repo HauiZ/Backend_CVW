@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import authService from '../services/authService.js';
 import messages from '../config/message.js';
-import { generateAccessToken } from '../utils/generateToken.js';
+import { generateAccessToken, generateRefreshToken } from '../utils/generateToken.js';
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -19,11 +19,31 @@ export const login = async (req, res) => {
       secure: true, // chỉ gửi qua HTTPS
       sameSite: "Strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: "/"
     });
     return res.status(result.status).json({ message: result.data.message, token: result.data.accessToken });
   } catch (error) {
-    console.error("Lỗi đăng nhập (controller):", error);
+    console.error(error);
     res.status(500).json({ message: messages.error.ERR_INTERNAL });
+  }
+};
+
+export const logout = (req, res) => {
+  try {
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "Strict",
+      path: "/" // Đảm bảo path giống với khi bạn tạo cookie
+    });
+    
+    return res.status(200).json({
+      success: true,
+      message: "Đăng xuất thành công"
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: messages.error.ERR_INTERNAL});
   }
 };
 
@@ -43,16 +63,20 @@ export const refreshToken = (req, res) => {
 export const googleCallback = async (req, res) => {
   try {
     const user = req.user;
-
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    res.redirect(`http://localhost:5173/authsuccess?token=${token}`);
+    const payload = { id: user.id, email: user.email };
+    const token = generateAccessToken(payload);
+    const refreshToken = generateRefreshToken(payload);
+    // Lưu refreshToken vào cookie
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: true, // chỉ gửi qua HTTPS
+      sameSite: "Strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: "/"
+    });
+    return res.redirect(`http://localhost:5173/authsuccess?token=${token}`);
   } catch (error) {
-    console.error('Lỗi trong quá trình xác thực Google:', error);
+    console.error(error);
     res.status(500).json({ message: messages.error.ERR_INTERNAL });
   }
 };

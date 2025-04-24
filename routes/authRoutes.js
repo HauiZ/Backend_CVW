@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import { googleCallback, login, refreshToken } from '../controllers/authController.js';
+import { googleCallback, login, logout , refreshToken } from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -37,6 +37,8 @@ const router = express.Router();
  *         description: Đăng nhập thành công
  */
 router.post('/auth/login/:roleName', login);
+
+router.post('/auth/logout', logout)
 
 router.post('/refresh-token', refreshToken);
 
