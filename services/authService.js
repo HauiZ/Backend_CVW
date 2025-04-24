@@ -5,12 +5,13 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 import messages from '../config/message.js';
+import { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
 
 const loginUser = async (email, password, roleName) => {
     try {
         const user = await User.findOne({
             where: { email },
-            include: [{ model: Role, attributes: ["name"], where: {name: roleName} }]
+            include: [{ model: Role, attributes: ["name"], where: { name: roleName } }]
         });
 
         if (!user) {
@@ -21,21 +22,20 @@ const loginUser = async (email, password, roleName) => {
             return { status: 401, data: { message: messages.auth.ERR_WRONG_ACCOUNT_OR_PASSWORD } };
         }
 
-        const token = jwt.sign(
-            { id: user.id, email: user.email },
-            process.env.JWT_SECRET,
-            { expiresIn: "1h" }
-        );
+        const payload = { id: user.id, email: user.email };
+        const accessToken = generateAccessToken(payload);
+        const refreshToken = generateRefreshToken(payload);
 
         return {
             status: 200,
             data: {
                 message: messages.auth.LOGIN_SUCCESS,
-                token,
+                accessToken,
+                refreshToken,
             }
         };
     } catch (error) {
-        return { status: 500, data: { message: messages.error.ERR_INTERNAL} };
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 

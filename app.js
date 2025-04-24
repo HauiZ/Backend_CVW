@@ -8,6 +8,7 @@ import { swaggerUi, swaggerSpec } from './config/swaggerConfig.js';
 import userRoutes from './routes/userRoutes.js';
 import recruitmentNewsRoutes from './routes/recruitmentNewsRoutes.js';
 import passport from 'passport';
+import cookieParser from "cookie-parser";
 import authRoutes from './routes/authRoutes.js';
 import './config/passport.js';
 import corsOptions from './config/corsConfig.js';
@@ -19,6 +20,7 @@ import recruiterRoutes from './routes/recruiterRoutes.js';
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 app.use(securityHeaders);
 app.use(cors(corsOptions));
 app.use(passport.initialize());

@@ -2,7 +2,6 @@ import User from '../models/User.js';
 import Role from '../models/Role.js';
 import PersonalUser from '../models/PersonalUser.js';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import CompanyUser from '../models/CompanyUser.js';
 import Area from '../models/Area.js';
 import sequelize from '../config/database.js';
@@ -50,8 +49,7 @@ const registerUser = async (userData, roleName) => {
 
         const user = await User.create({ email, password, typeAccount: 'LOCAL' }, { transaction });
         await user.setRole(role, { transaction });
-        const token = jwt.sign({ id: user.id, email: user.email, role: role.name }, process.env.JWT_SECRET, { expiresIn: "1h" });
-        const responseData = { message: messages.user.USER_CREATED_SUCCESSFULLY, token };
+        const responseData = { message: messages.user.USER_CREATED_SUCCESSFULLY };
 
         if (roleName === "candidate") {
             await PersonalUser.create({ userId: user.id, name: userName, email }, { transaction });
