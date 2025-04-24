@@ -65,7 +65,7 @@ const deleteAUser = async (userId) => {
             return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } }
         }
         if (userToDelete.Role.name === 'admin') {
-            return { status: 201, data: { message: messages.error.ERR_DELETE_ADMIN } }
+            return { status: 409, data: { message: messages.error.ERR_DELETE_ADMIN } }
         }
         const cvFilesToDelete = await CvFiles.findAll({
             where: {
@@ -173,7 +173,7 @@ const uploadCvTemplate = async (data, file) => {
             })
             return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
         }
-        return { status: 200, data: { message: messages.file.UPLOAD_FAILED } };
+        return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

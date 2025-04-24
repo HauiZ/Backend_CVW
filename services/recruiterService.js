@@ -113,7 +113,7 @@ const getApplicant = async (userId, recruitmentNewsId, status) => {
             }).sort((a, b) => a.recruitmentNewsId - b.recruitmentNewsId);
             return { status: 200, data: data };
         }
-        return { status: 200, data: messages.application.NO_APPLICANT };
+        return { status: 204, data: messages.application.NO_APPLICANT };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }

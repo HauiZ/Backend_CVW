@@ -28,7 +28,7 @@ const forgotPassword = async (dataUser, roleName) => {
             await user.update({ password: newPassword, otpCode: null, otpExpiresAt: null });
             return { status: 200, data: { message: messages.auth.UPDATE_PASSWORD_SUCCESS } };
         }
-        return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
+        return { status: 404, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
         console.error("Lỗi server(service):", error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -65,7 +65,7 @@ const sendOTPCode = async (userEmail, roleName) => {
             await user.update({ otpCode: otpCode, otpExpiresAt: expiresAt });
             return { status: 200, data: { message: messages.mail.SEND_OTP_SUCCESS } };
         }
-        return { status: 400, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
+        return { status: 404, data: { message: messages.auth.ERR_EXISTS_EMAIL } };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

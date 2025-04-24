@@ -142,10 +142,10 @@ const changeProfile = async (userId, dataProfile) => {
     try {
         const { name, phone, province, district, domain, companyAddress, field, companySize, website, introduction } = dataProfile;
         if (!name) {
-            return { status: 201, data: { message: messages.user.BLANK_NAME } };
+            return { status: 400, data: { message: messages.user.BLANK_NAME } };
         }
         if (!province || !district || !domain) {
-            return { status: 201, data: { message: messages.user.BLANK_AREA } };
+            return { status: 400, data: { message: messages.user.BLANK_AREA } };
         }
         const user = await User.findByPk(userId, {
             include: [{ model: Role, attributes: ['name'] }]
