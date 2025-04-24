@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBorad } from "../controllers/adminController.js";
+import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBoard } from "../controllers/adminController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import upload from '../middleware/uploadFile.js';
 
@@ -146,7 +146,7 @@ router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.imageUpload.s
 
 /**
  * @swagger
- * /api/admin/getDataDashBorad:
+ * /api/admin/getDataDashBoard:
  *   get:
  *     summary: Lấy thông tin Dashboard
  *     tags: [Admin]
@@ -157,6 +157,6 @@ router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.imageUpload.s
  *       200:
  *         description: Success
  */
-router.get('/getDataDashBorad', authMiddleware(['admin']), getDataDashBorad);
+router.get('/getDataDashBoard', authMiddleware(['admin']), getDataDashBoard);
 
 export default router;

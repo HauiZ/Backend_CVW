@@ -180,7 +180,7 @@ const uploadCvTemplate = async (data, file) => {
     }
 };
 
-const getDataDashBorad = async () => {
+const getDataDashBoard = async () => {
     try {
         const data = {
             user: await User.count(),
@@ -207,4 +207,4 @@ const getDataDashBorad = async () => {
     }
 }
 
-export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBorad };
+export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard };
