@@ -3,7 +3,7 @@ import messages from "../config/message.js";
 
 export const getUsers = async (req, res) => {
     try {
-        const result = await adminService.getAllUsers(req.user.id);
+        const result = await adminService.getAllUsers(req.user.id, req.query);
         res.status(result.status).json(result.data);
     } catch (error) {
         console.error("Lỗi lấy danh sách người dùng (controller):", error);

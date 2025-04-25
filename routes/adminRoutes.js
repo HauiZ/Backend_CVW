@@ -13,6 +13,12 @@ import upload from '../middleware/uploadFile.js';
  *     description: API lấy thông tin người dùng (cần xác thực)
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: roleName
+ *         schema:
+ *           type: string
+ *           enum: [candidate, recruiter]
  *     responses:
  *       200:
  *         description: Success

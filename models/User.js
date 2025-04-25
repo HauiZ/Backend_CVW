@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import Role from './Role.js';
 
-class User extends Model {}
+class User extends Model { }
 
 User.init({
     id: {
@@ -33,6 +33,11 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    createAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+    },
     otpCode: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -44,8 +49,8 @@ User.init({
 }, {
     sequelize,
     modelName: 'User',
-    tableName: 'Users', 
-    timestamps: false, 
+    tableName: 'Users',
+    timestamps: false,
 });
 
 export default User;

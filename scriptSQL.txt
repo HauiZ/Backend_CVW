@@ -113,20 +113,20 @@ DECLARE @recruiterRoleId INT = (SELECT id FROM Role WHERE name = 'recruiter');
 
 IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'admin@gmail.com')
 BEGIN
-    INSERT INTO Users (roleId, email, password, typeAccount)
-    VALUES (@adminRoleId, 'admin@gmail.com', 'Pass1@', 'LOCAL');
+    INSERT INTO Users (roleId, email, password, typeAccount, createAt)
+    VALUES (@adminRoleId, 'admin@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
 END
 
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company1@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company1@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company2@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company2@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company3@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company3@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company4@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company4@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company5@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company5@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company6@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company6@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company7@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company7@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company8@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company8@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company9@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company9@gmail.com', 'Pass1@', 'LOCAL');
-IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company10@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount) VALUES (@recruiterRoleId, 'company10@gmail.com', 'Pass1@', 'LOCAL');
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company1@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company1@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company2@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company2@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company3@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company3@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company4@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company4@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company5@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company5@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company6@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company6@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company7@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company7@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company8@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company8@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company9@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company9@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'company10@gmail.com') INSERT INTO Users (roleId, email, password, typeAccount, createAt) VALUES (@recruiterRoleId, 'company10@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
 GO
 
 -- =============================================
