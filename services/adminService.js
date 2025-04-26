@@ -88,14 +88,14 @@ const deleteAUser = async (userId) => {
             }
         }
 
-        if (userToDelete.PersonalUser.avatarId !== null) {
+        if (userToDelete.PersonalUser && userToDelete.PersonalUser.avatarId !== null) {
             const googleDriveFileId = userToDelete.PersonalUser.avatarId;
             await drive.files.delete({
                 fileId: googleDriveFileId
             },);
         }
 
-        if (userToDelete.CompanyUser.logoId !== null) {
+        if (userToDelete.CompanyUser && userToDelete.CompanyUser.logoId !== null) {
             const googleDriveFileId = userToDelete.PersonalUser.logoId;
             await drive.files.delete({
                 fileId: googleDriveFileId
