@@ -11,10 +11,12 @@ import uploadToDrive from '../helper/uploadFile.js';
 import CVTemplate from '../models/CVTemplate.js';
 import Notification from '../models/Notification.js';
 import { Op } from 'sequelize';
+import drive from '../config/googleDrive/driveconfig.js';
+import JobApplication from '../models/JobApplication.js';
 
 const getAllUsers = async (userId, filterRole) => {
     try {
-        const {roleName} = filterRole;
+        const { roleName } = filterRole;
         const includeOptions = [
             { model: Role, attributes: ["name"] },
             { model: CompanyUser, attributes: ["logoUrl"] },
@@ -78,6 +80,32 @@ const deleteAUser = async (userId) => {
                 personalId: userId
             },
         });
+
+        if (cvFilesToDelete && cvFilesToDelete.length > 0) {
+            for (const cvFile of cvFilesToDelete) {
+                await JobApplication.destroy({
+                    where: {
+                        cvId: cvFile.id
+                    }
+                })
+            }
+        }
+
+        const recruitmentNews = await RecruitmentNews.findAll({
+            where: {
+                companyId: userId
+            }
+        });
+
+        if (recruitmentNews && recruitmentNews.length > 0) {
+            for (const news of recruitmentNews) {
+                await JobApplication.destroy({
+                    where: {
+                        recruitmentNewsId: news.id
+                    }
+                })
+            }
+        }
 
         if (cvFilesToDelete && cvFilesToDelete.length > 0) {
             for (const cvFile of cvFilesToDelete) {
