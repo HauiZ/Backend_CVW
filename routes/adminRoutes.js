@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBoard } from "../controllers/adminController.js";
+import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate } from "../controllers/adminController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import upload from '../middleware/uploadFile.js';
 
@@ -80,7 +80,7 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
 /**
  * @swagger
  * /api/admin/approveRecruitment/{id}:
- *   patch:
+ *   post:
  *     summary: Duyệt tin tuyển dụng
  *     tags: [Admin]
  *     security:
@@ -110,7 +110,7 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
  *       200:
  *         description: Duyệt tin tuyển dụng thành công
  */
-router.patch('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruitment);
+router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruitment);
 
 /**
  * @swagger
@@ -165,4 +165,42 @@ router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.imageUpload.s
  */
 router.get('/getDataDashBoard', authMiddleware(['admin']), getDataDashBoard);
 
+/**
+ * @swagger
+ * /api/admin/getTemplateCV:
+ *   get:
+ *     summary: Lấy thông tin Template
+ *     tags: [Admin]
+ *     description: API lấy thông tin Template
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getTemplateCV', authMiddleware(['admin']), getTemplateCV);
+
+
+/**
+ * @swagger
+ * /api/admin/deleteTemplate/{id}:
+ *  delete:
+ *    summary: Xóa Template theo ID (cần xác thực và quyền admin)
+ *    tags: [Admin]
+ *    description: API để xóa một Template cụ thể dựa trên ID. Yêu cầu xác thực và quyền admin.
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của Template cần xóa.
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Template đã được xóa thành công.
+ */
+router.delete('/deleteTemplate/:id', authMiddleware(['admin']), deleteTemplate);
 export default router;

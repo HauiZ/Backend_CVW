@@ -56,3 +56,21 @@ export const getDataDashBoard = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+
+export const getTemplateCV = async (req, res) => {
+    try {
+        const result = await adminService.getTemplateCV();
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const deleteTemplate = async (req, res) => {
+    try {
+        const result = await adminService.deleteTemplate(req.params.id);
+        res.status(result.status).json(result.data);
+    } catch (err) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL});
+    }
+}

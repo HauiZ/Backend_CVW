@@ -34,7 +34,7 @@ const getAllRecruitmentNews = async () => {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-}
+};
 
 const filterAllRecruitmentNews = async (filterData) => {
     try {
@@ -222,5 +222,5 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-}
+};
 export default { getAllRecruitmentNews, filterAllRecruitmentNews, getDetailRecruitmentNews };

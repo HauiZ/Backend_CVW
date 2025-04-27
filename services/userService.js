@@ -291,7 +291,7 @@ const getNotification = async (userId) => {
 const getTemplateCV = async () => {
     try {
         const listTemplate = await CVTemplate.findAll({
-            attributes: ['id', 'name', 'url', 'propoties'],
+            attributes: ['id', 'name', 'url', 'fileUrl', 'propoties'],
         });
         return { status: 200, data: listTemplate };
     } catch (error) {

@@ -239,6 +239,33 @@ const getDataDashBoard = async () => {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-}
+};
 
-export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard };
+const getTemplateCV = async () => {
+    try {
+        const listTemplate = await CVTemplate.findAll({
+            attributes: ['id', 'name', 'url', 'fileUrl', 'propoties'],
+        });
+        return { status: 200, data: listTemplate };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const deleteTemplate = async (templateId) => {
+    try {
+        const template = await CVTemplate.findByPk(templateId);
+        if (template.fileId) {
+            await drive.files.delete({
+                fileId: template.fileId
+            },);
+        }
+        await template.destroy();
+        return { status: 200, data: { message: `DELETED: ${templateId} SUCCESSFULLY!` } }
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate};
