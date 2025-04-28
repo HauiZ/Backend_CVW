@@ -77,10 +77,9 @@ const filterAllRecruitmentNews = async (filterData) => {
         }
 
         if (profession) {
-            if (Array.isArray(profession) && profession.length > 0) {
-                whereCondition.profession = { [Op.in]: profession };
-            } else if (typeof profession === 'string' && profession.trim() !== '') {
-                whereCondition.profession = { [Op.like]: `%${profession.trim()}%` };
+            const professionArray = profession.split(',').map(prof => prof.trim()).filter(prof => prof); 
+            if (professionArray.length > 0) {
+                whereCondition.profession = { [Op.in]: professionArray };
             }
         }
 
