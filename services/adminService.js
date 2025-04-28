@@ -7,12 +7,12 @@ import Role from '../models/Role.js';
 import PersonalUser from '../models/PersonalUser.js';
 import CvFiles from '../models/CvFiles.js';
 import CompanyUser from '../models/CompanyUser.js';
-import uploadToDrive from '../helper/uploadFile.js';
 import CVTemplate from '../models/CVTemplate.js';
 import Notification from '../models/Notification.js';
 import { Op } from 'sequelize';
 import drive from '../config/googleDrive/driveconfig.js';
 import JobApplication from '../models/JobApplication.js';
+import cloudinary from '../config/cloudinary.js';
 
 const getAllUsers = async (userId, filterRole) => {
     try {
@@ -117,17 +117,11 @@ const deleteAUser = async (userId) => {
         }
 
         if (userToDelete.PersonalUser && userToDelete.PersonalUser.avatarId !== null) {
-            const googleDriveFileId = userToDelete.PersonalUser.avatarId;
-            await drive.files.delete({
-                fileId: googleDriveFileId
-            },);
+            await cloudinary.uploader.destroy(userToDelete.PersonalUser.avatarId);
         }
 
         if (userToDelete.CompanyUser && userToDelete.CompanyUser.logoId !== null) {
-            const googleDriveFileId = userToDelete.PersonalUser.logoId;
-            await drive.files.delete({
-                fileId: googleDriveFileId
-            },);
+            await cloudinary.uploader.destroy(userToDelete.CompanyUser.logoId);
         }
         await userToDelete.destroy();
         return { status: 200, data: { message: `DELETED: ${userId} SUCCESSFULLY!` } }
@@ -195,19 +189,22 @@ const approveRecruitment = async (requestId, status) => {
 const uploadCvTemplate = async (data, file) => {
     try {
         const { name, url, propoties } = data;
-        const parentId = '1Ng35Wh0zOIu1Upct0ytW9R2vWKSozxtW';
-        const response = await uploadToDrive(file, parentId);
-        if (response) {
-            await CVTemplate.create({
-                name,
-                url,
-                fileId: response.data.id,
-                fileUrl: `https://drive.google.com/file/d/${response.data.id}/view`,
-                propoties
-            })
-            return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
+        if (!file) {
+            return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
         }
-        return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
+        const public_id = file.filename || file.public_id;
+        const secure_url = file.path || file.secure_url;
+        if (!public_id || !secure_url) {
+            return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
+        }
+        await CVTemplate.create({
+            name,
+            url,
+            fileId: public_id,
+            fileUrl: secure_url,
+            propoties
+        })
+        return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -257,9 +254,7 @@ const deleteTemplate = async (templateId) => {
     try {
         const template = await CVTemplate.findByPk(templateId);
         if (template.fileId) {
-            await drive.files.delete({
-                fileId: template.fileId
-            },);
+            await cloudinary.uploader.destroy(template.fileId);
         }
         await template.destroy();
         return { status: 200, data: { message: `DELETED: ${templateId} SUCCESSFULLY!` } }
@@ -268,4 +263,4 @@ const deleteTemplate = async (templateId) => {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
-export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate};
+export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate };

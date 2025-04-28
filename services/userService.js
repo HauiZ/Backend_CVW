@@ -144,9 +144,7 @@ const changeProfile = async (userId, dataProfile) => {
         if (!name) {
             return { status: 400, data: { message: messages.user.BLANK_NAME } };
         }
-        if (!province || !district || !domain) {
-            return { status: 400, data: { message: messages.user.BLANK_AREA } };
-        }
+
         const user = await User.findByPk(userId, {
             include: [{ model: Role, attributes: ['name'] }]
         });
@@ -162,6 +160,9 @@ const changeProfile = async (userId, dataProfile) => {
             const company = await CompanyUser.findByPk(userId, {
                 include: [{ model: Area }],
             })
+            if (!province || !district || !domain) {
+                return { status: 400, data: { message: messages.user.BLANK_AREA } };
+            }
             const area = { province, district, domain };
             for (const field of Object.keys(area)) {
                 if (area[field] !== company.Area[field]) {
@@ -253,7 +254,7 @@ const getAllCompany = async () => {
         })
         const data = await Promise.all(listCompany.map(async company => {
             const jobNumber = await RecruitmentNews.count({
-                where: {companyId: company.userId}
+                where: { companyId: company.userId }
             })
             const data = company.toJSON();
             return {

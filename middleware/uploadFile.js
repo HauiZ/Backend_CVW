@@ -2,6 +2,8 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import messages from '../config/message.js';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import cloudinary from '../config/cloudinary.js';
 
 const storage = multer.memoryStorage();
 
@@ -15,15 +17,36 @@ const pdfUpload = multer({
     }
   },
 });
-const imageUpload = multer({
-  storage: multer.memoryStorage(), // Lưu trữ file trong bộ nhớ dưới dạng Buffer
-  fileFilter: (req, file, cb) => {
-    // Kiểm tra xem mimetype có phải là của hình ảnh hay không
-    if (file.mimetype.startsWith('image/')) {
-      cb(null, true); // Chấp nhận file
-    } else {
-      cb(new Error(messages.file.ERR_ONLY_ACCEPT_IMAGE), false); // Từ chối file và trả về lỗi
-    }
+
+const avatar = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'Avatar',
+    allowed_formats: ['jpg', 'png', 'jpeg'],
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
   },
 });
-export default {pdfUpload, imageUpload};
+
+const logo = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'Logo',
+    allowed_formats: ['jpg', 'png', 'jpeg'],
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
+  },
+});
+
+const template = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'Template',
+    allowed_formats: ['jpg', 'png', 'jpeg'],
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
+  },
+});
+
+const uploadAvatar = multer({ storage: avatar });
+const uploadLogo = multer({ storage: logo });
+const uploadTemplate = multer({ storage: template });
+
+export default {pdfUpload, uploadAvatar, uploadLogo, uploadTemplate};

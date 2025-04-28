@@ -147,7 +147,7 @@ router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruit
  *       500:
  *         description: Lỗi server
  */
-router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.imageUpload.single('file'), uploadCvTemplate);
+router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.uploadTemplate.single('file'), uploadCvTemplate);
 
 
 /**

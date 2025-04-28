@@ -58,7 +58,7 @@ router.post('/upload-cv', authMiddleware(['candidate']), upload.pdfUpload.single
  *       500:
  *         description: Lỗi server
  */
-router.post('/upload-avatar', authMiddleware(['candidate']), upload.imageUpload.single('file'), uploadAvatar);
+router.post('/upload-avatar', authMiddleware(['candidate']), upload.uploadAvatar.single('file'), uploadAvatar);
 
 /**
  * @swagger
@@ -86,6 +86,6 @@ router.post('/upload-avatar', authMiddleware(['candidate']), upload.imageUpload.
  *       500:
  *         description: Lỗi server
  */
-router.post('/upload-logoBussiness', authMiddleware(['recruiter']), upload.imageUpload.single('file'), uploadLogoBussiness);
+router.post('/upload-logoBussiness', authMiddleware(['recruiter']), upload.uploadLogo.single('file'), uploadLogoBussiness);
 
 export default router;
