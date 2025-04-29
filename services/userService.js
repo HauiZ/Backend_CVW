@@ -319,7 +319,15 @@ const getInfoApplication = async (userId) => {
             include: [{
                 model: RecruitmentNews,
                 where: { status: messages.recruitmentNews.status.APPROVED },
-                attributes: []
+                attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+                include: [{
+                    model: CompanyUser,
+                    attributes: ['name', 'logoUrl'],
+                    include: [{
+                        model: Area,
+                        attributes: ['province']
+                    }]
+                }]
             }, {
                 model: CvFiles,
                 where: { personalId: userId },
@@ -329,10 +337,20 @@ const getInfoApplication = async (userId) => {
         const data = listApply.map(apply => {
             const data = apply.toJSON();
             return {
-                ...data,
-                applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
+                id: data.id,
+                status: data.status,
+                cvUrl: data.CvFile?.urlView,
+                applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss'),
+                recruitmentNews: {
+                    recuitmentNewsId: data.RecruitmentNew?.id,
+                    jobTitle: data.RecruitmentNew?.jobTitle,
+                    companyName: data.RecruitmentNew?.CompanyUser?.name || null,
+                    logoUrl: data.RecruitmentNew?.CompanyUser?.logoUrl || null,
+                    companyAddress: data.RecruitmentNew?.CompanyUser?.province || null,
+                    datePosted: moment(data.RecruitmentNew?.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+                }
             };
-        })
+        });
         return { status: 200, data: data };
     } catch (error) {
         console.log(error);
