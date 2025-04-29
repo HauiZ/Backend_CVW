@@ -342,7 +342,7 @@ const getInfoApplication = async (userId) => {
                 cvUrl: data.CvFile?.urlView,
                 applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss'),
                 recruitmentNews: {
-                    recuitmentNewsId: data.RecruitmentNew?.id,
+                    id: data.RecruitmentNew?.id,
                     jobTitle: data.RecruitmentNew?.jobTitle,
                     companyName: data.RecruitmentNew?.CompanyUser?.name || null,
                     logoUrl: data.RecruitmentNew?.CompanyUser?.logoUrl || null,
