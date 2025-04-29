@@ -131,15 +131,9 @@ const deleteAUser = async (userId) => {
     }
 };
 
-const getRequest = async (filterData) => {
+const getRequest = async () => {
     try {
-        const { status, isReviewed } = filterData;
-        const whereCondition = {};
-        if (status !== undefined) whereCondition.status = status;
-        if (isReviewed !== undefined) whereCondition.isReviewed = isReviewed;
-        const requests = await Request.findAll({
-            where: whereCondition
-        });
+        const requests = await Request.findAll();
         const requestList = requests.map(request => {
             const data = request.toJSON();
             return {

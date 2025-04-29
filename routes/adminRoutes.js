@@ -57,19 +57,6 @@ router.delete('/deleteUser/:id', authMiddleware(['admin']), deleteUser);
  *     description: API lấy thông tin Request (cần xác thực)
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: query
- *         name: status
- *         schema:
- *           type: string
- *           enum: [APPROVED, REJECTED]
- *         description: trạng thái duyệt.
- *       - in: query
- *         name: isReviewed
- *         schema:
- *           type: string
- *           enum: [true, false]
- *         description: trạng thái request.
  *     responses:
  *       200:
  *         description: Success
