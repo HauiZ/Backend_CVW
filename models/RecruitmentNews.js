@@ -91,8 +91,15 @@ RecruitmentNews.init({
         }
     },
     jobRequirements: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
+        get() {
+            const value = this.getDataValue('jobRequirements');
+            return value ? JSON.parse(value) : null;
+        },
+        set(value) {
+            this.setDataValue('jobRequirements', JSON.stringify(value));
+        }
     },
     benefits: {
         type: DataTypes.TEXT,

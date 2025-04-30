@@ -111,7 +111,7 @@ const getUserProfile = async (userId) => {
             };
         }
 
-        return { status: 200, data: { message: messages.user.GET_INFO, user: userInfo } };
+        return { status: 200, data: { message: messages.user.GET_INFO, role: userRole, user: userInfo } };
 
     } catch (error) {
         console.log(error);

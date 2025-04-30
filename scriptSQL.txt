@@ -136,6 +136,9 @@ VALUES ((SELECT id FROM Role WHERE name = 'recruiter'), 'hr@mbbank.com.vn', 'Pas
 IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'tuyendung@vnpt.vn')
 INSERT INTO Users (roleId, email, password, typeAccount, createAt)
 VALUES ((SELECT id FROM Role WHERE name = 'recruiter'), 'tuyendung@vnpt.vn', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
+IF NOT EXISTS (SELECT 1 FROM Users WHERE email = 'admin@gmail.com')
+INSERT INTO Users (roleId, email, password, typeAccount, createAt)
+VALUES ((SELECT id FROM Role WHERE name = 'admin'), 'admin@gmail.com', 'Pass1@', 'LOCAL', SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'));
 GO
 
 -- 4. Insert Company_User
