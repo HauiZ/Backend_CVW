@@ -55,12 +55,20 @@ CompanyUser.init({
     introduction: {
         type: DataTypes.TEXT,
         allowNull: true,
+        set(value) {
+            if (typeof value === 'object') {
+                this.setDataValue('introduction', JSON.stringify(value));
+            } else {
+                this.setDataValue('introduction', value);
+            }
+        },
         get() {
             const value = this.getDataValue('introduction');
-            return value ? JSON.parse(value) : null;
-        },
-        set(value) {
-            this.setDataValue('introduction', JSON.stringify(value));
+            try {
+                return JSON.parse(value);
+            } catch {
+                return value;
+            }
         }
     },
     logoId: {
