@@ -6,11 +6,13 @@ import { Op } from 'sequelize';
 import messages from "../config/message.js";
 import Request from "../models/Request.js";
 import moment from 'moment-timezone';
+import { getTimeLeft } from "../utils/getTimeLeft.js";
+
 const getAllRecruitmentNews = async () => {
     try {
         const listJob = await RecruitmentNews.findAll({
             where: { status: messages.recruitmentNews.status.APPROVED },
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
         });
         const jobs = await Promise.all(listJob.map(async job => {
             const company = await CompanyUser.findByPk(job.companyId, {
@@ -26,6 +28,7 @@ const getAllRecruitmentNews = async () => {
                 companyName: company.name,
                 logoUrl: company.logoUrl,
                 companyAddress: company.Area.province,
+                applicationDeadline: getTimeLeft(job.applicationDeadline),
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
@@ -77,7 +80,7 @@ const filterAllRecruitmentNews = async (filterData) => {
         }
 
         if (profession) {
-            const professionArray = profession.split(',').map(prof => prof.trim()).filter(prof => prof); 
+            const professionArray = profession.split(',').map(prof => prof.trim()).filter(prof => prof);
             if (professionArray.length > 0) {
                 whereCondition.profession = { [Op.in]: professionArray };
             }
@@ -154,7 +157,7 @@ const filterAllRecruitmentNews = async (filterData) => {
                 companyName: company?.name || null,
                 logoUrl: company?.logoUrl || null,
                 companyAddress: job.Area?.province || company?.Area?.province || null,
-                applicationDeadline: moment(job.applicationDeadline).format('YYYY-MM-DD HH:mm:ss'),
+                applicationDeadline: getTimeLeft(job.applicationDeadline),
                 datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));
@@ -189,7 +192,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 salaryRange: `${data.salaryMin}-${data.salaryMax}`,
                 address: data.Area.province,
                 experience: data.experience,
-                applicationDeadline: moment(data.applicationDeadline).format('YYYY-MM-DD HH:mm:ss')
+                applicationDeadline: getTimeLeft(data.applicationDeadline)
             },
             detailRecruitment: {
                 profession: data.profession,

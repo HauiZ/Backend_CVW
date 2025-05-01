@@ -110,7 +110,7 @@ const getApplicant = async (userId, recruitmentNewsId) => {
                     ...data,
                     applyDate: moment(data.applyDate).format('YYYY-MM-DD HH:mm:ss')
                 };
-            }).sort((a, b) => a.recruitmentNewsId - b.recruitmentNewsId);
+            }).sort((a, b) => b.id - a.id);
             return { status: 200, data: data };
         }
         return { status: 204, data: messages.application.NO_APPLICANT };
@@ -199,7 +199,7 @@ const getPostedRecruitmentNews = async (userId) => {
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
                 numberApplicant: countApplicant,
             };
-        }));
+        }).sort((a, b) => b.id - a.id));
         return { status: 200, data: jobs };
     } catch (error) {
         console.log(error);
