@@ -18,13 +18,9 @@ passport.use(new GoogleStrategy({
   try {
     let user = await User.findOne({
       where: { email: userEmail },
-      include: [{
-        model: Role,
-        where: { name: 'candiate' }
-      }]
+      include: [Role]
     });
-
-    if (!user) {
+    if (!user || user.Role.name !== 'candidate') {
       user = await User.create({
         email: userEmail,
         typeAccount: 'GOOGLE',
@@ -34,22 +30,20 @@ passport.use(new GoogleStrategy({
       await user.setRole(role);
     }
 
-    if (user.Role.name !== 'recruiter') {
-      let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });
+    let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });
 
-      if (!personalUser) {
-        personalUser = await PersonalUser.create({
-          googleId: googleId,
-          name: profile.displayName,
-          email: userEmail,
-          userId: user.id,
-          avatarUrl: avatarUrl,
-        });
-      } else {
-        if (!personalUser.googleId) {
-          personalUser.googleId = googleId;
-          await personalUser.save();
-        }
+    if (!personalUser) {
+      personalUser = await PersonalUser.create({
+        googleId: googleId,
+        name: profile.displayName,
+        email: userEmail,
+        userId: user.id,
+        avatarUrl: avatarUrl,
+      });
+    } else {
+      if (!personalUser.googleId) {
+        personalUser.googleId = googleId;
+        await personalUser.save();
       }
     }
 
