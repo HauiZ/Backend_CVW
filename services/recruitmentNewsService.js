@@ -128,7 +128,7 @@ const filterAllRecruitmentNews = async (filterData) => {
             where: whereCondition,
             order: orderCondition,
             include: includeOptions,
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
             subQuery: false // Tắt subquery để tránh một số vấn đề với điều kiện phức tạp
         });
 
@@ -154,6 +154,7 @@ const filterAllRecruitmentNews = async (filterData) => {
                 companyName: company?.name || null,
                 logoUrl: company?.logoUrl || null,
                 companyAddress: job.Area?.province || company?.Area?.province || null,
+                applicationDeadline: moment(job.applicationDeadline).format('YYYY-MM-DD HH:mm:ss'),
                 datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
         }));

@@ -176,7 +176,11 @@ const getPostedRecruitmentNews = async (userId) => {
     try {
         const listJob = await RecruitmentNews.findAll({
             where: { companyId: userId },
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'status'],
+            attributes: ['id', 'companyId', 'areaId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'status'],
+            include: [{
+                model: Area,
+                attributes: ['province']
+            }]
         });
         const jobs = await Promise.all(listJob.map(async job => {
             const company = await CompanyUser.findByPk(userId, {
@@ -186,9 +190,11 @@ const getPostedRecruitmentNews = async (userId) => {
                 where: { recruitmentNewsId: job.id }
             });
             const data = job.toJSON();
+            const { Area, ...rest } = data;
             return {
-                ...data,
+                ...rest,
                 companyName: company.name,
+                companyAddress: job.Area.province,
                 logoUrl: company.logoUrl,
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
                 numberApplicant: countApplicant,
