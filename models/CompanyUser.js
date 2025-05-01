@@ -56,11 +56,7 @@ CompanyUser.init({
         type: DataTypes.TEXT,
         allowNull: true,
         set(value) {
-            if (typeof value === 'object') {
-                this.setDataValue('introduction', JSON.stringify(value));
-            } else {
-                this.setDataValue('introduction', value);
-            }
+            this.setDataValue('introduction', JSON.stringify(value));
         },
         get() {
             const value = this.getDataValue('introduction');

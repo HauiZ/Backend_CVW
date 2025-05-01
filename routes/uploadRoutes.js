@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {uploadCV, uploadAvatar, uploadLogoBussiness} from '../controllers/uploadController.js';
+import {uploadCV, uploadAvatar, uploadLogoBusiness} from '../controllers/uploadController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import upload from '../middleware/uploadFile.js';
 
@@ -62,7 +62,7 @@ router.post('/upload-avatar', authMiddleware(['candidate']), upload.uploadAvatar
 
 /**
  * @swagger
- * /api/upload/upload-logoBussiness:
+ * /api/upload/upload-logoBusiness:
  *   post:
  *     summary: Tải lên logo công ty
  *     tags: [Upload]
@@ -86,6 +86,6 @@ router.post('/upload-avatar', authMiddleware(['candidate']), upload.uploadAvatar
  *       500:
  *         description: Lỗi server
  */
-router.post('/upload-logoBussiness', authMiddleware(['recruiter']), upload.uploadLogo.single('file'), uploadLogoBussiness);
+router.post('/upload-logoBusiness', authMiddleware(['recruiter']), upload.uploadLogo.single('file'), uploadLogoBusiness);
 
 export default router;

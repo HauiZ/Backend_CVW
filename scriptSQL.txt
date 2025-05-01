@@ -399,7 +399,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_0, N'Kế toán', N'Đầu tư đa ngành', 1, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_0,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -414,7 +414,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_1, N'Technical Support', N'Viễn thông', 2, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_1,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'Không yêu cầu', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-12',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -430,7 +430,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_2, N'Nhân sự', N'Đầu tư đa ngành', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_2,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'3-5 năm', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -445,7 +445,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_3, N'Network Engineer', N'Viễn thông', 2, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_3,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -460,7 +460,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_4, N'SEO Specialist', N'Thương mại điện tử', 4, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_4,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -475,7 +475,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_5, N'SEO Specialist', N'Thương mại điện tử', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_5,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 15000000, 20000000, 0, N'1-3 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -492,7 +492,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_6, N'Frontend Developer', N'Công nghệ thông tin', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_6,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 50000000, 70000000, 0, N'Trên 5 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -510,7 +510,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_7, N'Network Engineer', N'Viễn thông', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_7,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -528,7 +528,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_8, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 3, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_8,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -546,7 +546,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_9, N'Giao dịch viên', N'Ngân hàng', 4, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_9,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -563,7 +563,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_10, N'Product Owner', N'Công nghệ tài chính (Fintech)', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_10,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 15000000, 20000000, 0, N'Dưới 1 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -580,7 +580,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_11, N'Nhân sự', N'Đầu tư đa ngành', 3, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_11,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -598,7 +598,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_12, N'Product Owner', N'Công nghệ tài chính (Fintech)', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_12,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 50000000, 70000000, 0, N'1-3 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -616,7 +616,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_13, N'DevOps Engineer', N'Công nghệ thông tin', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_13,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'1-3 năm', '2025-05-09',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -633,7 +633,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_14, N'Trợ lý dự án', N'Đầu tư đa ngành', 3, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_14,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'3-5 năm', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-07',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-07',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -650,7 +650,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_15, N'Backend Developer', N'Công nghệ thông tin', 1, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_15,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'3-5 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -667,7 +667,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_16, N'UI/UX Designer', N'Thương mại điện tử', 3, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_16,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -684,7 +684,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_17, N'Backend Developer', N'Công nghệ thông tin', 3, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_17,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-24',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -701,7 +701,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_18, N'Kế toán', N'Đầu tư đa ngành', 1, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_18,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -718,7 +718,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_19, N'Giao dịch viên', N'Ngân hàng', 3, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_19,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 50000000, 70000000, 0, N'3-5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -735,7 +735,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_20, N'Product Owner', N'Công nghệ tài chính (Fintech)', 1, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_20,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -752,7 +752,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_21, N'Trợ lý dự án', N'Đầu tư đa ngành', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_21,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -769,7 +769,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_22, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_22,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-10',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -786,7 +786,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_23, N'Trợ lý dự án', N'Đầu tư đa ngành', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_23,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -803,7 +803,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_24, N'Trợ lý dự án', N'Đầu tư đa ngành', 2, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_24,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'1-3 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-15',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -820,7 +820,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_25, N'Digital Marketing', N'Thương mại điện tử', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_25,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-17',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-17',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -837,7 +837,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_26, N'SEO Specialist', N'Thương mại điện tử', 2, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_26,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -854,7 +854,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_27, N'Chuyên viên Tín dụng', N'Ngân hàng', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_27,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'3-5 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -871,7 +871,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_28, N'Technical Support', N'Viễn thông', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_28,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -888,7 +888,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_29, N'Tester', N'Viễn thông - CNTT', 2, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_29,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 50000000, 70000000, 0, N'3-5 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -905,7 +905,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_30, N'SEO Specialist', N'Thương mại điện tử', 3, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_30,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'3-5 năm', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -922,7 +922,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_31, N'Mobile Developer', N'Công nghệ tài chính (Fintech)', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_31,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 20000000, 30000000, 0, N'Trên 5 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-30',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -939,7 +939,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_32, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_32,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -956,7 +956,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_33, N'Giao dịch viên', N'Ngân hàng', 3, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_33,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -973,7 +973,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_34, N'Digital Marketing', N'Thương mại điện tử', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_34,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 50000000, 70000000, 0, N'1-3 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -990,7 +990,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_35, N'UI/UX Designer', N'Thương mại điện tử', 3, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_35,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 15000000, 20000000, 0, N'1-3 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1007,7 +1007,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_36, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_36,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1023,7 +1023,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_37, N'UI/UX Designer', N'Thương mại điện tử', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_37,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1040,7 +1040,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_38, N'DevOps Engineer', N'Công nghệ thông tin', 1, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_38,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1057,7 +1057,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_39, N'Frontend Developer', N'Công nghệ thông tin', 1, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_39,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1074,7 +1074,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_40, N'Frontend Developer', N'Công nghệ thông tin', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_40,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1091,7 +1091,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_41, N'Chuyên viên Dữ liệu', N'Viễn thông - CNTT', 2, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_41,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1108,7 +1108,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_42, N'Chuyên viên Tín dụng', N'Ngân hàng', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_42,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1125,7 +1125,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_43, N'Chuyên viên Tín dụng', N'Ngân hàng', 4, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_43,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1142,7 +1142,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_44, N'Mobile Developer', N'Công nghệ tài chính (Fintech)', 4, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_44,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 7000000, 10000000, 0, N'3-5 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1159,7 +1159,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_45, N'Chuyên viên Tín dụng', N'Ngân hàng', 4, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_45,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-24',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-13',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1176,7 +1176,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_46, N'Giao dịch viên', N'Ngân hàng', 2, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_46,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Trên 5 năm', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1193,7 +1193,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_47, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_47,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1210,7 +1210,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_48, N'UI/UX Designer', N'Thương mại điện tử', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_48,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-05',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1227,7 +1227,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_49, N'Technical Support', N'Viễn thông', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_49,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1244,7 +1244,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_50, N'Network Engineer', N'Viễn thông', 2, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_50,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'3-5 năm', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1261,7 +1261,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_51, N'Kế toán', N'Đầu tư đa ngành', 4, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_51,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'Dưới 1 năm', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1278,7 +1278,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_52, N'Network Engineer', N'Viễn thông', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_52,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 7000000, 10000000, 0, N'3-5 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1295,7 +1295,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_53, N'QA Tester', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_53,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1312,7 +1312,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_54, N'Technical Support', N'Viễn thông', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_54,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 50000000, 70000000, 0, N'1-3 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1329,7 +1329,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_55, N'SEO Specialist', N'Thương mại điện tử', 4, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_55,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 10000000, 15000000, 0, N'1-3 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1346,7 +1346,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_56, N'Tester', N'Viễn thông - CNTT', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_56,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1363,7 +1363,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_57, N'Business Analyst', N'Công nghệ tài chính (Fintech)', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_57,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1380,7 +1380,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_58, N'Giao dịch viên', N'Ngân hàng', 4, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_58,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-28',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-28',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1397,7 +1397,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_59, N'Content Executive', N'Thương mại điện tử', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_59,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-19',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1414,7 +1414,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_60, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_60,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'3-5 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1431,7 +1431,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_61, N'Backend Developer', N'Công nghệ thông tin', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_61,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 15000000, 20000000, 0, N'1-3 năm', '2025-05-09',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1448,7 +1448,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_62, N'Nhân sự', N'Đầu tư đa ngành', 2, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_62,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1465,7 +1465,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_63, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_63,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1482,7 +1482,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_64, N'Digital Marketing', N'Thương mại điện tử', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_64,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 30000000, 50000000, 0, N'3-5 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1499,7 +1499,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_65, N'Technical Support', N'Viễn thông', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_65,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1516,7 +1516,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_66, N'Nhân sự', N'Đầu tư đa ngành', 3, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_66,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1533,7 +1533,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_67, N'Backend Developer', N'Công nghệ thông tin', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_67,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1550,7 +1550,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_68, N'QA Tester', N'Công nghệ thông tin', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_68,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1567,7 +1567,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_69, N'Giao dịch viên', N'Ngân hàng', 1, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_69,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1584,7 +1584,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_70, N'Kế toán', N'Đầu tư đa ngành', 4, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_70,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'3-5 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1601,7 +1601,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_71, N'Content Executive', N'Thương mại điện tử', 3, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_71,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 10000000, 15000000, 0, N'1-3 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1618,7 +1618,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_72, N'Giao dịch viên', N'Ngân hàng', 4, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_72,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-24',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1635,7 +1635,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_73, N'Network Engineer', N'Viễn thông', 3, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_73,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1652,7 +1652,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_74, N'Giao dịch viên', N'Ngân hàng', 2, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_74,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1669,7 +1669,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_75, N'Lập trình viên', N'Viễn thông - CNTT', 3, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_75,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 15000000, 20000000, 0, N'3-5 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1686,7 +1686,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_76, N'Lập trình viên', N'Viễn thông - CNTT', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_76,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 15000000, 20000000, 0, N'Trên 5 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1703,7 +1703,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_77, N'Kế toán', N'Đầu tư đa ngành', 1, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_77,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'3-5 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1720,7 +1720,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_78, N'Giao dịch viên', N'Ngân hàng', 3, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_78,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-24',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1737,7 +1737,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_79, N'Frontend Developer', N'Công nghệ thông tin', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_79,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1754,7 +1754,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_80, N'Content Executive', N'Thương mại điện tử', 4, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_80,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 15000000, 20000000, 0, N'Dưới 1 năm', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1771,7 +1771,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_81, N'System Admin', N'Viễn thông', 3, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_81,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 15000000, 20000000, 0, N'3-5 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1788,7 +1788,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_82, N'Tester', N'Viễn thông - CNTT', 4, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_82,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-30',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1805,7 +1805,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_83, N'Nhân sự', N'Đầu tư đa ngành', 3, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_83,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 10000000, 15000000, 0, N'1-3 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1822,7 +1822,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_84, N'Network Engineer', N'Viễn thông', 3, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_84,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1839,7 +1839,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_85, N'Kế toán', N'Đầu tư đa ngành', 2, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_85,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1856,7 +1856,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_86, N'Backend Developer', N'Công nghệ thông tin', 3, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_86,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'3-5 năm', '2025-05-09',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-05',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-05',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1873,7 +1873,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_87, N'Technical Support', N'Viễn thông', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_87,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 20000000, 30000000, 0, N'3-5 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1890,7 +1890,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_88, N'DevOps Engineer', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_88,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1907,7 +1907,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_89, N'Product Owner', N'Công nghệ tài chính (Fintech)', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_89,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 50000000, 70000000, 0, N'1-3 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-02',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1923,7 +1923,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_90, N'SEO Specialist', N'Thương mại điện tử', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_90,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'3-5 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1940,7 +1940,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_91, N'Giao dịch viên', N'Ngân hàng', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_91,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1957,7 +1957,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_92, N'Technical Support', N'Viễn thông', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_92,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 15000000, 20000000, 0, N'1-3 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1974,7 +1974,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_93, N'Giao dịch viên', N'Ngân hàng', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_93,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Trên 5 năm', '2025-05-10',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -1991,7 +1991,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_94, N'Chuyên viên Tín dụng', N'Ngân hàng', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_94,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2008,7 +2008,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_95, N'Digital Marketing', N'Thương mại điện tử', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_95,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2025,7 +2025,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_96, N'DevOps Engineer', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_96,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2042,7 +2042,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_97, N'Lập trình viên', N'Viễn thông - CNTT', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_97,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2059,7 +2059,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_98, N'Giao dịch viên', N'Ngân hàng', 3, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_98,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-13',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2076,7 +2076,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_99, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_99,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2093,7 +2093,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_100, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_100,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-20',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2110,7 +2110,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_101, N'Mobile Developer', N'Công nghệ tài chính (Fintech)', 4, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_101,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-22',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2127,7 +2127,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_102, N'Content Executive', N'Thương mại điện tử', 2, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_102,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2144,7 +2144,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_103, N'Mobile Developer', N'Công nghệ tài chính (Fintech)', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_103,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-17',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-17',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2161,7 +2161,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_104, N'UI/UX Designer', N'Thương mại điện tử', 4, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_104,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'1-3 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2178,7 +2178,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_105, N'Chuyên viên Tín dụng', N'Ngân hàng', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_105,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2195,7 +2195,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_106, N'Giao dịch viên', N'Ngân hàng', 4, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_106,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-10',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2212,7 +2212,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_107, N'Tester', N'Viễn thông - CNTT', 3, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_107,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2229,7 +2229,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_108, N'Frontend Developer', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_108,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 15000000, 20000000, 0, N'1-3 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2246,7 +2246,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_109, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_109,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-18',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-18',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2263,7 +2263,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_110, N'Backend Developer', N'Công nghệ thông tin', 2, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_110,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 10000000, 15000000, 0, N'3-5 năm', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-08',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-08',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2280,7 +2280,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_111, N'Giao dịch viên', N'Ngân hàng', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_111,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2297,7 +2297,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_112, N'Technical Support', N'Viễn thông', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_112,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-09',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2314,7 +2314,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_113, N'QA Tester', N'Công nghệ thông tin', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_113,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 20000000, 30000000, 0, N'3-5 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-11',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2331,7 +2331,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_114, N'Content Executive', N'Thương mại điện tử', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_114,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-18',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2348,7 +2348,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_115, N'Content Executive', N'Thương mại điện tử', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_115,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2365,7 +2365,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_116, N'SEO Specialist', N'Thương mại điện tử', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_116,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 20000000, 30000000, 0, N'3-5 năm', '2025-05-09',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-12',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2382,7 +2382,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_117, N'Network Engineer', N'Viễn thông', 4, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_117,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2399,7 +2399,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_118, N'Nhân sự', N'Đầu tư đa ngành', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_118,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2416,7 +2416,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_119, N'Digital Marketing', N'Thương mại điện tử', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_119,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'1-3 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-07',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2433,7 +2433,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_120, N'Technical Support', N'Viễn thông', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_120,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'Không yêu cầu', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2450,7 +2450,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_121, N'System Admin', N'Viễn thông', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_121,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2467,7 +2467,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_122, N'Content Executive', N'Thương mại điện tử', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_122,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2484,7 +2484,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_123, N'QA Tester', N'Công nghệ thông tin', 4, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_123,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-10',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2501,7 +2501,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_124, N'SEO Specialist', N'Thương mại điện tử', 3, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_124,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 10000000, 15000000, 0, N'1-3 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2518,7 +2518,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_125, N'QA Tester', N'Công nghệ thông tin', 3, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_125,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'3-5 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-04',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2535,7 +2535,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_126, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 3, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_126,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2552,7 +2552,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_127, N'Tester', N'Viễn thông - CNTT', 4, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_127,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 20000000, 30000000, 0, N'1-3 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-19',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2569,7 +2569,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_128, N'Technical Support', N'Viễn thông', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_128,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-20',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-05',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-05',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2586,7 +2586,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_129, N'Giao dịch viên', N'Ngân hàng', 3, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_129,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-17',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2603,7 +2603,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_130, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_130,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-15',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2620,7 +2620,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_131, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_131,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2637,7 +2637,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_132, N'UI/UX Designer', N'Thương mại điện tử', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_132,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 15000000, 20000000, 0, N'3-5 năm', '2025-05-07',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2654,7 +2654,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_133, N'Digital Marketing', N'Thương mại điện tử', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_133,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2671,7 +2671,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_134, N'Backend Developer', N'Công nghệ thông tin', 2, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_134,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 7000000, 10000000, 0, N'3-5 năm', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2688,7 +2688,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_135, N'Product Owner', N'Công nghệ tài chính (Fintech)', 4, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_135,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2705,7 +2705,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_136, N'Frontend Developer', N'Công nghệ thông tin', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_136,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-18',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2722,7 +2722,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_137, N'Technical Support', N'Viễn thông', 2, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_137,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 15000000, 20000000, 0, N'Trên 5 năm', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2739,7 +2739,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_138, N'QA Tester', N'Công nghệ thông tin', 3, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_138,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 15000000, 20000000, 0, N'Trên 5 năm', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2756,7 +2756,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_139, N'Network Engineer', N'Viễn thông', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_139,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2773,7 +2773,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_140, N'Chuyên viên Tín dụng', N'Ngân hàng', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_140,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-10',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2790,7 +2790,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_141, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_141,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-22',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2807,7 +2807,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_142, N'SEO Specialist', N'Thương mại điện tử', 4, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_142,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-10',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2824,7 +2824,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_143, N'Backend Developer', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_143,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2841,7 +2841,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_144, N'Digital Marketing', N'Thương mại điện tử', 1, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_144,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 15000000, 20000000, 0, N'Trên 5 năm', '2025-05-28',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2858,7 +2858,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_145, N'Frontend Developer', N'Công nghệ thông tin', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_145,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-01',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2875,7 +2875,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_146, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 4, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_146,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'3-5 năm', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2892,7 +2892,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_147, N'QA Tester', N'Công nghệ thông tin', 4, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_147,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'3-5 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2909,7 +2909,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_148, N'DevOps Engineer', N'Công nghệ thông tin', 2, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_148,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 15000000, 20000000, 0, N'3-5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-16',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-16',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2926,7 +2926,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_149, N'Kế toán', N'Đầu tư đa ngành', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_149,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2943,7 +2943,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_150, N'Content Executive', N'Thương mại điện tử', 3, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_150,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-06',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-06',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2960,7 +2960,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_151, N'Content Executive', N'Thương mại điện tử', 4, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_151,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 20000000, 30000000, 0, N'Không yêu cầu', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2977,7 +2977,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_152, N'SEO Specialist', N'Thương mại điện tử', 2, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_152,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -2994,7 +2994,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_153, N'Network Engineer', N'Viễn thông', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_153,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'1-3 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3010,7 +3010,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_154, N'Business Analyst', N'Công nghệ tài chính (Fintech)', 4, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_154,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-06-29',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3027,7 +3027,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_155, N'Chuyên viên Tín dụng', N'Ngân hàng', 4, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_155,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3044,7 +3044,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_156, N'DevOps Engineer', N'Công nghệ thông tin', 4, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_156,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'1-3 năm', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-27',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3061,7 +3061,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_157, N'Backend Developer', N'Công nghệ thông tin', 3, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_157,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Trên 5 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3078,7 +3078,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_158, N'Kế toán', N'Đầu tư đa ngành', 1, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_158,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'1-3 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3095,7 +3095,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_159, N'Chuyên viên Dữ liệu', N'Viễn thông - CNTT', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_159,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 15000000, 20000000, 0, N'Dưới 1 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-28',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3112,7 +3112,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_160, N'Giao dịch viên', N'Ngân hàng', 2, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_160,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3128,7 +3128,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_161, N'Giao dịch viên', N'Ngân hàng', 4, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_161,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-03',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3145,7 +3145,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_162, N'Digital Marketing', N'Thương mại điện tử', 2, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_162,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'1-3 năm', '2025-05-12',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-08',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-08',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3162,7 +3162,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_163, N'SEO Specialist', N'Thương mại điện tử', 4, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_163,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-30',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3179,7 +3179,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_164, N'Giao dịch viên', N'Ngân hàng', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_164,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-10',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3196,7 +3196,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_165, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_165,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 20000000, 30000000, 0, N'3-5 năm', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-23',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3213,7 +3213,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_166, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 4, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_166,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-13',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3230,7 +3230,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_167, N'System Admin', N'Viễn thông', 1, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_167,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 10000000, 15000000, 0, N'1-3 năm', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3247,7 +3247,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_168, N'Content Executive', N'Thương mại điện tử', 3, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_168,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 10000000, 15000000, 0, N'Trên 5 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3264,7 +3264,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_169, N'UI/UX Designer', N'Thương mại điện tử', 1, N'Thực tập sinh', N'Bán thời gian', N'Đại học', @areaId_169,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-13',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-23',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3281,7 +3281,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_170, N'QA Tester', N'Công nghệ thông tin', 1, N'Thực tập sinh', N'Toàn thời gian', N'Đại học', @areaId_170,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 15000000, 20000000, 0, N'1-3 năm', '2025-05-23',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-26',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3298,7 +3298,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_171, N'Content Executive', N'Thương mại điện tử', 1, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_171,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-17',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3315,7 +3315,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_172, N'Nhân sự', N'Đầu tư đa ngành', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_172,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 15000000, 20000000, 0, N'1-3 năm', '2025-05-21',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-28',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-28',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3332,7 +3332,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_173, N'System Admin', N'Viễn thông', 1, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_173,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 30000000, 50000000, 0, N'3-5 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-31',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3349,7 +3349,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_174, N'UI/UX Designer', N'Thương mại điện tử', 2, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_174,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'Không yêu cầu', '2025-05-25',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3366,7 +3366,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_175, N'Giao dịch viên', N'Ngân hàng', 4, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_175,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 30000000, 50000000, 0, N'3-5 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-12',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3383,7 +3383,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_176, N'Chuyên viên Tín dụng', N'Ngân hàng', 1, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_176,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 10000000, 15000000, 0, N'Không yêu cầu', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3400,7 +3400,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_177, N'UI/UX Designer', N'Thương mại điện tử', 1, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_177,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-21',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3417,7 +3417,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_178, N'Business Analyst', N'Công nghệ tài chính (Fintech)', 1, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_178,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-25',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3434,7 +3434,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_179, N'Backend Developer', N'Công nghệ thông tin', 3, N'Trưởng nhóm', N'Toàn thời gian', N'Đại học', @areaId_179,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-26',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-02',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3451,7 +3451,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_180, N'Tester', N'Viễn thông - CNTT', 3, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_180,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 7000000, 10000000, 0, N'3-5 năm', '2025-05-15',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-03',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-03',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3468,7 +3468,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_181, N'Mobile Developer', N'Công nghệ tài chính (Fintech)', 2, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_181,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 50000000, 70000000, 0, N'Không yêu cầu', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-01',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3485,7 +3485,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_182, N'Product Owner', N'Công nghệ tài chính (Fintech)', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_182,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 50000000, 70000000, 0, N'3-5 năm', '2025-05-16',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-14',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3502,7 +3502,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_183, N'Nhân sự', N'Đầu tư đa ngành', 2, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_183,
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', 20000000, 30000000, 0, N'Trên 5 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-26',
     N'Phòng Nhân sự', N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội', '02439749999', 'tuyendung@vingroup.net', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3518,7 +3518,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_184, N'Tester', N'Viễn thông - CNTT', 3, N'Quản lý / Giám sát', N'Thực tập', N'Đại học', @areaId_184,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-17',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-08',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-08',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3534,7 +3534,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_185, N'Product Owner', N'Công nghệ tài chính (Fintech)', 2, N'Trưởng nhóm', N'Bán thời gian', N'Đại học', @areaId_185,
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', 20000000, 30000000, 0, N'3-5 năm', '2025-05-24',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-25',
     N'Phòng Nhân sự', N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM', '02839954545', 'hr@momo.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3550,7 +3550,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_186, N'Chuyên viên Tín dụng', N'Ngân hàng', 2, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_186,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'Trên 5 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-15',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-15',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3567,7 +3567,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_187, N'Chuyên viên Dữ liệu', N'Viễn thông - CNTT', 3, N'Trưởng nhóm', N'Thực tập', N'Đại học', @areaId_187,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 15000000, 20000000, 0, N'Không yêu cầu', '2025-05-11',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-16',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3584,7 +3584,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_188, N'Content Executive', N'Thương mại điện tử', 2, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_188,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 7000000, 10000000, 0, N'Trên 5 năm', '2025-05-14',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-25',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-25',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3601,7 +3601,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_189, N'DevOps Engineer', N'Công nghệ thông tin', 2, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_189,
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', 7000000, 10000000, 0, N'Dưới 1 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-20',
     N'Phòng Nhân sự', N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội', '02473008999', 'hr@fptsoftware.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3618,7 +3618,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_190, N'Lập trình viên', N'Viễn thông - CNTT', 3, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_190,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 30000000, 50000000, 0, N'Trên 5 năm', '2025-05-17',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-24',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3635,7 +3635,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_191, N'Network Engineer', N'Viễn thông', 2, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_191,
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', 20000000, 30000000, 0, N'1-3 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-11',
     N'Phòng Nhân sự', N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội', '02462556789', 'tuyendung@viettel.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3652,7 +3652,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_192, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_192,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 10000000, 15000000, 0, N'Dưới 1 năm', '2025-05-22',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-27',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3669,7 +3669,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_193, N'SEO Specialist', N'Thương mại điện tử', 1, N'Nhân viên', N'Toàn thời gian', N'Đại học', @areaId_193,
     N'52 Út Tịch, Quận Tân Bình, TP.HCM', 7000000, 10000000, 0, N'3-5 năm', '2025-05-08',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-13',
     N'Phòng Nhân sự', N'52 Út Tịch, Quận Tân Bình, TP.HCM', '02873002222', 'hr@tiki.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3686,7 +3686,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_194, N'SEO Specialist', N'Thương mại điện tử', 3, N'Nhân viên', N'Thực tập', N'Đại học', @areaId_194,
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', 50000000, 70000000, 0, N'Dưới 1 năm', '2025-05-30',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-04',
     N'Phòng Nhân sự', N'Tòa nhà Saigon Centre, Quận 1, TP.HCM', '02873001221', 'careers.vn@shopee.com', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3703,7 +3703,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_195, N'Frontend Developer', N'Công nghệ thông tin', 3, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_195,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Dưới 1 năm', '2025-05-27',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-14',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3720,7 +3720,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_196, N'Lập trình viên', N'Viễn thông - CNTT', 2, N'Quản lý / Giám sát', N'Toàn thời gian', N'Đại học', @areaId_196,
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', 15000000, 20000000, 0, N'Dưới 1 năm', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-24',
     N'Phòng Nhân sự', N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội', '02437741684', 'tuyendung@vnpt.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3737,7 +3737,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_197, N'Giao dịch viên', N'Ngân hàng', 4, N'Quản lý / Giám sát', N'Bán thời gian', N'Đại học', @areaId_197,
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', 20000000, 30000000, 0, N'Dưới 1 năm', '2025-05-17',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-29',
     N'Phòng Nhân sự', N'63 Lê Văn Lương, Cầu Giấy, Hà Nội', '02437267788', 'hr@mbbank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3754,7 +3754,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_198, N'Chuyên viên Phân tích Tài chính', N'Ngân hàng', 2, N'Thực tập sinh', N'Thực tập', N'Đại học', @areaId_198,
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', 50000000, 70000000, 0, N'1-3 năm', '2025-05-19',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-13',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-08-13',
     N'Phòng Nhân sự', N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội', '02439449699', 'hr@techcombank.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 
@@ -3771,7 +3771,7 @@ INSERT INTO Recruitment_News (
 ) VALUES (
     @companyId_199, N'QA Tester', N'Công nghệ thông tin', 1, N'Nhân viên', N'Bán thời gian', N'Đại học', @areaId_199,
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', 30000000, 50000000, 0, N'Không yêu cầu', '2025-05-29',
-    N'["Chi tiết công việc"]', N'Yêu cầu công việc', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
+    N'["Chi tiết công việc"]', N'["Yêu cầu công việc"]', N'["Bảo hiểm", "Thưởng các dịp lễ"]', '2025-07-09',
     N'Phòng Nhân sự', N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM', '02839627111', 'hr@vng.com.vn', NULL,
     '2025-04-30 03:22:01', N'APPROVED');
 

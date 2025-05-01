@@ -47,6 +47,6 @@ const uploadImageAndUpdate = async (file, userId, Model, updateFields) => {
 };
 
 const uploadAvatar = (file, userId) => uploadImageAndUpdate(file, userId, PersonalUser, { id: 'avatarId', url: 'avatarUrl' });
-const uploadLogoBussiness = (file, userId) => uploadImageAndUpdate(file, userId, CompanyUser, { id: 'logoId', url: 'logoUrl' });
+const uploadLogoBusiness = (file, userId) => uploadImageAndUpdate(file, userId, CompanyUser, { id: 'logoId', url: 'logoUrl' });
 
-export default { uploadAvatar, uploadLogoBussiness };
+export default { uploadAvatar, uploadLogoBusiness };

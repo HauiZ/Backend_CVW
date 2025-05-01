@@ -140,7 +140,7 @@ const changePassword = async (userId, newPasswordData) => {
 
 const changeProfile = async (userId, dataProfile) => {
     try {
-        const { name, phone, province, district, domain, companyAddress, field, companySize, website, introduction } = dataProfile;
+        const { name, phone, province, district, companyAddress, field, companySize, website, introduction } = dataProfile;
         if (!name) {
             return { status: 400, data: { message: messages.user.BLANK_NAME } };
         }
@@ -160,14 +160,15 @@ const changeProfile = async (userId, dataProfile) => {
             const company = await CompanyUser.findByPk(userId, {
                 include: [{ model: Area }],
             })
-            if (!province || !district || !domain) {
+            if (!province || !district) {
                 return { status: 400, data: { message: messages.user.BLANK_AREA } };
             }
-            const area = { province, district, domain };
-            for (const field of Object.keys(area)) {
-                if (area[field] !== company.Area[field]) {
-                    await company.update({ [field]: area[field] });
-                }
+            if (province !== company.Area.province && district !== company.Area.district) {
+                const area = await Area.findOne({
+                    where: { province: province, district: district },
+                    attributes: ['id']
+                });
+                await company.update({ areaId: area.id });
             }
             const updates = { name, phone, companyAddress, field, companySize, website, introduction };
             for (const field of Object.keys(updates)) {

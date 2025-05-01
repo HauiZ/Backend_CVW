@@ -21,9 +21,9 @@ export const uploadAvatar = async (req, res) => {
     }
 };
 
-export const uploadLogoBussiness = async (req, res) => {
+export const uploadLogoBusiness = async (req, res) => {
     try {
-        const result = await uploadImageService.uploadLogoBussiness(req.file, req.user.id);
+        const result = await uploadImageService.uploadLogoBusiness(req.file, req.user.id);
         res.status(result.status).json(result.data);
     } catch (error) {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });

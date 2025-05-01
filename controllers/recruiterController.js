@@ -1,4 +1,5 @@
 import recruiterService from "../services/recruiterService.js";
+import messages from "../config/message.js";
 
 export const postRecruitmentNews = async (req, res) => {
     try {

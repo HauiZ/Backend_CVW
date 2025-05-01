@@ -1,4 +1,5 @@
 import resetPasswordService from "../services/resetPasswordService.js";
+import messages from "../config/message.js";
 
 export const forgotPassword = async (req, res) => {
     try {
