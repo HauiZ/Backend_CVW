@@ -15,6 +15,7 @@ import RecruitmentNews from '../models/RecruitmentNews.js';
 import moment from 'moment-timezone';
 import Notification from '../models/Notification.js';
 import CVTemplate from '../models/CVTemplate.js';
+import { getTimeLeft } from "../utils/getTimeLeft.js";
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -214,7 +215,7 @@ const getInfoCompany = async (companyId) => {
         const companyData = await CompanyUser.findByPk(companyId);
         const listJob = await RecruitmentNews.findAll({
             where: { companyId: companyId, status: messages.recruitmentNews.status.APPROVED },
-            attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            attributes: ['id', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
             include: [{
                 model: Area,
                 attributes: ['province']
@@ -229,6 +230,7 @@ const getInfoCompany = async (companyId) => {
                     profession: job.profession,
                     salaryMin: job.salaryMin,
                     salaryMax: job.salaryMax,
+                    applicationDeadline: getTimeLeft(job.applicationDeadline),
                     datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss'),
                     companyAddress: job.Area.province,
                 };
