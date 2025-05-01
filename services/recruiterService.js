@@ -71,16 +71,11 @@ const checkRecruitmentNewsData = (recruitmentNewsData) => {
     return missingFields;
 };
 
-const getApplicant = async (userId, recruitmentNewsId, status) => {
+const getApplicant = async (userId, recruitmentNewsId) => {
     try {
         let listApplicant;
-        const listCondition = {};
-        if (status) {
-            listCondition.status = status;
-        }
         if (recruitmentNewsId) {
             listApplicant = await JobApplication.findAll({
-                where: listCondition,
                 include: [{
                     model: RecruitmentNews,
                     where: { id: recruitmentNewsId, companyId: userId, status: messages.recruitmentNews.status.APPROVED },
@@ -92,7 +87,6 @@ const getApplicant = async (userId, recruitmentNewsId, status) => {
             });
         } else {
             listApplicant = await JobApplication.findAll({
-                where: listCondition,
                 include: [{
                     model: RecruitmentNews,
                     where: { companyId: userId, status: messages.recruitmentNews.status.APPROVED },
@@ -179,7 +173,7 @@ const getPostedRecruitmentNews = async (userId) => {
     try {
         const listJob = await RecruitmentNews.findAll({
             where: { companyId: userId },
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted'],
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'status'],
         });
         const jobs = await Promise.all(listJob.map(async job => {
             const company = await CompanyUser.findByPk(userId, {

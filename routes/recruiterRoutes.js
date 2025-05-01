@@ -131,12 +131,6 @@ router.post('/postRecruitmentNews', authMiddleware(['recruiter']), postRecruitme
  *     tags: [Recruiter]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: query
- *         name: status
- *         schema:
- *           type: string
- *         description: Từ khóa để tìm kiếm theo status.
  *     responses:
  *       200:
  *         description: Success
@@ -159,11 +153,6 @@ router.get('/getApplicant', authMiddleware(['recruiter']), getApplicant);
  *         schema:
  *           type: integer
  *           format: int64
- *       - in: query
- *         name: status
- *         schema:
- *           type: string
- *         description: Từ khóa để tìm kiếm theo status.
  *     responses:
  *       200:
  *         description: Success

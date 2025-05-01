@@ -13,7 +13,7 @@ export const postRecruitmentNews = async (req, res) => {
 
 export const getApplicant = async (req, res) => {
     try {
-        const result = await recruiterService.getApplicant(req.user.id, req.params.id, req.query.status);
+        const result = await recruiterService.getApplicant(req.user.id, req.params.id);
         return res.status(result.status).json(result.data);
     } catch (err) {
         console.error(err);
