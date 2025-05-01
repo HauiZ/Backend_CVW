@@ -18,7 +18,10 @@ passport.use(new GoogleStrategy({
   try {
     let user = await User.findOne({
       where: { email: userEmail },
-      include: [Role]
+      include: [{
+        model: Role,
+        where: { name: 'candiate' }
+      }]
     });
 
     if (!user) {
@@ -31,20 +34,22 @@ passport.use(new GoogleStrategy({
       await user.setRole(role);
     }
 
-    let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });
+    if (user.Role.name !== 'recruiter') {
+      let personalUser = await PersonalUser.findOne({ where: { userId: user.id } });
 
-    if (!personalUser) {
-      personalUser = await PersonalUser.create({
-        googleId: googleId,
-        name: profile.displayName,
-        email: userEmail,
-        userId: user.id,
-        avatarUrl: avatarUrl,
-      });
-    } else {
-      if (!personalUser.googleId) {
-        personalUser.googleId = googleId;
-        await personalUser.save();
+      if (!personalUser) {
+        personalUser = await PersonalUser.create({
+          googleId: googleId,
+          name: profile.displayName,
+          email: userEmail,
+          userId: user.id,
+          avatarUrl: avatarUrl,
+        });
+      } else {
+        if (!personalUser.googleId) {
+          personalUser.googleId = googleId;
+          await personalUser.save();
+        }
       }
     }
 
