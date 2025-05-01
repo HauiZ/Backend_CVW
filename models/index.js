@@ -45,6 +45,9 @@ CvFiles.hasMany(JobApplication, { foreignKey: 'cvId' });
 JobApplication.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId' });
 RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' });
 
+JobApplication.belongsTo(PersonalUser, { foreignKey: 'applicantId' });
+PersonalUser.hasMany(JobApplication, { foreignKey: 'applicantId' });
+
 Notification.belongsTo(User, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
 User.hasMany(Notification, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
 

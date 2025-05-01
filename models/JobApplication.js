@@ -4,6 +4,7 @@ import CV from './CV.js';
 import RecruitmentNews from './RecruitmentNews.js';
 import User from './User.js';
 import CvFiles from './CvFiles.js';
+import PersonalUser from './PersonalUser.js';
 
 class JobApplication extends Model { }
 
@@ -30,13 +31,13 @@ JobApplication.init({
         },
         allowNull: false,
     },
-    nameApplicant: {
-        type: DataTypes.STRING,
+    applicantId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: PersonalUser,
+            key: 'userId',
+        },
         allowNull: false,
-    },
-    avatarApllicant: {
-        type: DataTypes.STRING,
-        allowNull: true,
     },
     jobTitle: {
         type: DataTypes.STRING,

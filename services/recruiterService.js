@@ -83,6 +83,9 @@ const getApplicant = async (userId, recruitmentNewsId) => {
                 }, {
                     model: CvFiles,
                     attributes: ['urlView', 'urlDowload'],
+                }, {
+                    model: PersonalUser,
+                    attributes: ['name', 'avatarUrl']
                 }],
             });
         } else {
@@ -94,6 +97,9 @@ const getApplicant = async (userId, recruitmentNewsId) => {
                 }, {
                     model: CvFiles,
                     attributes: ['urlView', 'urlDowload'],
+                }, {
+                    model: PersonalUser,
+                    attributes: ['name', 'avatarUrl']
                 }],
             });
         }
@@ -109,6 +115,7 @@ const getApplicant = async (userId, recruitmentNewsId) => {
         }
         return { status: 204, data: messages.application.NO_APPLICANT };
     } catch (error) {
+        console.log(error)
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
@@ -117,12 +124,8 @@ const approvedApplication = async (applyId, status, companyId) => {
     try {
         const request = await JobApplication.findByPk(applyId, {
             include: [{
-                model: CvFiles,
-                attributes: ['personalId'],
-                include: [{
-                    model: PersonalUser,
-                    attributes: ['userId', 'name'],
-                }],
+                model: PersonalUser,
+                attributes: ['name']
             }],
         });
         const company = await CompanyUser.findByPk(companyId, {
@@ -137,8 +140,8 @@ const approvedApplication = async (applyId, status, companyId) => {
         }
         await Notification.create({
             sender: company.name,
-            receiverId: request.CvFile.PersonalUser.userId,
-            receiver: request.CvFile.PersonalUser.name,
+            receiverId: request.applicantId,
+            receiver: request.PersonalUser.name,
             title: messages.application.TITLE_NOFI,
             content: content,
         });

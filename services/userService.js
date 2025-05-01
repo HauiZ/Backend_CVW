@@ -194,14 +194,10 @@ const applyJob = async (userId, recruitmentNewsId, file) => {
         }
         const dataCv = await uploadCvService.uploadCV(file, userId);
         const cvId = dataCv.data.cvId;
-        const applicant = await PersonalUser.findByPk(userId, {
-            attributes: ['name', 'avatarUrl'],
-        });
         await JobApplication.create({
             userId: userId, cvId: cvId,
             recruitmentNewsId: recruitmentNewsId,
-            nameApplicant: applicant.name,
-            avatarApllicant: applicant.avatarUrl,
+            applicantId: userId,
             jobTitle: recruitmentNews.jobTitle,
             status: messages.recruitmentNews.status.PENDING
         });

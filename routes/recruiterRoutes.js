@@ -162,7 +162,7 @@ router.get('/getApplicant/:id', authMiddleware(['recruiter']), getApplicant);
 /**
  * @swagger
  * /api/recruiter/approvedApplication/{id}:
- *   patch:
+ *   post:
  *     summary: Duyệt yêu cầu ứng tuyển
  *     tags: [Recruiter]
  *     security:
@@ -192,7 +192,7 @@ router.get('/getApplicant/:id', authMiddleware(['recruiter']), getApplicant);
  *       200:
  *         description: Duyệt tin yêu cầu ứng tuyển thành công
  */
-router.patch('/approvedApplication/:id', authMiddleware(['recruiter']), approvedApplication);
+router.post('/approvedApplication/:id', authMiddleware(['recruiter']), approvedApplication);
 
 /**
  * @swagger
