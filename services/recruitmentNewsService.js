@@ -31,8 +31,8 @@ const getAllRecruitmentNews = async () => {
                 applicationDeadline: getTimeLeft(job.applicationDeadline),
                 datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
-        }).sort((a, b) => b.id - a.id ));
-        return { status: 200, data: jobs };
+        }));
+        return { status: 200, data: jobs.sort((a, b) => b.id - a.id) };
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -160,9 +160,9 @@ const filterAllRecruitmentNews = async (filterData) => {
                 applicationDeadline: getTimeLeft(job.applicationDeadline),
                 datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
             };
-        }).sort((a, b) => b.id - a.id));
+        }));
 
-        return { status: 200, data: data };
+        return { status: 200, data: data.sort((a, b) => b.id - a.id) };
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
