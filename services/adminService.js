@@ -169,7 +169,7 @@ const approveRecruitment = async (requestId, status) => {
             sender: 'ADMIN',
             receiverId: recruitmentNew.CompanyUser.userId,
             receiver: recruitmentNew.CompanyUser.name,
-            title: 'Job Posting Status Notifications',
+            title: `Response Job Posting Status { Post No.${recruitmentNewId} }`,
             content: content,
         });
         await request.update({ status: status, isReviewed: true });
