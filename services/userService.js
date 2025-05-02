@@ -103,6 +103,8 @@ const getUserProfile = async (userId) => {
                 businessName: user.CompanyUser.name,
                 email: user.CompanyUser.email,
                 phone: user.CompanyUser.phone,
+                province: user.CompanyUser.Area.province,
+                district: user.CompanyUser.Area.district,
                 companyAddress: user.CompanyUser.companyAddress,
                 field: user.CompanyUser.field,
                 companySize: user.CompanyUser.companySize,
@@ -345,7 +347,7 @@ const getInfoApplication = async (userId) => {
                     jobTitle: data.RecruitmentNew?.jobTitle,
                     companyName: data.RecruitmentNew?.CompanyUser?.name || null,
                     logoUrl: data.RecruitmentNew?.CompanyUser?.logoUrl || null,
-                    companyAddress: data.RecruitmentNew?.CompanyUser?.province || null,
+                    companyAddress: data.RecruitmentNew?.CompanyUser?.Area?.province || null,
                     datePosted: moment(data.RecruitmentNew?.datePosted).format('YYYY-MM-DD HH:mm:ss'),
                 }
             };

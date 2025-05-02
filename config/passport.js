@@ -18,9 +18,13 @@ passport.use(new GoogleStrategy({
   try {
     let user = await User.findOne({
       where: { email: userEmail },
-      include: [Role]
+      include: [{
+        model: Role,
+        where: {name: 'candidate'},
+        attributes: ['name']
+      }]
     });
-    if (!user || user.Role.name !== 'candidate') {
+    if (!user) {
       user = await User.create({
         email: userEmail,
         typeAccount: 'GOOGLE',
