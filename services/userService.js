@@ -283,7 +283,7 @@ const getNotification = async (userId) => {
                 sentAt: moment(data.sentAt).format('YYYY-MM-DD HH:mm:ss')
             }
         })
-        return { status: 200, data: listNotification };
+        return { status: 200, data: listNotification.sort((a, b) => b.id - a.id) };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
