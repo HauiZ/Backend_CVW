@@ -162,7 +162,7 @@ const filterAllRecruitmentNews = async (filterData) => {
             };
         }));
 
-        return { status: 200, data: data.sort((a, b) => b.id - a.id) };
+        return { status: 200, data: data };
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
