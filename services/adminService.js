@@ -194,8 +194,8 @@ const uploadCvTemplate = async (data, file) => {
         await CVTemplate.create({
             name,
             url,
-            fileId: public_id,
-            fileUrl: secure_url,
+            displayId: public_id,
+            displayUrl: secure_url,
             propoties
         })
         return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
@@ -235,7 +235,7 @@ const getDataDashBoard = async () => {
 const getTemplateCV = async () => {
     try {
         const listTemplate = await CVTemplate.findAll({
-            attributes: ['id', 'name', 'url', 'fileUrl', 'propoties'],
+            attributes: ['id', 'name', 'url', 'displayUrl', 'propoties'],
         });
         return { status: 200, data: listTemplate };
     } catch (error) {
@@ -247,8 +247,8 @@ const getTemplateCV = async () => {
 const deleteTemplate = async (templateId) => {
     try {
         const template = await CVTemplate.findByPk(templateId);
-        if (template.fileId) {
-            await cloudinary.uploader.destroy(template.fileId);
+        if (template.displayId) {
+            await cloudinary.uploader.destroy(template.displayId);
         }
         await template.destroy();
         return { status: 200, data: { message: `DELETED: ${templateId} SUCCESSFULLY!` } }

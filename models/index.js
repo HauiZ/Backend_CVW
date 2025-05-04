@@ -12,8 +12,8 @@ import CVTemplate from './CVTemplate.js';
 import JobApplication from './JobApplication.js';
 import Notification from './Notification.js';
 
-User.belongsTo(Role, {foreignKey: 'roleId'});
-Role.hasMany(User, {foreignKey: 'roleId'});
+User.belongsTo(Role, { foreignKey: 'roleId' });
+Role.hasMany(User, { foreignKey: 'roleId' });
 
 CompanyUser.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });
 User.hasOne(CompanyUser, { foreignKey: 'userId', onDelete: 'CASCADE' });
@@ -36,8 +36,11 @@ CompanyUser.hasMany(RecruitmentNews, { foreignKey: 'companyId', onDelete: 'CASCA
 CompanyUser.belongsTo(Area, { foreignKey: 'areaId' });
 Area.hasMany(CompanyUser, { foreignKey: 'areaId' });
 
-Request.belongsTo(RecruitmentNews, {foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE'});
-RecruitmentNews.hasOne(Request, {foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE'});
+Request.belongsTo(CompanyUser, { foreignKey: 'senderId' });
+CompanyUser.hasMany(Request, { foreignKey: 'senderId' });
+
+Request.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
+RecruitmentNews.hasOne(Request, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
 
 JobApplication.belongsTo(CvFiles, { foreignKey: 'cvId' });
 CvFiles.hasMany(JobApplication, { foreignKey: 'cvId' });
@@ -48,9 +51,9 @@ RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' });
 JobApplication.belongsTo(PersonalUser, { foreignKey: 'applicantId' });
 PersonalUser.hasMany(JobApplication, { foreignKey: 'applicantId' });
 
-Notification.belongsTo(User, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
-User.hasMany(Notification, {foreignKey: 'receiverId', onDelete: 'CASCADE'});
+Notification.belongsTo(User, { foreignKey: 'receiverId', onDelete: 'CASCADE' });
+User.hasMany(Notification, { foreignKey: 'receiverId', onDelete: 'CASCADE' });
 
-const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, CV, RecruitmentNews, Request, CVTemplate , JobApplication, Notification};
+const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, CV, RecruitmentNews, Request, CVTemplate, JobApplication, Notification };
 
 export default models;

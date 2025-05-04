@@ -37,6 +37,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
         })
         await Request.create({
             recruitmentNewsId: recruitmentNews.id,
+            senderId: companyId,
             sender: companyName.name,
             typeOf: messages.recruitmentNews.typeof.RECRUITMENT_NEWS,
             status: messages.recruitmentNews.status.PENDING,

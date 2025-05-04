@@ -17,11 +17,11 @@ CVTemplate.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
-    fileId: {
+    displayId: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    fileUrl: {
+    displayUrl: {
         type: DataTypes.STRING,
         allowNull: false,
     },
