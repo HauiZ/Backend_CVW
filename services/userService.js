@@ -16,6 +16,7 @@ import moment from 'moment-timezone';
 import Notification from '../models/Notification.js';
 import CVTemplate from '../models/CVTemplate.js';
 import { getTimeLeft } from "../utils/getTimeLeft.js";
+import { Sequelize } from 'sequelize';
 
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
@@ -250,18 +251,33 @@ const getInfoCompany = async (companyId) => {
 const getAllCompany = async () => {
     try {
         const listCompany = await CompanyUser.findAll({
-            attributes: ['userId', 'name', 'logoUrl', 'field'],
-            limit: 9,
+            attributes: {
+                include: [
+                    [Sequelize.fn('COUNT', Sequelize.col('RecruitmentNews.id')), 'jobCount']
+                ],
+                exclude: ['phone', 'email', 'areaId', 'companyAddress', 'companySize', 'website', 'introduction', 'logoId']
+            },
+            include: [{
+                model: RecruitmentNews,
+                as: 'RecruitmentNews',
+                attributes: [] 
+            }],
+            group: [
+                'CompanyUser.userId',
+                'CompanyUser.name',
+                'CompanyUser.field',
+                'CompanyUser.logoUrl'
+            ],
+            order: [[Sequelize.literal('jobCount'), 'DESC']],
         })
-        const data = await Promise.all(listCompany.map(async company => {
-            const jobNumber = await RecruitmentNews.count({
-                where: { companyId: company.userId }
-            })
+        const topCompany = listCompany.slice(0, 9);
+        const data = await Promise.all(topCompany.map(async company => {
             const data = company.toJSON();
+            const { userId, jobCount, ...current } = data;
             return {
                 id: company.userId,
-                ...data,
-                jobNumber: jobNumber,
+                ...current,
+                jobNumber: jobCount,
             }
         }))
         return { status: 200, data: data };
