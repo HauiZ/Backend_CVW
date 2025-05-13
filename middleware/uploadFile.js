@@ -49,4 +49,16 @@ const uploadAvatar = multer({ storage: avatar });
 const uploadLogo = multer({ storage: logo });
 const uploadTemplate = multer({ storage: template });
 
-export default {pdfUpload, uploadAvatar, uploadLogo, uploadTemplate};
+const uploadPdfAndImage = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+    if (allowedTypes.includes(file.mimetype)) cb(null, true);
+    else cb(new Error('Only PDF and image files are allowed'), false);
+  },
+}).fields([
+  { name: 'pdf', maxCount: 1 },
+  { name: 'image', maxCount: 1 }
+]);
+
+export default {pdfUpload, uploadAvatar, uploadLogo, uploadTemplate, uploadPdfAndImage};

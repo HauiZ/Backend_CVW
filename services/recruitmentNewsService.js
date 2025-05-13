@@ -121,6 +121,16 @@ const filterAllRecruitmentNews = async (filterData) => {
         let orderBy;
         if (sortBy === 'salary') {
             orderBy = 'salaryMax';
+        } else if (sortBy === 'experience') {
+            orderBy = sequelize.literal(`CASE 
+                WHEN experience = N'Không yêu cầu' THEN 0
+                WHEN experience = N'Dưới 1 năm' THEN 1
+                WHEN experience = N'0-1 năm' THEN 2
+                WHEN experience = N'1-3 năm' THEN 3
+                WHEN experience = N'3-5 năm' THEN 4
+                WHEN experience = N'Trên 5 năm' THEN 5
+                ELSE 6
+            END`);
         } else {
             orderBy = sortBy && validSortFields.includes(sortBy) ? sortBy : 'datePosted';
         }

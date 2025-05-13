@@ -13,7 +13,11 @@ CVTemplate.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
-    url: {
+    templateId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    templateUrl: {
         type: DataTypes.STRING,
         allowNull: true,
     },

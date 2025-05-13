@@ -16,7 +16,7 @@ const uploadCV = async (file, userId) => {
                 personalId: userId,
                 filename: file.originalname,
                 fileId: response.data.id,
-                urlView: `https://drive.google.com/file/d/${response.data.id}/view`,
+                urlView: `https://drive.google.com/file/d/${response.data.id}/preview`,
                 urlDowload: `https://drive.google.com/uc?export=download&id=${response.data.id}`,
 
             });
@@ -38,4 +38,24 @@ const uploadCV = async (file, userId) => {
     }
 };
 
-export default { uploadCV };
+const uploadTemplate = async (file) => {
+    try {
+        if (!file) return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
+
+        const parentId = '1D_l4fW5HqmEQCr2rOYUDP4ioywB2KRM0';
+        const response = await uploadToDrive(file, parentId);
+        if (response) {
+            return {
+                templateId: response.data.id,
+                templateUrl: `https://drive.google.com/file/d/${response.data.id}/preview`,
+            };
+        }
+        return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
+
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+export default { uploadCV, uploadTemplate };

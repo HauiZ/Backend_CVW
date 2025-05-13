@@ -13,23 +13,34 @@ import { Op } from 'sequelize';
 import drive from '../config/googleDrive/driveconfig.js';
 import JobApplication from '../models/JobApplication.js';
 import cloudinary from '../config/cloudinary.js';
+import uploadCvService from './upload/uploadCvService.js';
 
 const getAllUsers = async (userId, filterRole) => {
     try {
-        const { roleName } = filterRole;
+        const { keyword } = filterRole;
         const includeOptions = [
-            { model: Role, attributes: ["name"] },
-            { model: CompanyUser, attributes: ["logoUrl"] },
-            { model: PersonalUser, attributes: ["avatarUrl"] },
+            { model: Role, as: 'Role', attributes: ["name"] },
+            { model: CompanyUser, as: 'CompanyUser', attributes: ["logoUrl", "name"] },
+            { model: PersonalUser, as: 'PersonalUser', attributes: ["avatarUrl", "name"] },
         ];
 
-        if (roleName) {
-            includeOptions[0].where = { name: roleName };
+        const whereConditions = {}
+
+        if (keyword && keyword.trim() !== '') {
+            const searchTerm = `%${keyword.trim()}%`;
+            whereConditions[Op.or] = [
+                { id: { [Op.like]: searchTerm } },
+                { email: { [Op.like]: searchTerm } },
+                { '$Role.name$': { [Op.like]: searchTerm } },
+                { '$CompanyUser.name$': { [Op.like]: searchTerm } },
+                { '$PersonalUser.name$': { [Op.like]: searchTerm } }
+            ];
         }
+
         const users = await User.findAll({
             attributes: { exclude: ["password"] },
             include: includeOptions,
-            where: { id: { [Op.ne]: userId } }
+            where: { id: { [Op.ne]: userId }, ...whereConditions },
         });
 
         if (!users.length) {
@@ -180,22 +191,44 @@ const approveRecruitment = async (requestId, status) => {
     }
 };
 
-const uploadCvTemplate = async (data, file) => {
+const uploadBufferToCloudinary = (buffer, folder, resource_type = 'auto') => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            { folder, resource_type },
+            (error, result) => {
+                if (error) reject(error);
+                else resolve(result);
+            }
+        );
+        stream.end(buffer);
+    });
+};
+
+const uploadCvTemplate = async (data, files) => {
     try {
-        const { name, url, propoties } = data;
-        if (!file) {
-            return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
+        const { name, propoties } = data;
+        const pdfFile = files?.pdf?.[0];
+        const imageFile = files?.image?.[0];
+
+        if (!pdfFile || !imageFile) {
+            return {
+                status: 400,
+                data: { message: messages.file.ERR_FILE_NOT_EXISTS }
+            };
         }
-        const public_id = file.filename || file.public_id;
-        const secure_url = file.path || file.secure_url;
-        if (!public_id || !secure_url) {
-            return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
-        }
+
+        // Upload PDF lên drive
+        const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
+
+        // Upload ảnh preview lên Cloudinary (image)
+        const imageUpload = await uploadBufferToCloudinary(imageFile.buffer, 'PdfPreview', 'image');
+
         await CVTemplate.create({
             name,
-            url,
-            displayId: public_id,
-            displayUrl: secure_url,
+            templateId: pdfUpload.templateId,
+            templateUrl: pdfUpload.templateUrl,
+            displayId: imageUpload.public_id,
+            displayUrl: imageUpload.secure_url,
             propoties
         })
         return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
@@ -235,7 +268,7 @@ const getDataDashBoard = async () => {
 const getTemplateCV = async () => {
     try {
         const listTemplate = await CVTemplate.findAll({
-            attributes: ['id', 'name', 'url', 'displayUrl', 'propoties'],
+            attributes: ['id', 'name', 'templateUrl', 'displayUrl', 'propoties'],
         });
         return { status: 200, data: listTemplate };
     } catch (error) {
@@ -247,6 +280,12 @@ const getTemplateCV = async () => {
 const deleteTemplate = async (templateId) => {
     try {
         const template = await CVTemplate.findByPk(templateId);
+        if (template.templateId) {
+            const googleDriveFileId = template.templateId;
+            await drive.files.delete({
+                fileId: googleDriveFileId
+            },);
+        }
         if (template.displayId) {
             await cloudinary.uploader.destroy(template.displayId);
         }

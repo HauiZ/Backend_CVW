@@ -15,10 +15,9 @@ import upload from '../middleware/uploadFile.js';
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: roleName
+ *         name: keyword
  *         schema:
  *           type: string
- *           enum: [candidate, recruiter]
  *     responses:
  *       200:
  *         description: Success
@@ -103,7 +102,7 @@ router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruit
  * @swagger
  * /api/admin/uploadCvTemplate:
  *   post:
- *     summary: Tải lên CV Template
+ *     summary: Tải lên CV Template (PDF + ảnh đại diện)
  *     tags: [Admin]
  *     security:
  *       - bearerAuth: []
@@ -114,18 +113,22 @@ router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruit
  *           schema:
  *             type: object
  *             properties:
- *               file:
+ *               pdf:
  *                 type: string
  *                 format: binary
+ *                 description: File CV PDF
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *                 description: Ảnh đại diện của CV
  *               name:
  *                 type: string
  *                 example: "Cao cấp"
- *               url:
- *                 type: string
- *                 example: "http://localhost::5173/template1"
  *               propoties:
  *                 type: array
- *                 example: ["cao cấp", "tinh tế", "sang trọng"]    
+ *                 items:
+ *                   type: string
+ *                 example: ["cao cấp", "tinh tế", "sang trọng"]
  *     responses:
  *       200:
  *         description: Upload thành công
@@ -134,7 +137,7 @@ router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruit
  *       500:
  *         description: Lỗi server
  */
-router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.uploadTemplate.single('file'), uploadCvTemplate);
+router.post('/uploadCvTemplate', authMiddleware(['admin']), upload.uploadPdfAndImage, uploadCvTemplate);
 
 
 /**

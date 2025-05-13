@@ -41,7 +41,7 @@ export const approveRecruitment = async (req, res) => {
 
 export const uploadCvTemplate = async (req, res) => {
     try {
-        const result = await adminService.uploadCvTemplate(req.body, req.file);
+        const result = await adminService.uploadCvTemplate(req.body, req.files);
         res.status(result.status).json(result.data);
     } catch (error) {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
