@@ -130,7 +130,7 @@ const approvedApplication = async (applyId, status, companyId) => {
             }],
         });
         const company = await CompanyUser.findByPk(companyId, {
-            attributes: ['name'],
+            attributes: ['name', 'logoUrl'],
         });
         await request.update({ status: status });
         let content;
@@ -141,6 +141,7 @@ const approvedApplication = async (applyId, status, companyId) => {
         }
         await Notification.create({
             sender: company.name,
+            senderAvatar: company.logoUrl,
             receiverId: request.applicantId,
             receiver: request.PersonalUser.name,
             title: messages.application.TITLE_NOFI,

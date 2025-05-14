@@ -31,7 +31,6 @@ const getAllUsers = async (userId, filterRole) => {
         attributes: ["avatarUrl", "name"],
       },
     ];
-
     const whereConditions = {};
 
     // If id is provided, return only that specific user
