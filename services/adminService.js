@@ -1,30 +1,38 @@
-import Request from '../models/Request.js';
-import messages from '../config/message.js';
-import moment from 'moment-timezone';
-import RecruitmentNews from '../models/RecruitmentNews.js';
-import User from '../models/User.js';
-import Role from '../models/Role.js';
-import PersonalUser from '../models/PersonalUser.js';
-import CvFiles from '../models/CvFiles.js';
-import CompanyUser from '../models/CompanyUser.js';
-import CVTemplate from '../models/CVTemplate.js';
-import Notification from '../models/Notification.js';
-import { Op } from 'sequelize';
-import drive from '../config/googleDrive/driveconfig.js';
-import JobApplication from '../models/JobApplication.js';
-import cloudinary from '../config/cloudinary.js';
-import uploadCvService from './upload/uploadCvService.js';
+import Request from "../models/Request.js";
+import messages from "../config/message.js";
+import moment from "moment-timezone";
+import RecruitmentNews from "../models/RecruitmentNews.js";
+import User from "../models/User.js";
+import Role from "../models/Role.js";
+import PersonalUser from "../models/PersonalUser.js";
+import CvFiles from "../models/CvFiles.js";
+import CompanyUser from "../models/CompanyUser.js";
+import CVTemplate from "../models/CVTemplate.js";
+import Notification from "../models/Notification.js";
+import { Op } from "sequelize";
+import drive from "../config/googleDrive/driveconfig.js";
+import JobApplication from "../models/JobApplication.js";
+import cloudinary from "../config/cloudinary.js";
+import uploadCvService from "./upload/uploadCvService.js";
 
 const getAllUsers = async (userId, filterRole) => {
     try {
         const { keyword } = filterRole;
         const includeOptions = [
-            { model: Role, as: 'Role', attributes: ["name"] },
-            { model: CompanyUser, as: 'CompanyUser', attributes: ["logoUrl", "name"] },
-            { model: PersonalUser, as: 'PersonalUser', attributes: ["avatarUrl", "name"] },
+            { model: Role, as: "Role", attributes: ["name"] },
+            {
+                model: CompanyUser,
+                as: "CompanyUser",
+                attributes: ["logoUrl", "name"],
+            },
+            {
+                model: PersonalUser,
+                as: "PersonalUser",
+                attributes: ["avatarUrl", "name"],
+            },
         ];
 
-        const whereConditions = {}
+        const whereConditions = {};
 
         if (keyword && keyword.trim() !== '') {
             const searchTerm = `%${keyword.trim()}%`;
@@ -75,20 +83,26 @@ const deleteAUser = async (userId) => {
     try {
         const userToDelete = await User.findByPk(userId, {
             include: [
-                { model: Role, attributes: ['name'] },
-                { model: PersonalUser, attributes: ['avatarId'] },
-                { model: CompanyUser, attributes: ['logoId'] },
+                { model: Role, attributes: ["name"] },
+                { model: PersonalUser, attributes: ["avatarId"] },
+                { model: CompanyUser, attributes: ["logoId"] },
             ],
         });
         if (!userToDelete) {
-            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } }
+            return {
+                status: 404,
+                data: { message: messages.user.ERR_USER_NOT_EXISTS },
+            };
         }
-        if (userToDelete.Role.name === 'admin') {
-            return { status: 409, data: { message: messages.error.ERR_DELETE_ADMIN } }
+        if (userToDelete.Role.name === "admin") {
+            return {
+                status: 409,
+                data: { message: messages.error.ERR_DELETE_ADMIN },
+            };
         }
         const cvFilesToDelete = await CvFiles.findAll({
             where: {
-                personalId: userId
+                personalId: userId,
             },
         });
 
@@ -96,25 +110,25 @@ const deleteAUser = async (userId) => {
             for (const cvFile of cvFilesToDelete) {
                 await JobApplication.destroy({
                     where: {
-                        cvId: cvFile.id
-                    }
-                })
+                        cvId: cvFile.id,
+                    },
+                });
             }
         }
 
         const recruitmentNews = await RecruitmentNews.findAll({
             where: {
-                companyId: userId
-            }
+                companyId: userId,
+            },
         });
 
         if (recruitmentNews && recruitmentNews.length > 0) {
             for (const news of recruitmentNews) {
                 await JobApplication.destroy({
                     where: {
-                        recruitmentNewsId: news.id
-                    }
-                })
+                        recruitmentNewsId: news.id,
+                    },
+                });
             }
         }
 
@@ -122,12 +136,15 @@ const deleteAUser = async (userId) => {
             for (const cvFile of cvFilesToDelete) {
                 const googleDriveFileId = cvFile.fileId;
                 await drive.files.delete({
-                    fileId: googleDriveFileId
-                },);
+                    fileId: googleDriveFileId,
+                });
             }
         }
 
-        if (userToDelete.PersonalUser && userToDelete.PersonalUser.avatarId !== null) {
+        if (
+            userToDelete.PersonalUser &&
+            userToDelete.PersonalUser.avatarId !== null
+        ) {
             await cloudinary.uploader.destroy(userToDelete.PersonalUser.avatarId);
         }
 
@@ -135,9 +152,12 @@ const deleteAUser = async (userId) => {
             await cloudinary.uploader.destroy(userToDelete.CompanyUser.logoId);
         }
         await userToDelete.destroy();
-        return { status: 200, data: { message: `DELETED: ${userId} SUCCESSFULLY!` } }
+        return {
+            status: 200,
+            data: { message: `DELETED: ${userId} SUCCESSFULLY!` },
+        };
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
@@ -145,13 +165,13 @@ const deleteAUser = async (userId) => {
 const getRequest = async () => {
     try {
         const requests = await Request.findAll();
-        const requestList = requests.map(request => {
+        const requestList = requests.map((request) => {
             const data = request.toJSON();
             return {
                 ...data,
-                createAt: moment(data.createAt).format('YYYY-MM-DD HH:mm:ss')
+                createAt: moment(data.createAt).format("YYYY-MM-DD HH:mm:ss"),
             };
-        })
+        });
         return { status: 200, data: requestList };
     } catch (error) {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -163,11 +183,13 @@ const approveRecruitment = async (requestId, status) => {
         const request = await Request.findByPk(requestId);
         const recruitmentNewId = request.recruitmentNewsId;
         const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
-            attributes: ['id', 'companyId', 'status'],
-            include: [{
-                model: CompanyUser,
-                attributes: ['name', 'userId'],
-            }]
+            attributes: ["id", "companyId", "status"],
+            include: [
+                {
+                    model: CompanyUser,
+                    attributes: ["name", "userId"],
+                },
+            ],
         });
         await recruitmentNew.update({ status: status });
         let content;
@@ -177,21 +199,24 @@ const approveRecruitment = async (requestId, status) => {
             content = messages.recruitmentNews.REJECTED_POST;
         }
         await Notification.create({
-            sender: 'ADMIN',
+            sender: "ADMIN",
             receiverId: recruitmentNew.CompanyUser.userId,
             receiver: recruitmentNew.CompanyUser.name,
             title: `Response Job Posting Status { Post No.${recruitmentNewId} }`,
             content: content,
         });
         await request.update({ status: status, isReviewed: true });
-        return { status: 200, data: { message: messages.recruitmentNews.UPDATE_SUCCESS } };
+        return {
+            status: 200,
+            data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
+        };
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
-const uploadBufferToCloudinary = (buffer, folder, resource_type = 'auto') => {
+const uploadBufferToCloudinary = (buffer, folder, resource_type = "auto") => {
     return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
             { folder, resource_type },
@@ -213,7 +238,7 @@ const uploadCvTemplate = async (data, files) => {
         if (!pdfFile || !imageFile) {
             return {
                 status: 400,
-                data: { message: messages.file.ERR_FILE_NOT_EXISTS }
+                data: { message: messages.file.ERR_FILE_NOT_EXISTS },
             };
         }
 
@@ -221,7 +246,11 @@ const uploadCvTemplate = async (data, files) => {
         const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
 
         // Upload ảnh preview lên Cloudinary (image)
-        const imageUpload = await uploadBufferToCloudinary(imageFile.buffer, 'PdfPreview', 'image');
+        const imageUpload = await uploadBufferToCloudinary(
+            imageFile.buffer,
+            "PdfPreview",
+            "image"
+        );
 
         await CVTemplate.create({
             name,
@@ -229,8 +258,8 @@ const uploadCvTemplate = async (data, files) => {
             templateUrl: pdfUpload.templateUrl,
             displayId: imageUpload.public_id,
             displayUrl: imageUpload.secure_url,
-            propoties
-        })
+            propoties,
+        });
         return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
     } catch (error) {
         console.log(error);
@@ -243,21 +272,25 @@ const getDataDashBoard = async () => {
         const data = {
             user: await User.count(),
             candidate: await User.count({
-                include: [{
-                    model: Role,
-                    where: { name: 'candidate' },
-                }]
+                include: [
+                    {
+                        model: Role,
+                        where: { name: "candidate" },
+                    },
+                ],
             }),
             recruiter: await User.count({
-                include: [{
-                    model: Role,
-                    where: { name: 'recruiter' },
-                }]
+                include: [
+                    {
+                        model: Role,
+                        where: { name: "recruiter" },
+                    },
+                ],
             }),
             recruitmentNews: await RecruitmentNews.count({
                 where: { status: messages.recruitmentNews.status.APPROVED },
             }),
-        }
+        };
         return { status: 200, data: data };
     } catch (error) {
         console.log(error);
@@ -268,7 +301,7 @@ const getDataDashBoard = async () => {
 const getTemplateCV = async () => {
     try {
         const listTemplate = await CVTemplate.findAll({
-            attributes: ['id', 'name', 'templateUrl', 'displayUrl', 'propoties'],
+            attributes: ["id", "name", "templateUrl", "displayUrl", "propoties"],
         });
         return { status: 200, data: listTemplate };
     } catch (error) {
@@ -283,17 +316,29 @@ const deleteTemplate = async (templateId) => {
         if (template.templateId) {
             const googleDriveFileId = template.templateId;
             await drive.files.delete({
-                fileId: googleDriveFileId
-            },);
+                fileId: googleDriveFileId,
+            });
         }
         if (template.displayId) {
             await cloudinary.uploader.destroy(template.displayId);
         }
         await template.destroy();
-        return { status: 200, data: { message: `DELETED: ${templateId} SUCCESSFULLY!` } }
+        return {
+            status: 200,
+            data: { message: `DELETED: ${templateId} SUCCESSFULLY!` },
+        };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
-export default { getAllUsers, deleteAUser, getRequest, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate };
+export default {
+    getAllUsers,
+    deleteAUser,
+    getRequest,
+    approveRecruitment,
+    uploadCvTemplate,
+    getDataDashBoard,
+    getTemplateCV,
+    deleteTemplate,
+};
