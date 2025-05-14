@@ -260,7 +260,7 @@ const getAllCompany = async () => {
             include: [{
                 model: RecruitmentNews,
                 as: 'RecruitmentNews',
-                attributes: [] 
+                attributes: []
             }],
             group: [
                 'CompanyUser.userId',
@@ -289,6 +289,14 @@ const getAllCompany = async () => {
 
 const getNotification = async (userId) => {
     try {
+        // const thirtyDaysAgo = moment().subtract(30, 'days').toDate();
+        // await Notification.destroy({
+        //     where: {
+        //         sentAt: {
+        //             [Op.lt]: thirtyDaysAgo 
+        //         }
+        //     }
+        // });
         const notifications = await Notification.findAll({
             where: { receiverId: userId },
         })

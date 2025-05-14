@@ -44,7 +44,7 @@ const getAllUsers = async (userId, filterRole) => {
         });
 
         if (!users.length) {
-            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS } };
+            return { status: 404, data: { message: messages.user.ERR_USER_NOT_EXISTS, users: [] } };
         }
 
         const userList = users.map(user => {
