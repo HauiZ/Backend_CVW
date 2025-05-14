@@ -17,7 +17,7 @@ import uploadCvService from "./upload/uploadCvService.js";
 
 const getAllUsers = async (userId, filterRole) => {
   try {
-    const { keyword } = filterRole;
+    const { keyword, id } = filterRole;
     const includeOptions = [
       { model: Role, as: "Role", attributes: ["name"] },
       {
@@ -34,21 +34,30 @@ const getAllUsers = async (userId, filterRole) => {
 
     const whereConditions = {};
 
-    if (keyword && keyword.trim() !== "") {
-      const searchTerm = `%${keyword.trim()}%`;
-      whereConditions[Op.or] = [
-        { id: { [Op.like]: searchTerm } },
-        { email: { [Op.like]: searchTerm } },
-        { "$Role.name$": { [Op.like]: searchTerm } },
-        { "$CompanyUser.name$": { [Op.like]: searchTerm } },
-        { "$PersonalUser.name$": { [Op.like]: searchTerm } },
-      ];
+    // If id is provided, return only that specific user
+    if (id) {
+      whereConditions.id = id;
+    } else {
+      // Only exclude the requesting user if we're not searching for a specific ID
+      whereConditions.id = { [Op.ne]: userId };
+
+      // Apply keyword search if provided
+      if (keyword && keyword.trim() !== "") {
+        const searchTerm = `%${keyword.trim()}%`;
+        whereConditions[Op.or] = [
+          { id: { [Op.like]: searchTerm } },
+          { email: { [Op.like]: searchTerm } },
+          { "$Role.name$": { [Op.like]: searchTerm } },
+          { "$CompanyUser.name$": { [Op.like]: searchTerm } },
+          { "$PersonalUser.name$": { [Op.like]: searchTerm } },
+        ];
+      }
     }
 
     const users = await User.findAll({
       attributes: { exclude: ["password"] },
       include: includeOptions,
-      where: { id: { [Op.ne]: userId }, ...whereConditions },
+      where: whereConditions,
     });
 
     if (!users.length) {
