@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import CV from './CV.js';
 import RecruitmentNews from './RecruitmentNews.js';
 import User from './User.js';
 import CvFiles from './CvFiles.js';
