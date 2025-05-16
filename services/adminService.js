@@ -345,6 +345,59 @@ const deleteTemplate = async (templateId) => {
     return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
   }
 };
+
+const updateCvTemplate = async (templateId, data, files) => {
+  try {
+    const { name, propoties } = data;
+    const pdfFile = files?.pdf?.[0];
+    const imageFile = files?.image?.[0];
+
+    if (!pdfFile || !imageFile) {
+      return {
+        status: 400,
+        data: { message: messages.file.ERR_FILE_NOT_EXISTS },
+      };
+    }
+    const template = await CVTemplate.findByPk(templateId);
+    if (!template) {
+      return {
+        status: 404,
+        data: { message: messages.file.ERR_FILE_NOT_EXISTS },
+      };
+    }
+
+    if (template.templateId) {
+      await drive.files.delete({
+        fileId: template.templateId,
+      });
+    }
+    if (template.displayId) {
+      await cloudinary.uploader.destroy(template.displayId);
+    }
+    // Upload PDF lên drive
+    const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
+
+    // Upload ảnh preview lên Cloudinary (image)
+    const imageUpload = await uploadBufferToCloudinary(
+      imageFile.buffer,
+      "PdfPreview",
+      "image"
+    );
+
+    await template.update({
+      name,
+      templateId: pdfUpload.templateId,
+      templateUrl: pdfUpload.templateUrl,
+      displayId: imageUpload.public_id,
+      displayUrl: imageUpload.secure_url,
+      propoties,
+    });
+    return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
+  } catch (error) {
+    console.log(error);
+    return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+  }
+};
 export default {
   getAllUsers,
   deleteAUser,
@@ -354,4 +407,5 @@ export default {
   getDataDashBoard,
   getTemplateCV,
   deleteTemplate,
+  updateCvTemplate,
 };

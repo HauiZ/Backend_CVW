@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate } from "../controllers/adminController.js";
+import { getRequest, getUsers, deleteUser, approveRecruitment, uploadCvTemplate, getDataDashBoard, getTemplateCV, deleteTemplate, updateCvTemplate } from "../controllers/adminController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import upload from '../middleware/uploadFile.js';
 
@@ -193,4 +193,53 @@ router.get('/getTemplateCV', authMiddleware(['admin']), getTemplateCV);
  *        description: Template đã được xóa thành công.
  */
 router.delete('/deleteTemplate/:id', authMiddleware(['admin']), deleteTemplate);
+
+/**
+ * @swagger
+ * /api/admin/updateCvTemplate/{id}:
+ *   post:
+ *     summary: Cập nhật CV Template (PDF + ảnh đại diện)
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của Template cần cập nhật.
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               pdf:
+ *                 type: string
+ *                 format: binary
+ *                 description: File CV PDF
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *                 description: Ảnh đại diện của CV
+ *               name:
+ *                 type: string
+ *                 example: "Cao cấp"
+ *               propoties:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: ["cao cấp", "tinh tế", "sang trọng"]
+ *     responses:
+ *       200:
+ *         description: Update thành công
+ *       400:
+ *         description: Không có file
+ *       500:
+ *         description: Lỗi server
+ */
+router.post('/updateCvTemplate/:id', authMiddleware(['admin']), upload.uploadPdfAndImage, updateCvTemplate);
 export default router;
