@@ -66,7 +66,7 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
 /**
  * @swagger
  * /api/admin/approveRecruitment/{id}:
- *   post:
+ *   patch:
  *     summary: Duyệt tin tuyển dụng
  *     tags: [Admin]
  *     security:
@@ -96,7 +96,7 @@ router.get('/getRequest', authMiddleware(['admin']), getRequest);
  *       200:
  *         description: Duyệt tin tuyển dụng thành công
  */
-router.post('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruitment);
+router.patch('/approveRecruitment/:id', authMiddleware(['admin']), approveRecruitment);
 
 /**
  * @swagger

@@ -11,6 +11,10 @@ RecruitmentNews.init({
         allowNull: false,
         autoIncrement: true,
     },
+    parentId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     companyId: {
         type: DataTypes.INTEGER,
         references: {

@@ -16,7 +16,7 @@ Notification.init({
     },
     senderAvatar: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     receiverId: {
         type: DataTypes.INTEGER,

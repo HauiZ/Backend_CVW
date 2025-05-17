@@ -58,3 +58,23 @@ export const getDataDashBoard = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+
+export const updateRecruitmentNews = async (req, res) => {
+    try {
+        const result = await recruiterService.updateRecruitmentNews(req.body, req.user.id, req.params.id);
+        return res.status(result.status).json(result.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(messages.error.ERR_INTERNAL);
+    }
+};
+
+export const deleteRecruitmentNews = async (req, res) => {
+    try {
+        const result = await recruiterService.deleteRecruitmentNews(req.params.id, req.user.id);
+        return res.status(result.status).json(result.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(messages.error.ERR_INTERNAL);
+    }
+};

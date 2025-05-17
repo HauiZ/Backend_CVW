@@ -35,14 +35,14 @@ Area.hasMany(CompanyUser, { foreignKey: 'areaId' });
 Request.belongsTo(CompanyUser, { foreignKey: 'senderId' });
 CompanyUser.hasMany(Request, { foreignKey: 'senderId' });
 
-Request.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
-RecruitmentNews.hasOne(Request, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
+Request.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+RecruitmentNews.hasOne(Request, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 JobApplication.belongsTo(CvFiles, { foreignKey: 'cvId' });
 CvFiles.hasMany(JobApplication, { foreignKey: 'cvId' });
 
-JobApplication.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId' });
-RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' });
+JobApplication.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId' , onUpdate: 'CASCADE'});
+RecruitmentNews.hasMany(JobApplication, { foreignKey: 'recruitmentNewsId' , onUpdate: 'CASCADE'});
 
 JobApplication.belongsTo(PersonalUser, { foreignKey: 'applicantId' });
 PersonalUser.hasMany(JobApplication, { foreignKey: 'applicantId' });

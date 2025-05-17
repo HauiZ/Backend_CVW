@@ -196,7 +196,7 @@ const approveRecruitment = async (requestId, status) => {
     const request = await Request.findByPk(requestId);
     const recruitmentNewId = request.recruitmentNewsId;
     const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
-      attributes: ["id", "companyId", "status"],
+      attributes: ["id", "companyId", "status", 'parentId'],
       include: [
         {
           model: CompanyUser,
@@ -204,25 +204,108 @@ const approveRecruitment = async (requestId, status) => {
         },
       ],
     });
-    await recruitmentNew.update({ status: status });
-    let content;
-    if (status === messages.recruitmentNews.status.APPROVED) {
-      content = messages.recruitmentNews.APPROVED_POST;
-    } else if (status === messages.recruitmentNews.status.REJECTED) {
-      content = messages.recruitmentNews.REJECTED_POST;
+    const userId = recruitmentNew.CompanyUser.userId;
+    const companyName = recruitmentNew.CompanyUser.name;
+    switch (request.typeOf) {
+      // Check if the request is for a job posting
+      case messages.recruitmentNews.typeof.JOB_POSTING:
+        await recruitmentNew.update({ status: status });
+        let content1;
+        if (status === messages.recruitmentNews.status.APPROVED) {
+          content1 = messages.recruitmentNews.APPROVED_POST;
+        } else if (status === messages.recruitmentNews.status.REJECTED) {
+          content1 = messages.recruitmentNews.REJECTED_POST;
+        }
+        await Notification.create({
+          sender: "ADMIN",
+          receiverId: userId,
+          receiver: companyName,
+          title: `Response Job Posting Status { Post No.${recruitmentNewId} }`,
+          content: content1,
+        });
+        await request.update({ status: status, isReviewed: true });
+        return {
+          status: 200,
+          data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
+        };
+      // Update for a recruitment news
+      case messages.recruitmentNews.typeof.UPDATE_JOB_POSTING:
+        const parentNewsId = recruitmentNew.parentId;
+        if (!parentNewsId) {
+          return {
+            status: 400,
+            data: { message: messages.recruitmentNews.ERR_NOT_EXISTS },
+          };
+        }
+        const parentRecruitmentNews = await RecruitmentNews.findByPk(parentNewsId);
+        let content2;
+        if (status === messages.recruitmentNews.status.APPROVED) {
+          content2 = messages.recruitmentNews.UPDATED_POST_SUCCESS;
+          await JobApplication.update(
+            { recruitmentNewsId: recruitmentNewId },
+            {
+              where: {
+                recruitmentNewsId: parentRecruitmentNews.id,
+              },
+            }
+          );
+          await parentRecruitmentNews.destroy();
+          await recruitmentNew.update({ parentId: null, status: messages.recruitmentNews.status.APPROVED });
+        } else if (status === messages.recruitmentNews.status.REJECTED) {
+          content2 = messages.recruitmentNews.UPDATED_POST_FAILED;
+          await parentRecruitmentNews.update({ status: messages.recruitmentNews.status.APPROVED });
+          await recruitmentNew.destroy();
+        }
+        await Notification.create({
+          sender: "ADMIN",
+          receiverId: userId,
+          receiver: companyName,
+          title: `Response Update Post Status { Post No.${recruitmentNewId} }`,
+          content: content2,
+        });
+        await request.update({ status: status, isReviewed: true });
+        return {
+          status: 200,
+          data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
+        };
+      // Delete job posting
+      case messages.recruitmentNews.typeof.DELETE_JOB_POSTING:
+        if (!recruitmentNewId) {
+          return {
+            status: 400,
+            data: { message: messages.recruitmentNews.ERR_NOT_EXISTS },
+          };
+        }
+        let content3;
+        if (status === messages.recruitmentNews.status.APPROVED) {
+          content3 = messages.recruitmentNews.DELETED_POST_SUCCESS;
+          await JobApplication.destroy({
+            where: {
+              recruitmentNewsId: recruitmentNew.id,
+            },
+          });
+          await recruitmentNew.destroy();
+        } else if (status === messages.recruitmentNews.status.REJECTED) {
+          content3 = messages.recruitmentNews.DELETED_POST_FAILED;
+        }
+        await Notification.create({
+          sender: "ADMIN",
+          receiverId: userId,
+          receiver: companyName,
+          title: `Response Delete Post Status { Post No.${recruitmentNewId} }`,
+          content: content3,
+        });
+        await request.update({ status: status, isReviewed: true });
+        return {
+          status: 200,
+          data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
+        };
+      default:
+        return {
+          status: 400,
+          data: { message: messages.recruitmentNews.ERR_TYPE_NOT_SUPPORTED },
+        };
     }
-    await Notification.create({
-      sender: "ADMIN",
-      receiverId: recruitmentNew.CompanyUser.userId,
-      receiver: recruitmentNew.CompanyUser.name,
-      title: `Response Job Posting Status { Post No.${recruitmentNewId} }`,
-      content: content,
-    });
-    await request.update({ status: status, isReviewed: true });
-    return {
-      status: 200,
-      data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
-    };
   } catch (error) {
     console.log(error);
     return { status: 500, data: { message: messages.error.ERR_INTERNAL } };

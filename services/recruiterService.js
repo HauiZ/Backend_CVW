@@ -39,7 +39,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
             recruitmentNewsId: recruitmentNews.id,
             senderId: companyId,
             sender: companyName.name,
-            typeOf: messages.recruitmentNews.typeof.RECRUITMENT_NEWS,
+            typeOf: messages.recruitmentNews.typeof.JOB_POSTING,
             status: messages.recruitmentNews.status.PENDING,
             isReviewed: false,
         }, { transaction })
@@ -52,8 +52,6 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
         }
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
-
-
 };
 
 const checkRecruitmentNewsData = (recruitmentNewsData) => {
@@ -231,4 +229,90 @@ const getDataDashBoard = async (userId) => {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
-export default { postRecruitmentNews, getApplicant, approvedApplication, getNotification, getPostedRecruitmentNews, getDataDashBoard };
+
+const updateRecruitmentNews = async (recruitmentNewsData, companyId, recruitmentNewsId) => {
+    const transaction = await sequelize.transaction();
+    try {
+        const { jobTitle, profession, candidateNumber, jobLevel, workType, degree, province, district, jobAddress,
+            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDeadline,
+            contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
+
+        const missingFields = checkRecruitmentNewsData(recruitmentNewsData);
+        if (missingFields.length > 0) {
+            return { status: 400, data: { message: `Missing required fields: ${missingFields.join(', ')}` } }
+        }
+        let area = await Area.findOne({ where: { province, district }, transaction });
+        if (!area) {
+            area = await Area.create({ province, district }, { transaction });
+        }
+
+        const recruitmentNews = await RecruitmentNews.create({
+            parentId: recruitmentNewsId, companyId: companyId, jobTitle, profession, candidateNumber, jobLevel, workType, degree, areaId: area.id, jobAddress,
+            salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDeadline,
+            contactInfo, contactAddress, contactPhone, contactEmail, videoUrl, status: messages.recruitmentNews.status.PENDING
+        }, { transaction });
+        const parentRecruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, { transaction });
+        await parentRecruitmentNews.update({ status: messages.recruitmentNews.status.PENDING }, { transaction });
+        const companyName = await CompanyUser.findOne({
+            where: { userId: companyId },
+            attributes: ['name'],
+            transaction,
+        })
+        await Request.create({
+            recruitmentNewsId: recruitmentNews.id,
+            senderId: companyId,
+            sender: companyName.name,
+            typeOf: messages.recruitmentNews.typeof.UPDATE_JOB_POSTING,
+            status: messages.recruitmentNews.status.PENDING,
+            isReviewed: false,
+        }, { transaction })
+        await transaction.commit();
+        return { status: 200, data: { message: messages.recruitmentNews.POST_SUCCESS } };
+    } catch (error) {
+        console.log(error);
+        if (!transaction.finished) {
+            await transaction.rollback();
+        }
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const deleteRecruitmentNews = async (recruitmentNewsId, companyId) => {
+    const transaction = await sequelize.transaction();
+    try {
+        const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, { transaction });
+        if (!recruitmentNews) {
+            return { status: 404, data: { message: messages.recruitmentNews.NOT_FOUND } };
+        }
+        if (recruitmentNews.companyId !== companyId) {
+            return { status: 403, data: { message: messages.error.ERR_NO_PERMISSION } };
+        }
+        const companyName = await CompanyUser.findOne({
+            where: { userId: companyId },
+            attributes: ['name'],
+            transaction,
+        })
+        await Request.create({
+            recruitmentNewsId: recruitmentNews.id,
+            senderId: companyId,
+            sender: companyName.name,
+            typeOf: messages.recruitmentNews.typeof.DELETE_JOB_POSTING,
+            status: messages.recruitmentNews.status.PENDING,
+            isReviewed: false,
+        }, { transaction })
+        await recruitmentNews.update({ status: messages.recruitmentNews.status.PENDING }, { transaction });
+        await transaction.commit();
+        return { status: 200, data: { message: messages.recruitmentNews.POST_SUCCESS } };
+    } catch (error) {
+        console.log(error);
+        if (!transaction.finished) {
+            await transaction.rollback();
+        }
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+export default {
+    postRecruitmentNews, getApplicant, approvedApplication, getNotification, getPostedRecruitmentNews, getDataDashBoard
+    , updateRecruitmentNews, deleteRecruitmentNews
+};
