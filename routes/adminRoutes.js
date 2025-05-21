@@ -197,7 +197,7 @@ router.delete('/deleteTemplate/:id', authMiddleware(['admin']), deleteTemplate);
 /**
  * @swagger
  * /api/admin/updateCvTemplate/{id}:
- *   post:
+ *   patch:
  *     summary: Cập nhật CV Template (PDF + ảnh đại diện)
  *     tags: [Admin]
  *     security:
@@ -241,5 +241,5 @@ router.delete('/deleteTemplate/:id', authMiddleware(['admin']), deleteTemplate);
  *       500:
  *         description: Lỗi server
  */
-router.post('/updateCvTemplate/:id', authMiddleware(['admin']), upload.uploadPdfAndImage, updateCvTemplate);
+router.patch('/updateCvTemplate/:id', authMiddleware(['admin']), upload.uploadPdfAndImage, updateCvTemplate);
 export default router;
