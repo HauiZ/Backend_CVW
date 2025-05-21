@@ -435,12 +435,6 @@ const updateCvTemplate = async (templateId, data, files) => {
     const pdfFile = files?.pdf?.[0];
     const imageFile = files?.image?.[0];
 
-    if (!pdfFile || !imageFile) {
-      return {
-        status: 400,
-        data: { message: messages.file.ERR_FILE_NOT_EXISTS },
-      };
-    }
     const template = await CVTemplate.findByPk(templateId);
     if (!template) {
       return {
@@ -449,33 +443,52 @@ const updateCvTemplate = async (templateId, data, files) => {
       };
     }
 
-    if (template.templateId) {
-      await drive.files.delete({
-        fileId: template.templateId,
-      });
-    }
-    if (template.displayId) {
-      await cloudinary.uploader.destroy(template.displayId);
-    }
-    // Upload PDF lên drive
-    const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
+    const updateData = {};
+    
+    if (name) updateData.name = name;
+    if (propoties) updateData.propoties = propoties;
 
-    // Upload ảnh preview lên Cloudinary (image)
-    const imageUpload = await uploadBufferToCloudinary(
-      imageFile.buffer,
-      "PdfPreview",
-      "image"
-    );
+    if (pdfFile) {
+      // Xóa file PDF cũ nếu có
+      if (template.templateId) {
+        try {
+          await drive.files.delete({
+            fileId: template.templateId,
+          });
+        } catch (deleteError) {
+          console.log("Error deleting old PDF:", deleteError);
+        }
+      }
+      
+      // Upload PDF mới
+      const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
+      updateData.templateId = pdfUpload.templateId;
+      updateData.templateUrl = pdfUpload.templateUrl;
+    }
 
-    await template.update({
-      name,
-      templateId: pdfUpload.templateId,
-      templateUrl: pdfUpload.templateUrl,
-      displayId: imageUpload.public_id,
-      displayUrl: imageUpload.secure_url,
-      propoties,
-    });
-    return { status: 200, data: { message: messages.file.FILE_UPLOAD_ACCESS } };
+    if (imageFile) {
+      // Xóa ảnh cũ nếu có
+      if (template.displayId) {
+        try {
+          await cloudinary.uploader.destroy(template.displayId);
+        } catch (deleteError) {
+          console.log("Error deleting old image:", deleteError);
+        }
+      }
+      
+      // Upload ảnh mới
+      const imageUpload = await uploadBufferToCloudinary(
+        imageFile.buffer,
+        "PdfPreview",
+        "image"
+      );
+      updateData.displayId = imageUpload.public_id;
+      updateData.displayUrl = imageUpload.secure_url;
+    }
+
+    await template.update(updateData);
+    
+    return { status: 200, data: { message: messages.file.UPDATE_SUCCESS } };
   } catch (error) {
     console.log(error);
     return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
