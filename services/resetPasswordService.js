@@ -43,14 +43,13 @@ const sendOTPCode = async (userEmail, roleName) => {
         });
         if (user) {
             const transporter = nodemailer.createTransport({
-                service: "gmail",
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true, 
                 auth: {
-                    type: "OAuth2",
                     user: process.env.MY_EMAIL_ACCOUNT,
-                    clientId: process.env.CVW_GOOGLE_CLIENT_ID,
-                    clientSecret: process.env.CVW_GOOGLE_CLIENT_SECRET,
-                    refreshToken: process.env.CVW_GOOGLE_REFRESH_TOKEN,
-                },
+                    pass: process.env.NODEMAILER_APP_PASSWORD
+                }
             });
             const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
             const expiresAt = new Date(Date.now() + 5 * 60 * 1000);

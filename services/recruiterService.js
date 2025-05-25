@@ -19,7 +19,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
 
         const missingFields = checkRecruitmentNewsData(recruitmentNewsData);
         if (missingFields.length > 0) {
-            return { status: 400, data: { message: `Missing required fields: ${missingFields.join(', ')}` } }
+            return { status: 400, data: { message: `${messages.recruitmentNews.MISSING_FIELDS}: ${missingFields.join(', ')}.` } }
         }
         let area = await Area.findOne({ where: { province, district }, transaction });
         if (!area) {
