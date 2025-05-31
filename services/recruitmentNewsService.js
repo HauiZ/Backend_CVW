@@ -199,6 +199,8 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
             },
             introduce: {
                 jobTitle: data.jobTitle,
+                salaryMin: data.salaryMin,
+                salaryMax: data.salaryMax,
                 salaryRange: `${data.salaryMin}-${data.salaryMax}`,
                 address: data.Area.province,
                 district: data.Area.district,

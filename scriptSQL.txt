@@ -417,7 +417,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -450,7 +450,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -483,7 +483,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -516,7 +516,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -549,7 +549,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -582,7 +582,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -615,7 +615,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -648,7 +648,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -681,7 +681,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -714,7 +714,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -747,7 +747,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -780,7 +780,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -813,7 +813,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -846,7 +846,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -879,7 +879,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -912,7 +912,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -945,7 +945,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -978,7 +978,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1011,7 +1011,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1044,7 +1044,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1077,7 +1077,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1110,7 +1110,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1143,7 +1143,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1176,7 +1176,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1209,7 +1209,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1242,7 +1242,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1275,7 +1275,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1308,7 +1308,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1341,7 +1341,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1374,7 +1374,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1407,7 +1407,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1440,7 +1440,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1473,7 +1473,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1506,7 +1506,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1539,7 +1539,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1572,7 +1572,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1605,7 +1605,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1638,7 +1638,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1671,7 +1671,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1704,7 +1704,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1737,7 +1737,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1770,7 +1770,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1803,7 +1803,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1836,7 +1836,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1869,7 +1869,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1902,7 +1902,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1935,7 +1935,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -1968,7 +1968,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2001,7 +2001,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2034,7 +2034,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2067,7 +2067,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2100,7 +2100,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2133,7 +2133,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2166,7 +2166,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2199,7 +2199,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2232,7 +2232,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2265,7 +2265,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2298,7 +2298,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2331,7 +2331,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2364,7 +2364,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2397,7 +2397,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2430,7 +2430,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2463,7 +2463,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2496,7 +2496,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2529,7 +2529,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2562,7 +2562,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2595,7 +2595,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2628,7 +2628,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2661,7 +2661,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2694,7 +2694,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2727,7 +2727,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2760,7 +2760,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2793,7 +2793,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2826,7 +2826,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2859,7 +2859,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2892,7 +2892,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2925,7 +2925,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2958,7 +2958,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -2991,7 +2991,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3024,7 +3024,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3057,7 +3057,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3090,7 +3090,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3123,7 +3123,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3156,7 +3156,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3189,7 +3189,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3222,7 +3222,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3255,7 +3255,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3288,7 +3288,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3321,7 +3321,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3354,7 +3354,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3387,7 +3387,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3420,7 +3420,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3453,7 +3453,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3486,7 +3486,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3519,7 +3519,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3552,7 +3552,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3585,7 +3585,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3618,7 +3618,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3651,7 +3651,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3684,7 +3684,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3717,7 +3717,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3750,7 +3750,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3783,7 +3783,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3816,7 +3816,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3849,7 +3849,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3882,7 +3882,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3915,7 +3915,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3948,7 +3948,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -3981,7 +3981,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4014,7 +4014,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4047,7 +4047,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4080,7 +4080,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4113,7 +4113,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4146,7 +4146,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4179,7 +4179,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4212,7 +4212,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4245,7 +4245,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4278,7 +4278,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4311,7 +4311,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4344,7 +4344,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4377,7 +4377,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4410,7 +4410,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4443,7 +4443,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4476,7 +4476,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4509,7 +4509,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4542,7 +4542,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4575,7 +4575,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4608,7 +4608,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4641,7 +4641,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4674,7 +4674,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4707,7 +4707,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4740,7 +4740,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4773,7 +4773,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4806,7 +4806,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4839,7 +4839,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4872,7 +4872,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4905,7 +4905,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4938,7 +4938,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -4971,7 +4971,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5004,7 +5004,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5037,7 +5037,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5070,7 +5070,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5103,7 +5103,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5136,7 +5136,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5169,7 +5169,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5202,7 +5202,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5235,7 +5235,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5268,7 +5268,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5301,7 +5301,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5334,7 +5334,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5367,7 +5367,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5400,7 +5400,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5433,7 +5433,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5466,7 +5466,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5499,7 +5499,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5532,7 +5532,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5565,7 +5565,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5598,7 +5598,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5631,7 +5631,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5664,7 +5664,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5697,7 +5697,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5730,7 +5730,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5763,7 +5763,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5796,7 +5796,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5829,7 +5829,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5862,7 +5862,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5895,7 +5895,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Vincom, 191 Bà Triệu, Hai Bà Trưng, Hà Nội',
     '02439749999',
     'tuyendung@vingroup.net',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5928,7 +5928,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5961,7 +5961,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -5994,7 +5994,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6027,7 +6027,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6060,7 +6060,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6093,7 +6093,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6126,7 +6126,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6159,7 +6159,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6192,7 +6192,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6225,7 +6225,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6258,7 +6258,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6291,7 +6291,7 @@ INSERT INTO Recruitment_News (
     N'Số 1 Giang Văn Minh, Ba Đình, Hà Nội',
     '02462556789',
     'tuyendung@viettel.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6324,7 +6324,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6357,7 +6357,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6390,7 +6390,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6423,7 +6423,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6456,7 +6456,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6489,7 +6489,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6522,7 +6522,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6555,7 +6555,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6588,7 +6588,7 @@ INSERT INTO Recruitment_News (
     N'57 Huỳnh Thúc Kháng, Đống Đa, Hà Nội',
     '02437741684',
     'tuyendung@vnpt.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6621,7 +6621,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6654,7 +6654,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6687,7 +6687,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6720,7 +6720,7 @@ INSERT INTO Recruitment_News (
     N'52 Út Tịch, Quận Tân Bình, TP.HCM',
     '02873002222',
     'hr@tiki.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6753,7 +6753,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6786,7 +6786,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Riverpark Premier, Quận 7, TP.HCM',
     '02839954545',
     'hr@momo.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6819,7 +6819,7 @@ INSERT INTO Recruitment_News (
     N'Z06, đường số 13, Khu chế xuất Tân Thuận, Quận 7, TP.HCM',
     '02839627111',
     'hr@vng.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6852,7 +6852,7 @@ INSERT INTO Recruitment_News (
     N'63 Lê Văn Lương, Cầu Giấy, Hà Nội',
     '02437267788',
     'hr@mbbank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6885,7 +6885,7 @@ INSERT INTO Recruitment_News (
     N'191 Bà Triệu, Quận Hai Bà Trưng, Hà Nội',
     '02439449699',
     'hr@techcombank.com.vn',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6918,7 +6918,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6951,7 +6951,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà FPT, Phạm Văn Bạch, Cầu Giấy, Hà Nội',
     '02473008999',
     'hr@fptsoftware.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
@@ -6984,7 +6984,7 @@ INSERT INTO Recruitment_News (
     N'Tòa nhà Saigon Centre, Quận 1, TP.HCM',
     '02873001221',
     'careers.vn@shopee.com',
-    NULL,
+    'https://www.youtube.com/embed/g7DW5YsJD5M',
     SWITCHOFFSET(SYSDATETIMEOFFSET(), '+07:00'),
     N'APPROVED');
 
