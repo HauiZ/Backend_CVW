@@ -39,7 +39,7 @@ const logo = new CloudinaryStorage({
 const template = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'Template',
+    folder: 'PdfPreview',
     allowed_formats: ['jpg', 'png', 'jpeg'],
     transformation: [{ width: 500, height: 500, crop: "limit" }],
   },
@@ -52,7 +52,7 @@ const uploadTemplate = multer({ storage: template });
 const uploadPdfAndImage = multer({
   storage,
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
     if (allowedTypes.includes(file.mimetype)) cb(null, true);
     else cb(new Error('Only PDF and image files are allowed'), false);
   },

@@ -184,7 +184,7 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
         const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
             include: [{
                 model: Area,
-                attributes: ['province'],
+                attributes: ['province', 'district'],
             }, {
                 model: CompanyUser,
                 attributes: ['userId', 'name', 'field', 'companySize', 'companyAddress', 'logoUrl'],
@@ -201,8 +201,10 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 jobTitle: data.jobTitle,
                 salaryRange: `${data.salaryMin}-${data.salaryMax}`,
                 address: data.Area.province,
+                district: data.Area.district,
                 experience: data.experience,
-                applicationDeadline: getTimeLeft(data.applicationDeadline)
+                applicationDeadline: getTimeLeft(data.applicationDeadline),
+                applicationDeadlineDate: data.applicationDeadline,
             },
             detailRecruitment: {
                 profession: data.profession,
@@ -227,7 +229,8 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 field: data.CompanyUser.field,
                 companySize: data.CompanyUser.companySize,
                 companyAddress: data.CompanyUser.companyAddress
-            }
+            },
+            parentId: data.parentId,
         }
 
         return { status: 200, data: job };
