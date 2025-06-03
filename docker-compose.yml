@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: .
+    image: backend-cvw-image
+    container_name: backend-cvw-container
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=host.docker.internal
+    volumes:
+      - .:/app
+      - CVW-node_modules:/app/node_modules
+      - ./config/googleDrive/cvwebsite-456504-d35cb6ec8b06.json:/app/config/googleDrive/cvwebsite-456504-d35cb6ec8b06.json
+    restart: unless-stopped
+    networks:
+      - cvw-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  cvw-network:
+    driver: bridge
+
+volumes:
+  CVW-node_modules: 
