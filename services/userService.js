@@ -21,7 +21,7 @@ import { Sequelize } from 'sequelize';
 const registerUser = async (userData, roleName) => {
     const transaction = await sequelize.transaction();
     try {
-        const { userName, email, password, confirmPassword, businessName, phone, province, district, domain } = userData;
+        const { userName, email, password, confirmPassword, businessName, phone, province, district } = userData;
 
         const role = await Role.findOne({ where: { name: roleName }, transaction });
         if (!role) {
@@ -35,7 +35,7 @@ const registerUser = async (userData, roleName) => {
             }
             return { status: checkPass.status, data: { message: checkPass.data } }
         }
-
+        // check xem email đã tồn tại trong hệ thống với role mà người dùng muốn đăng ký không
         const uniqueEmail = await User.findOne({
             where: { email: email },
             include: [{ model: Role, where: { name: roleName } }]
@@ -98,6 +98,7 @@ const getUserProfile = async (userId) => {
                 email: user.PersonalUser.email,
                 phone: user.PersonalUser.phone,
                 avatarUrl: user.PersonalUser.avatarUrl ? user.PersonalUser.avatarUrl : null,
+                typeAccount: user.typeAccount,
             };
         } else if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo = {
@@ -127,14 +128,19 @@ const changePassword = async (userId, newPasswordData) => {
     try {
         const { oldPassword, newPassword, confirmNewPassword } = newPasswordData;
         const user = await User.findByPk(userId);
-        if (oldPassword !== user.password) {
-            return { status: 400, data: { message: messages.auth.ERR_INCORRECT_PASSWORD } };
+        if (user.typeAccount === 'LOCAL') {
+            if (oldPassword !== user.password) {
+                return { status: 400, data: { message: messages.auth.ERR_INCORRECT_PASSWORD } };
+            }
         }
         const checkPass = checkFormatPassword(newPassword, confirmNewPassword);
         if (checkPass !== true) {
             return { status: checkPass.status, data: { message: checkPass.data } }
         }
         await user.update({ password: newPassword });
+        if (user.typeAccount === 'GOOGLE') {
+            await user.update({ typeAccount: 'LOCAL' });
+        }
         return { status: 200, data: { message: messages.auth.CHANGE_PASSWORD_SUCCESS } };
     } catch (error) {
         console.log(error)
@@ -174,6 +180,7 @@ const changeProfile = async (userId, dataProfile) => {
                 });
                 await company.update({ areaId: area.id });
             }
+            // kiểm tra xem có thay đổi thông tin công ty không, nếu có thì cập nhật
             const updates = { name, phone, companyAddress, field, companySize, website, introduction };
             for (const field of Object.keys(updates)) {
                 if (updates[field] !== company[field]) {
@@ -253,7 +260,7 @@ const getAllCompany = async () => {
         const listCompany = await CompanyUser.findAll({
             attributes: {
                 include: [
-                    [Sequelize.fn('COUNT', Sequelize.col('RecruitmentNews.id')), 'jobCount']
+                    [Sequelize.fn('COUNT', Sequelize.col('RecruitmentNews.id')), 'jobCount'] // đếm số lượng công việc
                 ],
                 exclude: ['phone', 'email', 'areaId', 'companyAddress', 'companySize', 'website', 'introduction', 'logoId']
             },
@@ -268,9 +275,9 @@ const getAllCompany = async () => {
                 'CompanyUser.field',
                 'CompanyUser.logoUrl'
             ],
-            order: [[Sequelize.literal('jobCount'), 'DESC']],
+            order: [[Sequelize.literal('jobCount'), 'DESC']], // sắp xếp theo số lượng công việc giảm dần
         })
-        const topCompany = listCompany.slice(0, 9);
+        const topCompany = listCompany.slice(0, 9); // lấy 9 công ty hàng đầu
         const data = await Promise.all(topCompany.map(async company => {
             const data = company.toJSON();
             const { userId, jobCount, ...current } = data;
@@ -386,6 +393,7 @@ const getInfoApplication = async (userId) => {
 const getInfoArea = async () => {
     try {
         const areas = await Area.findAll();
+        // nhóm các khu vực theo tỉnh
         const result = Object.values(
             areas.reduce((acc, area) => {
                 const key = area.province;

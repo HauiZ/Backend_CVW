@@ -3,7 +3,6 @@ import sequelize from '../config/database.js';
 import drive from "../config/googleDrive/driveconfig.js";
 
 export const uploadToDrive = async (file, parentId) => {
-    const transaction = await sequelize.transaction();
     try {
         const fileMetadata = {
             name: file.originalname,
@@ -11,8 +10,8 @@ export const uploadToDrive = async (file, parentId) => {
             parents: [parentId]
         };
 
-        const bufferStream = new stream.PassThrough();
-        bufferStream.end(file.buffer);
+        const bufferStream = new stream.PassThrough(); // 	tạo stream trung gian
+        bufferStream.end(file.buffer); // đẩy buffer(raw binary) vào stream
 
         const response = await drive.files.create({
             resource: fileMetadata,
@@ -20,8 +19,8 @@ export const uploadToDrive = async (file, parentId) => {
                 mimeType: file.mimetype,
                 body: bufferStream,
             },
-            fields: 'id,webViewLink',
-        }, { transaction });
+            fields: 'id,webViewLink', // liên kết xem file trên trình duyệt
+        });
 
         await drive.permissions.create({
             fileId: response.data.id,
@@ -29,14 +28,10 @@ export const uploadToDrive = async (file, parentId) => {
                 role: 'reader',
                 type: 'anyone',
             },
-        }, { transaction });
-        await transaction.commit();
+        });
         return response;
     } catch (error) {
         console.log(error);
-        if (!transaction.finished) {
-            await transaction.rollback();
-        }
         return null;
     }
 }

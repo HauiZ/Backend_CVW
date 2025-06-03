@@ -33,14 +33,13 @@ const getAllUsers = async (userId, filterRole) => {
     ];
     const whereConditions = {};
 
-    // If id is provided, return only that specific user
+    // lấy người dùng có id cụ thể
     if (id) {
       whereConditions.id = id;
     } else {
-      // Only exclude the requesting user if we're not searching for a specific ID
+      // lất tất cả người dùng trừ người dùng hiện tại
       whereConditions.id = { [Op.ne]: userId };
 
-      // Apply keyword search if provided
       if (keyword && keyword.trim() !== "") {
         const searchTerm = `%${keyword.trim()}%`;
         whereConditions[Op.or] = [
@@ -54,7 +53,7 @@ const getAllUsers = async (userId, filterRole) => {
     }
 
     const users = await User.findAll({
-      attributes: { exclude: ["password"] },
+      attributes: { exclude: ["password"] }, // loại bỏ mật khẩu
       include: includeOptions,
       where: whereConditions,
     });
@@ -74,7 +73,7 @@ const getAllUsers = async (userId, filterRole) => {
         imageUrl: null,
         createAt: moment(user.createAt).format("YYYY-MM-DD HH:mm:ss"),
       };
-
+      // lấy ảnh đại diện hoặc logo tùy theo role
       if (user.Role.name === "candidate") {
         userData.imageUrl = user.PersonalUser?.avatarUrl;
       } else if (user.Role.name === "recruiter") {
@@ -118,7 +117,7 @@ const deleteAUser = async (userId) => {
         personalId: userId,
       },
     });
-
+    // Xóa tất cả đơn ứng tuyển của người dùng trên hệ thống ứng với CV xóa
     if (cvFilesToDelete && cvFilesToDelete.length > 0) {
       for (const cvFile of cvFilesToDelete) {
         await JobApplication.destroy({
@@ -134,7 +133,7 @@ const deleteAUser = async (userId) => {
         companyId: userId,
       },
     });
-
+    // Xóa tất cả đơn ứng tuyển của người dùng trên hệ thống ứng với tin tuyển dụng xóa
     if (recruitmentNews && recruitmentNews.length > 0) {
       for (const news of recruitmentNews) {
         await JobApplication.destroy({
@@ -144,7 +143,7 @@ const deleteAUser = async (userId) => {
         });
       }
     }
-
+    // Xóa tất cả CV của người dùng trên drive
     if (cvFilesToDelete && cvFilesToDelete.length > 0) {
       for (const cvFile of cvFilesToDelete) {
         const googleDriveFileId = cvFile.fileId;
@@ -153,7 +152,7 @@ const deleteAUser = async (userId) => {
         });
       }
     }
-
+    // Xóa ảnh đại diện cá nhân hoặc logo công ty nếu có trên cloudinary
     if (
       userToDelete.PersonalUser &&
       userToDelete.PersonalUser.avatarId !== null
@@ -207,7 +206,7 @@ const approveRecruitment = async (requestId, status) => {
     const userId = recruitmentNew.CompanyUser.userId;
     const companyName = recruitmentNew.CompanyUser.name;
     switch (request.typeOf) {
-      // Check if the request is for a job posting
+      // Đăng tin tuyển dụng
       case messages.recruitmentNews.typeof.JOB_POSTING:
         await recruitmentNew.update({ status: status });
         let content1;
@@ -228,7 +227,7 @@ const approveRecruitment = async (requestId, status) => {
           status: 200,
           data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
         };
-      // Update for a recruitment news
+      // Chỉnh sửa tin tuyển dụng
       case messages.recruitmentNews.typeof.UPDATE_JOB_POSTING:
         const parentNewsId = recruitmentNew.parentId;
         if (!parentNewsId) {
@@ -241,7 +240,7 @@ const approveRecruitment = async (requestId, status) => {
         let content2;
         if (status === messages.recruitmentNews.status.APPROVED) {
           content2 = messages.recruitmentNews.UPDATED_POST_SUCCESS;
-          await JobApplication.update(
+          await JobApplication.update( // cập nhật lại đơn ứng tuyển sang tin tuyển dụng mới
             { recruitmentNewsId: recruitmentNewId },
             {
               where: {
@@ -268,7 +267,7 @@ const approveRecruitment = async (requestId, status) => {
           status: 200,
           data: { message: messages.recruitmentNews.UPDATE_SUCCESS },
         };
-      // Delete job posting
+      // Xóa tin tuyển dụng
       case messages.recruitmentNews.typeof.DELETE_JOB_POSTING:
         if (!recruitmentNewId) {
           return {
@@ -279,7 +278,7 @@ const approveRecruitment = async (requestId, status) => {
         let content3;
         if (status === messages.recruitmentNews.status.APPROVED) {
           content3 = messages.recruitmentNews.DELETED_POST_SUCCESS;
-          await JobApplication.destroy({
+          await JobApplication.destroy({ // xóa tất cả đơn ứng tuyển ứng với tin tuyển dụng
             where: {
               recruitmentNewsId: recruitmentNew.id,
             },
@@ -288,7 +287,7 @@ const approveRecruitment = async (requestId, status) => {
         } else if (status === messages.recruitmentNews.status.REJECTED) {
           content3 = messages.recruitmentNews.DELETED_POST_FAILED;
         }
-        await Notification.create({
+        await Notification.create({ // tạo thông báo cho người dùng
           sender: "ADMIN",
           receiverId: userId,
           receiver: companyName,
@@ -366,7 +365,16 @@ const uploadCvTemplate = async (data, files) => {
 const getDataDashBoard = async () => {
   try {
     const data = {
-      user: await User.count(),
+      user: await User.count({
+        include: [{
+          model: Role,
+          where: {
+            name: {
+              [Op.ne]: 'admin'
+            }
+          }
+        }]
+      }),
       candidate: await User.count({
         include: [
           {
@@ -411,12 +419,12 @@ const deleteTemplate = async (templateId) => {
     const template = await CVTemplate.findByPk(templateId);
     if (template.templateId) {
       const googleDriveFileId = template.templateId;
-      await drive.files.delete({
+      await drive.files.delete({ // Xóa file PDF trên Google Drive
         fileId: googleDriveFileId,
       });
     }
     if (template.displayId) {
-      await cloudinary.uploader.destroy(template.displayId);
+      await cloudinary.uploader.destroy(template.displayId); // Xóa ảnh đại diện trên Cloudinary
     }
     await template.destroy();
     return {
@@ -444,7 +452,7 @@ const updateCvTemplate = async (templateId, data, files) => {
     }
 
     const updateData = {};
-    
+
     if (name) updateData.name = name;
     if (propoties) updateData.propoties = propoties;
 
@@ -459,7 +467,7 @@ const updateCvTemplate = async (templateId, data, files) => {
           console.log("Error deleting old PDF:", deleteError);
         }
       }
-      
+
       // Upload PDF mới
       const pdfUpload = await uploadCvService.uploadTemplate(pdfFile);
       updateData.templateId = pdfUpload.templateId;
@@ -475,7 +483,7 @@ const updateCvTemplate = async (templateId, data, files) => {
           console.log("Error deleting old image:", deleteError);
         }
       }
-      
+
       // Upload ảnh mới
       const imageUpload = await uploadBufferToCloudinary(
         imageFile.buffer,
@@ -487,7 +495,7 @@ const updateCvTemplate = async (templateId, data, files) => {
     }
 
     await template.update(updateData);
-    
+
     return { status: 200, data: { message: messages.file.UPDATE_SUCCESS } };
   } catch (error) {
     console.log(error);

@@ -8,8 +8,8 @@ const uploadImageAndUpdate = async (file, userId, Model, updateFields) => {
     try {
         if (!file) return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
 
-        const public_id = file.filename || file.public_id;
-        const secure_url = file.path || file.secure_url;
+        const public_id = file.filename || file.public_id; // id của file trên cloudinary
+        const secure_url = file.path || file.secure_url; // đường dẫn truy cập file trên cloudinary
         if (!public_id || !secure_url) {
             return { status: 400, data: { message: messages.file.UPLOAD_FAILED } };
         }
@@ -18,7 +18,7 @@ const uploadImageAndUpdate = async (file, userId, Model, updateFields) => {
         if (!user) {
             return { status: 404, data: { message: messages.user.NOT_FOUND } };
         }
-
+        // Xóa ảnh cũ nếu có
         if (user.logoId && user.logoId !== undefined && user.logoId !== null) {
             await cloudinary.uploader.destroy(user.logoId);
         }

@@ -12,7 +12,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: "http://localhost:3000", // Đổi port nếu cần
+                url: "http://localhost:3000", // Địa chỉ máy chủ của API
                 description: "Local server"
             }
         ],

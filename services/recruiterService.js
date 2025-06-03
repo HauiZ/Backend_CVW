@@ -17,7 +17,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
             salaryMin, salaryMax, salaryNegotiable, experience, workDateIn, workDetail, jobRequirements, benefits, applicationDeadline,
             contactInfo, contactAddress, contactPhone, contactEmail, videoUrl } = recruitmentNewsData;
 
-        const missingFields = checkRecruitmentNewsData(recruitmentNewsData);
+        const missingFields = checkRecruitmentNewsData(recruitmentNewsData); // check các trường bắt buộc
         if (missingFields.length > 0) {
             return { status: 400, data: { message: `${messages.recruitmentNews.MISSING_FIELDS}: ${missingFields.join(', ')}.` } }
         }
@@ -35,7 +35,7 @@ const postRecruitmentNews = async (recruitmentNewsData, companyId) => {
             attributes: ['name'],
             transaction,
         })
-        await Request.create({
+        await Request.create({ // Tạo yêu cầu phê duyệt
             recruitmentNewsId: recruitmentNews.id,
             senderId: companyId,
             sender: companyName.name,
@@ -137,7 +137,7 @@ const approvedApplication = async (applyId, status, companyId) => {
         } else if (status === messages.recruitmentNews.status.REJECTED) {
             content = messages.application.REJECTED_FEEDBACK;
         }
-        await Notification.create({
+        await Notification.create({ // Tạo thông báo cho người dùng cá nhân
             sender: company.name,
             senderAvatar: company.logoUrl,
             receiverId: request.applicantId,
@@ -175,7 +175,7 @@ const getNotification = async (userId) => {
 const getPostedRecruitmentNews = async (userId) => {
     try {
         const listJob = await RecruitmentNews.findAll({
-            where: { companyId: userId },
+            where: { companyId: userId , parentId: null },
             attributes: ['id', 'companyId', 'areaId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'status'],
             include: [{
                 model: Area,
@@ -261,7 +261,7 @@ const updateRecruitmentNews = async (recruitmentNewsData, companyId, recruitment
             attributes: ['name'],
             transaction,
         })
-        await Request.create({
+        await Request.create({ // Tạo yêu cầu phê duyệt
             recruitmentNewsId: recruitmentNews.id,
             senderId: companyId,
             sender: companyName.name,

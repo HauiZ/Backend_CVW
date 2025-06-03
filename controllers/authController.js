@@ -30,11 +30,12 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
+    // Xóa refresh token khỏi cookie
     res.clearCookie("refreshToken", {
       httpOnly: true,
       secure: true,
       sameSite: "Strict",
-      path: "/" // Đảm bảo path giống với khi bạn tạo cookie
+      path: "/" 
     });
     
     return res.status(200).json({
@@ -48,11 +49,13 @@ export const logout = (req, res) => {
 };
 
 export const refreshToken = (req, res) => {
+  // kiểm tra xem refresh token có trong cookie không
   const token = req.cookies.refreshToken;
   if (!token) return res.sendStatus(401);
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
+    // Tạo access token mới từ thông tin đã giải mã từ refresh token
     const newAccessToken = generateAccessToken({ id: decoded.id, email: decoded.email });
     res.json({ accessToken: newAccessToken });
   } catch (err) {
@@ -74,7 +77,7 @@ export const googleCallback = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/"
     });
-    return res.redirect(`http://localhost:5173/authsuccess?token=${token}`);
+    return res.redirect(`http://localhost:5173/authsuccess?token=${token}`); // Redirect về trang thành công với token
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: messages.error.ERR_INTERNAL });

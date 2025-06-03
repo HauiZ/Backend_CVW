@@ -10,7 +10,7 @@ import { generateAccessToken, generateRefreshToken } from "../utils/generateToke
 const loginUser = async (email, password, roleName) => {
     try {
         const user = await User.findOne({
-            where: { email },
+            where: { email , typeAccount: "LOCAL" },
             include: [{ model: Role, attributes: ["name"], where: { name: roleName } }]
         });
 

@@ -5,7 +5,8 @@ import messages from '../config/message.js';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import cloudinary from '../config/cloudinary.js';
 
-const storage = multer.memoryStorage();
+const storage = multer.memoryStorage(); // lưu file vào RAM, không lưu vào ổ cứng(dưới dạng buffer)
+// nếu muốn lưu vào ổ cứng thì dùng diskStorage
 
 const pdfUpload = multer({
   storage,

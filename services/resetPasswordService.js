@@ -18,7 +18,8 @@ const forgotPassword = async (dataUser, roleName) => {
             if (otpCode !== user.otpCode) {
                 return { status: 400, data: { message: messages.auth.ERR_WRONG_OTP } };
             }
-            if (new Date().getTime() > user.otpExpiresAt.getTime()) {
+            if (new Date().getTime() > user.otpExpiresAt.getTime()) { // Kiểm tra thời gian hết hạn của mã OTP
+                await user.update({ otpCode: null, otpExpiresAt: null }); // Xóa mã OTP nếu đã hết hạn
                 return { status: 400, data: { message: messages.auth.ERR_OTP_EXPIRED } };
             }
             const checkPass = checkFormatPassword(newPassword, confirmNewPassword);
@@ -52,8 +53,8 @@ const sendOTPCode = async (userEmail, roleName) => {
                 }
             });
             const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
-            const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
-            // send mail with defined transport object
+            const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // Mã OTP có hiệu lực trong 5 phút
+            // gửi mail khôi phục mật khẩu
             const info = await transporter.sendMail({
                 from: `"CV Website" <${process.env.MY_EMAIL_ACCOUNT}>`,
                 to: userEmail,

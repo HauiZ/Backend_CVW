@@ -9,7 +9,7 @@ const uploadCV = async (file, userId) => {
     try {
         if (!file) return { status: 400, data: { message: messages.file.ERR_FILE_NOT_EXISTS } };
 
-        const parentId = '1JzXkyJPkZKbLEfOEGjS1mwZZBoP7qxO7';
+        const parentId = '1JzXkyJPkZKbLEfOEGjS1mwZZBoP7qxO7'; // id folder chứa các file cv
         const response = await uploadToDrive(file, parentId);
         if (response) {
             const fileData = await CvFiles.create({

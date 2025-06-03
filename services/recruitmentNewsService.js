@@ -46,7 +46,7 @@ const filterAllRecruitmentNews = async (filterData) => {
         const orderCondition = [];
         const includeOptions = [];
 
-        whereCondition.status = messages.recruitmentNews.status.APPROVED;
+        whereCondition.status = messages.recruitmentNews.status.APPROVED; // Chỉ lấy các tin tuyển dụng đã được phê duyệt
 
         if (keyword && keyword.trim() !== '') {
             const searchTerm = `%${keyword.trim()}%`;
