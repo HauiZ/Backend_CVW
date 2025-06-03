@@ -169,3 +169,7 @@ API documentation có sẵn tại `/api-docs` sau khi khởi động server, bao
 - Environment variables cho sensitive data
 - Role-based access control (RBAC)
 - Input validation và sanitization
+
+## 📝 License
+
+ISC License
