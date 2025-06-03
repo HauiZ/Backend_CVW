@@ -147,7 +147,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'FPT Software')
 BEGIN
     DECLARE @areaId_0 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Cầu Giấy');
     DECLARE @userId_0 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@fptsoftware.com');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_0,
         N'FPT Software',
@@ -163,7 +163,9 @@ BEGIN
         Chúng tôi cam kết mang đến môi trường làm việc chuyên nghiệp, 
         sáng tạo, và đầy cơ hội phát triển cá nhân và nghề nghiệp cho tất cả nhân viên. 
         FPT Software luôn chú trọng đến việc đào tạo và phát triển kỹ năng cho nhân viên, 
-        đảm bảo rằng họ có thể đáp ứng các yêu cầu ngày càng cao của thị trường công nghệ toàn cầu.'
+        đảm bảo rằng họ có thể đáp ứng các yêu cầu ngày càng cao của thị trường công nghệ toàn cầu.',
+        N'FPT_pnbyur',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748936614/FPT_pnbyur.png'
     );
 END
 
@@ -171,7 +173,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'VNG Corporation')
 BEGIN
     DECLARE @areaId_1 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 7');
     DECLARE @userId_1 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@vng.com.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_1,
         N'VNG Corporation',
@@ -188,7 +190,9 @@ BEGIN
         nhằm phục vụ người dùng tốt nhất. 
         Tại VNG, chúng tôi tin rằng con người là tài sản quý giá nhất, 
         và chúng tôi luôn nỗ lực tạo ra một môi trường làm việc thân thiện, 
-        năng động và đầy cơ hội để nhân viên phát triển sự nghiệp cũng như năng lực cá nhân.'
+        năng động và đầy cơ hội để nhân viên phát triển sự nghiệp cũng như năng lực cá nhân.',
+        N'VNG_ttjguj',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935671/VNG_ttjguj.jpg'
     );
 END
 
@@ -196,7 +200,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Shopee Việt Nam')
 BEGIN
     DECLARE @areaId_2 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 1');
     DECLARE @userId_2 INT = (SELECT TOP 1 id FROM Users WHERE email = 'careers.vn@shopee.com');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_2,
         N'Shopee Việt Nam',
@@ -212,7 +216,9 @@ BEGIN
         Chúng tôi cam kết mang đến một môi trường làm việc sáng tạo, 
         nơi mà mọi ý tưởng đều được lắng nghe và phát triển. 
         Tại Shopee, chúng tôi tin tưởng vào việc phát triển đội ngũ nhân viên 
-        thông qua các chương trình đào tạo chuyên sâu và cơ hội thăng tiến trong sự nghiệp.'
+        thông qua các chương trình đào tạo chuyên sâu và cơ hội thăng tiến trong sự nghiệp.',
+        N'Shopee_akh9mz',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/Shopee_akh9mz.png'
     );
 END
 
@@ -220,7 +226,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Viettel Group')
 BEGIN
     DECLARE @areaId_3 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Ba Đình');
     DECLARE @userId_3 INT = (SELECT TOP 1 id FROM Users WHERE email = 'tuyendung@viettel.com.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_3,
         N'Viettel Group',
@@ -236,7 +242,9 @@ BEGIN
         Chúng tôi luôn nỗ lực để tạo ra một môi trường làm việc chuyên nghiệp và cởi mở, 
         nơi mà nhân viên có thể phát huy tối đa khả năng của mình. 
         Viettel cam kết đầu tư vào đào tạo và phát triển kỹ năng cho đội ngũ nhân viên, 
-        nhằm đáp ứng nhu cầu ngày càng cao của thị trường.'
+        nhằm đáp ứng nhu cầu ngày càng cao của thị trường.',
+        N'Viettel_yxghxn',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/Viettel_yxghxn.jpg'
     );
 END
 
@@ -244,7 +252,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'VinGroup')
 BEGIN
     DECLARE @areaId_4 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Hai Bà Trưng');
     DECLARE @userId_4 INT = (SELECT TOP 1 id FROM Users WHERE email = 'tuyendung@vingroup.net');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_4,
         N'VinGroup',
@@ -260,7 +268,9 @@ BEGIN
         Chúng tôi cam kết tạo ra một môi trường làm việc tích cực và phát triển, 
         nơi mà nhân viên được khuyến khích đổi mới và sáng tạo. 
         VinGroup không ngừng đầu tư vào công nghệ và con người, 
-        nhằm xây dựng một tương lai tốt đẹp hơn cho cộng đồng và xã hội.'
+        nhằm xây dựng một tương lai tốt đẹp hơn cho cộng đồng và xã hội.',
+        N'Vingroup_icscve',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935671/Vingroup_icscve.png'
     );
 END
 
@@ -268,7 +278,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Techcombank')
 BEGIN
     DECLARE @areaId_5 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Hai Bà Trưng');
     DECLARE @userId_5 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@techcombank.com.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_5,
         N'Techcombank',
@@ -284,7 +294,9 @@ BEGIN
         Chúng tôi cam kết xây dựng một môi trường làm việc năng động, 
         nơi mà nhân viên được phát triển toàn diện và có cơ hội thăng tiến trong sự nghiệp. 
         Techcombank cũng chú trọng đến việc đào tạo kỹ năng và phát triển năng lực cho nhân viên, 
-        nhằm đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.'
+        nhằm đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.',
+        N'TCB_y9bget',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/TCB_y9bget.png'
     );
 END
 
@@ -292,7 +304,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'MoMo')
 BEGIN
     DECLARE @areaId_6 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận 7');
     DECLARE @userId_6 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@momo.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_6,
         N'MoMo',
@@ -307,7 +319,9 @@ BEGIN
         với sứ mệnh mang lại sự tiện lợi và an toàn trong các giao dịch tài chính cho người dùng. 
         Chúng tôi cam kết xây dựng một môi trường làm việc thân thiện và sáng tạo, 
         nơi mà mọi nhân viên có thể phát triển toàn diện về kỹ năng và năng lực cá nhân. 
-        MoMo không ngừng đổi mới công nghệ và cải tiến dịch vụ để đáp ứng nhu cầu ngày càng cao của khách hàng.'
+        MoMo không ngừng đổi mới công nghệ và cải tiến dịch vụ để đáp ứng nhu cầu ngày càng cao của khách hàng.',
+        N'Momo_nd0xaa',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/Momo_nd0xaa.png'
     );
 END
 
@@ -315,7 +329,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'Tiki Corporation')
 BEGIN
     DECLARE @areaId_7 INT = (SELECT TOP 1 id FROM Area WHERE province = N'TP Hồ Chí Minh' AND district = N'Quận Tân Bình');
     DECLARE @userId_7 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@tiki.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_7,
         N'Tiki Corporation',
@@ -331,7 +345,9 @@ BEGIN
         Chúng tôi cam kết xây dựng một môi trường làm việc sáng tạo và năng động, 
         nơi mà nhân viên được khuyến khích phát triển ý tưởng và cải tiến dịch vụ. 
         Tiki luôn chú trọng đến việc phát triển kỹ năng và năng lực cho nhân viên, 
-        nhằm đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.'
+        nhằm đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.',
+        N'Tiki_p7awlq',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/Tiki_p7awlq.png'
     );
 END
 
@@ -339,7 +355,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'MB Bank')
 BEGIN
     DECLARE @areaId_8 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Cầu Giấy');
     DECLARE @userId_8 INT = (SELECT TOP 1 id FROM Users WHERE email = 'hr@mbbank.com.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_8,
         N'MB Bank',
@@ -355,7 +371,9 @@ BEGIN
         Chúng tôi cam kết mang đến môi trường làm việc chuyên nghiệp, 
         nơi mà mọi nhân viên đều có cơ hội phát triển và thăng tiến trong sự nghiệp. 
         MB Bank cũng chú trọng đến việc đào tạo và phát triển kỹ năng cho đội ngũ nhân viên, 
-        để đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.'
+        để đáp ứng tốt nhất nhu cầu của khách hàng và thị trường.',
+        N'MB_lrxwok',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935671/MB_lrxwok.png'
     );
 END
 
@@ -363,7 +381,7 @@ IF NOT EXISTS (SELECT 1 FROM Company_User WHERE name = N'VNPT')
 BEGIN
     DECLARE @areaId_9 INT = (SELECT TOP 1 id FROM Area WHERE province = N'Hà Nội' AND district = N'Quận Đống Đa');
     DECLARE @userId_9 INT = (SELECT TOP 1 id FROM Users WHERE email = 'tuyendung@vnpt.vn');
-    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction)
+    INSERT INTO Company_User (userId, name, phone, email, areaId, companyAddress, field, companySize, website, introduction, logoId, logoUrl)
     VALUES (
         @userId_9,
         N'VNPT',
@@ -380,7 +398,9 @@ BEGIN
         Chúng tôi cam kết tạo ra một môi trường làm việc năng động và sáng tạo, 
         nơi mà nhân viên được phát triển tài năng và có cơ hội đóng góp cho sự phát triển chung của công ty. 
         VNPT luôn thúc đẩy việc đào tạo và nâng cao kỹ năng cho nhân viên, 
-        nhằm đáp ứng tốt nhất nhu cầu của thị trường.'
+        nhằm đáp ứng tốt nhất nhu cầu của thị trường.',
+        N'VNPT_xh3zy1',
+        N'https://res.cloudinary.com/dsokd4mmb/image/upload/v1748935670/VNPT_xh3zy1.png'
     );
 END
 
