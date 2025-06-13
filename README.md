@@ -97,13 +97,19 @@ NODEMAILER_APP_PASSWORD=your_app_password
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+```
 
-4. Chạy database migrations:
+4. Tạo JSON Key dành cho Service Account (hay còn gọi là private key)
+```bash
+# Đưa json key vào thư mục config\googleDrive điều chỉnh keyFile driveConfig.js để nhận json key
+```
+
+5. Chạy database migrations:
 ```bash
 # Kiểm tra file scriptSQL.txt để biết thêm chi tiết
 ```
 
-5. Khởi động server:
+6. Khởi động server:
 ```bash
 node app
 ```
