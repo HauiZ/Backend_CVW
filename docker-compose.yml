@@ -1,6 +1,8 @@
 services:
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: backend-cvw-image
     container_name: backend-cvw-container
     ports:
@@ -9,20 +11,61 @@ services:
       - .env
     environment:
       - NODE_ENV=development
-      - DB_HOST=host.docker.internal
+      - DB_HOST=mssql
+      - DB_PORT=1433
+      - DB_USER=sa
+      - DB_PASSWORD=${SA_DOCKER_PASSWORD}
+      - DB_NAME=${SA_DOCKER_NAME}
     volumes:
       - .:/app
       - CVW-node_modules:/app/node_modules
       - ./config/googleDrive/cvwebsite-456504-d35cb6ec8b06.json:/app/config/googleDrive/cvwebsite-456504-d35cb6ec8b06.json
     restart: unless-stopped
     networks:
-      - cvw-network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - cv-network
+    depends_on:
+      - mssql
+
+  init-db:
+    image: mcr.microsoft.com/mssql-tools
+    container_name: init-db-container
+    command: >
+      sh -c "/opt/mssql-tools/bin/sqlcmd -S mssql -U sa -P \"${SA_DOCKER_PASSWORD}\" -d JobPortal -i /docker-entrypoint-initdb.d/scriptSQL.sql"
+    volumes:
+      - ./scriptSQL.sql:/docker-entrypoint-initdb.d/scriptSQL.sql
+    networks:
+      - cv-network
+    depends_on:
+      backend:
+        condition: service_started
+      mssql:
+        condition: service_healthy
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-cvw-container
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${SA_DOCKER_PASSWORD}
+      - MSSQL_PID=Express
+    ports:
+      - "1434:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    networks:
+      - cv-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"${SA_DOCKER_PASSWORD}\" -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
 networks:
-  cvw-network:
+  cv-network:
     driver: bridge
 
 volumes:
-  CVW-node_modules: 
+  CVW-node_modules:
+  mssql-data:
