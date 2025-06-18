@@ -198,11 +198,17 @@ const changeProfile = async (userId, dataProfile) => {
 const applyJob = async (userId, recruitmentNewsId, file) => {
     try {
         const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
-            attributes: ['jobTitle', 'applicationDeadline'],
+            attributes: ['id', 'jobTitle', 'applicationDeadline', 'companyId'],
         });
         if (new Date().getTime() > recruitmentNews.applicationDeadline.getTime()) {
             return { status: 400, data: { message: messages.application.ERR_DEADLINE_APPLICATION } };
         }
+        const user = await PersonalUser.findByPk(userId, {
+            attributes: ['name', 'avatarUrl'],
+        });
+        const company = await CompanyUser.findByPk(recruitmentNews.companyId, {
+            attributes: ['userId', 'name'],
+        });
         const dataCv = await uploadCvService.uploadCV(file, userId);
         const cvId = dataCv.data.cvId;
         await JobApplication.create({
@@ -211,6 +217,14 @@ const applyJob = async (userId, recruitmentNewsId, file) => {
             applicantId: userId,
             jobTitle: recruitmentNews.jobTitle,
             status: messages.recruitmentNews.status.PENDING
+        });
+        await Notification.create({
+          sender: user.name,
+          senderAvatar: user.avatarUrl,
+          receiverId: company.userId,
+          receiver: company.name,
+          title: `Ứng tuyển công việc`,
+          content: `${user.name} đã ứng tuyển vào ${recruitmentNews.jobTitle} { Bài viết số ${recruitmentNews.id} }`,
         });
         return { status: 200, data: { message: messages.recruitmentNews.APPLY_SUCCESS } };
     } catch (error) {
@@ -326,7 +340,7 @@ const getTemplateCV = async () => {
         const listTemplate = await CVTemplate.findAll({
             attributes: ['id', 'name', 'templateUrl', 'displayUrl', 'propoties'],
         });
-        return { status: 200, data: listTemplate };
+        return { status: 200, data: listTemplate.sort((a, b) => b.id - a.id) };
     } catch (error) {
         console.log(error);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
