@@ -10,6 +10,7 @@ import Request from './Request.js';
 import CVTemplate from './CVTemplate.js';
 import JobApplication from './JobApplication.js';
 import Notification from './Notification.js';
+import NewsMarks from './NewsMarks.js';
 
 User.belongsTo(Role, { foreignKey: 'roleId' });
 Role.hasMany(User, { foreignKey: 'roleId' });
@@ -50,6 +51,12 @@ PersonalUser.hasMany(JobApplication, { foreignKey: 'applicantId' });
 Notification.belongsTo(User, { foreignKey: 'receiverId', onDelete: 'CASCADE' });
 User.hasMany(Notification, { foreignKey: 'receiverId', onDelete: 'CASCADE' });
 
-const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, RecruitmentNews, Request, CVTemplate, JobApplication, Notification };
+NewsMarks.belongsTo(RecruitmentNews, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
+RecruitmentNews.hasMany(NewsMarks, { foreignKey: 'recruitmentNewsId', onDelete: 'CASCADE' });
+
+NewsMarks.belongsTo(PersonalUser, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
+PersonalUser.hasMany(NewsMarks, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
+
+const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, RecruitmentNews, Request, CVTemplate, JobApplication, Notification, NewsMarks };
 
 export default models;

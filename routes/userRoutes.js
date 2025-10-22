@@ -2,7 +2,8 @@ import express from 'express';
 const router = express.Router();
 import {
     registerCandidate, registerRecruiter, getProfile, changePassword, changeProfile, getInfoArea,
-    applyJob, getInfoCompany, getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication
+    applyJob, getInfoCompany, getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication,
+    saveNews, getAllNewsSaved
 } from '../controllers/userController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import upload from '../middleware/uploadFile.js';
@@ -330,4 +331,40 @@ router.get('/getInfoApplication', authMiddleware(['candidate']), getInfoApplicat
  *         description: Success
  */
 router.get('/getInfoArea', getInfoArea);
+
+/**
+ * @swagger
+ * /api/users/saveNews/{id}:
+ *  post:
+ *    summary: Luu tin tuyển dụng yêu thích
+ *    tags: [Users]
+ *    security:
+ *      - bearerAuth: []
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: ID của tin tuyển dụng
+ *        schema:
+ *          type: integer
+ *          format: int64
+ *    responses:
+ *      200:
+ *        description: Get Info template success.
+ */
+router.post('/saveNews/:id', authMiddleware(['candidate']), saveNews);
+
+/**
+ * @swagger
+ * /api/users/getAllNewsSaved:
+ *   get:
+ *     summary: Lấy tất cả tin lưu
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success
+ */
+router.get('/getAllNewsSaved', authMiddleware(['candidate']), getAllNewsSaved);
 export default router;

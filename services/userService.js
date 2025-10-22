@@ -14,6 +14,7 @@ import uploadCvService from './upload/uploadCvService.js';
 import RecruitmentNews from '../models/RecruitmentNews.js';
 import moment from 'moment-timezone';
 import Notification from '../models/Notification.js';
+import NewsMarks from '../models/NewsMarks.js';
 import CVTemplate from '../models/CVTemplate.js';
 import { getTimeLeft } from "../utils/getTimeLeft.js";
 import { Sequelize } from 'sequelize';
@@ -99,6 +100,12 @@ const getUserProfile = async (userId) => {
                 phone: user.PersonalUser.phone,
                 avatarUrl: user.PersonalUser.avatarUrl ? user.PersonalUser.avatarUrl : null,
                 typeAccount: user.typeAccount,
+                desiredJob: user.PersonalUser.desiredJob,
+                skills: user.PersonalUser.skills ? user.PersonalUser.skills : [],
+                expectedSalary: user.PersonalUser.expectedSalary,
+                yearsExperience: user.PersonalUser.yearsExperience,
+                currentLevel: user.PersonalUser.currentLevel,
+                about: user.PersonalUser.about,
             };
         } else if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo = {
@@ -150,7 +157,7 @@ const changePassword = async (userId, newPasswordData) => {
 
 const changeProfile = async (userId, dataProfile) => {
     try {
-        const { name, phone, province, district, companyAddress, field, companySize, website, introduction } = dataProfile;
+        const { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about, province, district, companyAddress, field, companySize, website, introduction } = dataProfile;
         if (!name) {
             return { status: 400, data: { message: messages.user.BLANK_NAME } };
         }
@@ -160,7 +167,7 @@ const changeProfile = async (userId, dataProfile) => {
         });
         if (user.Role.name === 'candidate') {
             const personal = await PersonalUser.findByPk(userId);
-            const updates = { name, phone };
+            const updates = { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about };
             for (const field of Object.keys(updates)) {
                 if (updates[field] !== personal[field]) {
                     await personal.update({ [field]: updates[field] });
@@ -219,12 +226,12 @@ const applyJob = async (userId, recruitmentNewsId, file) => {
             status: messages.recruitmentNews.status.PENDING
         });
         await Notification.create({
-          sender: user.name,
-          senderAvatar: user.avatarUrl,
-          receiverId: company.userId,
-          receiver: company.name,
-          title: `Ứng tuyển công việc`,
-          content: `${user.name} đã ứng tuyển vào ${recruitmentNews.jobTitle} { Bài viết số ${recruitmentNews.id} }`,
+            sender: user.name,
+            senderAvatar: user.avatarUrl,
+            receiverId: company.userId,
+            receiver: company.name,
+            title: `Ứng tuyển công việc`,
+            content: `${user.name} đã ứng tuyển vào ${recruitmentNews.jobTitle} { Bài viết số ${recruitmentNews.id} }`,
         });
         return { status: 200, data: { message: messages.recruitmentNews.APPLY_SUCCESS } };
     } catch (error) {
@@ -428,7 +435,57 @@ const getInfoArea = async () => {
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
+
+const saveNews = async (recruitmentNewsId, userId) => {
+    try {
+        const existingMark = await NewsMarks.findOne({ where: { recruitmentNewsId, personalId: userId } });
+        if (existingMark) {
+            await existingMark.destroy();
+            return { status: 200, data: { message: 'removed successfully' } };
+        }
+        const newsMark = await NewsMarks.create({ recruitmentNewsId, personalId: userId });
+        return { status: 200, data: { message: newsMark ? 'save successfully' : 'fail' } };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+};
+
+const getAllNewsSaved = async (userId) => {
+    try {
+        const rows = await RecruitmentNews.findAll({
+            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
+            include: [
+                { model: NewsMarks, where: { personalId: userId }, attributes: [] },
+                {
+                    model: CompanyUser, attributes: ['name', 'logoUrl'],
+                    include: [{ model: Area, attributes: ['province'] }]
+                }
+            ],
+        });
+
+        const news = rows.map(r => ({
+            id: r.id,
+            companyId: r.companyId,
+            jobTitle: r.jobTitle,
+            profession: r.profession,
+            salaryMin: r.salaryMin,
+            salaryMax: r.salaryMax,
+            datePosted: moment(r.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+            companyName: r.CompanyUser.name,
+            logoUrl: r.CompanyUser.logoUrl,
+            companyAddress: r.CompanyUser.Area.province,
+            applicationDeadline: getTimeLeft(r.applicationDeadline),
+        }));
+
+        return { status: 200, data: news };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
+    }
+}
 export default {
     registerUser, getUserProfile, changePassword, changeProfile, applyJob, getInfoCompany,
     getNotification, getAllCompany, getTemplateCV, getDetailTemplateCV, getInfoApplication, getInfoArea
+    , saveNews, getAllNewsSaved
 };

@@ -5,6 +5,11 @@ import Area from '../models/Area.js';
 import { Op } from 'sequelize';
 import messages from "../config/message.js";
 import Request from "../models/Request.js";
+import JobApplication from "../models/JobApplication.js";
+import User from "../models/User.js";
+import Role from "../models/Role.js";
+import PersonalUser from "../models/PersonalUser.js";
+import NewsMarks from "../models/NewsMarks.js";
 import moment from 'moment-timezone';
 import { getTimeLeft } from "../utils/getTimeLeft.js";
 
@@ -179,9 +184,9 @@ const filterAllRecruitmentNews = async (filterData) => {
     }
 };
 
-const getDetailRecruitmentNews = async (recruitmentNewId) => {
+const getDetailRecruitmentNews = async (recruitmentNewsId, userId) => {
     try {
-        const recruitmentNew = await RecruitmentNews.findByPk(recruitmentNewId, {
+        const recruitmentNews = await RecruitmentNews.findByPk(recruitmentNewsId, {
             include: [{
                 model: Area,
                 attributes: ['province', 'district'],
@@ -190,7 +195,26 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 attributes: ['userId', 'name', 'field', 'companySize', 'companyAddress', 'logoUrl'],
             }]
         });
-        const data = recruitmentNew.toJSON();
+        const existed = await JobApplication.findOne({
+            include: [{
+                model: PersonalUser,
+                attributes: [],
+                where: { userId }   
+            }],
+            where: { recruitmentNewsId },
+            attributes: ['id']
+        });
+        const isApplied = !!existed;
+
+        const saveNews = await NewsMarks.findOne({
+            where: {
+                personalId: userId,
+                recruitmentNewsId
+            }
+        });
+        const isSaved = !!saveNews;
+
+        const data = recruitmentNews.toJSON();
         const job = {
             general: {
                 jobLevel: data.jobLevel,
@@ -233,6 +257,10 @@ const getDetailRecruitmentNews = async (recruitmentNewId) => {
                 companyAddress: data.CompanyUser.companyAddress
             },
             parentId: data.parentId,
+            status: {
+                isApplied,
+                isSaved
+            }
         }
 
         return { status: 200, data: job };

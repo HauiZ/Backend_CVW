@@ -123,3 +123,21 @@ export const getInfoArea = async (req, res) => {
         res.status(500).json({ message: messages.error.ERR_INTERNAL });
     }
 };
+
+export const saveNews = async (req, res) => {
+    try {
+        const result = await userService.saveNews(req.params.id, req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};
+
+export const getAllNewsSaved = async (req, res) => {
+    try {
+        const result = await userService.getAllNewsSaved(req.user.id);
+        res.status(result.status).json(result.data);
+    } catch (error) {
+        res.status(500).json({ message: messages.error.ERR_INTERNAL });
+    }
+};

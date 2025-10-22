@@ -9,6 +9,7 @@ import CvFiles from "../models/CvFiles.js";
 import CompanyUser from "../models/CompanyUser.js";
 import CVTemplate from "../models/CVTemplate.js";
 import Notification from "../models/Notification.js";
+import NewsMarks from "../models/NewsMarks.js";
 import { Op } from "sequelize";
 import drive from "../config/googleDrive/driveconfig.js";
 import JobApplication from "../models/JobApplication.js";
@@ -147,9 +148,14 @@ const deleteAUser = async (userId) => {
     if (cvFilesToDelete && cvFilesToDelete.length > 0) {
       for (const cvFile of cvFilesToDelete) {
         const googleDriveFileId = cvFile.fileId;
-        await drive.files.delete({
-          fileId: googleDriveFileId,
-        });
+        try {
+          await drive.files.delete({ fileId: googleDriveFileId, supportsAllDrives: true });
+        } catch (e) {
+          if (e.code === 404) {
+            // coi như đã không còn file → tiếp tục dọn DB
+          } else { throw e; }
+        }
+
       }
     }
     // Xóa ảnh đại diện cá nhân hoặc logo công ty nếu có trên cloudinary
@@ -163,6 +169,17 @@ const deleteAUser = async (userId) => {
     if (userToDelete.CompanyUser && userToDelete.CompanyUser.logoId !== null) {
       await cloudinary.uploader.destroy(userToDelete.CompanyUser.logoId);
     }
+
+    const savedNews = await NewsMarks.findAll({
+      where: { personalId: userId }
+    })
+
+    if (savedNews && savedNews.length > 0) {
+      await NewsMarks.destroy({
+        where: { personalId: userId }
+      });
+    }
+
     await userToDelete.destroy();
     return {
       status: 200,

@@ -40,7 +40,37 @@ PersonalUser.init({
         type: DataTypes.STRING,
         allowNull: true,
     },
-
+    desiredJob: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    skills: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        get() {
+            const value = this.getDataValue('skills');
+            return value ? JSON.parse(value) : null;
+        },
+        set(value) {
+            this.setDataValue('skills', JSON.stringify(value));
+        }
+    },
+    expectedSalary: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    yearsExperience: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    currentLevel: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    about: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    }
 }, {
     sequelize,
     modelName: 'PersonalUser',
