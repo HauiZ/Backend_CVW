@@ -59,6 +59,34 @@ RecruitmentNews.hasMany(NewsMarks, { foreignKey: 'recruitmentNewsId', onDelete: 
 NewsMarks.belongsTo(PersonalUser, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
 PersonalUser.hasMany(NewsMarks, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
 
+export async function syncInOrder({ force = false, alter = true } = {}) {
+  await sequelize.authenticate();
+
+  await Role.sync({ force, alter });
+  await Area.sync({ force, alter });
+  await CVTemplate.sync({ force, alter });
+
+  await User.sync({ force, alter });
+
+  await CompanyUser.sync({ force, alter });
+  await PersonalUser.sync({ force, alter });
+
+  await CvFiles.sync({ force, alter });
+
+  await RecruitmentNews.sync({ force, alter });
+
+  await Request.sync({ force, alter });
+
+  await JobApplication.sync({ force, alter });
+
+  await Notification.sync({ force, alter });
+
+  await NewsMarks.sync({ force, alter });
+
+  await EventRaw.sync({ force, alter });
+  await UserJobRating.sync({ force, alter });
+}
+
 const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, RecruitmentNews, Request, CVTemplate, JobApplication, Notification, NewsMarks, EventRaw, UserJobRating };
 
 export default models;
