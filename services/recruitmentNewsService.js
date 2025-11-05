@@ -12,46 +12,82 @@ import PersonalUser from "../models/PersonalUser.js";
 import NewsMarks from "../models/NewsMarks.js";
 import moment from 'moment-timezone';
 import { getTimeLeft } from "../utils/getTimeLeft.js";
+import { getRecommendations } from "../utils/getIdRecommendationModel.js";
 
-const getAllRecruitmentNews = async () => {
+const getAllRecruitmentNews = async (user_id, whereCondition = {}, orderCondition = [], includeOptions = []) => {
     try {
-        const listJob = await RecruitmentNews.findAll({
-            where: { status: messages.recruitmentNews.status.APPROVED },
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
+        const now = new Date();
+        // Lấy jobs và recommendations song song
+        const [listJob, recIds] = await Promise.all([
+            // Query jobs
+            RecruitmentNews.findAll({
+                where: {
+                    ...whereCondition,
+                    status: messages.recruitmentNews.status.APPROVED,
+                    // applicationDeadline: {
+                    //     [Op.gte]: new Date() // Chỉ lấy job chưa hết hạn
+                    // }
+                },
+                order: orderCondition,
+                include: includeOptions,
+                attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
+                subQuery: false // Tắt subquery để tránh một số vấn đề với điều kiện phức tạp
+            }),
+            // Lấy recommendations (có cache)
+            user_id ? getRecommendations(user_id) : Promise.resolve([])
+        ]);
+
+        // Tối ưu: Lấy tất cả company một lần thay vì loop
+        const companyIds = [...new Set(listJob.map(j => j.companyId))];
+        const companies = await CompanyUser.findAll({
+            where: { userId: companyIds },
+            attributes: ['userId', 'name', 'logoUrl', 'areaId'],
+            include: { model: Area, attributes: ['province'] }
         });
-        const jobs = await Promise.all(listJob.map(async job => {
-            const company = await CompanyUser.findByPk(job.companyId, {
-                attributes: ['name', 'logoUrl'],
-                include: {
-                    model: Area,
-                    attributes: ['province'],
-                }
-            });
-            const data = job.toJSON();
-            return {
-                ...data,
-                companyName: company.name,
-                logoUrl: company.logoUrl,
-                companyAddress: company.Area.province,
+        const companyMap = new Map(companies.map(c => [c.userId, c]));
+
+        // Map jobs nhanh hơn
+        const jobMap = new Map();
+        const jobs = listJob.map(job => {
+            const company = companyMap.get(job.companyId);
+            const normalized = {
+                ...job.toJSON(),
+                companyName: company?.name ?? '',
+                logoUrl: company?.logoUrl ?? '',
+                companyAddress: company?.Area?.province ?? '',
                 applicationDeadline: getTimeLeft(job.applicationDeadline),
-                datePosted: moment(data.datePosted).format('YYYY-MM-DD HH:mm:ss')
+                datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss'),
+                isExpired: new Date(job.applicationDeadline) < now
             };
-        }));
-        return { status: 200, data: jobs.sort((a, b) => b.id - a.id) };
+            jobMap.set(job.id, normalized);
+            return normalized;
+        });
+
+        // Sắp xếp: recommended trước, còn lại sau
+        const recSet = new Set(recIds.map(Number));
+        const recommended = recIds
+            .map(id => jobMap.get(id))
+            .filter(Boolean);
+        // const recommended = recIds
+        //     .map(Number)
+        //     .map(id => jobMap.get(id))
+        //     .filter(job => job && !job.isExpired);
+        const others = jobs.filter(j => !recSet.has(j.id));
+
+        return { status: 200, data: [...recommended, ...others] };
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
     }
 };
 
-const filterAllRecruitmentNews = async (filterData) => {
+const filterAllRecruitmentNews = async (filterData, user_id) => {
     try {
+
         const { currentNewsId, keyword, profession, area, experience, jobLevel, salaryMin, salaryMax, workType, sortBy, order } = filterData;
         const whereCondition = {};
         const orderCondition = [];
         const includeOptions = [];
-
-        whereCondition.status = messages.recruitmentNews.status.APPROVED; // Chỉ lấy các tin tuyển dụng đã được phê duyệt
 
         if (keyword && keyword.trim() !== '') {
             const searchTerm = `%${keyword.trim()}%`;
@@ -142,42 +178,46 @@ const filterAllRecruitmentNews = async (filterData) => {
         const orderDirection = order === 'ASC' ? 'ASC' : 'DESC';
         orderCondition.push([orderBy, orderDirection]);
 
-        const jobs = await RecruitmentNews.findAll({
-            where: whereCondition,
-            order: orderCondition,
-            include: includeOptions,
-            attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
-            subQuery: false // Tắt subquery để tránh một số vấn đề với điều kiện phức tạp
-        });
+        // if (Object.keys(whereCondition).length === 0 && user_id) {
+        //     return await getAllRecruitmentNews(user_id);
+        // }
 
-        const data = await Promise.all(jobs.map(async job => {
-            let company = job.CompanyUser;
-            if (!company) {
-                company = await CompanyUser.findByPk(job.companyId, {
-                    attributes: ['name', 'logoUrl'],
-                    include: {
-                        model: Area,
-                        attributes: ['province'],
-                    }
-                });
-            }
+        return await getAllRecruitmentNews(user_id, whereCondition, orderCondition, includeOptions);
 
-            return {
-                id: job.id,
-                companyId: job.companyId,
-                jobTitle: job.jobTitle,
-                profession: job.profession,
-                salaryMin: job.salaryMin,
-                salaryMax: job.salaryMax,
-                companyName: company?.name || null,
-                logoUrl: company?.logoUrl || null,
-                companyAddress: job.Area?.province || company?.Area?.province || null,
-                applicationDeadline: getTimeLeft(job.applicationDeadline),
-                datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
-            };
-        }));
+        // const jobs = await RecruitmentNews.findAll({
+        //     where: { ...whereCondition, status: messages.recruitmentNews.status.APPROVED },
+        //     order: orderCondition,
+        //     include: includeOptions,
+        //     attributes: ['id', 'companyId', 'jobTitle', 'profession', 'salaryMin', 'salaryMax', 'datePosted', 'applicationDeadline'],
+        //     subQuery: false // Tắt subquery để tránh một số vấn đề với điều kiện phức tạp
+        // });
 
-        return { status: 200, data: data };
+        // const data = await Promise.all(jobs.map(async job => {
+        //     let company = job.CompanyUser;
+        //     if (!company) {
+        //         company = await CompanyUser.findByPk(job.companyId, {
+        //             attributes: ['name', 'logoUrl'],
+        //             include: {
+        //                 model: Area,
+        //                 attributes: ['province'],
+        //             }
+        //         });
+        //     }
+
+        //     return {
+        //         id: job.id,
+        //         companyId: job.companyId,
+        //         jobTitle: job.jobTitle,
+        //         profession: job.profession,
+        //         salaryMin: job.salaryMin,
+        //         salaryMax: job.salaryMax,
+        //         companyName: company?.name || null,
+        //         logoUrl: company?.logoUrl || null,
+        //         companyAddress: job.Area?.province || company?.Area?.province || null,
+        //         applicationDeadline: getTimeLeft(job.applicationDeadline),
+        //         datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss')
+        //     };
+        // }));
     } catch (err) {
         console.log(err);
         return { status: 500, data: { message: messages.error.ERR_INTERNAL } };
@@ -199,7 +239,7 @@ const getDetailRecruitmentNews = async (recruitmentNewsId, userId) => {
             include: [{
                 model: PersonalUser,
                 attributes: [],
-                where: { userId }   
+                where: { userId }
             }],
             where: { recruitmentNewsId },
             attributes: ['id']

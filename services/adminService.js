@@ -225,7 +225,7 @@ const approveRecruitment = async (requestId, status) => {
     switch (request.typeOf) {
       // Đăng tin tuyển dụng
       case messages.recruitmentNews.typeof.JOB_POSTING:
-        await recruitmentNew.update({ status: status });
+        await recruitmentNew.update({ status: status , datePosted: moment().format("YYYY-MM-DD HH:mm:ss")});
         let content1;
         if (status === messages.recruitmentNews.status.APPROVED) {
           content1 = messages.recruitmentNews.APPROVED_POST;

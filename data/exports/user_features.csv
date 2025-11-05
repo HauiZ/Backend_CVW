@@ -1,0 +1,106 @@
+user_id,name,skills,experience_years,education,location
+12,Tín Nguyễn,"React,PHP,SQL",3,"",Cao Bằng
+13,truongma,"HTML,CSS,Javascript",1,"",Nam Định
+14,Hoàng Khánh,"SQL,Flask,AI,WebSocket",5,"",Yên Bái
+15,JackMa,"React,Node,Flask",4,"",Hà Nội
+27,Hau Nguyen,"React,Java,WebSocket,Flask,AI",9,"",TP Hồ Chí Minh
+28,Trần Thị Bình,"Node.js,React,Vue,Angular",1,"",An Giang
+29,Lê Anh Châu,"React,Vue,Angular,Java,Spring Boot",2,"",An Giang
+30,Phạm Minh Dũng,"Vue,Angular,Java,Spring Boot,Python,Django",3,"",An Giang
+31,Hoàng Quang Hà,"Angular,Java,Spring Boot",4,"",Bà Rịa - Vũng Tàu
+32,Phan Thu Hải,"Java,Spring Boot,Python,Django",5,"",Bà Rịa - Vũng Tàu
+33,Vũ Hồng Hưng,"Spring Boot,Python,Django,Flask,C#",6,"",Bà Rịa - Vũng Tàu
+34,Võ Tuấn Kiên,"Python,Django,Flask,C#,.NET,SQL",7,"",Bà Rịa - Vũng Tàu
+35,Đặng Duy Linh,"Django,Flask,C#",8,"",Bắc Giang
+36,Bùi Ngọc Phong,"Flask,C#,.NET,SQL",9,"",Bắc Giang
+37,Nguyễn Văn Sơn,"C#,.NET,SQL,PostgreSQL,MySQL",10,"",Bắc Giang
+38,Trần Thị Thảo,".NET,SQL,PostgreSQL,MySQL,MongoDB,Redis",0,"",Bắc Kạn
+39,Lê Anh Trang,"SQL,PostgreSQL,MySQL",1,"",Bắc Kạn
+40,Phạm Minh Trí,"PostgreSQL,MySQL,MongoDB,Redis",2,"",Bạc Liêu
+41,Hoàng Quang Vy,"MySQL,MongoDB,Redis,Docker,Kubernetes",3,"",Bạc Liêu
+42,Phan Thu An,"MongoDB,Redis,Docker,Kubernetes,AWS,GCP",4,"",Bắc Ninh
+43,Vũ Hồng Bình,"Redis,Docker,Kubernetes",5,"",Bắc Ninh
+44,Võ Tuấn Châu,"Docker,Kubernetes,AWS,GCP",6,"",Bắc Ninh
+45,Đặng Duy Dũng,"Kubernetes,AWS,GCP,Azure,Git",7,"",Bến Tre
+46,Bùi Ngọc Hà,"AWS,GCP,Azure,Git,HTML,CSS",8,"",Bến Tre
+47,Nguyễn Văn Hải,"GCP,Azure,Git",9,"",Bình Dương
+48,Trần Thị Hưng,"Azure,Git,HTML,CSS",10,"",Bình Dương
+49,Lê Anh Kiên,"Git,HTML,CSS,Tailwind,Sass",0,"",Bình Dương
+50,Phạm Minh Linh,"HTML,CSS,Tailwind,Sass,REST,GraphQL",1,"",Bình Dương
+51,Hoàng Quang Phong,"CSS,Tailwind,Sass",2,"",Bình Dương
+52,Phan Thu Sơn,"Tailwind,Sass,REST,GraphQL",3,"",Bình Định
+53,Vũ Hồng Thảo,"Sass,REST,GraphQL,JavaScript,TypeScript",4,"",Bình Định
+54,Võ Tuấn Trang,"REST,GraphQL,JavaScript,TypeScript,Node.js,React",5,"",Bình Định
+55,Đặng Duy Trí,"GraphQL,JavaScript,TypeScript",6,"",Bình Phước
+56,Bùi Ngọc Vy,"JavaScript,TypeScript,Node.js,React",7,"",Bình Phước
+57,Nguyễn Văn An,"TypeScript,Node.js,React,Vue,Angular",8,"",Bình Phước
+58,Trần Thị Bình,"Node.js,React,Vue,Angular,Java,Spring Boot",9,"",Bình Thuận
+59,Lê Anh Châu,"React,Vue,Angular",10,"",Bình Thuận
+60,Phạm Minh Dũng,"Vue,Angular,Java,Spring Boot",0,"",Bình Thuận
+61,Hoàng Quang Hà,"Angular,Java,Spring Boot,Python,Django",1,"",Cà Mau
+62,Phan Thu Hải,"Java,Spring Boot,Python,Django,Flask,C#",2,"",Cà Mau
+63,Vũ Hồng Hưng,"Spring Boot,Python,Django",3,"",Cà Mau
+64,Võ Tuấn Kiên,"Python,Django,Flask,C#",4,"",Cần Thơ
+65,Đặng Duy Linh,"Django,Flask,C#,.NET,SQL",5,"",Cần Thơ
+66,Bùi Ngọc Phong,"Flask,C#,.NET,SQL,PostgreSQL,MySQL",6,"",Cần Thơ
+67,Nguyễn Văn Sơn,"C#,.NET,SQL",7,"",Cần Thơ
+68,Trần Thị Thảo,".NET,SQL,PostgreSQL,MySQL",8,"",Cao Bằng
+69,Lê Anh Trang,"SQL,PostgreSQL,MySQL,MongoDB,Redis",9,"",Cao Bằng
+70,Phạm Minh Trí,"PostgreSQL,MySQL,MongoDB,Redis,Docker,Kubernetes",10,"",Đà Nẵng
+71,Hoàng Quang Vy,"MySQL,MongoDB,Redis",0,"",Đà Nẵng
+72,Phan Thu An,"MongoDB,Redis,Docker,Kubernetes",1,"",Đà Nẵng
+73,Vũ Hồng Bình,"Redis,Docker,Kubernetes,AWS,GCP",2,"",Đà Nẵng
+74,Võ Tuấn Châu,"Docker,Kubernetes,AWS,GCP,Azure,Git",3,"",Đắk Lắk
+75,Đặng Duy Dũng,"Kubernetes,AWS,GCP",4,"",Đắk Lắk
+76,Bùi Ngọc Hà,"AWS,GCP,Azure,Git",5,"",Đắk Lắk
+77,Nguyễn Văn Hải,"GCP,Azure,Git,HTML,CSS",6,"",Đắk Nông
+78,Trần Thị Hưng,"Azure,Git,HTML,CSS,Tailwind,Sass",7,"",Đắk Nông
+79,Lê Anh Kiên,"Git,HTML,CSS",8,"",Điện Biên
+80,Phạm Minh Linh,"HTML,CSS,Tailwind,Sass",9,"",Điện Biên
+81,Hoàng Quang Phong,"CSS,Tailwind,Sass,REST,GraphQL",10,"",Đồng Nai
+82,Phan Thu Sơn,"Tailwind,Sass,REST,GraphQL,JavaScript,TypeScript",0,"",Đồng Nai
+83,Vũ Hồng Thảo,"Sass,REST,GraphQL",1,"",Đồng Nai
+84,Võ Tuấn Trang,"REST,GraphQL,JavaScript,TypeScript",2,"",Đồng Tháp
+85,Đặng Duy Trí,"GraphQL,JavaScript,TypeScript,Node.js,React",3,"",Đồng Tháp
+86,Bùi Ngọc Vy,"JavaScript,TypeScript,Node.js,React,Vue,Angular",4,"",Đồng Tháp
+87,Nguyễn Văn An,"TypeScript,Node.js,React",5,"",Gia Lai
+88,Trần Thị Bình,"Node.js,React,Vue,Angular",6,"",Gia Lai
+89,Lê Anh Châu,"React,Vue,Angular,Java,Spring Boot",7,"",Gia Lai
+90,Phạm Minh Dũng,"Vue,Angular,Java,Spring Boot,Python,Django",8,"",Hà Giang
+91,Hoàng Quang Hà,"Angular,Java,Spring Boot",9,"",Hà Giang
+92,Phan Thu Hải,"Java,Spring Boot,Python,Django",10,"",Hà Giang
+93,Vũ Hồng Hưng,"Spring Boot,Python,Django,Flask,C#",0,"",Hà Nam
+94,Võ Tuấn Kiên,"Python,Django,Flask,C#,.NET,SQL",1,"",Hà Nam
+95,Đặng Duy Linh,"Django,Flask,C#",2,"",Hà Nội
+96,Bùi Ngọc Phong,"Flask,C#,.NET,SQL",3,"",Hà Nội
+97,Nguyễn Văn Sơn,"C#,.NET,SQL,PostgreSQL,MySQL",4,"",Hà Nội
+98,Trần Thị Thảo,".NET,SQL,PostgreSQL,MySQL,MongoDB,Redis",5,"",Hà Nội
+99,Lê Anh Trang,"SQL,PostgreSQL,MySQL",6,"",Hà Nội
+100,Phạm Minh Trí,"PostgreSQL,MySQL,MongoDB,Redis",7,"",Hà Nội
+101,Hoàng Quang Vy,"MySQL,MongoDB,Redis,Docker,Kubernetes",8,"",Hà Nội
+102,Phan Thu An,"MongoDB,Redis,Docker,Kubernetes,AWS,GCP",9,"",Hà Nội
+103,Vũ Hồng Bình,"Redis,Docker,Kubernetes",10,"",Hà Nội
+104,Võ Tuấn Châu,"Docker,Kubernetes,AWS,GCP",0,"",Hà Nội
+105,Đặng Duy Dũng,"Kubernetes,AWS,GCP,Azure,Git",1,"",Hà Nội
+106,Bùi Ngọc Hà,"AWS,GCP,Azure,Git,HTML,CSS",2,"",Hà Nội
+107,Nguyễn Văn Hải,"GCP,Azure,Git",3,"",Hà Nội
+108,Trần Thị Hưng,"Azure,Git,HTML,CSS",4,"",Hà Nội
+109,Lê Anh Kiên,"Git,HTML,CSS,Tailwind,Sass",5,"",Hà Nội
+110,Phạm Minh Linh,"HTML,CSS,Tailwind,Sass,REST,GraphQL",6,"",Hà Nội
+111,Hoàng Quang Phong,"CSS,Tailwind,Sass",7,"",Hà Nội
+112,Phan Thu Sơn,"Tailwind,Sass,REST,GraphQL",8,"",Hà Nội
+113,Vũ Hồng Thảo,"Sass,REST,GraphQL,JavaScript,TypeScript",9,"",Hà Nội
+114,Võ Tuấn Trang,"REST,GraphQL,JavaScript,TypeScript,Node.js,React",10,"",Hà Nội
+115,Đặng Duy Trí,"GraphQL,JavaScript,TypeScript",0,"",Hà Nội
+116,Bùi Ngọc Vy,"JavaScript,TypeScript,Node.js,React",1,"",Hà Nội
+117,Nguyễn Văn An,"TypeScript,Node.js,React,Vue,Angular",2,"",Hà Nội
+118,Trần Thị Bình,"Node.js,React,Vue,Angular,Java,Spring Boot",3,"",Hà Nội
+119,Lê Anh Châu,"React,Vue,Angular",4,"",Hà Nội
+120,Phạm Minh Dũng,"Vue,Angular,Java,Spring Boot",5,"",Hà Nội
+121,Hoàng Quang Hà,"Angular,Java,Spring Boot,Python,Django",6,"",Hà Nội
+122,Phan Thu Hải,"Java,Spring Boot,Python,Django,Flask,C#",7,"",Hà Nội
+123,Vũ Hồng Hưng,"Spring Boot,Python,Django",8,"",Hà Nội
+124,Võ Tuấn Kiên,"Python,Django,Flask,C#",9,"",Hà Tĩnh
+125,Đặng Duy Linh,"Django,Flask,C#,.NET,SQL",10,"",Hà Tĩnh
+126,Bùi Ngọc Phong,"Flask,C#,.NET,SQL,PostgreSQL,MySQL",0,"",Hà Tĩnh
+127,Nguyễn Văn Sơn,"C#,.NET,SQL",1,"",Hải Dương

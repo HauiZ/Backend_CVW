@@ -106,6 +106,7 @@ const getUserProfile = async (userId) => {
                 yearsExperience: user.PersonalUser.yearsExperience,
                 currentLevel: user.PersonalUser.currentLevel,
                 about: user.PersonalUser.about,
+                location: user.PersonalUser.location,
             };
         } else if (userRole === 'recruiter' && user.CompanyUser) {
             userInfo = {
@@ -157,7 +158,7 @@ const changePassword = async (userId, newPasswordData) => {
 
 const changeProfile = async (userId, dataProfile) => {
     try {
-        const { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about, province, district, companyAddress, field, companySize, website, introduction } = dataProfile;
+        const { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about, location, province, district, companyAddress, field, companySize, website, introduction } = dataProfile;
         if (!name) {
             return { status: 400, data: { message: messages.user.BLANK_NAME } };
         }
@@ -167,7 +168,7 @@ const changeProfile = async (userId, dataProfile) => {
         });
         if (user.Role.name === 'candidate') {
             const personal = await PersonalUser.findByPk(userId);
-            const updates = { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about };
+            const updates = { name, phone, desiredJob, skills, expectedSalary, yearsExperience, currentLevel, about, location };
             for (const field of Object.keys(updates)) {
                 if (updates[field] !== personal[field]) {
                     await personal.update({ [field]: updates[field] });

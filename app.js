@@ -19,6 +19,10 @@ import adminRoutes from './routes/adminRoutes.js';
 import recruiterRoutes from './routes/recruiterRoutes.js';
 
 const app = express();
+import eventsRoute from './routes/events.route.js';
+
+app.use(express.json({ limit: '256kb' }));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(securityHeaders);
@@ -33,6 +37,13 @@ app.use('/api', resetPasswordRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/recruiter', recruiterRoutes);
+app.use('/api/events', eventsRoute);
+
+import { cutoffAggregateUserJobRatings } from './utils/cutoffAggregateUserJobRatings.js';
+cutoffAggregateUserJobRatings();
+import { cutoffExportAndPurgeRatingsCsv } from './utils/cutoffExportAndPurgeRatingsCsv.js';
+cutoffExportAndPurgeRatingsCsv();
+
 sequelize.sync({ alter: true }).then(() => {
     console.log('✅ Database đã kết nối!');
     app.listen(3000, () => console.log('🚀 Server chạy tại http://localhost:3000/api-docs'));
