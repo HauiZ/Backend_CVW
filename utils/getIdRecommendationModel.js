@@ -34,7 +34,7 @@ async function getRecommendations(user_id) {
         skills: Array.isArray(profile?.skills) ? profile.skills.join(',') : (profile?.skills || ''),
         experience_years: Number(profile?.yearsExperience ?? 0),
         location: profile?.location || '',
-        n: 20
+        n: 5
       }, { 
         timeout: 2000, // giảm timeout xuống 2s
         headers: { 'Accept-Encoding': 'gzip' }
@@ -43,7 +43,7 @@ async function getRecommendations(user_id) {
       jobIds = data?.job_ids || [];
     } else {
       const { data } = await axios.post(`${REC_BASE}/api/recommend/hybrid`, 
-        { user_id, n: 20 }, 
+        { user_id, n: 5 }, 
         { timeout: 2000 }
       );
       jobIds = data?.job_ids || [];

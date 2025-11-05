@@ -55,7 +55,12 @@ WITH N AS (
 INSERT INTO @Seed(n, email, [name], phone, desiredJob, skills, yearsExperience, currentLevel, [about], [location], expectedSalary)
 SELECT
   n,
-  CONCAT('user_', RIGHT('000' + CAST(n AS NVARCHAR(3)), 3), '@example.com') AS email,
+  CONCAT(
+  'user_',
+  RIGHT('000000' + CAST(ABS(CHECKSUM(NEWID())) % 1000000 AS NVARCHAR(6)), 6),
+  '@gmail.com'
+) AS email
+,
   CONCAT(
     CHOOSE( (n%10)+1, N'Nguyễn',N'Trần',N'Lê',N'Phạm',N'Hoàng',N'Phan',N'Vũ',N'Võ',N'Đặng',N'Bùi'), N' ',
     CHOOSE( (n%10)+1, N'Văn',N'Thị',N'Anh',N'Minh',N'Quang',N'Thu',N'Hồng',N'Tuấn',N'Duy',N'Ngọc'), N' ',
@@ -79,9 +84,10 @@ SELECT
       FROM (
         SELECT TOP (3 + (n % 4))  -- 3..6
                CHOOSE(((n+ord)%30)+1,
-                 'JavaScript','TypeScript','Node.js','React','Vue','Angular','Java','Spring Boot','Python','Django',
+                 'Có khả năng học hỏi công nghệ mới nhanh chóng','JavaScript','TypeScript','Node.js','React','Vue','Angular','Java','Spring Boot','Python','Django',
                  'Flask','C#','.NET','SQL','PostgreSQL','MySQL','MongoDB','Redis','Docker','Kubernetes',
-                 'AWS','GCP','Azure','Git','HTML','CSS','Tailwind','Sass','REST','GraphQL'
+                 'AWS','GCP','Azure','Git','HTML','CSS','Tailwind','Sass','REST','GraphQL','Kinh nghiệm optimize SEO cho web applications',
+                  'Kinh nghiệm làm việc với Agile/Scrum'
                ) AS s,
                ord
         FROM (VALUES(1),(2),(3),(4),(5),(6),(7),(8)) AS t(ord)

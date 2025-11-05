@@ -36,6 +36,7 @@ const getAllRecruitmentNews = async (user_id, whereCondition = {}, orderConditio
             // Lấy recommendations (có cache)
             user_id ? getRecommendations(user_id) : Promise.resolve([])
         ]);
+        const recSet = new Set(recIds.map(Number));
 
         // Tối ưu: Lấy tất cả company một lần thay vì loop
         const companyIds = [...new Set(listJob.map(j => j.companyId))];
@@ -57,14 +58,13 @@ const getAllRecruitmentNews = async (user_id, whereCondition = {}, orderConditio
                 companyAddress: company?.Area?.province ?? '',
                 applicationDeadline: getTimeLeft(job.applicationDeadline),
                 datePosted: moment(job.datePosted).format('YYYY-MM-DD HH:mm:ss'),
-                isExpired: new Date(job.applicationDeadline) < now
+                isExpired: new Date(job.applicationDeadline) < now,
+                isRecommend: recSet.has(Number(job.id))
             };
             jobMap.set(job.id, normalized);
             return normalized;
         });
 
-        // Sắp xếp: recommended trước, còn lại sau
-        const recSet = new Set(recIds.map(Number));
         const recommended = recIds
             .map(id => jobMap.get(id))
             .filter(Boolean);
