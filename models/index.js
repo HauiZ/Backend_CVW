@@ -11,6 +11,8 @@ import CVTemplate from './CVTemplate.js';
 import JobApplication from './JobApplication.js';
 import Notification from './Notification.js';
 import NewsMarks from './NewsMarks.js';
+import EventRaw from './EventRaw.js';
+import UserJobRating from './UserJobRating.js';
 
 User.belongsTo(Role, { foreignKey: 'roleId' });
 Role.hasMany(User, { foreignKey: 'roleId' });
@@ -57,6 +59,6 @@ RecruitmentNews.hasMany(NewsMarks, { foreignKey: 'recruitmentNewsId', onDelete: 
 NewsMarks.belongsTo(PersonalUser, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
 PersonalUser.hasMany(NewsMarks, { foreignKey: 'personalId', onDelete: 'NO ACTION' });
 
-const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, RecruitmentNews, Request, CVTemplate, JobApplication, Notification, NewsMarks };
+const models = { sequelize, User, Role, Area, CvFiles, PersonalUser, CompanyUser, RecruitmentNews, Request, CVTemplate, JobApplication, Notification, NewsMarks, EventRaw, UserJobRating };
 
 export default models;

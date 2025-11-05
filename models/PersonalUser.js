@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import User from './User.js';
+import Area from './Area.js';
 
 class PersonalUser extends Model { }
 
@@ -70,7 +71,11 @@ PersonalUser.init({
     about: {
         type: DataTypes.STRING,
         allowNull: true,
-    }
+    },
+    location: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },  
 }, {
     sequelize,
     modelName: 'PersonalUser',
