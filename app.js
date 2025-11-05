@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
-import models from './models/index.js';
+import models, { syncInOrder } from './models/index.js';
 const { sequelize } = models;
 import { swaggerUi, swaggerSpec } from './config/swaggerConfig.js';
 import userRoutes from './routes/userRoutes.js';
@@ -44,7 +44,7 @@ cutoffAggregateUserJobRatings();
 import { cutoffExportAndPurgeRatingsCsv } from './utils/cutoffExportAndPurgeRatingsCsv.js';
 cutoffExportAndPurgeRatingsCsv();
 
-sequelize.sync({ alter: true }).then(() => {
+await syncInOrder({ alter: true }).then(() => {
     console.log('✅ Database đã kết nối!');
     app.listen(3000, () => console.log('🚀 Server chạy tại http://localhost:3000/api-docs'));
 }).catch(err => console.error('❌ Lỗi kết nối database:', err));
