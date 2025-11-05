@@ -1,6 +1,6 @@
-# Backend CVW - Hệ thống Tuyển dụng & Tìm việc
+# Backend CVW - Hệ thống Tuyển dụng & Tìm việc Thông minh
 
-Đây là backend API cho hệ thống tuyển dụng và tìm việc CVW, được xây dựng bằng Node.js và Express.js.
+Đây là backend API cho hệ thống tuyển dụng và tìm việc thông minh CVW, được xây dựng bằng Node.js, Python và Express.js.
 
 ## 🚀 Tính năng chính
 
@@ -25,6 +25,7 @@
   - Mức lương
   - Loại hình công việc
 - Sắp xếp theo: kinh nghiệm, lương, ngày đăng
+- Hệ thống tự động gợi ý các tin tuyển dụng phù hợp (tính năng thông minh)
 
 ### Quản lý ứng tuyển
 - Ứng viên ứng tuyển vào vị trí
@@ -97,6 +98,15 @@ NODEMAILER_APP_PASSWORD=your_app_password
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+
+# Docker
+SA_DOCKER_PASSWORD=your_docker_password
+SA_DOCKER_NAME=your_docker_name
+
+# Fush config
+EVENT_FLUSH_SIZE=10(tùy chọn)
+EVENT_FLUSH_MS=10000(tùy chọn)
+IMPRESSION_SAMPLE_RATE=1(tùy chọn)
 ```
 
 4. Tạo JSON Key dành cho Service Account (hay còn gọi là private key)
@@ -104,9 +114,9 @@ CLOUDINARY_API_SECRET=your_api_secret
 # Đưa json key vào thư mục config\googleDrive điều chỉnh keyFile driveConfig.js để nhận json key
 ```
 
-5. Chạy database migrations:
+5. Chạy database migrations (tùy chọn):
 ```bash
-# Kiểm tra file scriptSQL.txt để biết thêm chi tiết
+# Kiểm tra file scriptSQL.txt, seed_users.sql, seed_jobs.sql để biết thêm chi tiết
 ```
 
 6. Khởi động server:
@@ -114,21 +124,31 @@ CLOUDINARY_API_SECRET=your_api_secret
 node app
 ```
 
+7. Khởi động Model gợi ý thông minh:
+```bash
+cd Model
+py api.py
+```
+
 ## 📁 Cấu trúc thư mục
 
 ```
 Backend_CVW/
-├── config/         # Cấu hình database và các service
-├── controllers/    # Logic xử lý request
-├── helper/         # Các hàm tiện ích
-├── middleware/     # Middleware (auth, upload, etc.)
-├── models/         # Database models
-├── public/         # Static files
-├── routes/         # API routes
-├── services/       # Business logic
-├── utils/          # Utility functions
-├── app.js          # Entry point
-└── package.json    # Project dependencies
+├── config/             # Cấu hình database và các service
+├── controllers/        # Logic xử lý request
+├── data/               # dataset Model
+├── helper/             # Các hàm tiện ích
+├── middleware/         # Middleware (auth, upload, etc.)
+├── Model/              # Model gợi ý tin tuyển dụng thông minh 
+├── models/             # Database models
+├── public/             # Static files
+├── routes/             # API routes
+├── scripts/            # Scrips functions
+├── services/           # Business logic
+├── utils/              # Utility functions
+├── docker-compose.yml/ # Docker
+├── app.js              # Entry point
+└── package.json        # Project dependencies
 ```
 
 ## 🔧 Công nghệ sử dụng
@@ -137,6 +157,7 @@ Backend_CVW/
 - **Node.js**: JavaScript runtime
 - **Express.js**: Web framework
 - **Sequelize**: ORM cho SQL Server
+- **Python**: Model gợi ý thông minh
 
 ### Database
 - **MSSQL**: Database system
