@@ -132,8 +132,8 @@ def recommend_cold_start():
             # Skills quan trọng nhất (50%), exp (35%), location (15%)
             total_sim = (
                 skills_sim * 0.5 + 
-                exp_sim * 0.35 + 
-                loc_sim * 0.15
+                exp_sim * 0.1 + 
+                loc_sim * 0.4
             )
             
             scores.append({

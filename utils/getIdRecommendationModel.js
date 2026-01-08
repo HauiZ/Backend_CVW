@@ -3,7 +3,7 @@ import NodeCache from 'node-cache';
 import User from "../models/User.js";
 import PersonalUser from "../models/PersonalUser.js";
 
-const recCache = new NodeCache({ stdTTL: 300 }); // cache 5 phút
+const recCache = new NodeCache({ stdTTL: 3 }); // cache 5 phút
 
 const REC_BASE = "http://localhost:2000";
 

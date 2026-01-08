@@ -130,24 +130,24 @@ export async function exportAndPurgeRatingsCsv() {
   await writeCsvAtomic(OUT_JOBS, 'job_id,title,required_skills,min_experience,level,salary_range,location', jobLines);
 
   // 5) Xoá delta trong DB sau khi ghi file thành công
-  let deleted = 0;
-  if (delta.length > 0) {
-    const t = await sequelize.transaction();
-    try {
-      deleted = await UserJobRating.destroy({
-        where: { last_aggregated_ts: { [Op.lte]: cutoff } },
-        transaction: t
-      });
-      await t.commit();
-    } catch (e) {
-      await t.rollback();
-      throw e;
-    }
-  }
+  // let deleted = 0;
+  // if (delta.length > 0) {
+  //   const t = await sequelize.transaction();
+  //   try {
+  //     deleted = await UserJobRating.destroy({
+  //       where: { last_aggregated_ts: { [Op.lte]: cutoff } },
+  //       transaction: t
+  //     });
+  //     await t.commit();
+  //   } catch (e) {
+  //     await t.rollback();
+  //     throw e;
+  //   }
+  // }
 
   return {
     exported: delta.length,
-    deleted,
+    // deleted,
     interactions_file: OUT_INTERACTIONS,
     users_file: OUT_USERS,
     jobs_file: OUT_JOBS,
