@@ -20,7 +20,7 @@ async function getRecommendations(user_id) {
     
     if (!user) return [];
 
-    const isNewUser = (Date.now() - new Date(user.createAt)) <= 86400000; // 1 ngày
+    const isNewUser = (Date.now() - new Date(user.createAt)) <= 86400000; 
     let jobIds = [];
 
     if (isNewUser) {
